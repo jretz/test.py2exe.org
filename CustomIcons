@@ -15,3 +15,5 @@ The same practice works as well for {{{console}}} and {{{windows}}} scripts.
 The resouce number does not seem to matter. Windows just takes the first existing icon.
 
 /!\ if somebody knows how to add small and large icons, speak up...
+
+Hm, doesn't the {{{.ico}}} file contain them?
