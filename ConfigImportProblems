@@ -1,7 +1,9 @@
 = The Situation =
 
 I wrote a script using Biopython which read a file containing a bunch of Genbank accession numbers, and downloaded the Genbank records:
-{{{### gentest.py
+{{{
+#!python
+### gentest.py
 
 from Bio import GenBank
 
@@ -25,7 +27,9 @@ for accession in gi_list:
 
 This worked fine as a script, but when I attempted to turn it into a Windows executable with py2exe and the setup.py script: 
 
-{{{### setup.py
+{{{
+#!python
+### setup.py
 
 from distutils.core import setup
 import py2exe, sys
@@ -47,14 +51,17 @@ This is the error thrown on running the executable:
   File "gentest.py", line 1, in ?
   File "Bio\__init__.pyc", line 68, in ?
   File "Bio\__init__.pyc", line 55, in _load_registries
-WindowsError: [Errno 3] The system cannot find the path specified: 'E:\\Data\\CVSWorkspace\\genbank2excel\\genbank2excel\\dist\\library.zip\\Bio\\config/*.*'}}}
+WindowsError: [Errno 3] The system cannot find the path specified: 
+  'E:\\Data\\CVSWorkspace\\genbank2excel\\genbank2excel\\dist\\library.zip\\Bio\\config/*.*'}}}
 
 = The Problem =
 
 == Location of Bio.config ==
-With help from Thomas Heller on the Python-Win32 mailing list, the problem was identified.  When the Bio package is imported, Bio/__init__.py imports a number of modules from the Bio.config module using the {{{_load_registries}}} function.  The first problem occurs in line 52: (file version 1.21 from CVS)
+With help from Thomas Heller on the Python-Win32 mailing list, the problem was identified.  When the Bio package is imported, {{{Bio/__init__.py}}} imports a number of modules from the Bio.config module using the {{{_load_registries}}} function.  The first problem occurs in line 52: (file version 1.21 from CVS)
 
-{{{    x = os.listdir(
+{{{
+#!python
+    x = os.listdir(
         os.path.dirname(__import__("Bio.config", {}, {}, ["Bio"]).__file__))
 }}}
 
@@ -64,6 +71,7 @@ Under normal script-like execution, the {{{os.path.dirname}}} call returns a str
 The arrangement with py2exe's shared zipfile causes problems further down the function.  The {{{_load_registries}}} function expects that modules will have the .py extension, rather than the .pyc extension that the compiled files (all that are included in the zipfile) use.  
 
 {{{
+#!python
     x = filter(lambda x: not x.startswith("_") and x.endswith(".py"), x)
     x = map(lambda x: x[:-3], x)            # chop off '.py'
 }}}
@@ -76,6 +84,7 @@ Zipfile modules within Bio.config are thus not loaded.
 The code to be changed for the {{{_load_registries}}} method is (lines 50-55 in Bio/__init__.py CVS version 1.21)
 
 {{{
+#!python
     # Load the registries.  Look in all the '.py' files in Bio.config
     # for Registry objects.  Save them all into the local namespace.
     x = os.listdir(
@@ -104,6 +113,7 @@ We now have the required list of module filenames.
 Putting the steps together, and combining with the original code, we have:
 
 {{{
+#!python
     # Load the registries.  Look in all the '.py' files in Bio.config
     # for Registry objects.  Save them all into the local namespace.
     # Import code changed to allow for compilation with py2exe from distutils
@@ -121,4 +131,4 @@ Putting the steps together, and combining with the original code, we have:
         x = map(lambda x: x[:-3], x)            # chop off '.py'
 }}}
 
-Compilation with the original setup.py script and {{{python setup.py py2exe}}} then ran smoothly, apart from a couple of missing modules which had no impact on the running of the executable
+Compilation with the original setup.py script and {{{python setup.py py2exe}}} then ran smoothly, apart from a couple of missing modules which had no impact on the running of the executable.
