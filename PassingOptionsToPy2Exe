@@ -22,3 +22,21 @@ setup(
     ...
 )
 }}}
+
+= Avoid using setup parameters that are py2exe-specific =
+
+Instead of passing options like {{{console}}}, {{{windows}}} to {{{setup()}}}, you can subclass Distribution and initialize them as follows:
+
+{{{
+from distutils.core import Distribution
+class MyDistribution(Distribution):
+    def __init__(self, attrs):
+        self.com_server = []
+        self.services = []
+        self.windows = []
+        self.console = ['myapp']
+        self.zipfile = 'mylibrary.zip'
+        Distribution.__init__(self, attrs)
+
+setup(distclass=Distribution)
+}}}
