@@ -8,14 +8,23 @@ Its home is here [http://starship.python.net/crew/theller/py2exe/] and on Source
  * SubclassingPy2Exe   Customizing the build process
  * EncodingsAgain  Problem with encodings and when they are not found in a standalone executable
 
-== Tips & Tricks using Py2Exe with  [http://www.jrsoftware.org/isinfo.php Innosetup] ==
+== Learned things with py2exe 0.5 ==
+
+[py2exe 0.5.0a5 http://prdownloads.sourceforge.net/py2exe/py2exe-0.5.0a5.win32-py2.3.exe] is a prerelease, [announced http://mail.python.org/pipermail/python-list/2003-November/193652.html] by Thomas Heller in November 2003.
+
+As nearly usual in Open Source space, prerelases and beta are of the same quality as .02 releases from some commercial software develeoping companies - rather full functional, with small obstacles.
+
+And py2exe 0.5.0a5 is really usable. Nonetheless, I had to "upgrade" also my knowledge about workarounds
+
+=== Tips ===
  * BetterCompression  Getting complete wxPython Programms down to aroud 4 Megabytes
+
+=== Fixes ===
+ * ExtendingExample  a "-.zip" is missing
+
 
 == Thoughts ==
  * CrossPlatformPy2Exe
-
-== Fixes ==
- * ExtendingExample  a "-.zip" is missing
 
 
 
