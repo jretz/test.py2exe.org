@@ -4,6 +4,7 @@ Within site-packages/py2exe/samples/extending/setup.py
 
 (line 54 ff..)
 {{{
+#!python
 ################################################################
 # arguments for the setup() call
 
@@ -23,11 +24,17 @@ options = {"py2exe": {"compressed": 1,
 
 The Error is within 
 
-{{{zipfile = r"lib\shardlib"}}}
+{{{
+#!python
+zipfile = r"lib\shardlib"
+}}}
 
 it has to be
 
-{{{zipfile = r"lib\shardlib.zip"}}}
+{{{
+#!python
+zipfile = r"lib\shardlib.zip"
+}}}
 
 
 = additional information =
