@@ -1,3 +1,5 @@
+'''FIX''': Delete the ''build'' directory. Simple fix for an obscure and complicated problem...
+
 I'm having some trouble using Python (2.3.4) with py2exe (0.5.0) and wxPython (2.4.2.4). Without py2exe
  my program runs fine, and it compiles fine, but when I run the compiled executable it crashes with:
  
