@@ -1,4 +1,4 @@
-Extending Thomas' "extending"-Example from py2exe I customized my Setup-Routine. The consumers of my software are German speaking, so I needed a German Setup Assistent. So I added:
+Extending Thomas' "extending"-Example from Py2Exe I customized my Setup-Routine. The consumers of my software are German speaking, so I needed a German Setup Assistent. So I added:
 
 {{{
 #!PYTHON
