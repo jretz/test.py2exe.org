@@ -8,7 +8,7 @@ PTL ist stored in files with ending ".ptl"; and py2exe can not find these files.
 
 The quixote-guys do recognize that. So there is qx_distutils, which creates an own build-class. But... py2exe also does this. So ... both do not work together. Maybe we should create some qx2exe_distutils....
 
-= Interim Solution =
+= No Solution =
 
 (grapped from Graham Fawcett, improvment by Oleg Broytmann, patched together by me)
 
@@ -45,4 +45,9 @@ compile your .ptl files at runtime, and will attempt to write the .ptlc
 files to the program directory. But your users may not have write 
 permissions on the program directory, and this will fail.
 
-And this worked.
+
+'''but this is not the only problem'''
+calling enable_ptl() severly screws up the input-logic in the py2exe generated file. Nothing works as it did before.
+
+So ... the easiest way: convert all .ptl to py
+HAM20040602-2345
