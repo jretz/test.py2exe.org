@@ -3,11 +3,6 @@ Py2Exe is an additional command to DistUtils, that creates standalone distributi
 
 Its home is here [http://starship.python.net/crew/theller/py2exe/] and on Sourceforge [http://sourceforge.net/projects/py2exe/]
 
-== Tips & Tricks ==
- * PassingOptionsToPy2Exe  Avoid using sys.argv to pass options
- * SubclassingPy2Exe   Customizing the build process
-
-
 == Learned things with py2exe 0.5 ==
 
 [http://prdownloads.sourceforge.net/py2exe/py2exe-0.5.0a5.win32-py2.3.exe py2exe0.5.0a5] is a prerelease [http://mail.python.org/pipermail/python-list/2003-November/193652.html announced] by Thomas Heller in November 2003.
@@ -21,6 +16,10 @@ And py2exe 0.5.0a5 is really usable. Nonetheless, I had to "upgrade" also my kno
  * EncodingsAgain  Problem with encodings and when they are not found in a standalone executable
  * AddingConfigFiles  How can you add arbitrary files to your Py2Exe-Setup?
  * PathModul  Using Jason Jorendorffs python PathModul together with Py2Exe 0.5
+ * PassingOptionsToPy2Exe  Avoid using sys.argv to pass options
+ * SubclassingPy2Exe   Customizing the build process
+ * CustomIcons   How to get your own icons with Py2Exe 0.5
+
 === py2exe and Innosetup ===
  * BetterCompression  Getting complete wxPython Programms down to around 4 Megabytes
  * SetupLanguage  How to localize the language with [http://starship.python.net/crew/theller/py2exe/ py2exe] and [http://www.jrsoftware.org/isinfo.php InnoSetup]
