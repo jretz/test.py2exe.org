@@ -1,0 +1,38 @@
+= The Problem =
+
+Within site-packages/py2exe/samples/extending/setup.py
+
+(line 54 ff..)
+
+################################################################
+# arguments for the setup() call
+
+test_wx = dict(
+    script = "test_wx.py",
+    other_resources = [(RT_MANIFEST, 1, manifest_template % dict(prog="test_wx"))],
+    dest_base = r"prog\test_wx")
+
+zipfile = r"lib\shardlib"
+
+options = {"py2exe": {"compressed": 1,
+                      "optimize": 2}}
+
+################################################################
+
+The Error is within 
+
+zipfile = r"lib\shardlib"
+
+it has to be
+
+zipfile = r"lib\shardlib.zip"
+
+
+I stumbled upon while trying to include win32com.client  - that module was not able to find gen_py/__init__.py
+
+
+
+
+
+
+
