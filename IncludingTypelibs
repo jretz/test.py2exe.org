@@ -24,6 +24,8 @@ list of the typelibs you need. Each typelib being represtented as a
 tuple of (CLSID, LCID, MajorVersion, MinorVersion) - all of which numbers you
 can find in the typelib file itself.
 
+You can print out these magic numbers by running the {{{makepy}}} script with the {{{-i}}} command line option.
+
 = Solution 2 =
 
 That solution was the easier one for py2exe 0.4, but it still works:
