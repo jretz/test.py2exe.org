@@ -86,7 +86,8 @@ print >> ofi, r"Compression=lzma/max"
 
 HAM2005-05-20
 = 7ZIP and UPX =
-Repacking the "library.zip" with [http://www.7-zip.org/ 7-ZIP] saving 357KB (577KB original to 220KB 7ZIP compressed)
+Repacking the "library.zip" with [http://www.7-zip.org/ 7-ZIP] saving 357KB (577KB original to 220KB 7ZIP compressed).
+Note: it requires "import zlib" in your source file to allow unzipping operations.
 
 Using [http://upx.sourceforge.net/ UPX ] the executable packer to compress *.pyd, *.dll and *.exe Files:
 
