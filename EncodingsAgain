@@ -1,0 +1,4 @@
+= Encoding =
+
+In py2exe 0.5, if the encodings are not found in the built exe, add these two to the ''includes'':
+{{{'encodings', 'encodings.*'}}}
