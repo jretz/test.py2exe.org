@@ -36,3 +36,5 @@ Anyone have any ideas whats wrong? options={"py2exe": {"includes": "wxPython.wx}
  ''-jc''
 
 
+I'm having a similar problem in WinXP.  Boa Constructor doesn't work with wxPython2.5(it needs 2.4.2.4) but the version of AccessGrid I'm running requires wxPython2.5.  I fould that if I just copy the wx and wxPython directories for wxPython2.5 somewhere for safe keeping, then copy in the wx and wxPython directories for wxPython2.4.2.4 Boa will run once.  Then on successive attempts, I get the "NameError: name 'wxObjectPtr' is not defined" message from fonts.py.  I did have a build directory in the wxPython directory and got rid of that, but even now that the build directory is gone, I'm still getting the same problem.  Perhaps there's more to this story?
+-myk-
