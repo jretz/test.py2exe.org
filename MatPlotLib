@@ -23,5 +23,17 @@ opts = {
                                  'libgobject-2.0-0.dll']}
 
 setup(
-    # Additional data files required by matplotlib.  Note that the glob.glob routine doesn't seem to pick up the .matplotlib resource file
+    # Additional data files required by matplotlib.  
+    # Note that the glob.glob routine doesn't seem to pick up
+    # the .matplotlib resource file, so I copy that separately.
+    data_files = [('matplotlib', glob.glob(r'c:\python23\share\matplotlib\*')),
+                  ('matplotlib', [r'c:\python23\share\matplotlib\.matplotlibrc'])],
+
+    # Name and description of the program to create
+    name = 'demo'
+    description = 'MatPlotLib Demo Program'
+
+    # Targets to build
+    console = ['demo.py']
+    )
 }}}
