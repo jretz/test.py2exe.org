@@ -57,6 +57,8 @@ I like to distribute my application with py2exe but I can not make py2exe setup 
  * MatPlotLib - Fixing and including configuration information for this plotting package.
 === the runtime enviroment ===
  * Py2exeEnvironment - information about the environment for the executable
+=== py2exe and subprocess ===
+ * Py2ExeSubprocessInteractions - getting subprocess module to work with py2exe.
 
 === Fixes ===
  * ExtendingExample  a "-.zip" is missing
