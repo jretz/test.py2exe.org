@@ -23,7 +23,7 @@ site-packages/jpath.py
 and make sure also to toggle your imports to
 {{{
 #!python
-import jpath.py
+import jpath
 }}}
 
 and to delete {{{path.pyc}}} and {{{path.pyo}}} from your {{{site-packages}}} directory.
