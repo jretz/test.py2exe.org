@@ -22,7 +22,7 @@ And py2exe 0.5.0a5 is really usable. Nonetheless, I had to "upgrade" also my kno
  * AddingConfigFiles  How can you add arbitrary files to your Py2Exe-Setup?
  * PathModul  Using Jason Jorendorffs python PathModul together with Py2Exe 0.5
 === py2exe and Innosetup ===
- * BetterCompression  Getting complete wxPython Programms down to aroud 4 Megabytes
+ * BetterCompression  Getting complete wxPython Programms down to around 4 Megabytes
  * SetupLanguage  How to localize the language with [http://starship.python.net/crew/theller/py2exe/ py2exe] and [http://www.jrsoftware.org/isinfo.php InnoSetup]
  * QuickStartIcons  How to add Startup-Links to the Quickstart-Bar & the Desktop using [http://www.jrsoftware.org/isinfo.php InnoSetup] together with Py2Exe
 
