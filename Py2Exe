@@ -6,6 +6,7 @@ Its home is here [http://starship.python.net/crew/theller/py2exe/] and on Source
 == Tips & Tricks ==
  * PassingOptionsToPy2Exe  Avoid using sys.argv to pass options
  * SubclassingPy2Exe   Customizing the build process
+ * EncodingsAgain Problem with encodings and when they are not found in a standalone executable
 
 == Thoughts ==
  * CrossPlatformPy2Exe
