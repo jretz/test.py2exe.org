@@ -3,7 +3,7 @@
 Within site-packages/py2exe/samples/extending/setup.py
 
 (line 54 ff..)
-
+{{{
 ################################################################
 # arguments for the setup() call
 
@@ -18,7 +18,7 @@ options = {"py2exe": {"compressed": 1,
                       "optimize": 2}}
 
 ################################################################
-
+}}}
 = what to do =
 
 The Error is within 
