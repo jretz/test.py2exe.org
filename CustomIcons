@@ -39,3 +39,9 @@ Example: {{{
     _icon.CopyFromBitmap(wx.Bitmap("MyIcon.ico", wx.BITMAP_TYPE_ANY))
     self.SetIcon(_icon)
 }}}
+
+The following also works, at least in wxPython 2.5.2.8 and other recent ones. {{{
+#!python
+    _icon = wx.Icon('MyIcon.ico', wx.BITMAP_TYPE_ICO)
+    self.SetIcon(_icon)
+}}}
