@@ -36,10 +36,7 @@ python if you haven't added your python installation directory to the
 path, something like:
 
 {{{
-P:\OpenGLContext>c:\bin\lang\py23\python.exe setup.py build
-running build
-running build_py
-running build_ext
+P:\OpenGLContext>c:\bin\lang\py23\python.exe setup.py py2exe
 }}}
 depending on where you installed python.
 
