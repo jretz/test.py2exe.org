@@ -7,16 +7,16 @@ In py2exe 0.5, if the encodings are not found in the built exe, add these two to
 'encodings', 'encodings.*'
 }}}
 
-You can do this by adding a line 
+You can do this by adding a line
 {{{
 options = {"py2exe": {"packages": ["encodings"]}},
 }}}
-to your setup.py file. 
+to your setup.py file.
 
 That replaces the {{{'--force-imports encodings'}}} command line option from the [http://starship.python.net/crew/theller/py2exe/  0.4py2exe]
 
 
-== Solution 2 == 
+== Solution 2 ==
 
 Adding {{{'encodings', 'encodings.*'}}} to includes includes ALL encodings. I'm perfectly happy with only having latin-1 present (at least for some application, which will only be used in western europe)
 
