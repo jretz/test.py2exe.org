@@ -15,7 +15,7 @@ And then run it with your script in the command line
 python setup.py py2exe --includes mymodule
 }}}
 
-This will create a ''dist'' directory with all the files you're embedded python needs.
+This will create a ''dist'' directory with all the files your embedded python needs.
 Rename ''library.zip'' to ''python23.zip'' and place all the files in the application directory.
 
 Miki <miki.tebeka@zoran.com>
