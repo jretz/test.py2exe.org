@@ -17,3 +17,5 @@ The resouce number does not seem to matter. Windows just takes the first existin
 /!\ if somebody knows how to add small and large icons, speak up...
 
 Hm, doesn't the {{{.ico}}} file contain them?
+
+does the resource number refers to the icon index in the {{{.ico}}} file (if containing > 1 icons) -- dody wijaya
