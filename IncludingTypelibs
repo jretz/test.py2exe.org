@@ -12,6 +12,7 @@ Here's how I'm importing the typelib for Excel XP:
 
 setup.py:
 {{{
+#!python
  ...
  setup(
         ...,
