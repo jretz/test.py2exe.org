@@ -1,4 +1,5 @@
 = Introduction =
+matplotlib [http://matplotlib.sf.net] is a module to produce nice-looking plots in Python using a wide variety of back-end packages, at least one of which is likely to be available for your system.  This ability to do things in a generic fashion makes this a simple system to use, but it gets complicated if you wish to distribute an executable instead of scripts.  This page describes what I had to do to make matplotlib work with py2exe.
 = Changes required to matplotlib =
 I had to patch matplotlib's __init__.py file in the get_data_path() routine.  Specifically, right before raising the error at the end, I added the following code
 {{{
@@ -15,25 +16,21 @@ We also need to make sure we get the matplotlib subdirectory created in the dist
 # We need to import the glob module to search for all files.
 import glob
 
-# We need to exclude matplotlib backends not being used by this executable.
-# You may find that you need different excludes to create a working executable with your chosen backend
+# We need to exclude matplotlib backends not being used by this executable.  You may find
+# that you need different excludes to create a working executable with your chosen backend.
 opts = {
     'py2exe': { 'excludes': ['_gtkagg', '_tkagg'],
                 'dll_excludes': ['libgdk-win32-2.0-0.dll',
                                  'libgobject-2.0-0.dll']}
 
+# Additional data files are required by matplotlib.  Note that the glob.glob routine
+# doesn't seem to pick up the .matplotlib resource file, so I copy that separately.
 setup(
-    # Additional data files required by matplotlib.  
-    # Note that the glob.glob routine doesn't seem to pick up
-    # the .matplotlib resource file, so I copy that separately.
     data_files = [('matplotlib', glob.glob(r'c:\python23\share\matplotlib\*')),
                   ('matplotlib', [r'c:\python23\share\matplotlib\.matplotlibrc'])],
-
-    # Name and description of the program to create
-    name = 'demo'
-    description = 'MatPlotLib Demo Program'
-
-    # Targets to build
-    console = ['demo.py']
+    name = 'demo',
+    description = 'MatPlotLib Demo Program',
+    console = ['demo.py',]
     )
+
 }}}
