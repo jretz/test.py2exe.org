@@ -47,3 +47,36 @@ Section
     Delete $0
 SectionEnd
 }}}
+
+The version above seems to work fine on Win9x. Even with the batch file that is lauched (and DOS boxes do not close automaticaly, by default, on those OS). The startup time of a wxPython app with lzma compression becomes very long (1+ minute) on a machinne with 64MB RAM and a Pentium 200MHz, but it's usable on faster machines that are common today ;-)
+
+The shorter version below works fine too. Tough it does not start he application in the directory it was extracted to ({{{os.curdir}}} probably points to the location of the installer; to be verified). But the application can find out its own location by using {{{os.path.dirname(sys.argv[0])}}}.
+
+I also added a "/r" so that subdirectories are also packed into the installer as i tend to keep images and other data as external files in a subdir, even with py2exe.
+
+''cliechti''
+
+'''setup.nsi:'''
+{{{
+!define py2exeOutputDirectory 'dist\Calculator'
+!define exe 'calculator.exe'
+ 
+; Comment out the "SetCompress Off" line and uncomment 
+; the next line to enable compression. Startup times 
+; will be a little slower but the executable will be 
+; quite a bit smaller 
+SetCompress Off 
+;SetCompressor lzma
+
+Name ${exe}
+OutFile ${exe}
+SilentInstall silent
+;Icon 'icon.ico'
+
+Section
+    InitPluginsDir
+    SetOutPath '$PLUGINSDIR'
+    File /r '${py2exeOutputDirectory}\*.*'
+    nsExec::Exec $PLUGINSDIR\${exe}
+SectionEnd
+}}}
