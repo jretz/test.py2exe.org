@@ -49,34 +49,71 @@ SectionEnd
 }}}
 
 The version above seems to work fine on Win9x. Even with the batch file that is lauched (and DOS boxes do not close automaticaly, by default, on those OS). The startup time of a wxPython app with lzma compression becomes very long (1+ minute) on a machinne with 64MB RAM and a Pentium 200MHz, but it's usable on faster machines that are common today ;-)
+It also works without a temp batchfile. The current directory is also in the temp dir.
 
-The shorter version below works fine too. Tough it does not start he application in the directory it was extracted to ({{{os.curdir}}} probably points to the location of the installer; to be verified). But the application can find out its own location by using {{{os.path.dirname(sys.argv[0])}}}.
+There is a streamlined version below. The sample script pops up an dialog box with the paths to important directories.
+uncompressed size is around 1.5MB, "lzma" compression leads to approx. 500kB. Just save the three files below in a directory then run {{{setup.py}}} and then {{{makensis setup.nsi}}}. Compare the outputs of the exe to directly running {{{single.py}}}. (ctypes has to be installed to create the exe)
 
 I also added a "/r" so that subdirectories are also packed into the installer as i tend to keep images and other data as external files in a subdir, even with py2exe.
 
+Commenting out {{{compressor}}} disables compression.
+
 ''cliechti''
 
-'''setup.nsi:'''
+'''setup.nsi''' - the Nullsoft installer script
 {{{
-!define py2exeOutputDirectory 'dist\Calculator'
-!define exe 'calculator.exe'
- 
-; Comment out the "SetCompress Off" line and uncomment 
-; the next line to enable compression. Startup times 
-; will be a little slower but the executable will be 
-; quite a bit smaller 
-SetCompress Off 
-;SetCompressor lzma
+!define py2exeOutputDir 'dist'
+!define exe             'single.exe'
+!define icon            'C:\python23\py.ico'
+!define compressor      'lzma'  ;one of 'zlib', 'bzip2', 'lzma'
 
+; - - - - do not edit below this line, normaly - - - -
+!ifdef compressor
+    SetCompressor ${compressor}
+!else
+    SetCompress Off
+!endif
 Name ${exe}
 OutFile ${exe}
 SilentInstall silent
-;Icon 'icon.ico'
+!ifdef icon
+    Icon ${icon}
+!endif
 
 Section
     InitPluginsDir
     SetOutPath '$PLUGINSDIR'
-    File /r '${py2exeOutputDirectory}\*.*'
+    File /r '${py2exeOutputDir}\*.*'
+    SetOutPath '$EXEDIR'        ; uncomment this line to start the exe in the PLUGINSDIR
     nsExec::Exec $PLUGINSDIR\${exe}
 SectionEnd
+}}}
+
+'''simple.py''' - the example script
+{{{
+#! python
+import os, sys, ctypes
+
+ctypes.windll.user32.MessageBoxA(0,
+    "curdir: %s\nexedir: %s\nsys.winver: %s" % (
+        os.path.abspath(os.curdir),
+        os.path.abspath(os.path.dirname(sys.argv[0])),
+        sys.winver,
+    ), "%s - Message" % os.path.basename(sys.executable), 0x30
+)
+}}}
+
+'''setup.py''' - just run it to make the sample
+{{{
+#! python
+from distutils.core import setup
+import py2exe, sys, os
+
+sys.argv.append('py2exe')
+
+setup(
+    options = {'py2exe': {'optimize': 2}},
+    windows = [{'script': "single.py"}],
+    zipfile = "shared.lib",
+)
 }}}
