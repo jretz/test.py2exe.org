@@ -1,6 +1,6 @@
 = The Problem =
 
-Quixote may use a PageTemplateLanguage - PTL.
+Quixote may use a Page Template Language - PTL.
 
 PTL ist stored in files with ending ".ptl"; and py2exe can not find these files.
 
