@@ -66,8 +66,6 @@ print >> ofi, r"Compression=bzip"
 Quite an OK download ... and I use ZODB and Elementtree and pythoncom and and and....
 
 
+= Remarks =
 
-
-
-
-
+I ([http://videocapture.sourceforge.net/ MGr]) get for my application even smaller files when using 7-zip instead of bzip.  To use 7-zip one has to specify "Compression=none" in the generated installer script (*.iss) and then manually load the script into [http://www.istool.org/ ISTool], which is a front end to Inno Setup.  Clicking at the 'Options' button and selecting '7-zip' in the compression combo box does the trick.
