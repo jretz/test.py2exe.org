@@ -1,6 +1,6 @@
 = Encoding =
 
-== Solution 1 == 
+== Solution 1 ==
 
 In py2exe 0.5, if the encodings are not found in the built exe, add these two to the ''includes'':
 {{{
