@@ -22,6 +22,8 @@ Example:
  * Name of the Pythonscript to Compile: My``Script.py
  * You must rename the Batch``File to: My``Script.cmd
 
+To change the content of the Py2EXE-Setup-File, you must change the '':Make``Setup``File'' section in the Batch``File
+
 flexible?[[BR]]
 So you can quick use the Batch File with other Python script, yust copy and rename it!
 
