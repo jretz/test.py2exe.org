@@ -16,7 +16,7 @@ As nearly usual in Open Source space, prerelases and beta are of the same qualit
 
 And py2exe 0.5.0a5 is really usable. Nonetheless, I had to "upgrade" also my knowledge about workarounds
 
-== Tips and Tricks==
+== Tips and Tricks ==
 === General ===
  * EncodingsAgain  Problem with encodings and when they are not found in a standalone executable
  * AddingConfigFiles  How can you add arbitrary files to your Py2Exe-Setup?
