@@ -1,9 +1,9 @@
 = Problem =
 
-Using the [http://www.jorendorff.com/articles/python/path/ PathModule] from  Jason Jorendorff modulfinder.py, which is called by Py2Exe, get's into an endless recursion. 
+Using the [http://www.jorendorff.com/articles/python/path/ PathModule] from  Jason Jorendorff, modulefinder.py, which is called by Py2Exe, gets into an endless recursion. 
 
 It tries to resolve {{{os.path}}}, gets to {{{ os.os.path }}}, further to {{{ os.os.path }}} and breaks somewhere at 
-{{{os.os.os.os.os.os.os.os.os.os.os.os.os.os.os.os.os.os.os.os.os.os.os.os.os.os.os.path }}}
+{{{os.os.os.os.os.os.os.os.os.os.os.os.os.os.os.os.os.os.os.os.os.os.os.os.os.os.os.path }}} at which point you get a {{{RuntimeError: maximum recursion depth exceeded}}}.
 
 (Maybe it would be a test to use [http://www.stackless.com/ StackLess] Python, it would run forever or until the maximum string length of pyhton is reached. But maximum string length in Python is only limited by memory, memory is limited by address-space ... )
 
@@ -38,3 +38,5 @@ This can be done, for example, with the {{{"-e os.path"}}} command line flag.
 Or use a py2exe version later than 0.5.0a5, the problem will be fixed there.
 
 -- Thomas Heller
+
+''This is still a problem in py2exe 0.5.0 downloaded on 3/31/04. -- Kent Johnson''
