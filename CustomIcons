@@ -19,6 +19,7 @@ The resource number does not seem to matter. Windows just takes the first existi
 Hm, doesn't the {{{.ico}}} file contain them?
 
 does the resource number refers to the icon's index in the {{{.ico}}} file (if containing > 1 icons) ?
+
 -- [mailto:dswsh@plasa.com dody wijaya]
 
 
@@ -29,3 +30,12 @@ Your icon file must contain small ico (size: 16*16 pixels) and large ico (size: 
 Almost all popular icon editors can create complex icon with small and large part in one.  For instance, [http://www.x2studios.com/index.php?page=products&id=11 LiquidIcon] is a freeware icon editor that lets you combine multiple ico files of different sizes and bit-depths into a single ico file.
 
 Now I've managed to give an icon to my program, but when the program starts, a standard Windows icon shows up in the window's title bar and in the task bar button (instead of my custom icon).  Is there a way I can fix that myself, or is that a current limitation of py2exe?
+
+As far as putting icons on your window itself (above is just for the file in explorer I think) it depends on the gui library you are using.
+For wxWindows 2.4 it would be something like this where self is a wx.Frame derived class instance
+Example: {{{
+#!python
+    _icon = wx.EmptyIcon()
+    _icon.CopyFromBitmap(wx.Bitmap("MyIcon.ico", wx.BITMAP_TYPE_ANY))
+    self.SetIcon(_icon)
+}}}
