@@ -44,6 +44,7 @@ you can create a web application without IIS or Apache. I like to distribute my 
 
 === Fixes ===
  * ExtendingExample  a "-.zip" is missing
+ * GuiApps with options windows still open a console window for errors
 
 == Thoughts ==
  * SpeedUp using psyco to speed up code compilation
