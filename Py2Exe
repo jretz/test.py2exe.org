@@ -8,7 +8,7 @@ Its home is here [http://starship.python.net/crew/theller/py2exe/] and on Source
  * SubclassingPy2Exe   Customizing the build process
  * EncodingsAgain  Problem with encodings and when they are not found in a standalone executable
 
-== Tips & Tricks using Py2Exe with  [http://www.jrsoftware.org/isinfo.php Innosetup]==
+== Tips & Tricks using Py2Exe with  [http://www.jrsoftware.org/isinfo.php Innosetup] ==
  * BetterCompression  Getting complete wxPython Programms down to aroud 4 Megabytes
 
 == Thoughts ==
