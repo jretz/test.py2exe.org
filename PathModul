@@ -1,0 +1,32 @@
+= Problem =
+
+Using the [http://www.jorendorff.com/articles/python/path/ PathModule] from  Jason Jorendorff modulfinder.py, which is called by Py2Exe, get's into an endless recursion. 
+
+It tries to resolve {{{os.path}}}, gets to {{{ os.os.path }}}, further to {{{ os.os.path }}} and breaks somewhere at 
+{{{os.os.os.os.os.os.os.os.os.os.os.os.os.os.os.os.os.os.os.os.os.os.os.os.os.os.os.path }}}
+
+(Maybe it would be a test to use [http://www.stackless.com/ StackLess] Python, it would run forever or until the maximum string length of pyhton is reached. But maximum string length in Python is only limited by memory, memory is limited by address-space ... )
+
+But apart from joking: it is IMPOSSIBLE to generate an exe with the modern 0.5 Version of Py2Exe when path.py is installed. 
+
+= Solution =
+Just rename
+{{{
+site-packages/path.py
+}}}
+
+to 
+{{{
+site-packages/jpath.py
+}}}
+
+and make sure also to toggle your imports to
+{{{
+#!python
+import jpath.py
+}}}
+
+and to delete {{{path.pyc}}} and {{{path.pyo}}} from your {{{site-packages}}} directory.
+
+20041013HAM
+
