@@ -23,7 +23,9 @@ import glob
 opts = {
     'py2exe': { 'excludes': ['_gtkagg', '_tkagg'],
                 'dll_excludes': ['libgdk-win32-2.0-0.dll',
-                                 'libgobject-2.0-0.dll']}
+                                 'libgobject-2.0-0.dll']
+              }
+       }
 
 # Additional data files are required by matplotlib.  Note that the glob.glob routine
 # doesn't seem to pick up the .matplotlib resource file, so I copy that separately.
@@ -32,7 +34,6 @@ setup(
                   ('matplotlib', [r'c:\python23\share\matplotlib\.matplotlibrc'])],
     name = 'demo',
     description = 'MatPlotLib Demo Program',
-    console = ['demo.py',]
+    console = ['demo.py']
     )
-
 }}}
