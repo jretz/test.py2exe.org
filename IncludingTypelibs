@@ -1,3 +1,4 @@
+= Description =
 Typically when dealing with 3rd party COM libraries (eg. Office), you make use 
 of the constants defined in that library.  Once makepy creates the typelib for
 you, using these constants is normally easy in python. You only need to 
@@ -6,6 +7,7 @@ import win32com.client.constants to access them.
 However, since these typelibs aren't really imported, py2exe needs to be told
 to include them in your setup-script.
 
+= Solution 1 =
 Here's how I'm importing the typelib for Excel XP:
 
 setup.py:
@@ -21,3 +23,39 @@ So, as you can see, it's an option in the options dictionary, containing a
 list of the typelibs you need. Each typelib being represtented as a 
 tuple of (CLSID, LCID, MajorVersion, MinorVersion) - all of which numbers you
 can find in the typelib file itself.
+
+= Solution 2 =
+
+That solution was the easier one for py2exe 0.4, but it still works:
+
+{{{
+cd \python23\Lib\site-packages\win32com\client
+python makepy.py -o {MyProjectDirectory}\OLE_Excel10.py
+}}}
+
+within the software change:
+
+{{{
+#!python
+import win32com.client
+o = win32com.client.Dispatch("Excel.Application")
+o.Method()
+o.property = "New Value"
+print o.property
+}}}
+(taken from M. Hammonds documentation "Quick Start to Client side COM and Python")
+
+to
+
+{{{
+#!python
+import OLE_Excel10 as Excel
+_ec=Excel.constants
+
+o = Excel.Application()
+o.Method()
+o.property = "New Value"
+print o.property
+}}}
+HAM2004-01-27
+
