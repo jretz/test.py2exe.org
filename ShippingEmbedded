@@ -1,0 +1,19 @@
+== How can py2exe help shipping emedded Python projects ==
+
+An embedded Python project relies on several modules. Finding this modules is very easy using py2exe.
+
+Create a ''setup.py'' script in the following format:
+{{{ 
+from distutils.core import setup
+import py2exe
+
+setup()
+}}}
+
+And then run it with your script in the command line
+{{{
+wpython setup.py py2exe --includes mymodule
+}}}
+
+This will create a ''dist'' directory with all the files you're embedded python needs.
+Rename ''library.zip'' to ''python23.zip'' and place all the files in the application directory.
