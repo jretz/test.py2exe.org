@@ -4,7 +4,7 @@ Sometimes, Python extensions require supporting DLLs from the system. One exampl
 
 However, it is '''not''' appropriate to include OCI.dll with your software, as it is specific to the version of the Oracle client software on the target machine, and is not useful in isolation.
 
-So, you need to tell py2exe to exclude this DLL from the resulting distribution. The dll_excludes option lets you do this (it's documented in the docstring for the py2exe module). You can either use it from the command line, or include it in your setup.py as described in PassingOptionsToPy2Exe
+So, you need to tell py2exe to exclude this DLL from the resulting distribution. The dll_excludes option lets you do this (it's documented in the docstring for the py2exe module). It does not work from the command line, but you can include it in your setup.py as described in PassingOptionsToPy2Exe
 
 {{{
     setup(
