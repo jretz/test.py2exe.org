@@ -1,0 +1,23 @@
+Typically when dealing with 3rd party COM libraries (eg. Office), you make use 
+of the constants defined in that library.  Once makepy creates the typelib for
+you, using these constants is normally easy in python. You only need to 
+import win32com.client.constants to access them.
+
+However, since these typelibs aren't really imported, py2exe needs to be told
+to include them in your setup-script.
+
+Here's how I'm importing the typelib for Excel XP:
+
+setup.py:
+{{{
+ ...
+ setup(
+        ...,
+        options = {"py2exe": {"typelibs": [('{00020813-0000-0000-C000-000000000046}',0,1,4)]}},
+        ...
+      )
+}}}   
+So, as you can see, it's an option in the options dictionary, containing a 
+list of the typelibs you need. Each typelib being represtented as a 
+tuple of (CLSID, LCID, MajorVersion, MinorVersion) - all of which numbers you
+can find in the typelib file itself.
