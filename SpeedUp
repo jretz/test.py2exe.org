@@ -1,0 +1,19 @@
+=Situation=
+py2exe-ing larger projekts take some time for byte compilation at all. 
+
+=Idea=
+Maybe [http://psyco.sourceforge.net psyco] will help?
+as Armin Rigo writes... "Psyco is a Python extension module which can massively speed up the execution of any Python code."
+
+=doing it=
+
+at the top of setup.py I inserted
+
+{{{
+#!python
+import psyco
+psyco.log()
+psyco.full()
+}}}
+
+and it feels faster. No time to benchmark, yet

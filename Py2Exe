@@ -35,8 +35,8 @@ I had to "upgrade" also my knowledge about workarounds from py2exe 0.4
 === Fixes ===
  * ExtendingExample  a "-.zip" is missing
 
-
 == Thoughts ==
+ * SpeedUp using psyco to speed up code compilation
  * CrossPlatformPy2Exe
 
 
