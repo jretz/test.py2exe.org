@@ -40,7 +40,7 @@ I had to "upgrade" also my knowledge about workarounds from py2exe 0.4
 Quixote is a python webserver which allows one to execute ptl files using ihooks. You can distribute your web application with medusa or twisted and hence
 you can create a web application without IIS or Apache. I like to distribute my application with py2exe but I can not make py2exe setup script to recognize that x.ptl is a valid  python files. Any idea how to do this?
 === py2exe and MatPlotLib ===
- * MatPlotLib - This is a Python module to provide Matlab-like plotting.  It relies on configuration and font files installed in the PythonXX\share\matplotlib directory.  Getting that information into the executable proved to require a SMALL modification to the matplotlib __init__.py file, and a little bit of special setup in the py2exe setup file.
+ * MatPlotLib - Fixing and including configuration information for this plotting package.
 === the runtime enviroment ===
  * Py2exeEnvironment - information about the environment for the executable
 
