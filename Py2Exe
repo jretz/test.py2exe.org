@@ -23,7 +23,7 @@ I had to "upgrade" also my knowledge about workarounds from py2exe 0.4
  * CustomIcons   How to get your own icons with Py2Exe 0.5
  * TkInter  I do not need any tkinter / tcl-Libs in my Setup
  * FilenameCaseMatters  Some windows filing systems mangle case, break py2exe programs
- * WinBatch  A shot Windows Batch File to fast provide the EXE File
+ * WinBatch  A short Windows Batch File to fast provide the EXE File
  * ExcludingDlls  Stopping py2exe from picking up unwanted DLLs
  * ShippingEmbedded How to use py2exe to ship embedded Python modules
 === py2exe and win32com ===
