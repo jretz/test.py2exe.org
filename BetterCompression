@@ -68,4 +68,9 @@ Quite an OK download ... and I use ZODB and Elementtree and pythoncom and and an
 
 = Remarks =
 
- * I ([http://videocapture.sourceforge.net/ MGr]) get for my application even smaller files when using 7-zip instead of bzip.  To use 7-zip one has to specify "Compression=none" in the generated installer script (*.iss) and then manually load the script into [http://www.istool.org/ ISTool], which is a front end to Inno Setup.  Clicking at the 'Options' button and selecting '7-zip' in the compression combo box does the trick.
+ * I ([http://videocapture.sourceforge.net/ MGr]) get for my application (which uses wxWindows) even smaller files when using 7-zip instead of bzip.  To use 7-zip one has to specify "Compression=none" in the generated installer script (*.iss) and then manually load the script into [http://www.istool.org/ ISTool], which is a front end to Inno Setup.  Clicking at the 'Options' button and selecting '7-zip' in the compression combo box does the trick.{{{
+7.208 kB  uncompressed
+2.886 kB  zip
+2.677 kB  bzip
+2.160 kB  7-zip
+}}}The previous comparison shows, that 7-zip results by far in the smallest installer size.  An additional benefit of using 7-zip is the fast installation.  When using bzip, the files are decompressed in the last step of the installation process, right then when the files are written to the program folder.  Since bzip is computationally quite intensive, the progress bar fills not extremely fast.  When using 7-zip, there is a short decompression when starting the installer, but the installation process afterwards it fast as lightning, because of "Compression=none" :) .
