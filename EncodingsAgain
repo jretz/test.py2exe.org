@@ -3,7 +3,9 @@
 == Solution 1 == 
 
 In py2exe 0.5, if the encodings are not found in the built exe, add these two to the ''includes'':
-{{{'encodings', 'encodings.*'}}}
+{{{
+'encodings', 'encodings.*'
+}}}
 
 That replaces the {{{'--force-imports encodings'}}} command line option from the [http://starship.python.net/crew/theller/py2exe/  0.4py2exe]
 
