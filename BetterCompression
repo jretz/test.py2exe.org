@@ -43,7 +43,7 @@ I changed the setup.py to contain
 print >> ofi, r"[Setup]"
 print >> ofi, r"AppName=%s" % self.name
 print >> ofi, r"AppVerName=%s %s" % (self.name, self.version)
-print >> ofi, r"DefaultDirName=c:\ghum\%s" % self.name
+print >> ofi, r"DefaultDirName={pf}\%s" % self.name
 print >> ofi, r"DefaultGroupName=%s" % self.name
 print >> ofi, r"Compression=bzip" 
 print >> ofi
