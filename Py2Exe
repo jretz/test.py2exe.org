@@ -19,7 +19,8 @@ And py2exe 0.5.0a5 is really usable. Nonetheless, I had to "upgrade" also my kno
  * PassingOptionsToPy2Exe  Avoid using sys.argv to pass options
  * SubclassingPy2Exe   Customizing the build process
  * CustomIcons   How to get your own icons with Py2Exe 0.5
-
+=== py2exe and win32com ===
+ * WinShell  using win32com.shell with py2exe 0.5
 === py2exe and Innosetup ===
  * BetterCompression  Getting complete wxPython Programms down to around 4 Megabytes
  * SetupLanguage  How to localize the language with [http://starship.python.net/crew/theller/py2exe/ py2exe] and [http://www.jrsoftware.org/isinfo.php InnoSetup]
