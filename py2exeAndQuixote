@@ -1,0 +1,48 @@
+= The Problem =
+
+Quixote may use a PageTemplateLanguage - PTL.
+
+PTL ist stored in files with ending ".ptl"; and py2exe can not find these files.
+
+= Further possibilites =
+
+The quixote-guys do recognize that. So there is qx_distutils, which creates an own build-class. But... py2exe also does this. So ... both do not work together. Maybe we should create some qx2exe_distutils....
+
+= Interim Solution =
+
+(grapped from Graham Fawcett, improvment by Oleg Broytmann, patched together by me)
+
+Here's a cheap trick to get it working. You're not going to like it, 
+though. ;-)
+
+-- copy all your PTL files and .ptlc files to the program directory, 
+using the data_files parameter of your setup() call. You'll also need to 
+include __init__.py files, if your PTL files are in packages 
+(subdirectories). This implies that you have precompiled all of your 
+.ptlc files (see below). This is prone to error, just be careful to get 
+your data_files dictionary correct.
+
+-- To the top of your driver script (the one that will become your EXE), 
+add these two lines:
+
+{{{
+#!python
+import sys, os
+sys.path.append(os.path.abspath('.'))
+
+}}}
+
+This will let your py2exe-packaged interpreter look in the program 
+directory for importable modules.
+
+Get the idea? Basically, you're not including your PTL data in the 
+py2exe zipfile at all. You're just putting them in your pgoram 
+directory, and telling your interpreter that it can look there when 
+trying to import modules.
+
+Why include the .ptlc files? If you don't, then Quixote will try to 
+compile your .ptl files at runtime, and will attempt to write the .ptlc 
+files to the program directory. But your users may not have write 
+permissions on the program directory, and this will fail.
+
+And this worked.
