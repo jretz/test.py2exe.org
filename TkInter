@@ -6,6 +6,9 @@ And I found one, with help of Thomas:
 I included SimpleXMLServer, which itself has a conditional import of pydoc, which has a conditional import of tkinter.
 But conditional or not, I do not want tkinter in my distribution. So I staid with my solution
 ham 2004-02-01
+
+I have tried removing the pydoc import in SimpleXMLServer, but py2exe keeps importing tcl. So it must be something else. -- dody wijaya
+
 = Solution =
 Extend the exclusions
 {{{
