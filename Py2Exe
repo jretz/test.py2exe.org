@@ -53,6 +53,7 @@ I had to "upgrade" also my knowledge about workarounds from py2exe 0.4
  * SingleFileExecutable with NSIS
  * OptimizedBytecode  How to get optimized bytecode for all modules
  * CustomDataInExe Add custom data in the executable?
+ * HowToDetermineIfRunningFromExe - Simple functions to determine if you're in an .exe or .py
 === py2exe and wxPython ===
  * Py2exeAndwxPython If you're getting ''wxObjectPtr not found'', read this
 === py2exe and PIL ===

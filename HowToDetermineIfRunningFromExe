@@ -1,0 +1,23 @@
+ThomasHeller posted this tip to the mailing list:
+
+`main_is_frozen()` returns `True` when running the exe, and `False` when
+running from a script.
+
+`get_main_dir()` returns the directory name of the script or the directory
+name of the exe - this is also sometimes useful.
+
+{{{
+#!python
+
+import imp, os, sys
+
+def main_is_frozen():
+   return (hasattr(sys, "frozen") or # new py2exe
+           hasattr(sys, "importers") # old py2exe
+           or imp.is_frozen("__main__")) # tools/freeze
+
+def get_main_dir():
+   if main_is_frozen():
+       return os.path.dirname(sys.executable)
+   return os.path.dirname(sys.argv[0])
+}}}
