@@ -1,4 +1,4 @@
-Icons are added as {{{icon_rsources}}}
+Icons are added as {{{icon_resources}}}
 
 {{{
 setup( 
@@ -12,7 +12,7 @@ setup(
 }}}
 
 The same practice works as well for {{{console}}} and {{{windows}}} scripts.
-The resouce number does not seem to matter. Windows just takes the first existing icon.
+The resource number does not seem to matter. Windows just takes the first existing icon.
 
 /!\ if somebody knows how to add small and large icons, speak up...
 
