@@ -1,0 +1,47 @@
+== Running the setup script ==
+
+"Editors note: this recipe has been posted by Mike C. Fletcher to comp.lang.python"
+
+Open a command-prompt window. (You'll find the command-prompt's icon
+in "Start|Programs" or "Start|Programs|Accessories", it may be called
+"MSDOS Prompt".)
+
+Switch to the directory where your setup.py file is
+(use the shell's {{{cd}}} command to move between directories, you can use
+the "dir" command to see what files are in the current directory to
+confirm that the setup.py file is present),
+
+{{{
+P:\>cd OpenGLContext
+
+P:\OpenGLContext>dir setup.py
+ Volume in drive P is DATASTORE
+ Volume Serial Number is 74A4-1C80
+
+ Directory of P:\OpenGLContext
+
+27/01/2004  06:01p               3,853 setup.py
+               1 File(s)          3,853 bytes
+               0 Dir(s)  11,575,771,136 bytes free
+}}}
+
+*then* run:
+
+{{{
+python setup.py py2exe --help
+}}}
+
+from that command prompt.  You may need to specify the full path to
+python if you haven't added your python installation directory to the
+path, something like:
+
+{{{
+P:\OpenGLContext>c:\bin\lang\py23\python.exe setup.py build
+running build
+running build_py
+running build_ext
+}}}
+depending on where you installed python.
+
+HTH, and good luck,
+Mike
