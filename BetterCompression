@@ -1,10 +1,10 @@
 = Something great =
 
-within samples/extending Thomas Heller gives a Py2Exe setup.py scipt which automagically calls [http://www.jrsoftware.org/isinfo.php InnoSetup] to create a great looking (and perfectly working) Windows-Installer. Yes, really, ONE setup.exe is created which contains ALL stuff to have a readily installable Software out of your product.
+Within samples/extending, Thomas Heller gives a Py2Exe setup.py script which automagically calls [http://www.jrsoftware.org/isinfo.php InnoSetup] to create a great looking (and perfectly working) Windows-Installer. Yes, really, ONE setup.exe is created which contains ALL stuff to have a readily installable Software out of your product.
 
 = also large =
 
-I programm using wxPython. A great library, a large library. 
+I program using wxPython. A great library, a large library. 
 
 {{{
 2.240.512 wxc.pyd 
@@ -17,7 +17,7 @@ Two modules you cannnot skip. In addition there is as allways
 974.915 python23.dll
 }}}
 
-giving more than 6 Megabyte with no line of code written
+giving more than 6 Megabytes with no line of code written
 
 In total:
 
