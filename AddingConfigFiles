@@ -1,0 +1,31 @@
+= Question =
+I got inspired by an article in [http://www.xmldatabases.org/WK/blog/1094?t=item Inspirational Technology] and added some configuration-option to the software as an XML-File.
+
+In times before I just did a {{{copy \develeopment\somefile.ini \distribuiton\somefile.ini }}} after runing Py2Exe. 
+
+But after combining Py2Exe with Innosetup, it was really crucial to get these files copied to the Py2Exe dist-Directory during the Py2Exe Buildrun.
+
+= Solution =
+It was present all times in Py2Exe. But I did not really understand how to use it :)))
+
+{{{
+#!python
+setup(
+    options = options,
+    # The lib directory contains everything except the executables and the python dll.
+    zipfile = zipfile,
+    windows = [wxprog],
+    # use out build_installer class as extended py2exe build command
+    cmdclass = {"py2exe": build_installer},
+    packages = ["encodings"],
+    data_files=[("prog",["kategorien.xml",])]
+    )
+}}}
+
+The crucial line is
+{{{
+#!python
+    data_files=[("prog",["kategorien.xml",])
+]
+}}}
+here you are supposed to supply a list of tuples
