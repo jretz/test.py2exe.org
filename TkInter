@@ -2,6 +2,10 @@
 I use wxPython for my GUI. Modulefinder / py2exe nonetheless decides that tkinter and tcl have to be included in my distribution.
 = Explanation =
 ??? I would like one, really. 
+And I found one, with help of Thomas:
+I included SimpleXMLServer, which itself has a conditional import of pydoc, which has a conditional import of tkinter.
+But conditional or not, I do not want tkinter in my distribution. So I staid with my solution
+ham 2004-02-01
 = Solution =
 Extend the exclusions
 {{{
