@@ -1,0 +1,19 @@
+= Problem =
+I use wxPython for my GUI. Modulefinder / py2exe nonetheless decides that tkinter and tcl has to be included into my distribution.
+= Explanation =
+??? I would like one, really. 
+= Solution =
+Extend the exclusions
+{{{
+#!python
+excludes = ["pywin", "pywin.debugger", "pywin.debugger.dbgcon",
+            "pywin.dialogs", "pywin.dialogs.list", 
+            "Tkconstants","Tkinter","tcl"
+            ]
+}}}
+
+the relevant line is
+{{{
+            "Tkconstants","Tkinter","tcl"
+}}}
+HAM 20040127

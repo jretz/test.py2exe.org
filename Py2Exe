@@ -20,6 +20,7 @@ I had to "upgrade" also my knowledge about workarounds from py2exe 0.4
  * PassingOptionsToPy2Exe  Avoid using sys.argv to pass options
  * SubclassingPy2Exe   Customizing the build process
  * CustomIcons   How to get your own icons with Py2Exe 0.5
+ * TkInter  I do not need any tkinter / tcl-Libs in my Setup
 === py2exe and win32com ===
  * WinShell  using win32com.shell with py2exe 0.5
  * IncludingTypelibs allowing use of makepy generated typelibs
