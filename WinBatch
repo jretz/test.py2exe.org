@@ -1,0 +1,124 @@
+= What is it =
+
+I use a shot Windows Batch File to "automate" Py2EXE
+
+How it works:
+ * Create the Py2EXE Setup``File
+ * Compile the Python Script
+ * Move the Py2EXE-Results to a Subdirectory
+ * Cleans the File-System (delete ''build'' and ''dist'')
+ * Optional Recompress ''library.zip'' with [http://www.7-zip.org/ 7-Zip]
+ * Optional Compress ''*.pyd'', ''*.dll'' and ''*.exe'' Files with [http://upx.sourceforge.net/ UPX]
+
+= Instruction =
+
+I use it under Win XP... It should also run under NT and 2000, but i don't know...
+
+You must '''change the Path''' to the Apps in the Batch-File!!!
+
+The Batch``File ist very flexible it uses its own file name to locate the Python Script!!![[BR]]
+You must '''rename it''' to exactly the same name like the script to compile.
+Example:
+ * Name of the Pythonscript to Compile: My``Script.py
+ * You must rename the Batch``File to: My``Script.cmd
+
+flexible?[[BR]]
+So you can quick use the Batch File with other Python script, yust copy and rename it!
+
+
+= The Batch``File =
+{{{
+@echo off
+
+if not "%1"=="" goto %1
+
+
+::Set personal Path to the Apps:
+set PythonEXE=C:\Python\python.exe
+set SevenZipEXE=D:\Tools\7-ZIP\7z.exe
+set UpxEXE=D:\Tools\upx\upx.exe
+
+
+:: Compress=1 - Use CompressFiles
+:: Compress=0 - Don't CompressFiles
+set Compress=1
+
+
+if not exist %~dpn0.py		call :FileNotFound %~dpn0.py
+if not exist %PythonEXE%	call :FileNotFound %PythonEXE%
+if not exist %SevenZipEXE%	call :FileNotFound %SevenZipEXE%
+if not exist %UpxEXE%		call :FileNotFound %UpxEXE%
+
+
+::Write the Py2EXE-Setup File
+call "%~0" MakeSetupFile >"%~dpn0_EXESetup.py"
+
+
+::Compile the Python-Script
+%PythonEXE% "%~dpn0_EXESetup.py" py2exe
+if not "%errorlevel%"=="0" (
+	echo Py2EXE Error!
+	pause
+	goto:eof
+)
+
+
+:: Delete the Py2EXE-Setup File
+del "%~dpn0_EXESetup.py"
+
+
+:: Copy the Py2EXE Results to the SubDirectory and Clean Py2EXE-Results
+rd build /s /q
+xcopy dist\*.* "%~dpn0_EXE\" /d /y
+rd dist /s /q
+
+
+if "%Compress%"=="1" call:CompressFiles
+echo.
+echo.
+echo Done: "%~dpn0_EXE\"
+echo.
+pause
+goto:eof
+
+
+
+:CompressFiles
+	%SevenZipEXE% -aoa x "%~dpn0_EXE\library.zip" -o"%~dpn0_EXE\library\"
+	del "%~dpn0_EXE\library.zip"
+
+	cd %~dpn0_EXE\library\
+	%SevenZipEXE% a -tzip -mx9 "..\library.zip" -r
+	cd..
+	rd "%~dpn0_EXE\library" /s /q
+
+	cd %~dpn0_EXE\
+	%UpxEXE% --best *.*
+goto:eof
+
+
+
+:MakeSetupFile
+	echo.
+	echo from distutils.core import setup
+	echo import py2exe
+	echo.
+	echo setup (console=["%~dpn0.py"],
+	echo    options = {"py2exe": {"packages": ["encodings"]}})
+	echo.
+goto:eof
+
+
+:FileNotFound
+	echo.
+	echo Error, File not found:
+	echo [%1]
+	echo.
+	echo Check Path in %~nx0???
+	echo.
+	pause
+	exit
+goto:eof
+}}}
+
+
