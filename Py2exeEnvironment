@@ -14,3 +14,5 @@ The py2exe distribution contains a sample named ''hello.py'' together with a set
 
  * {{{sys.frozendllhandle}}} only exists in inproc dll servers, it is set to the numerical value of the win32 dll handle.
 
+== misc ==
+ * {{{__file__}}} is not defined (you might want to use sys.argv[0] instead)
