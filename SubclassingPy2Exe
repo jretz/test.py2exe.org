@@ -1,5 +1,5 @@
 = customizing py2exe by subclassing =
-Let's say you're not entirely happy with one detail in the build process of py2exe. That may be beacuse you want to filter the list of files that it collects or somthing else.
+Let's say you're not entirely happy with one detail in the build process of py2exe. That may be because you want to filter the list of files that it collects or something else.
 
 Make subclass of py2exe and override the methods you want to change:
 {{{
