@@ -1,3 +1,11 @@
+= py2exe =
+Py2Exe is an additional command to DistUtils, that creates standalone distributions for Win32.
+
+Its home is here [http://starship.python.net/crew/theller/py2exe/] and on Sourceforge [http://sourceforge.net/projects/py2exe/]
+
+== Tips & Tricks ==
+ * PassingOptionsToPy2Exe  Avoid using sys.argv to pass options
+ * SubclassingPy2Exe   Customizing the build process
+
+== Thoughts ==
  * CrossPlatformPy2Exe
- * PassingOptionsToPy2Exe
- * SubclassingPy2Exe
