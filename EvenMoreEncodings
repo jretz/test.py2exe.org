@@ -27,6 +27,23 @@ if hasattr(sys,"setdefaultencoding"):
 
 }}}
 
+=== Another solution ===
+
+To take a guess at the users preferred encoding, do like the disabled code in site.py does:
+
+{{{
+#!python
+import sys
+if hasattr(sys, 'setdefaultencoding'):
+    import locale
+    loc = locale.getdefaultlocale()
+    if loc[1]:
+        encoding = loc[1]
+        sys.setdefaultencoding(encoding)
+
+}}}
+
+
 
 == Explanation ==
 
