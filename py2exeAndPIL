@@ -67,9 +67,10 @@ Image._initialized=2
 }}}
 
 before using PIL, I manually import Image and also the needed *ImagePlugins
-
+{{{
+#!python
 [...] could be JpegImagePlugin, BmpImagePlugin etc.
-
+}}}
 Finally I force Image to believe it is fully initialized, so nobody tries directory scanning.
 
 HAM2004-08-09
