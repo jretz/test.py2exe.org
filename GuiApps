@@ -13,3 +13,19 @@ A better option is a log file, then they can see the errors if the want to but d
 sys.stderr = open("logfile.txt","w")
 
 if you want to redirect print statements as well, point sys.stdout to some other file
+
+
+To avoid runtime errors on closing the windows executable, it may help to suppress all output and 
+modify py2exe/boot_common.py  to
+
+if sys.frozen == "windows_exe" :
+    class Blackhole(object):
+        softspace = 0
+        def write(self, text):
+            pass
+    sys.stdout = Blackhole()
+    sys.stderr = Blackhole()
+    del Blackhole
+del sys
+
+
