@@ -30,6 +30,7 @@ I had to "upgrade" also my knowledge about workarounds from py2exe 0.4
  * SingleFileExecutable with NSIS
 === py2exe and wxPython ===
  * Py2exeAndwxPython If you're getting ''wxObjectPtr not found'', read this
+ * ADODB package Modules named adodb_xxx (like adodb_mysql) are not added automatically
 === py2exe and win32com ===
  * WinShell  using win32com.shell with py2exe 0.5
  * IncludingTypelibs allowing use of makepy generated typelibs
@@ -58,3 +59,5 @@ I like to distribute my application with py2exe but I can not make py2exe setup 
  * SpeedUp using psyco to speed up code compilation
  * CrossPlatformPy2Exe
  * Generation of .com and .exe files in one run
+----
+CategoryHomepage
