@@ -3,9 +3,9 @@
 
 = MoinMoin Wiki =
 
-This wiki is mainly a brainstorming and development area for the ["ctypesModule"].
+CtypesModule is the brainstorming and development area for the [http://starship.python.net/crew/theller/ctypes/ ctypes module].
 
-The homepage is [http://starship.python.net/crew/theller/ctypes/ http://starship.python.net/crew/theller/ctypes/].
+Py2Exe is the corresponding start page for the [http://starship.python.net/crew/theller/py2exe/ py2exe tool].
 
 ----
 A WikiWikiWeb is a collaborative hypertext environment, with an emphasis on easy access to and modification of information. This wiki can also link to InterWiki space.
@@ -25,7 +25,3 @@ Interesting starting points:
   * HelpForBeginners: to get you going
   * WikiSandBox: feel free to change this page and experiment with editing
   * FindPage: search or browse the database in various ways
-Exits from this wiki:
-  * [http://www.python.org/ Python homepage]
-  * [http://starship.python.net/crew/theller/ctypes/ ctypes homepage]
-  * [http://starship.python.net/crew/theller/py2exe/ py2exe homepage]
