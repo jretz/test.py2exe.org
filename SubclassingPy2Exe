@@ -1,0 +1,19 @@
+Let's say you're not entirly happy with one detail in the build process of py2exe. That may be beacus you want to filter the list of files that it collects or somthing else.
+
+Make subclass of py2exe and override the methods you want to change:
+{{{
+from py2exe.build_exe import py2exe as build_exe
+class my_py2exe(build_exe):
+    ....
+}}}
+
+Then in the setup() call we need to tell DistUtils that it should use out class:
+{{{
+setup(...
+      cmdclass = {"py2exe": my_py2exe},
+      ...
+)
+}}}
+
+In fact, that mechanism allows to install any distutils command.
+
