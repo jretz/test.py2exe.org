@@ -5,11 +5,12 @@ Its home is here [http://starship.python.net/crew/theller/py2exe/] and on Source
 
 == Learned things with py2exe 0.5 ==
 
-[http://prdownloads.sourceforge.net/py2exe/py2exe-0.5.0a5.win32-py2.3.exe py2exe0.5.0a5] is a prerelease [http://mail.python.org/pipermail/python-list/2003-November/193652.html announced] by Thomas Heller in November 2003.
+[http://prdownloads.sourceforge.net/py2exe/py2exe-0.5.0.win32-py2.3.exe py2exe0.5.0] is the release of py2exe 0.5
+[http://groups.google.de/groups?dq=&hl=de&lr=&ie=UTF-8&oe=UTF-8&threadm=1ebr001fkuq85al2i8c26ejceu8qvedmdb%404ax.com&prev=/groups%3Fhl%3Dde%26lr%3D%26ie%3DUTF-8%26oe%3DUTF-8%26group%3Dcomp.lang.python announced] by Thomas Heller in November 2003.
 
 As nearly usual in Open Source space, prerelases and beta are of the same quality as .02 releases from some commercial software develeoping companies - rather full functional, with small obstacles.
 
-And py2exe 0.5.0a5 is really usable. Nonetheless, I had to "upgrade" also my knowledge about workarounds
+I had to "upgrade" also my knowledge about workarounds from py2exe 0.4
 
 == Tips and Tricks ==
 === General ===
