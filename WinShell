@@ -23,7 +23,7 @@ Traceback (most recent call last):
   File "xxxxxxx.pyo", line 9, in ?
   File "winshell.pyo", line 27, in ?
 ImportError: No module named shell
-}}}}
+}}}
 
 in the log.file.
 
@@ -64,8 +64,8 @@ I just added that in top of my setup.py file:
 import time
 import sys
 
-# ModuleFinder can't handle runtime changes to __path__, but win32com uses them,
-# particularly for people who build from sources.  Hook this in.
+# ModuleFinder can't handle runtime changes to __path__, but win32com uses them
+
 try:
     import modulefinder
     import win32com
