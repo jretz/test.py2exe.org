@@ -28,3 +28,5 @@ child = subprocess.Popen(...other args...
                          creationflags = win32process.CREATE_NO_WINDOW)
 
 }}} 
+
+-- [mailto:alecw@pobox.com Alec Wysoker]
