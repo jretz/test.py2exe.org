@@ -9,7 +9,7 @@ It tries to resolve {{{os.path}}}, gets to {{{ os.os.path }}}, further to {{{ os
 
 But apart from joking: it is IMPOSSIBLE to generate an exe with the modern 0.5 Version of Py2Exe when path.py is installed. 
 
-= Solution =
+= Workaround =
 Just rename
 {{{
 site-packages/path.py
@@ -30,18 +30,9 @@ and to delete {{{path.pyc}}} and {{{path.pyo}}} from your {{{site-packages}}} di
 
 20041013HAM
 
-= Another Solution =
+= Possible Bugfix =
 
-Just another solution is to ''exclude'' the {{{os.path}}} module in the py2exe build process.
-This can be done, for example, with the {{{"-e os.path"}}} command line flag.
-
-Or use a py2exe version later than 0.5.0a5, the problem will be fixed there.
-
--- Thomas Heller
-
-''This is still a problem in py2exe 0.5.0 downloaded on 3/31/04. -- Kent Johnson''
-
-This patch to {{{Lib/modulefinder.py}}} ''should'' fix the problem, it would be nice if someone would try it out, and report back here:
+This patch to {{{Lib/modulefinder.py}}} ''should'' fix the problem, it would be nice if people would '''try it out, and report back''' here:
 {{{
 #!python
 Index: modulefinder.py
