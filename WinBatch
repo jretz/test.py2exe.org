@@ -34,8 +34,6 @@ So you can quick use the Batch File with other Python script, yust copy and rena
 {{{
 @echo off
 
-if not "%1"=="" goto %1
-
 
 ::Set personal Path to the Apps:
 set PythonEXE=C:\Python\python.exe
@@ -55,7 +53,7 @@ if not exist %UpxEXE%		call :FileNotFound %UpxEXE%
 
 
 ::Write the Py2EXE-Setup File
-call "%~0" MakeSetupFile >"%~dpn0_EXESetup.py"
+call :MakeSetupFile >"%~dpn0_EXESetup.py"
 
 
 ::Compile the Python-Script
