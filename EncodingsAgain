@@ -12,6 +12,6 @@ That replaces the {{{'--force-imports encodings'}}} command line option from the
 
 Adding {{{'encodings', 'encodings.*'}}} to includes includes ALL encodings. I'm perfectly happy with only having latin-1 present (at least for some application, which will only be used in western europe)
 
-so recommended adding {{{'encodings', 'encodings.*'}}}
+so recommended adding {{{'encodings', 'encodings.latin_1'}}}
 
 20041201HAM
