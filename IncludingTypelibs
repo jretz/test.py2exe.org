@@ -57,5 +57,5 @@ o.Method()
 o.property = "New Value"
 print o.property
 }}}
-HAM2004-01-27
+
 
