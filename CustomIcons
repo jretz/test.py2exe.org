@@ -20,3 +20,12 @@ Hm, doesn't the {{{.ico}}} file contain them?
 
 does the resource number refers to the icon's index in the {{{.ico}}} file (if containing > 1 icons) ?
 -- [mailto:dswsh@plasa.com dody wijaya]
+
+
+'''How to add small and large icons'''
+
+You must create ico file with two icons in one.
+Your icon file must contain small ico (size: 16*16 pixels) and large ico (size: 32*32 pixels). For WindowsXP you probably may create a big ico (48*48) - but it's only for XP.
+Almost all popular icon editors can create complex icon with small and large part in one.
+
+Good luck! Alexander Belchenko (bialix@ukrpost.net)
