@@ -1,6 +1,5 @@
-I'm having some trouble using py2exe (0.5.0) with wxPython (2.4.2.4). Without py2exe
- my program runs fine, and it compiles fine, but when I run the compiled executa
-ble it crashes with:
+I'm having some trouble using Python (2.3.4) with py2exe (0.5.0) and wxPython (2.4.2.4). Without py2exe
+ my program runs fine, and it compiles fine, but when I run the compiled executable it crashes with:
  
 {{{
 Traceback (most recent call last):
@@ -19,8 +18,7 @@ NameError: name 'wxObjectPtr' is not defined
 }}}
  
 All wxfoo.py contains is "from wxPython.wx import *" and this happens with every
- wxPython program I try. I've heard of people successfully py2exe'ing wxPython p
-rograms before so I wonder if doing something wrong. This is my setup.py:
+ wxPython program I try. I've heard of people successfully py2exe'ing wxPython programs before so I wonder if doing something wrong. This is my setup.py:
 
 {{{
 #!python
@@ -30,6 +28,7 @@ import py2exe
 setup(console=["wxfoo.py"])
 }}}
 
-I'm at wits end here... anyone have any ideas whats wrong? ''-jc''
+Anyone have any ideas whats wrong? options={"py2exe": {"includes": "wxPython.wx}} and options={"py2exe": {"package": "wx"}} and windows=["wxfoo.py"] return the same results.
+ ''-jc''
 
 
