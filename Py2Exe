@@ -14,7 +14,7 @@ I had to "upgrade" also my knowledge about workarounds from py2exe 0.4
 
 == Tips and Tricks ==
 === General ===
- * RunningSetup A detailed explanation how to run the setup script
+ * RunningSetup How to run the setup script once you've written it
  * EncodingsAgain  Problem with encodings and when they are not found in a standalone executable
  * AddingConfigFiles  How can you add arbitrary files to your Py2Exe-Setup?
  * PathModul  Using Jason Orendorffs python PathModul together with Py2Exe 0.5
