@@ -36,7 +36,7 @@ I had to "upgrade" also my knowledge about workarounds from py2exe 0.4
 === py2exe and Biopython ===
  * ConfigImportProblems Fixing problems with importing Bio.Config files from library.zip
 
-=== py2exe and Quixote ===
+=== ["py2exe and Quixote"] ===
 Quixote is a python webserver which allows one to execute ptl files using ihooks. You can distribute your web application with medusa or twisted and hence
 you can create a web application without IIS or Apache. I like to distribute my application with py2exe but I can not make py2exe setup script to recognize that x.ptl is a valid  python files. Any idea how to do this?
 === py2exe and MatPlotLib ===
