@@ -13,7 +13,7 @@ setup(
 The bytecode embedded in the resulting .exe will not be optimised.
 
 = Solution =
-To get optimised bytecode, you need to call the ''setup.py'' like so:
+To get optimized bytecode, you need to call the ''setup.py'' like so:
 {{{
 python -OO setup.py py2exe
 }}}
