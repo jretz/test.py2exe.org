@@ -10,6 +10,8 @@ How it works:
  * Optional Recompress ''library.zip'' with [http://www.7-zip.org/ 7-Zip]
  * Optional Compress ''*.pyd'', ''*.dll'' and ''*.exe'' Files with [http://upx.sourceforge.net/ UPX]
 
+(About Compression see BetterCompression under ''7ZIP and UPX'')
+
 = Instruction =
 
 I use it under Win XP... It should also run under NT and 2000, but i don't know...
