@@ -7,6 +7,12 @@ In py2exe 0.5, if the encodings are not found in the built exe, add these two to
 'encodings', 'encodings.*'
 }}}
 
+You can do this by adding a line 
+{{{
+options = {"py2exe": {"packages": ["encodings"]}},
+}}}
+to your setup.py file. 
+
 That replaces the {{{'--force-imports encodings'}}} command line option from the [http://starship.python.net/crew/theller/py2exe/  0.4py2exe]
 
 
