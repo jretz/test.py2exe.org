@@ -1,6 +1,6 @@
 = Something great =
 
-within samples/extending Thomas Heller gives a setup.py scipt which automagically calls [http://www.jrsoftware.org/isinfo.php InnoSetup] to create a great looking (and perfectly working) Windows-Installer. Yes, really, ONE setup.exe is created which contains ALL stuff to have a readily installable Software out of your product.
+within samples/extending Thomas Heller gives a Py2Exe setup.py scipt which automagically calls [http://www.jrsoftware.org/isinfo.php InnoSetup] to create a great looking (and perfectly working) Windows-Installer. Yes, really, ONE setup.exe is created which contains ALL stuff to have a readily installable Software out of your product.
 
 = also large =
 
