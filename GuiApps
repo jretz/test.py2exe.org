@@ -17,7 +17,7 @@ if you want to redirect print statements as well, point sys.stdout to some other
 
 To avoid runtime errors on closing the windows executable, it may help to suppress all output and 
 modify py2exe/boot_common.py  to
-
+<PRE>
 if sys.frozen == "windows_exe" :
     class Blackhole(object):
         softspace = 0
@@ -27,5 +27,6 @@ if sys.frozen == "windows_exe" :
     sys.stderr = Blackhole()
     del Blackhole
 del sys
+</PRE>
 
-
+[Added by timo (at) eda-solutions.de]
