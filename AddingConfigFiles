@@ -25,7 +25,15 @@ setup(
 The crucial line is
 {{{
 #!python
-    data_files=[("prog",["kategorien.xml",])
-]
+    data_files=[ ("prog",["kategorien.xml",])]
 }}}
-here you are supposed to supply a list of tuples
+here you are supposed to supply a list of tuples.  [ (,), (,), ...]
+
+Each tuple {{{ ("directoy",["list.txt", "of.txt", "files.txt) }}} consists of 2 Elements:
+
+ 1 the subdirctory of the dist-base directory, where the files are copied to
+ 1 a list of files, which are supposed to be copied there
+
+So in my example I have some configuration data in {{{ kategorien.xml }}} and want to get this file copied to the program-directory. (Maybe that is bad style and whe should put it within \documents and settings\currentuser\ApplicationSettings\MyCompany\MyProduct\MySettings.XML, but for distribution WITHIN one company I want to be able to support filepaths by phone :-)) )
+
+
