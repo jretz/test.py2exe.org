@@ -27,7 +27,7 @@ I had to "upgrade" also my knowledge about workarounds from py2exe 0.4
  * ExcludingDlls  Stopping py2exe from picking up unwanted DLLs
  * ShippingEmbedded How to use py2exe to ship embedded Python modules
 === py2exe and wxPython ===
- * Py2exeAndwxPython py2exe and wxPython?
+ * Py2exeAndwxPython If you're getting ''wxObjectPtr not found'', read this
 === py2exe and win32com ===
  * WinShell  using win32com.shell with py2exe 0.5
  * IncludingTypelibs allowing use of makepy generated typelibs
