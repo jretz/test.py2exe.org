@@ -1,0 +1,35 @@
+I'm having some trouble using py2exe (0.5.0) with wxPython (2.4.2.4). Without py2exe
+ my program runs fine, and it compiles fine, but when I run the compiled executa
+ble it crashes with:
+ 
+{{{
+Traceback (most recent call last):
+File "wxfoo.py", line 10, in ?
+from wxPython.wx import *
+File "wxPython\wx.pyc", line 4, in ?
+File "wxPython\misc.pyc", line 15, in ?
+File "wxPython\wx.pyc", line 6, in ?
+File "wxPython\misc2.pyc", line 4, in ?
+File "wxPython\windows.pyc", line 15, in ?
+File "wxPython\wx.pyc", line 10, in ?
+File "wxPython\gdi.pyc", line 15, in ?
+File "wxPython\wx.pyc", line 12, in ?
+File "wxPython\fonts.pyc", line 120, in ?
+NameError: name 'wxObjectPtr' is not defined
+}}}
+ 
+All wxfoo.py contains is "from wxPython.wx import *" and this happens with every
+ wxPython program I try. I've heard of people successfully py2exe'ing wxPython p
+rograms before so I wonder if doing something wrong. This is my setup.py:
+
+{{{
+#!python
+from distutils.core import setup
+import py2exe
+
+setup(console=["wxfoo.py"])
+}}}
+
+I'm at wits end here... anyone have any ideas whats wrong? ''-jc''
+
+
