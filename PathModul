@@ -56,3 +56,6 @@ diff -c -r1.7.6.1 modulefinder.py
                                                      parent and parent.__path__, parent)
 
 }}}
+
+
+Works for me on a simple test -- Paul Moore
