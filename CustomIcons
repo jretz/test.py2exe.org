@@ -19,4 +19,4 @@ The resouce number does not seem to matter. Windows just takes the first existin
 Hm, doesn't the {{{.ico}}} file contain them?
 
 does the resource number refers to the icon's index in the {{{.ico}}} file (if containing > 1 icons) ?
--- [dswsh@plasa.com dody wijaya]
+-- [mailto:dswsh@plasa.com dody wijaya]
