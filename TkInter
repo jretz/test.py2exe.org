@@ -1,5 +1,5 @@
 = Problem =
-I use wxPython for my GUI. Modulefinder / py2exe nonetheless decides that tkinter and tcl has to be included into my distribution.
+I use wxPython for my GUI. Modulefinder / py2exe nonetheless decides that tkinter and tcl have to be included in my distribution.
 = Explanation =
 ??? I would like one, really. 
 = Solution =
