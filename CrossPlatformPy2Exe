@@ -1,1 +1,3 @@
 Original discussion thread about a cross-platform py2exe on [http://groups.google.com/groups?selm=ptji8wgr.fsf%40python.net comp.lang.python]
+
+I've started abstracting some of py2exe's functionality in a cross-platform way (for use on OS X - [http://svn.red-bean.com/bob/py2app/trunk/ py2app]), specifically [http://svn.red-bean.com/bob/py2app/trunk/py2app/find_modules.py find_modules.py] should be useful on just about any OS.
