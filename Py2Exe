@@ -30,6 +30,10 @@ I had to "upgrade" also my knowledge about workarounds from py2exe 0.4
  * SingleFileExecutable with NSIS
 === py2exe and wxPython ===
  * Py2exeAndwxPython If you're getting ''wxObjectPtr not found'', read this
+=== py2exe and PIL ===
+ * ["PIL and py2exe"]  If you're getting ''cannot identify image file'', read this
+=== py2exe and reportlab ===
+ * ["PIL and reportlab]  If you've read ["PIL and py2exe"]  and still get ''cannot identify image file'', read this
 === py2exe and Python ADODB modules ===
  * ADODB package Modules named adodb_xxx (like adodb_mysql) are not added automatically, must be added explicitly
 === py2exe and win32com ===
