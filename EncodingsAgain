@@ -25,3 +25,14 @@ so recommended adding {{{
 }}}
 
 20041201HAM
+
+== Sample ==
+To avoid misunderstandings here is a sample setup.py
+{{{
+from distutils.core import setup
+import py2exe
+      
+setup(console=["MyScript.py"],
+      options = {"py2exe": {"packages": ["encodings"]}},
+)
+}}}
