@@ -90,7 +90,7 @@ Since we cannot obtain the list of modules with this code, we need to provide an
 
 == Processing the zipfile ==
 
-Firstly, we must determine whether the imported module comes from a zipfile, or is a straghtforward import.  This is done by checking for the {{{.__loader__}}} attribute with {{{if hasattr(config_imports, '__loader__'):}}}
+Firstly, we must determine whether the imported module comes from a zipfile, or is a straightforward import.  This is done by checking for the {{{.__loader__}}} attribute with {{{if hasattr(config_imports, '__loader__'):}}}
 
 Next, we need to obtain the list of module files for Bio.config.  These are all found within the Bio/config folder, so we can filter the filenames in the shared zipfile using the {{{x = [zipfiles[file][0] for file in zipfiles.keys() if 'Bio\\config' in file]}}} list comprehension.
 
