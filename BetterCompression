@@ -74,3 +74,25 @@ Quite an OK download ... and I use ZODB and Elementtree and pythoncom and and an
 2.677 kB  bzip
 2.160 kB  7-zip
 }}}The previous comparison shows, that 7-zip results by far in the smallest installer size.  An additional benefit of using 7-zip is the fast installation.  When using bzip, the files are decompressed in the last step of the installation process, right then when the files are written to the program folder.  Since bzip is computationally quite intensive, the progress bar fills not extremely fast.  When using 7-zip, there is a short decompression when starting the installer, but the installation process afterwards it fast as lightning, because of "Compression=none" :) .
+
+= 7ZIP and UPX =
+Repacking the "library.zip" with [http://www.7-zip.org/ 7-ZIP] saving 357KB (577KB original to 220KB 7ZIP compressed)
+
+Using [http://upx.sourceforge.net/ UPX ] the executable packer to compress *.pyd, *.dll and *.exe Files:
+
+Example: _sre.pyd, _winreg.pyd, python23.dll, unicodedata.pyd, w9xpopen.exe, zlib.pyd 1516,2KB original to 584KB compressed)
+
+Everything together: Original Size: 2093,2 compressed: 804KB !!!
+
+A shot Windows Batch-File to automate:
+{{{
+7z.exe -aoa x library.zip -olibrary\
+del library.zip
+
+cd library\
+7z.exe a -tzip -mx9 ..\library.zip -r
+cd..
+rd library /s /q
+
+upx.exe --best *.*
+}}}
