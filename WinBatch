@@ -1,6 +1,6 @@
 = What is it =
 
-I use a shot Windows Batch File to "automate" Py2EXE
+I use a short Windows Batch File to "automate" Py2EXE
 
 How it works:
  * Create the Py2EXE Setup``File
@@ -18,7 +18,7 @@ I use it under Win XP... It should also run under NT and 2000, but i don't know.
 
 You must '''change the Path''' to the Apps in the Batch-File!!!
 
-The Batch``File ist very flexible it uses its own file name to locate the Python Script!!![[BR]]
+The Batch``File is very flexible, it uses its own file name to locate the Python Script![[BR]]
 You must '''rename it''' to exactly the same name like the script to compile.
 Example:
  * Name of the Pythonscript to Compile: My``Script.py
