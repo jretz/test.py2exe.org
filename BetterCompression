@@ -84,7 +84,7 @@ Example: _sre.pyd, _winreg.pyd, python23.dll, unicodedata.pyd, w9xpopen.exe, zli
 
 Everything together: Original Size: 2093,2 compressed: 804KB !!!
 
-A shot Windows Batch-File to automate:
+A shot Windows Batch-File to automate (see WinBatch):
 {{{
 7z.exe -aoa x library.zip -olibrary\
 del library.zip
