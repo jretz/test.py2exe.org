@@ -28,6 +28,8 @@ I had to "upgrade" also my knowledge about workarounds from py2exe 0.4
  * BetterCompression  Getting complete wxPython Programms down to around 4 Megabytes
  * SetupLanguage  How to localize the language with [http://starship.python.net/crew/theller/py2exe/ py2exe] and [http://www.jrsoftware.org/isinfo.php InnoSetup]
  * QuickStartIcons  How to add Startup-Links to the Quickstart-Bar & the Desktop using [http://www.jrsoftware.org/isinfo.php InnoSetup] together with Py2Exe
+=== py2exe and Biopython ===
+ * ConfigImportProblems Fixing problems with importing Bio.Config files from library.zip
 
 === Fixes ===
  * ExtendingExample  a "-.zip" is missing
