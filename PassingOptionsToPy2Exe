@@ -38,5 +38,5 @@ class MyDistribution(Distribution):
         self.zipfile = 'mylibrary.zip'
         Distribution.__init__(self, attrs)
 
-setup(distclass=Distribution)
+setup(distclass=MyDistribution)
 }}}
