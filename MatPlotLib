@@ -11,6 +11,25 @@ I had to patch matplotlib's __init__.py file in the get_data_path() routine.  Sp
          return path
 }}}
 
+MichaelTwomey - I had to patch the patch above to handle sys.path a bit differently. With the above patch and my py2exe's behaviour instead of getting something like c:\apps\myapp\matplotlibdata, I was getting c:\apps\matplotlibdata as the data path. So I've used the following instead:
+
+{{{
+if sys.platform=='win32' and sys.frozen:
+    path = os.path.join(sys.path[0], 'matplotlibdata')
+    return path
+}}}
+
+As a workaround to support both methods:
+
+{{{
+if sys.platform=='win32' and sys.frozen:
+    path = os.path.join(os.path.split(sys.path[0])[0], 'matplotlibdata')
+    if not os.path.isdir(path):
+        # Try again assuming sys.path[0] is a dir not a exe
+        path = os.path.join(sys.path[0], 'matplotlibdata')
+    return path
+}}}
+
 = Special content for setup.py to use matplotlib =
 We also need to make sure we get the matplotlib subdirectory created in the distribution.  This is where we'll include all of the stuff matplotlib includes in the pythonXX\share\matplotlib directory.  This is also where the __init__ file has been updated to look for this information.
 {{{
