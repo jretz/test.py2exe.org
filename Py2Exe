@@ -53,3 +53,4 @@ I like to distribute my application with py2exe but I can not make py2exe setup 
 == Thoughts ==
  * SpeedUp using psyco to speed up code compilation
  * CrossPlatformPy2Exe
+ * Generation of .com and .exe files in one run
