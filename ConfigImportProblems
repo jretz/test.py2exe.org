@@ -1,0 +1,124 @@
+= The Situation =
+
+I wrote a script using Biopython which read a file containing a bunch of Genbank accession numbers, and downloaded the Genbank records:
+{{{### gentest.py
+
+from Bio import GenBank
+
+gi_list = ['AF339445', 'AF339444', 'AF339443', 'AF339442', 'AF339441']
+record_parser = GenBank.FeatureParser()             # GenBank file parser
+ncbi_dict = GenBank.NCBIDictionary(parser = record_parser,
+                                   database = "nucleotide") # Dict for accessing NCBI
+
+count = 1
+for accession in gi_list:
+    print "Accessing GenBank for %s... (%d/%d)" % (accession, count, len(gi_list))
+    try:
+        record = ncbi_dict[accession]           # Get record as SeqRecord
+        RECORDS.append(record)                  # Put records in local list
+    except:
+        print "Accessing record %s failed" % accession
+
+
+    count += 1
+}}}
+
+This worked fine as a script, but when I attempted to turn it into a Windows executable with py2exe and the setup.py script: 
+
+{{{### setup.py
+
+from distutils.core import setup
+import py2exe, sys
+
+setup (name = "gentest",
+       version = "0.10",
+       url = r'http://bioinf.scri.sari.ac.uk/lp/index.shtml',
+       author = "Leighton Pritchard",
+       console = ["gentest.py"])
+}}}
+
+with the command {{{python setup.py py2exe}}}, attempting to run the resulting gentest.exe would throw an error.
+
+= The Error =
+
+This is the error thrown on running the executable:
+
+{{{Traceback (most recent call last):
+  File "gentest.py", line 1, in ?
+  File "Bio\__init__.pyc", line 68, in ?
+  File "Bio\__init__.pyc", line 55, in _load_registries
+WindowsError: [Errno 3] The system cannot find the path specified: 'E:\\Data\\CVSWorkspace\\genbank2excel\\genbank2excel\\dist\\library.zip\\Bio\\config/*.*'}}}
+
+= The Problem =
+
+== Location of Bio.config ==
+With help from Thomas Heller on the Python-Win32 mailing list, the problem was identified.  When the Bio package is imported, Bio/__init__.py imports a number of modules from the Bio.config module using the {{{_load_registries}}} function.  The first problem occurs in line 52: (file version 1.21 from CVS)
+
+{{{    x = os.listdir(
+        os.path.dirname(__import__("Bio.config", {}, {}, ["Bio"]).__file__))
+}}}
+
+Under normal script-like execution, the {{{os.path.dirname}}} call returns a string indicating a location accessible through the filesystem via {{{os.listdir}}}.  However, py2exe uses new import hooks (via the builtin zipimport hook), described in PEP 302, so the location returned by the {{{os.path.dirname}}} call is located within the shared zip archive that py2exe creates.  As a result, {{{os.listdir}}} fails, and the above error is thrown.
+
+== Module extensions ==
+The arrangement with py2exe's shared zipfile causes problems further down the function.  The {{{_load_registries}}} function expects that modules will have the .py extension, rather than the .pyc extension that the compiled files (all that are included in the zipfile) use.  
+
+{{{
+    x = filter(lambda x: not x.startswith("_") and x.endswith(".py"), x)
+    x = map(lambda x: x[:-3], x)            # chop off '.py'
+}}}
+
+Zipfile modules within Bio.config are thus not loaded.
+
+= The Solution =
+
+== Existing code ==
+The code to be changed for the {{{_load_registries}}} method is (lines 50-55 in Bio/__init__.py CVS version 1.21)
+
+{{{
+    # Load the registries.  Look in all the '.py' files in Bio.config
+    # for Registry objects.  Save them all into the local namespace.
+    x = os.listdir(
+        os.path.dirname(__import__("Bio.config", {}, {}, ["Bio"]).__file__))
+    x = filter(lambda x: not x.startswith("_") and x.endswith(".py"), x)
+    x = map(lambda x: x[:-3], x)            # chop off '.py'
+}}}
+
+Which obtains a list of modules, (for later import as Bio.config.module_name).
+
+Since we cannot obtain the list of modules with this code, we need to provide an alternative way of generating the list when the modules are in the shared zipfile.
+
+== Processing the zipfile ==
+
+Firstly, we must determine whether the imported module comes from a zipfile, or is a straghtforward import.  This is done by checking for the {{{.__loader__}}} attribute with {{{if hasattr(config_imports, '__loader__'):}}}
+
+Next, we need to obtain the list of module files for Bio.config.  These are all found within the Bio/config folder, so we can filter the filenames in the shared zipfile using the {{{x = [zipfiles[file][0] for file in zipfiles.keys() if 'Bio\\config' in file]}}} list comprehension.
+
+The filenames in this list are absolute paths, so we can grab just the filename with another list comprehension
+{{{x = [name.split('\\')[-1] for name in x]}}}.
+
+We have to lose the extensions from these filenames, too.  These are all .pyc files, so we can use a modification of the existing code's map and lambda {{{x = map(lambda x: x[:-4], x)}}}. [Note: we could easily combine the last two steps, but I keep them separate for clarity].
+
+We now have the required list of module filenames.
+
+Putting the steps together, and combining with the original code, we have:
+
+{{{
+    # Load the registries.  Look in all the '.py' files in Bio.config
+    # for Registry objects.  Save them all into the local namespace.
+    # Import code changed to allow for compilation with py2exe from distutils
+    config_imports = __import__("Bio.config", {}, {}, ["Bio"])  # Import Bio.config
+    if hasattr(config_imports, '__loader__'):                   # Is it in zipfile?
+        zipfiles = __import__("Bio.config", {}, {}, ["Bio"]).__loader__._files
+        x = [zipfiles[file][0] for file in zipfiles.keys() \
+             if 'Bio\\config' in file]
+        x = [name.split('\\')[-1] for name in x]# get filename
+        x = map(lambda x: x[:-4], x)            # chop off '.pyc'
+    else:                           # Not in zipfile, get files normally
+        x = os.listdir(
+            os.path.dirname(config_imports.__file__))
+        x = filter(lambda x: not x.startswith("_") and x.endswith(".py"), x)
+        x = map(lambda x: x[:-3], x)            # chop off '.py'
+}}}
+
+Compilation with the original setup.py script and {{{python setup.py py2exe}}} then ran smoothly, apart from a couple of missing modules which had no impact on the running of the executable
