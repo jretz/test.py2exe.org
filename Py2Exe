@@ -17,7 +17,7 @@ I had to "upgrade" also my knowledge about workarounds from py2exe 0.4
  * RunningSetup A detailed explanation how to run the setup script
  * EncodingsAgain  Problem with encodings and when they are not found in a standalone executable
  * AddingConfigFiles  How can you add arbitrary files to your Py2Exe-Setup?
- * PathModul  Using Jason Jorendorffs python PathModul together with Py2Exe 0.5
+ * PathModul  Using Jason Orendorffs python PathModul together with Py2Exe 0.5
  * PassingOptionsToPy2Exe  Avoid using sys.argv to pass options
  * SubclassingPy2Exe   Customizing the build process
  * CustomIcons   How to get your own icons with Py2Exe 0.5
