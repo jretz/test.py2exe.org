@@ -1,4 +1,4 @@
-= The Problem =
+= Where to correct =
 
 Within site-packages/py2exe/samples/extending/setup.py
 
@@ -19,6 +19,8 @@ options = {"py2exe": {"compressed": 1,
 
 ################################################################
 
+= what to do =
+
 The Error is within 
 
 zipfile = r"lib\shardlib"
@@ -28,11 +30,11 @@ it has to be
 zipfile = r"lib\shardlib.zip"
 
 
+= additional information =
+
 I stumbled upon while trying to include win32com.client  - that module was not able to find gen_py/__init__.py
 
-
-
-
+20040112 HAM
 
 
 
