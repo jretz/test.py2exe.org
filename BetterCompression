@@ -6,20 +6,22 @@ within samples/extending Thomas Heller gives a setup.py scipt which automagicall
 
 I programm using wxPython. A great library, a large library. 
 
- * 2.240.512 wxc.pyd 
- * 3.416.064 wxmsw24uh.dll
+{{{
+2.240.512 wxc.pyd 
+3.416.064 wxmsw24uh.dll
+}}}
 
 To modules you cannnot skip. In addition there is as allways
   
- * 974.915 python23.dll
+{{{974.915 python23.dll}}}
 
 giving more than 6 Megabyte with no line of code written
 
 In total:
 
- * 28 Datei(en)      9.549.525 Bytes  (in lib)
+{{{28 Datei(en)      9.549.525 Bytes  (in lib)}}}
 and
- * 2 Datei(en)      1.011.779 Bytes   (in prog)
+{{{2 Datei(en)      1.011.779 Bytes   (in prog)}}}
 
 
 summing up to 10.5 Megabyte ... not much with DSL, but... shocking, isn't it?
@@ -30,23 +32,24 @@ In the standard configuration [http://www.jrsoftware.org/isinfo.php InnoSetup] c
 
 I changed the setup.py to contain
 
- * print >> ofi, r"[Setup]"
- * print >> ofi, r"AppName=%s" % self.name
- * print >> ofi, r"AppVerName=%s %s" % (self.name, self.version)
- * print >> ofi, r"DefaultDirName=c:\ghum\%s" % self.name
- * print >> ofi, r"DefaultGroupName=%s" % self.name
- * print >> ofi, r"Compression=bzip" 
- * print >> ofi
-
+{{{
+print >> ofi, r"[Setup]"
+print >> ofi, r"AppName=%s" % self.name
+print >> ofi, r"AppVerName=%s %s" % (self.name, self.version)
+print >> ofi, r"DefaultDirName=c:\ghum\%s" % self.name
+print >> ofi, r"DefaultGroupName=%s" % self.name
+print >> ofi, r"Compression=bzip" 
+print >> ofi
+}}}
 
 ... the special line is 
 
- * print >> ofi, r"Compression=bzip" 
+{{{print >> ofi, r"Compression=bzip" }}}
 
 
 = the result =
 
- * 4.335.283 setup.exe 
+{{{4.335.283 setup.exe }}}
 
 Quite an OK download ... and I use ZODB and Elementtree and pythoncom and and and....
 
