@@ -35,6 +35,9 @@ I had to "upgrade" also my knowledge about workarounds from py2exe 0.4
 === py2exe and Biopython ===
  * ConfigImportProblems Fixing problems with importing Bio.Config files from library.zip
 
+=== the runtime enviroment ===
+ * Py2exeEnvironment - information about the environment for the executable
+
 === Fixes ===
  * ExtendingExample  a "-.zip" is missing
 
