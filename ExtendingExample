@@ -45,3 +45,12 @@ I stumbled upon while trying to include win32com.client  - that module was not a
 
 
 
+= the cause =
+
+This problem is a limitation of the current win32all (build 163, currently).
+
+Py2Exe itself does not require that the zipfile has a {{{.zip}}} extension (and this can be useful to obscure the contents of this file).
+
+I've sent Mark Hammond a patch ;-)
+
+-- Thomas Heller
