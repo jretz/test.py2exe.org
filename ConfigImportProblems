@@ -132,3 +132,6 @@ Putting the steps together, and combining with the original code, we have:
 }}}
 
 Compilation with the original setup.py script and {{{python setup.py py2exe}}} then ran smoothly, apart from a couple of missing modules which had no impact on the running of the executable.
+
+= Update =
+The changes have now (3rd Feb 04) been incorporated into the BioPython source in CVS.
