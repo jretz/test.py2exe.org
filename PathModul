@@ -30,3 +30,11 @@ and to delete {{{path.pyc}}} and {{{path.pyo}}} from your {{{site-packages}}} di
 
 20041013HAM
 
+= Another Solution =
+
+Just another solution is to ''exclude'' the {{{os.path}}} module in the py2exe build process.
+This can be done, for example, with the {{{"-e os.path"}}} command line flag.
+
+Or use a py2exe version later than 0.5.0a5, the problem will be fixed there.
+
+-- Thomas Heller
