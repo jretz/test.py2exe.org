@@ -1,0 +1,14 @@
+Question: Is it possible to specify options like "--includes" programaticaly in the setup()
+function?
+
+Answer:
+Yes, distutils has such a functionality, although it seems to be undocumented.  You can create a dictionary like this:
+
+opts = {"py2exe": {"includes": "mod1, mod2"}}
+
+and pass it to the setup script:
+
+setup(...
+      options = opts,
+     )
+
