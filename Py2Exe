@@ -22,7 +22,7 @@ And py2exe 0.5.0a5 is really usable. Nonetheless, I had to "upgrade" also my kno
 
 === py2exe and Innosetup ===
  * BetterCompression  Getting complete wxPython Programms down to aroud 4 Megabytes
- * SetupLanguage  How to localize the language with [http://starship.python.net/crew/theller/py2exe/ py2exe]and [http://www.jrsoftware.org/isinfo.php InnoSetup]
+ * SetupLanguage  How to localize the language with [http://starship.python.net/crew/theller/py2exe/ py2exe] and [http://www.jrsoftware.org/isinfo.php InnoSetup]
 
 === Fixes ===
  * ExtendingExample  a "-.zip" is missing
