@@ -39,7 +39,7 @@ zipfile = r"lib\shardlib.zip"
 
 = additional information =
 
-I stumbled upon while trying to include win32com.client  - that module was not able to find gen_py/__init__.py
+I stumbled upon while trying to include win32com.client  - that module was not able to find {{{gen_py/__init__.py}}}
 
 20040112 HAM
 
