@@ -1,4 +1,4 @@
-= The Problem = 
+= The Problem =
 
 I used [http://tgolden.sc.sabren.com/python/winshell.html winshell] from Tim Golden - a thin wrapper around Windows Shell-Functions.
 
@@ -28,9 +28,9 @@ ImportError: No module named shell
 in the log.file.
 
 
-= Explanation = 
+= Explanation =
 
-win32com does some magic. There really is no win32com.shell anywhere. 
+win32com does some magic. There really is no win32com.shell anywhere.
 
 = Solution =
 
@@ -84,4 +84,4 @@ from distutils.core import setup
 import py2exe
 }}}
 
-And this worked. 
+And this worked.
