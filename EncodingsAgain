@@ -43,7 +43,7 @@ setup(console=["MyScript.py"],
 (which by the way is roughly the same as {{{setup.py py2exe --packages encodings}}}.)
 
 
-== changed beahviour ==
+== changed behaviour ==
 
 just "to be sure" I included "encodings" within options and again within the setup-command:
 
