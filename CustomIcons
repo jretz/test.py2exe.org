@@ -1,0 +1,17 @@
+Icons are added as {{{icon_rsources}}}
+
+{{{
+setup( 
+    windows = [
+        {
+            "script": "with_gui.py",
+            "icon_resources": [(1, "myicon.ico")]
+        }
+    ],
+)
+}}}
+
+The same practice works as well for {{{console}}} and {{{windows}} scripts.
+The resouce number does not seem to matter. Windows just takes the first existing icon.
+
+/!\ if somebody knows how to add small and large icons, speak up...
