@@ -45,3 +45,12 @@ The following also works, at least in wxPython 2.5.2.8 and other recent ones. {{
     _icon = wx.Icon('MyIcon.ico', wx.BITMAP_TYPE_ICO)
     self.SetIcon(_icon)
 }}}
+
+
+This should allow the system to pick an appropriate icon. ( only tested with 2.5.3 ) {{{
+#!python  
+    ib=wx.IconBundle()
+    ib.AddIconFromFile("MyIcon.ico",wx.BITMAP_TYPE_ANY)
+    self.SetIcons(ib)
+}}}
+ 
