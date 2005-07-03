@@ -2,6 +2,8 @@
 [http://matplotlib.sf.net MatPlotLib] is a module to produce nice-looking plots in Python using a wide variety of back-end packages, at least one of which is likely to be available for your system.  This ability to do things in a generic fashion makes this a simple system to use, but it gets complicated if you wish to distribute an executable instead of scripts.  This page describes what I had to do to make matplotlib work with py2exe.
 
 = Changes required to matplotlib =
+''As with version 0.82, this change is already in upstream source and no longer needed. Just include the special setup.py code below, and you should be fine'' -- Ferry Dave 07-03-2005
+
 I had to patch matplotlib's __init__.py file in the get_data_path() routine.  Specifically, right before raising the error at the end, I added the following code
 {{{
 #!python
