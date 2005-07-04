@@ -20,3 +20,8 @@ from distutils.core import setup
 
 setup( console=[{"script": "main.py"}] )
 }}}
+
+=== Reference ===
+I found this tips here : [http://nerdierthanthou.nfshost.com/2005/03/image-resizer.html]
+
+There is a full code sample.
