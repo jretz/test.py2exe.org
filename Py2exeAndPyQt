@@ -1,0 +1,22 @@
+##language:en
+=== Error message ===
+{{{
+  File "form1.pyc", line 11, in ?
+
+  File "qt.pyc", line 9, in ?
+  File "qt.pyc", line 7, in __load
+ImportError: No module named sip
+}}} 
+
+
+=== Solution ===
+{{{python setup.py py2exe --includes sip}}}
+
+=== setup.py ===
+{{{
+#!python
+from py2exe.build_exe import py2exe
+from distutils.core import setup
+
+setup( console=[{"script": "main.py"}] )
+}}}
