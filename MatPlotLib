@@ -58,3 +58,11 @@ setup(
     console = ['demo.py']
     )
 }}}
+
+== Comment ==
+You may experience problems with missing modules. My py2exe'd Maplotlib complained about missing module 'random_array', which I had to include manually by adding this to the tuple ''setup()'':
+{{{
+#!python
+    packages = ['matplotlib.numerix.random_array',],
+}}}
+-- Ferry Dave 07-05-200
