@@ -89,7 +89,7 @@ Section
 SectionEnd
 }}}
 
-'''simple.py''' - the example script
+'''single.py''' - the example script
 {{{
 #! python
 import os, sys, ctypes
