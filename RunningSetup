@@ -42,3 +42,26 @@ depending on where you installed python.
 
 HTH, and good luck,
 Mike
+
+
+== Trick ==
+
+Create a batch file that you can run from Windows Explorer. Here is a copy of my make_exe.bat file:
+
+{{{
+rem *** Used to create a Python exe 
+
+rem ***** get rid of all the old files
+rd /S /Q build
+
+rem ***** create the exe
+c:\Python23\python setup.py py2exe
+
+rem **** pause so we can see the exit codes
+pause "done...hit a key to exit"
+}}}
+
+I keep a copy of this file in each folder where I have a Python app that I want to make into an exe. To create the exe, open up the folder in
+Windows Explorer and double click on the "make_exe.bat" file. I find this to be much easier than working in the DOS command line environment.
+
+  
