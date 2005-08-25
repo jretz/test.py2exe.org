@@ -174,4 +174,69 @@ setup(...
       )
 }}}
 
+For a simple project of mine that is built as a Windows service, this made the binaries in the installation take about a third of the size they would otherwise have needed, which was about half the size of the overall project.  When built with UPX it was just under a MB, with the UPXing saving me about a MB on the binaries:
+
+{{{
+        File size         Ratio      Format      Name
+   --------------------   ------   -----------   -----------
+    979005 ->    370176   37.81%    win32/pe     python23.dll
+     49212 ->     16896   34.33%    win32/pe     support/_socket.pyd
+     57401 ->     18432   32.11%    win32/pe     support/_sre.pyd
+     36864 ->     11264   30.55%    win32/pe     support/_winreg.pyd
+     45117 ->     17408   38.58%    win32/pe     support/datetime.pyd
+     24576 ->      6144   25.00%    win32/pe     support/perfmon.pyd
+     20539 ->      5120   24.92%    win32/pe     support/select.pyd
+     36864 ->     10752   29.16%    win32/pe     support/servicemanager.pyd
+     69632 ->     21504   30.88%    win32/pe     support/win32api.pyd
+     24576 ->      5632   22.91%    win32/pe     support/win32event.pyd
+     77824 ->     20992   26.97%    win32/pe     support/win32file.pyd
+     40960 ->     11776   28.75%    win32/pe     support/win32service.pyd
+     61497 ->     23552   38.29%    win32/pe     support/zlib.pyd
+     94208 ->     40448   42.93%    win32/pe     support/pywintypes23.dll
+   --------------------   ------   -----------   -----------
+   1618275 ->    580096   35.84%                 [ 14 files ]
+}}}
+
+For a much larger project (involving wxPython, Twisted, etc..), the binaries were again about a third of the size, but in this case ended up saving me over 7.5MB of space.  The overall project distribution (UPXed) is about 15MB:
+
+{{{
+        File size         Ratio      Format      Name
+   --------------------   ------   -----------   -----------
+    979005 ->    370176   37.81%    win32/pe     python23.dll
+      6656 ->      4096   61.53%    win32/pe     support/_c_urlarg.pyd
+     73728 ->     26624   36.11%    win32/pe     support/_ctypes.pyd
+    280064 ->    133120   47.53%    win32/pe     support/_imaging.pyd
+    170496 ->     86016   50.45%    win32/pe     support/_imagingft.pyd
+     49212 ->     16896   34.33%    win32/pe     support/_socket.pyd
+     27648 ->      9728   35.18%    win32/pe     support/_speedups.pyd
+     57401 ->     18432   32.11%    win32/pe     support/_sre.pyd
+    495616 ->    197120   39.77%    win32/pe     support/_ssl.pyd
+     36864 ->     11264   30.55%    win32/pe     support/_winreg.pyd
+     15360 ->      7680   50.00%    win32/pe     support/cBanana.pyd
+     45117 ->     17408   38.58%    win32/pe     support/datetime.pyd
+    196608 ->     36352   18.49%    win32/pe     support/htmlc.pyd
+     24576 ->      6144   25.00%    win32/pe     support/mmap.pyd
+     61440 ->     17920   29.16%    win32/pe     support/mxDateTime.pyd
+    135228 ->     47616   35.21%    win32/pe     support/pyexpat.pyd
+     20539 ->      5120   24.92%    win32/pe     support/select.pyd
+     32768 ->      8704   26.56%    win32/pe     support/sha256.pyd
+    405504 ->    171008   42.17%    win32/pe     support/unicodedata.pyd
+     69632 ->     21504   30.88%    win32/pe     support/win32api.pyd
+     24576 ->      5632   22.91%    win32/pe     support/win32event.pyd
+     77824 ->     20992   26.97%    win32/pe     support/win32file.pyd
+     36864 ->     10752   29.16%    win32/pe     support/win32process.pyd
+     20480 ->      5120   25.00%    win32/pe     support/win32trace.pyd
+    655360 ->    168448   25.70%    win32/pe     support/win32ui.pyd
+     32768 ->      9216   28.12%    win32/pe     support/win32uiole.pyd
+   2240512 ->    367616   16.40%    win32/pe     support/wxc.pyd
+     61497 ->     23552   38.29%    win32/pe     support/zlib.pyd
+   1712128 ->    602112   35.16%    win32/pe     support/chartdir.dll
+     69632 ->     27136   38.97%    win32/pe     support/pychartdir23.dll
+    315392 ->    105472   33.44%    win32/pe     support/pythoncom23.dll
+     94208 ->     40448   42.93%    win32/pe     support/pywintypes23.dll
+   3416064 ->   1494016   43.73%    win32/pe     support/wxmsw24uh.dll
+   --------------------   ------   -----------   -----------
+  11940767 ->   4093440   34.28%                 [ 33 files ]
+}}}
+
 -- David Bolen
