@@ -1,0 +1,16 @@
+##language:en
+== logging module and %(filename)s ==
+When using the logging module, the %(filename)s format option doesn't work. It always ends up in the output as "_ _init_ _.pyo".
+
+The problem is that the module uses source file names to determine when it has walked back on the stack to the caller. In the py2exe environment, this (fragile) logic breaks. The following code will workaround the problem.
+
+=== Example ===
+{{{
+import sys
+if hasattr(sys, "frozen"):
+    import logging
+    logging._srcfile = "logging\__init__.pyo"
+}}} 
+
+Note, this is in a Windows environment. The '\' should probably be replaced with a '/' for a Unix environment.
+
