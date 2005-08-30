@@ -9,7 +9,7 @@ The problem is that the module uses source file names to determine when it has w
 import sys
 if hasattr(sys, "frozen"):
     import logging
-    logging._srcfile = "logging\__init__.pyo"
+    logging._srcfile = r"logging\__init__.pyo"
 }}} 
 
 Note, this is in a Windows environment. The '\' should probably be replaced with a '/' for a Unix environment.
