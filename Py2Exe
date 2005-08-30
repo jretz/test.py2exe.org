@@ -92,6 +92,8 @@ I like to distribute my application with py2exe but I can not make py2exe setup 
  * Py2exeEnvironment - information about the environment for the executable
 === py2exe and subprocess ===
  * Py2ExeSubprocessInteractions - getting subprocess module to work with py2exe.
+=== py2exe and logging module ===
+ * LoggingModule - Getting the %(filename)s format string working in the python logging module.
 
 === Fixes ===
  * ExtendingExample  a "-.zip" is missing
