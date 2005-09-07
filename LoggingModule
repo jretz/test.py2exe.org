@@ -14,3 +14,5 @@ if hasattr(sys, "frozen"):
 
 Note, this is in a Windows environment. The '\' should probably be replaced with a '/' for a Unix environment.
 
+Update: this issue was opened as ticket 1276210 with the Python folks at SourceForge and they've checked in a fix as of 2005/09/02. No idea what release that will be available in.
+
