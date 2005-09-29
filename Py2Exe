@@ -67,7 +67,8 @@ I had to "upgrade" also my knowledge about workarounds from py2exe 0.4
  * ["PIL and reportlab"]  If you've read ["PIL and py2exe"]  and still get ''cannot identify image file'', read this
 === py2exe and Python ADODB modules ===
  * ADODB package Modules named adodb_xxx (like adodb_mysql) are not added automatically, must be added explicitly
-
+=== py2exe and PyXML ===
+ * If you're getting 'File "xml\sax\saxexts.pyc", line 77, in make_parser; xml.sax._exceptions.SAX''''''Reader''''''Not''''''Available: No parsers found', try adding "--packages xml.sax.drivers,xml.sax.drivers2" to your setup.py py2exe command.
 === py2exe and win32com ===
  * WinShell  using win32com.shell with py2exe 0.5
  * IncludingTypelibs allowing use of makepy generated typelibs
