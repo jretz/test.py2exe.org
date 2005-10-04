@@ -1,0 +1,8 @@
+Currently the py2exe home page doesnt include a complete list of configuration keywords. You can see the list of options and keywords that py2exe supports by doing:
+
+{{{
+>>> import py2exe
+>>> help(py2exe)
+}}}
+
+In addition, the [http://docs.python.org/dist/dist.html distutils documentation] explains other useful keywords.
