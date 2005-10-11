@@ -1,7 +1,7 @@
 = py2exe =
 Py2Exe is an additional command to DistUtils, that creates standalone distributions for Win32.
 
-Its home is here [http://starship.python.net/crew/theller/py2exe/] and on Sourceforge [http://sourceforge.net/projects/py2exe/]
+Its home is here [http://www.py2exe.org/] and on Sourceforge [http://sourceforge.net/projects/py2exe/]
 
 == How does py2exe work and what are all those files? ==
 
