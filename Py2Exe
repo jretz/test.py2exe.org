@@ -91,7 +91,7 @@ I like to distribute my application with py2exe but I can not make py2exe setup 
 === py2exe and MatPlotLib ===
  * MatPlotLib - Fixing and including configuration information for this plotting package.
 === py2exe and Tix ===
- * TixSetup - Including TCL Tix files to make Tix apps work.
+ * TixSetup - Including the Tix DLL and Tcl files to make Tix apps work.
 === the runtime enviroment ===
  * Py2exeEnvironment - information about the environment for the executable
 === py2exe and subprocess ===
