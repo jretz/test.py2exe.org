@@ -1,0 +1,44 @@
+= Introduction =
+[http://tix.sourceforge.net/ Tix], the Tk Interface eXtension, is a powerful set of user interface components that expands the capabilities of your Tcl/Tk and Python applications. This page describes building a "Hello World" Tix application with py2exe.
+
+= Tix Hello World =
+Here is a very simple Tix application. Save it as hello.py:
+
+{{{
+#!python
+import Tix
+
+window = Tix.Tk()
+Tix.Label(window, text='Hello World').grid()
+window.mainloop()
+}}}
+
+= setup.py for hello.py =
+py2exe doesn't discover the use of the Tix DLL and Tcl files, so you must include them explicitly. The following setup.py builds a working EXE for the hello.py above:
+
+{{{
+#!python
+import glob
+import os
+import sys
+from distutils.core import setup
+import py2exe
+
+def files(folder):
+    for path in glob.glob(folder+'/*'):
+        if os.path.isfile(path):
+            yield path
+
+data_files=[
+            ('.', glob.glob(sys.prefix+'/DLLs/tix81*.dll')),
+            ('tcl/tix8.1', files(sys.prefix+'/tcl/tix8.1')),
+            ('tcl/tix8.1/bitmaps', files(sys.prefix+'/tcl/tix8.1/bitmaps')),
+            ('tcl/tix8.1/pref', files(sys.prefix+'/tcl/tix8.1/pref')),
+           ]
+
+setup(
+      script_args=['py2exe'],
+      windows=['hello.py'],
+      data_files=data_files,
+     )
+}}}

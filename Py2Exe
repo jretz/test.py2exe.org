@@ -90,6 +90,8 @@ you can create a web application without IIS or Apache.
 I like to distribute my application with py2exe but I can not make py2exe setup script to recognize that x.ptl is a valid  python files. Any idea how to do this? - impossible: ["Quixote & py2exe"]  HAM20040602
 === py2exe and MatPlotLib ===
  * MatPlotLib - Fixing and including configuration information for this plotting package.
+=== py2exe and Tix ===
+ * TixSetup - Including TCL Tix files to make Tix apps work.
 === the runtime enviroment ===
  * Py2exeEnvironment - information about the environment for the executable
 === py2exe and subprocess ===
