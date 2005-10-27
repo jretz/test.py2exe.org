@@ -100,6 +100,8 @@ I like to distribute my application with py2exe but I can not make py2exe setup 
  * LoggingModule - Getting the %(filename)s format string working in the python logging module.
 === py2exe and win32pipe ===
  * IssuesWithWin32pipe (from pywin32) in a bundle.
+=== p2exe and Python Eggs ===
+ * ExeWithEggs - A recipe for creating an .exe out of eggs
 
 === Fixes ===
  * ExtendingExample  a "-.zip" is missing
