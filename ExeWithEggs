@@ -2,17 +2,18 @@ This is an ugly hack that, I assume, will go away some day when py2exe is aware 
 
 This is cut from a couple spots in my script. The basic flow is:
 
-1. unpack zipped eggs, because I believe py2exe chokes on them when
+ 1. unpack zipped eggs, because I believe py2exe chokes on them when
 resolving dependencies
-2. keep track of the top level packages in the eggs
-3. add all of the files in the eggs to the data_files, so that the
+ 2. keep track of the top level packages in the eggs
+ 3. add all of the files in the eggs to the data_files, so that the
 eggs are installed along side the main exe
-4. build the exe
-5. generate a new library.zip that does not include anything in the
+ 4. build the exe
+ 5. generate a new library.zip that does not include anything in the
 top level packages found in step 2
 
 here's steps 1 and 2:
 
+{{{
 import pkg_resources
 eggs = pkg_resources.require("TurboGears")
 
@@ -33,8 +34,11 @@ for egg in eggs:
    eggpacks.update(egg.get_metadata_lines("top_level.txt"))
 eggspth.close()
 eggpacks.remove("pkg_resources")
+}}}
 
 and here's step 5:
+
+{{{
    import zipfile
 
    oldzipfile = "dist/exe/library.zip"
@@ -57,3 +61,4 @@ and here's step 5:
 
    os.remove(oldzipfile)
    os.rename(newzipfile, oldzipfile)
+}}}
