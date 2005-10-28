@@ -1,39 +1,11 @@
 = Introduction =
 [http://matplotlib.sf.net MatPlotLib] is a module to produce nice-looking plots in Python using a wide variety of back-end packages, at least one of which is likely to be available for your system.  This ability to do things in a generic fashion makes this a simple system to use, but it gets complicated if you wish to distribute an executable instead of scripts.  This page describes what I had to do to make matplotlib work with py2exe.
 
-= Changes required to matplotlib =
-''As with version 0.82, this change is already in upstream source and no longer needed. Just include the special setup.py code below, and you should be fine'' -- Ferry Dave 07-03-2005
-
-I had to patch matplotlib's __init__.py file in the get_data_path() routine.  Specifically, right before raising the error at the end, I added the following code
-{{{
-#!python
-      # CODE ADDED TO SUPPORT PY2EXE
-      if sys.frozen:
-         path = os.path.join(os.path.split(sys.path[0])[0], 'matplotlib')
-         return path
-}}}
-
-MichaelTwomey - I had to patch the patch above to handle sys.path a bit differently. With the above patch and my py2exe's behaviour instead of getting something like c:\apps\myapp\matplotlibdata, I was getting c:\apps\matplotlibdata as the data path. So I've used the following instead:
-
-{{{
-if sys.platform=='win32' and sys.frozen:
-    path = os.path.join(sys.path[0], 'matplotlibdata')
-    return path
-}}}
-
-As a workaround to support both methods:
-
-{{{
-if sys.platform=='win32' and sys.frozen:
-    path = os.path.join(os.path.split(sys.path[0])[0], 'matplotlibdata')
-    if not os.path.isdir(path):
-        # Try again assuming sys.path[0] is a dir not a exe
-        path = os.path.join(sys.path[0], 'matplotlibdata')
-    return path
-}}}
+== Dependencies you must meet ==
+Numerical Python from http://numeric.scipy.org/
+pytz from http://pytz.sourceforge.net
 
 = Special content for setup.py to use matplotlib =
-We also need to make sure we get the matplotlib subdirectory created in the distribution.  This is where we'll include all of the stuff matplotlib includes in the pythonXX\share\matplotlib directory.  This is also where the __init__ file has been updated to look for this information.
 {{{
 #!python
 # We need to import the glob module to search for all files.
@@ -41,8 +13,10 @@ import glob
 
 # We need to exclude matplotlib backends not being used by this executable.  You may find
 # that you need different excludes to create a working executable with your chosen backend.
+# We also need to include matplotlib.numerix.random_array
 opts = {
-    'py2exe': { 'excludes': ['_gtkagg', '_tkagg'],
+    'py2exe': { 'includes': 'matplotlib.numerix.random_array',
+                'excludes': ['_gtkagg', '_tkagg'],
                 'dll_excludes': ['libgdk-win32-2.0-0.dll',
                                  'libgobject-2.0-0.dll']
               }
@@ -50,6 +24,7 @@ opts = {
 
 # Additional data files are required by matplotlib.  Note that the glob.glob routine
 # doesn't seem to pick up the .matplotlib resource file, so I copy that separately.
+# Do the same if you need to
 setup(
     data_files = [(r'matplotlibdata', glob.glob(r'c:\python24\share\matplotlib\*')),
                   (r'matplotlibdata', [r'c:\python24\share\matplotlib\.matplotlibrc'])],
@@ -58,11 +33,3 @@ setup(
     console = ['demo.py']
     )
 }}}
-
-== Comment ==
-You may experience problems with missing modules. My py2exe'd Maplotlib complained about missing module 'random_array', which I had to include manually by adding this to the tuple ''setup()'':
-{{{
-#!python
-    packages = ['matplotlib.numerix.random_array',],
-}}}
--- Ferry Dave 07-05-200
