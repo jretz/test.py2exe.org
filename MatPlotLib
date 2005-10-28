@@ -30,10 +30,5 @@ setup(
     )
 }}}
 
-== WARNING ==
-if you end up with
-{{{
-  File "pytz\__init__.pyo", line 53, in timezone
-KeyError: 'UTC'
-}}}
-in your log file then see http://sourceforge.net/tracker/index.php?func=detail&aid=1036920&group_id=79122&atid=555590
+= Copying PyTZ folder =
+Now copy pytz folder from C:\Python24\Lib\site-packages to your dist/ folder and you're done!
