@@ -1,10 +1,6 @@
 = Introduction =
 [http://matplotlib.sf.net MatPlotLib] is a module to produce nice-looking plots in Python using a wide variety of back-end packages, at least one of which is likely to be available for your system.  This ability to do things in a generic fashion makes this a simple system to use, but it gets complicated if you wish to distribute an executable instead of scripts.  This page describes what I had to do to make matplotlib work with py2exe.
 
-== Dependencies you must meet ==
-Numerical Python from http://numeric.scipy.org/
-pytz from http://pytz.sourceforge.net
-
 = Special content for setup.py to use matplotlib =
 {{{
 #!python
