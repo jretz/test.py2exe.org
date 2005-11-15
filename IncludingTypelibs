@@ -62,3 +62,6 @@ print o.property
 }}}
 
 
+
+I believe that Solution 2 is not correct.  It will work if you happen to be on a machine that has python installed, but if your goal is to use py2exe to distribute an application to machines that don't have python (and win32com) installed, then I don't think it will work.  What the py3exe stuff in Solution 1 does is incorporate the generated win32com wrappers into the py2exe stuff.  
+-Alec Wysoker
