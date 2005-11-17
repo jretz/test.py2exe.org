@@ -53,4 +53,73 @@ This should allow the system to pick an appropriate icon. ( only tested with 2.5
     ib.AddIconFromFile("MyIcon.ico",wx.BITMAP_TYPE_ANY)
     self.SetIcons(ib)
 }}}
- 
+
+'''How to access a Win32 .exe's or .dll's icons from wxPython 2.6.1.0'''
+The following information was discovered by looking at gdiimage.cpp in the wxPython source.
+
+Supposing your py2exe setup.py file had the following icons:
+
+{{{
+"icon_resources": [(1, "myicon1.ico"), (42, "myicon2.ico")]
+}}}
+
+To programmatically determine the path of the currently running .exe, use:
+
+{{{
+import win32api
+exeName = win32api.GetModuleFileName(win32api.GetModuleHandle(None))
+}}}
+
+You can get the first icon (myicon1.ico) in the .exe with the following:
+
+{{{
+icon = wx.Icon(exeName, wx.BITMAP_TYPE_ICO)
+}}}
+
+You can also get the first icon (myicon1.ico) with a zero based index:
+
+{{{
+icon = wx.Icon(exeName + ";0", wx.BITMAP_TYPE_ICO)
+}}}
+
+Likewise, you can get the second icon (myicon2.ico) with:
+
+{{{
+icon = wx.Icon(exeName + ";1", wx.BITMAP_TYPE_ICO)
+}}}
+
+You can get an icon based on it's icon id, just specify the negated id number (myicon2.ico):
+
+{{{
+icon = wx.Icon(exeName + ";-42", wx.BITMAP_TYPE_ICO)
+}}}
+
+Because of the way it's implemented, you cannot specify ";-1", you will get incorrect operation or a crash.
+
+If you wanted to set your window's title bar and task switch icons you would do the following in your wx.Frame _ _init_ _:
+
+{{{
+self.SetIcon(icon)
+}}}
+
+Here's an example program:
+
+{{{
+#!python
+import wx, win32api
+
+class MyFrame(wx.Frame):
+    def __init__(self, parent=None):
+        wx.Frame.__init__(self, parent, wx.ID_ANY)
+
+        # set window icon
+        exeName = win32api.GetModuleFileName(win32api.GetModuleHandle(None))
+        icon = wx.Icon(exeName, wx.BITMAP_TYPE_ICO)
+        self.SetIcon(icon)
+
+if __name__ == '__main__':
+    app = wx.App(redirect=False)
+    frame = MyFrame()
+    frame.Show(True)
+    app.MainLoop()
+}}}
