@@ -62,6 +62,8 @@ I had to "upgrade" also my knowledge about workarounds from py2exe 0.4
  * Py2exeAndPyQt If you're getting `File "qt.pyc", line 7, in __load Import Error: No module named sip`, read this
 === py2exe and wxPython ===
  * Py2exeAndwxPython If you're getting ''wxObjectPtr not found'', read this
+=== py2exe and PyGTK ===
+ * Py2exeAndPyGTK A recipe for py2exe and PyGTK
 === py2exe and PIL ===
  * ["PIL and py2exe"]  If you're getting ''cannot identify image file'', read this
 === py2exe and reportlab ===
