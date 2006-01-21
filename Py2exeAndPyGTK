@@ -1,0 +1,79 @@
+create your handytool.py:
+
+{{{
+import sys
+import pygtk
+if not sys.platform == 'win32':
+    pygtk.require('2.0')
+import gtk
+
+from mainwindow import MainWindow
+
+if __name__ == '__main__':
+    # enable threading
+    gtk.threads_init()
+    gtk.threads_enter()
+
+    # create the main window
+    myapp = MainWindow()
+
+    # start the program loop
+    gtk.main()
+
+    # cleanup
+    gtk.threads_leave()
+}}}
+
+create your setup.py file:
+
+{{{
+from distutils.core import setup
+import py2exe
+
+setup(
+    name = 'handytool',
+    description = 'Some handy tool',
+    version = '1.0',
+
+    windows = [
+                  {
+                      'script': 'handytool.py',
+                      'icon_resources': [(1, "handytool.ico")],
+                  }
+              ],
+
+    options = {
+                  'py2exe': {
+                      'packages':'encodings',
+                      'includes': 'cairo, pango, pangocairo, atk, gobject',
+                  }
+              },
+
+    data_files=[
+                   'handytool.glade',
+                   'readme.txt'
+               ]
+)
+}}}
+
+run setup.py py2exe. You'll get a warning:
+{{{
+The following modules appear to be missing
+['gdk', 'ltihooks']
+}}}
+Ignore it ;)
+
+Once that's done, you'll need to copy the etc, lib and share directories from your GTK+ install
+to the dist dir py2exe created. Optionaly, you can clean the share\locale dir to
+include only the locales you need for GTK+. Same thing for share\themes (I left
+both Default and MS-Windows).
+
+That's it :D
+
+Tested with:
+  * Windows XP SP2
+  * Python 2.4.2
+  * gtk-win32 2.8.8-rc2
+  * pycairo 1.0.2-1
+  * pygtk 2.8.4-1
+  * py2exe 0.6.3
