@@ -24,6 +24,7 @@ if __name__ == '__main__':
     gtk.threads_leave()
 }}}
 
+
 create your setup.py file:
 
 {{{
@@ -56,6 +57,7 @@ setup(
 )
 }}}
 
+
 run setup.py py2exe. You'll get a warning:
 {{{
 The following modules appear to be missing
@@ -68,12 +70,46 @@ to the dist dir py2exe created. Optionaly, you can clean the share\locale dir to
 include only the locales you need for GTK+. Same thing for share\themes (I left
 both Default and MS-Windows).
 
-That's it :D
+Note you'll want to set the working directory (Start in:) for any shortcut you create
+to the application directory containing the executable.
 
-Tested with:
-  * Windows XP SP2
-  * Python 2.4.2
-  * gtk-win32 2.8.8-rc2
-  * pycairo 1.0.2-1
-  * pygtk 2.8.4-1
-  * py2exe 0.6.3
+(Optional) an Innosetup .iss file to create an installer for handytool:
+{{{
+[Setup]
+AppName=handytool
+AppVerName=handytool 1.0
+AppPublisher=me
+AppPublisherURL=http://www.localhost.me
+DefaultDirName={pf}\handytool
+DefaultGroupName=handytool
+DisableProgramGroupPage=true
+OutputBaseFilename=setup
+Compression=lzma
+SolidCompression=true
+AllowUNCPath=false
+VersionInfoVersion=1.0
+VersionInfoCompany=me inc
+VersionInfoDescription=handytool
+PrivilegeRequired=admin
+
+[Dirs]
+Name: {app}; Flags: uninsalwaysuninstall;
+
+[Files]
+Source: dist\*; DestDir: {app}; Flags: ignoreversion recursesubdirs createallsubdirs
+
+[Icons]
+Name: {group}\handytool; Filename: {app}\handytool.exe; WorkingDir: {app}
+
+[Run]
+Filename: {app}\handytool.exe; Description: {cm:LaunchProgram,handytool}; Flags: nowait postinstall skipifsilent
+}}}
+
+This Recipe has been tested with:
+  * [http://www.microsoft.com/ Windows XP SP2]
+  * [http://www.python.org/download/ Python 2.4.3]
+  * [http://gladewin32.sourceforge.net/modules/wfdownloads/ gtk-win32 2.8.14-rc1]
+  * [http://www.mapr.ucl.ac.be/~gustin/win32_ports/pygtk.html pycairo 1.0.2-1]
+  * [http://www.mapr.ucl.ac.be/~gustin/win32_ports/pygtk.html pygtk 2.8.4-1]
+  * [http://www.py2exe.org/ py2exe 0.6.5]
+  * [http://www.jrsoftware.org/isinfo.php Inno Setup 5.1.6]
