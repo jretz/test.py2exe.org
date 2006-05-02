@@ -8,7 +8,7 @@ Its home is here [http://www.py2exe.org/] and on Sourceforge [http://sourceforge
 Let's start from the needed results going back to how py2exe does its job.
 
 Python is an interpreted language and as long as Microsoft will not ship a Python interpreter (and its accompanying class library) with every copy of its flagship operating systems products, there is no direct way to execute a Python script on a vanilla Microsoft OS machine.
-For most casual user of py2exe, that means that you must create an executable (.exe) file that when clicked on will just run the script. 
+For most casual user of py2exe, that means that you must create an executable (.exe) file that when clicked on will just run the script.
 This is what py2exe does for you.
 After py2exe has done its magic, you should have a "dist" directory with all the files necessary to run your python script. No install necessary. Click and run. No DLL hell, nothing else to download.
 
@@ -73,8 +73,12 @@ I had to "upgrade" also my knowledge about workarounds from py2exe 0.4
 === py2exe and PyXML ===
  * ["Py2exeAndPyXML"] If you're getting ''File "xml\sax\saxexts.pyc", line 77, in make_parser; xml.sax._exceptions.SAX''''''Reader''''''Not''''''Available: No parsers found'', read this.
 === py2exe and win32com ===
- * WinShell  using win32com.shell with py2exe 0.5
- * IncludingTypelibs allowing use of makepy generated typelibs
+ * Py2exeAndWin32com creating a win32com exe and/or dll com server
+ * WinShell Using win32com.shell with py2exe 0.5
+ * IncludingTypelibs Allowing use of makepy generated typelibs
+=== py2exe and ctypes.com ===
+ * Py2exeAndCtypesComDllServer creating a ctypes.com dll com server
+ * Py2exeAndCtypesComExeServer creating a ctypes.com exe com server
 === py2exe and Innosetup ===
  * BetterCompression  Getting complete wxPython Programms down to around 4 Megabytes
  * SetupLanguage  How to localize the language with [http://starship.python.net/crew/theller/py2exe/ py2exe] and [http://www.jrsoftware.org/isinfo.php InnoSetup]
@@ -84,7 +88,7 @@ I had to "upgrade" also my knowledge about workarounds from py2exe 0.4
 === py2exe and SciPy ===
  * ScipyImportProblems  Using py2exe with scipy ends up with missing {{{cephes}}} and {{{__cvs_version__}}} messages.  Here is a fix.
 === py2exe and PythonCard ===
- * PythonCardSetup Getting pythoncard to work by editing setup.py 
+ * PythonCardSetup Getting pythoncard to work by editing setup.py
 === py2exe and Quixote ===
 Quixote is a pythonivc toolkit for webpages which allows one to execute ptl files using ihooks. You can distribute your web application with medusa or twisted and hence
 you can create a web application without IIS or Apache.
