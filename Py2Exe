@@ -61,6 +61,7 @@ I had to "upgrade" also my knowledge about workarounds from py2exe 0.4
  * OptimizedBytecode  How to get optimized bytecode for all modules
  * CustomDataInExe  Add custom data in the executable?
  * HowToDetermineIfRunningFromExe  Simple functions to determine if you're in an .exe or .py
+ * WhereAmI sometimes you need to now where your exe is within the filesystem
 === py2exe and PyQt ===
  * Py2exeAndPyQt  If you're getting `File "qt.pyc", line 7, in __load Import Error: No module named sip`, read this
 === py2exe and wxPython ===
