@@ -1,0 +1,22 @@
+##language:en
+== You want to know WHERE your .exe is ==
+Why? Maybe, you are building a website and have a subdir ./static below the directory in which your .exe resides, from where you server all .css and .js that is static. Or, you put the logs right below the programs dir within ./log
+
+=== Problem ===
+You cannot rely on __FILE__, because __FILE__ is not there in the py2exed main-script.
+You could try to rely on ".", the "Current Directory", but that only works if your application was started there. That may happen, but it is not guaranted.
+
+=== Solution ===
+{{{
+import os
+import jpath
+
+if hasattr(sys,"frozen") and sys.frozen == "windows_exe":
+    p=jpath.path(os.path.abspath(sys.executable)).dirname()
+}}} 
+
+
+now p contains the directory where your exe resides, no matter from where your exe has been called (maybe it is in the path)
+
+"jpath" is the famous path module from [http://www.jorendorff.com/articles/python/path/ "Jason Orendorff"]
+
