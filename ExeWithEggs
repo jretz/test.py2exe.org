@@ -1,3 +1,21 @@
+py2exe does not currently (as of 0.6.5) work out of the box if some of your program's dependencies are in .egg form.
+
+
+== Unzipping the .eggs ==
+
+If your program does not itself use setuptools facilities (eg, pkg_resources), then all you need to do is make sure the dependencies are installed on your system in unzipped form, rather than in a zipped .egg.
+
+One way to achieve this is to use the `--always-unzip` option to easy_install.
+
+Another is to avoid easy_install by using `python setup.py install_lib` (and also `install_data` and `install_scripts`, if necessary) when installing the dependencies.
+
+The result is a normal `Library.zip` which includes the dependency's files along with all the others.
+
+
+== Including .egg files in your dist directory ==
+
+Alternatively, you can include the .egg in your dist directory by the following method.
+
 This is an ugly hack that, I assume, will go away some day when py2exe is aware of eggs. The good thing about this hack is that the basic principles work with both py2exe and py2app.
 
 This is cut from a couple spots in my script. The basic flow is:
