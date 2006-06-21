@@ -1,35 +1,37 @@
-##language:en
+#acl_rights_default = "All:read"
+#format wiki
+#language en
 #pragma section-numbers off
+= py2exe =
+py2exe is a [http://www.python.org/ Python] [http://www.python.org/doc/current/dist/ Distutils] extension which converts Python scripts into executable Windows programs, able to run without requiring a Python installation.
 
-= This Site =
+Development is hosted at [http://sourceforge.net/projects/py2exe/ SourceForge]. You can find the [https://lists.sourceforge.net/lists/listinfo/py2exe-users mailing list], [http://sourceforge.net/cvs/?group_id=15583 CVS], and [http://sourceforge.net/project/showfiles.php?group_id=15583 downloads] there.
 
-== Ctypes ==
-CtypesModule is the brainstorming and development area for the [http://starship.python.net/crew/theller/ctypes/ ctypes module].
+py2exe was originally developed by ThomasHeller who still makes contributions, JimmyRetzlaff is the current maintainer, and MarkHammond also makes regular contributions. Code contributions are always welcome from the community and many people provide invaluable help on the mailing list and the Wiki.
 
-== py2exe ==
-Py2Exe is the corresponding start page for the [http://starship.python.net/crew/theller/py2exe/ py2exe tool].
+py2exe is used by [http://www.bittorrent.com BitTorrent], [http://spambayes.sourceforge.net/windows.html SpamBayes], and thousands more - py2exe averages over 5,000 downloads per month.
 
+In an effort to limit Wiki spam, this front page is not editable. Feel free to edit other pages with content relevant to py2exe. You will need an account to edit (but not to read) and your account information will be used only for the purposes of administering this Wiki.
 
+== Starting Points ==
+ * [http://sourceforge.net/project/showfiles.php?group_id=15583 Download py2exe from SourceForge]
+ * ["Tutorial"]: the basics of creating a Windows executable
+ * ["FAQ"]: What does py2exe actually do and what are all those files?
+ * [https://lists.sourceforge.net/lists/listinfo/py2exe-users Get help on the mailing list]
+ * GeneralTipsAndTricks: general tips for working with special situations
+ * WorkingWithVariousPackagesAndModules: many just work, others need more handling
+ * NonEnglish: read about py2exe in languages like Spanish, Korean, ...
+ * RecentChanges: see where people are currently working
+ * WikiSandBox: feel free to change this page and experiment with editing
+ * FindPage: search or browse the database in various ways
+ * SyntaxReference: quick access to wiki syntax
+ * SiteNavigation: get an overview over this site and what it contains
 
+== How to use this site ==
+A Wiki is a collaborative site, anyone can contribute and share:
 
-= Other Sites =
-
-== what is this Wikithing? ==
-----
-A WikiWikiWeb is a collaborative hypertext environment, with an emphasis on easy access to and modification of information. This wiki can also link to InterWiki space.
-
-MoinMoin is a Python Wiki:WikiClone, based on Wiki:PikiPiki. The name is a common German slang expression explained on the MoinMoin page. If you run a Wiki using MoinMoin, please add it to the MoinMoin:MoinMoinWikis page. Contributed code is on the MoinMoin:MacroMarket, MoinMoin:ActionMarket and MoinMoin:ParserMarket pages. For more details and further topics, see the MoinMoin page.
-
-----
-You can edit any page by pressing the link at the bottom of the page.  Capitalized words joined together form a WikiName, which hyperlinks to another page.  The highlighted title searches for all pages that link to the current page.  Pages which do not yet exist are linked with a question mark: just follow the link and you can add a definition.
-
-To get an overview over this site and what it contains, see the SiteNavigation page.
-
-To learn more about what a WikiWikiWeb is, read about MoinMoin:WhyWikiWorks and the MoinMoin:WikiNature. Also, consult the MoinMoin:WikiWikiWebFaq.
-
-----
-Interesting starting points:
-  * RecentChanges: see where people are currently working
-  * HelpForBeginners: to get you going
-  * WikiSandBox: feel free to change this page and experiment with editing
-  * FindPage: search or browse the database in various ways
+ * Edit any page by pressing '''[[GetText(Edit)]]''' at the top or the bottom of the page. The FrontPage is not editable and you must be logged in to '''[[GetText(Edit)]]''' other pages. This is to avoid Wiki spam.
+ * Create a link to another page with joined capitalized words (like WikiSandBox) or with {{{["quoted words in brackets"].}}}
+ * Search for page titles or text within pages using the search box at the top of any page.
+ * See HelpForBeginners to get you going, HelpContents for all help pages.
+To learn more about what a WikiWikiWeb is, read about MoinMoin:WhyWikiWorks and the MoinMoin:WikiNature. Also, consult the HelpMiscellaneous/FrequentlyAskedQuestions page.
