@@ -1,12 +1,12 @@
 = Tutorial =
 
-py2exe turns Python programs into packages than can be run on other Windows computers without needing to install Python on those computers. There are a few simple steps needed to use py2exe once you've installed it:
+py2exe turns Python programs into packages than can be run on Windows computers without needing to install Python on those computers. There are a few simple steps needed to use py2exe once you've installed it:
 
    1. [#Step1 Create/test your program]
    2. [#Step2 Create your setup script (setup.py)]
-   3. Run your setup script
-   4. Test your executable
-   5. Build an installer if applicable
+   3. [#Step3 Run your setup script]
+   4. [#Step4 Test your executable]
+   5. [#Step5 Build an installer if applicable]
 
 [[Anchor(Step1)]]
 == Create/test your program ==
@@ -43,7 +43,7 @@ C:\>python setup.py install
 
 "install" is a Distutils command that installs something (typically a Python module or package). The details Distutils needs to do that installation are contained in setup.py (and sometimes other associated files).
 
-"py2exe" is a new Distutils command that is added when you install py2exe. To use py2exe you need to create a setup.py file to tell Distutils and py2exe what you want to do. Here's a setup.py who's simplicity is appropriate for our sample program...
+"py2exe" is a new Distutils command that is added when you import py2exe. To use py2exe you need to create a setup.py file to tell Distutils and py2exe what you want to do. Here's a setup.py who's simplicity is appropriate for our sample program...
 
 {{{#!python
 from distutils.core import setup
@@ -59,4 +59,63 @@ Notice that this is ordinary Python. Let's go through it line by line...
  3. Whitespace is good!
  4. Call setup and tell it that we want a single console application and the main entry point is "hello.py".
 
-MORE TO COME!!!
+[[Anchor(Step3)]]
+== Run your setup script ==
+The next step is to run your setup script. Make sure to give the py2exe command and expect to see lots and lots of output:
+
+{{{
+C:\Tutorial>python setup.py py2exe
+running py2exe
+*** searching for required modules ***
+*** parsing results ***
+creating python loader for extension 'zlib'
+creating python loader for extension 'unicodedata'
+creating python loader for extension 'bz2'
+*** finding dlls needed ***
+*** create binaries ***
+*** byte compile python files ***
+byte-compiling C:\Tutorial\build\bdist.win32\winexe\temp\bz2.py to bz2.pyc
+byte-compiling C:\Tutorial\build\bdist.win32\winexe\temp\unicodedata.py to unicodedata.pyc
+byte-compiling C:\Tutorial\build\bdist.win32\winexe\temp\zlib.py to zlib.pyc
+skipping byte-compilation of c:\Python24\lib\StringIO.py to StringIO.pyc
+
+[skipping many lines for brevity]
+
+skipping byte-compilation of c:\Python24\lib\warnings.py to warnings.pyc
+*** copy extensions ***
+*** copy dlls ***
+copying c:\Python24\lib\site-packages\py2exe\run.exe -> C:\Tutorial\dist\hello.exe
+
+*** binary dependencies ***
+Your executable(s) also depend on these dlls which are not included,
+you may or may not need to distribute them.
+
+Make sure you have the license if you distribute any of them, and
+make sure you don't distribute files belonging to the operating system.
+
+   ADVAPI32.dll - C:\WINDOWS\system32\ADVAPI32.dll
+   USER32.dll - C:\WINDOWS\system32\USER32.dll
+   SHELL32.dll - C:\WINDOWS\system32\SHELL32.dll
+   KERNEL32.dll - C:\WINDOWS\system32\KERNEL32.dll
+
+C:\Tutorial>
+}}}
+
+Two directories will be created when you run your setup script... build and dist. The build directory is used as working space while your application is being packaged. It is safe to delete the build directory after your setup script has finished running. The files in the dist directory are the ones needed to run your application. If you are using Python 2.4 or newer then MSVCR71.dll will be included in dist - this is a Microsoft DLL and you need to determine if you have the legal right to distribute it.
+
+[[Anchor(Step4)]]
+== Test your executable ==
+Now that the package has been created it is ready to test:
+
+{{{
+C:\Tutorial>cd dist
+
+C:\Tutorial\dist>hello.exe
+Hello World
+}}}
+
+Excellent, it works!!!
+
+[[Anchor(Step5)]]
+== Build an installer if applicable ==
+py2exe is not an installer builder - it merely assembles the files needed to run your Python program. There are plenty of good installer builders out there including some that are open source (e.g., [http://nsis.sourceforge.net/Main_Page NSIS]) and some that are free (e.g., [http://www.jrsoftware.org/isinfo.php Inno Setup]).
