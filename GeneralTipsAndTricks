@@ -20,3 +20,4 @@
  * ["WhereAmI"] - sometimes you need to now where your exe is within the filesystem
  * Py2exeEnvironment - Information about the environment for the executable
  * ["py2exe and windows services"] - some gained knowledge
+ * GuiApps - dealing with stdout
