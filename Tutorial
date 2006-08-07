@@ -1,0 +1,62 @@
+= Tutorial =
+
+py2exe turns Python programs into packages than can be run on other Windows computers without needing to install Python on those computers. There are a few simple steps needed to use py2exe once you've installed it:
+
+   1. [#Step1 Create/test your program]
+   2. [#Step2 Create your setup script (setup.py)]
+   3. Run your setup script
+   4. Test your executable
+   5. Build an installer if applicable
+
+[[Anchor(Step1)]]
+== Create/test your program ==
+
+The biggest step is almost always the first one. The good news is that py2exe typically has little or no impact on this step. The vast majority of things you can do with Python will work with py2exe. Many modules just work seamlessly with py2exe, but some third party modules will require a little extra work. Luckily there is help available at WorkingWithVariousPackagesAndModules.
+
+It's important that you make sure everything is working before you use py2exe. If py2exe fixes a broken program, then that's probably a bug in py2exe that needs to be fixed!
+
+The first example we'll use here is our old friend...
+
+{{{#!python
+print "Hello World!"
+}}}attachment:hello.py
+
+We need to make sure it's working...
+
+{{{
+C:\Tutorial>python hello.py
+Hello World
+
+C:\Tutorial>
+}}}
+
+Looks good!
+
+[[Anchor(Step2)]]
+== Create your setup script (setup.py) ==
+
+py2exe extends [http://www.python.org/doc/current/dist/ Distutils] with a new "command". If you've installed third party Python modules then there's a good chance you've seen at least one distutils command:
+
+{{{
+C:\>python setup.py install
+}}}
+
+"install" is a Distutils command that installs something (typically a Python module or package). The details Distutils needs to do that installation are contained in setup.py (and sometimes other associated files).
+
+"py2exe" is a new Distutils command that is added when you install py2exe. To use py2exe you need to create a setup.py file to tell Distutils and py2exe what you want to do. Here's a setup.py who's simplicity is appropriate for our sample program...
+
+{{{#!python
+from distutils.core import setup
+import py2exe
+
+setup(console=['hello.py'])
+}}}attachment:setup.py
+
+Notice that this is ordinary Python. Let's go through it line by line...
+
+ 1. When working with py2exe the only part of Distutils we'll typically need to reference directly is the setup function, so that's all we'll import.
+ 2. Once Distutils is loaded, we need to load py2exe so that it can add its command.
+ 3. Whitespace is good!
+ 4. Call setup and tell it that we want a single console application and the main entry point is "hello.py".
+
+MORE TO COME!!!
