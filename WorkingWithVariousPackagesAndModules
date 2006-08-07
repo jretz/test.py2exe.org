@@ -20,6 +20,7 @@
 
 == NumPy ==
  * If you're getting ''No scipy-style subpackage 'xxx' found in c:\...\library.zip\numpy. Ignoring'', try --skip-archive option.
+ * If you're using numarray and numpy together, be aware that they both have a _sort, and py2exe gets them confused. After py2exe creates the dist directotry, copy numpy/core/_sort.pyd and numarray/sort.pyd to their respective locations in the dist.
 
 == PIL ==
  * ["PIL and py2exe"]  If you're getting ''cannot identify image file'', read this
