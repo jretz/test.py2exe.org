@@ -17,10 +17,10 @@ In an effort to limit Wiki spam, this front page is not editable. Feel free to e
  * [http://sourceforge.net/project/showfiles.php?group_id=15583 Download py2exe from SourceForge]
  * ["Tutorial"]: the basics of creating a Windows executable
  * ["FAQ"]: What does py2exe actually do and what are all those files?
- * [https://lists.sourceforge.net/lists/listinfo/py2exe-users Get help on the mailing list]
  * GeneralTipsAndTricks: general tips for working with special situations
  * WorkingWithVariousPackagesAndModules: many just work, others need more handling
  * NonEnglish: read about py2exe in languages like Spanish, Korean, ...
+ * [https://lists.sourceforge.net/lists/listinfo/py2exe-users Get help on the mailing list]
  * RecentChanges: see where people are currently working
  * WikiSandBox: feel free to change this page and experiment with editing
  * FindPage: search or browse the database in various ways
