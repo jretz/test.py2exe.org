@@ -13,6 +13,8 @@ py2exe is used by [http://www.bittorrent.com BitTorrent], [http://spambayes.sour
 
 In an effort to limit Wiki spam, this front page is not editable. Feel free to edit other pages with content relevant to py2exe. You will need an account to edit (but not to read) and your account information will be used only for the purposes of administering this Wiki.
 
+The old [http://www.py2exe.org/old py2exe] web site is still available until that information has found its way into this wiki.
+
 == Starting Points ==
  * [http://sourceforge.net/project/showfiles.php?group_id=15583 Download py2exe from SourceForge]
  * ["News"]: information about the most recent releases
