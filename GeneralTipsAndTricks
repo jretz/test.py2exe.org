@@ -18,3 +18,4 @@
  * CustomDataInExe - Add custom data in the executable?
  * HowToDetermineIfRunningFromExe - Simple functions to determine if you're in an .exe or .py
  * ["WhereAmI"] - sometimes you need to now where your exe is within the filesystem
+ * Py2exeEnvironment - Information about the environment for the executable
