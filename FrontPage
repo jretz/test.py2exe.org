@@ -15,6 +15,7 @@ In an effort to limit Wiki spam, this front page is not editable. Feel free to e
 
 == Starting Points ==
  * [http://sourceforge.net/project/showfiles.php?group_id=15583 Download py2exe from SourceForge]
+ * ["News"]: information about the most recent releases
  * ["Tutorial"]: the basics of creating a Windows executable
  * ["FAQ"]: What does py2exe actually do and what are all those files?
  * GeneralTipsAndTricks: general tips for working with special situations
