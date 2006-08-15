@@ -17,3 +17,5 @@ sys.stderr = open(“my_stderr.log”, “w”)
 }}}
 
 However, you should probably take a look at the implementation in boot_common.py as it handles some interesting scenarios like lack of permission to create the log file.
+
+''Gooli''
