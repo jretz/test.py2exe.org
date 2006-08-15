@@ -1,0 +1,19 @@
+= py2exe error logging =
+
+A program running under Windows can be of two types : a console program or a windows program. A console program is one that runs in the command prompt window (cmd). Console programs interact with users using three standard channels : standard input, standard output and standard error (which are also known as stdin, stdout and sterr respectively). Stdin usually refers to the keyboard while both stdout and stderr refer to the screen. In Python, those standard channels are file-like objects that can be accessed through sys.stdin, sys.stdout and sys.stderr.
+
+As opposed to a console application, a windows application interacts with the user using a complex event-driven user interface and therefore has no need for the standard channels whose use in such applications usually results in a crash. A problem arises when a Python script packaged with py2exe encounters an unhandled exception and prints a stack trace to stderr because Windows hasn't provided a valid stderr to print the data to. In some cases the information printed to stderr will be ignored, in others the program will crash – neither of which is very helpful.
+
+In order to work around this issue, py2exe redirects the stderr standard channel to a file called app.exe.log where app.exe is the name of the executable created by it. Everything printed to stdout is ignored altogether by redirecting it to a "black hole" object. These redirections take place in py2exe's boot_common.py that contains standard startup code for all aplications created by py2exe. That code also displays the "See the logfile for details" message when the application terminates if anything has been written to the log (which may or may not be desirable).
+
+In order to override py2exe's default behavior, all you need to do is redirect sys.stderr (and possibly sys.stdout) to something of your making. 
+
+The simplest way to achieve this would be :
+
+{{{
+import sys
+sys.stderr = open(“my_stdout.log”, “w”)
+sys.stderr = open(“my_stderr.log”, “w”)
+}}}
+
+However, you should probably take a look at the implementation in boot_common.py as it handles some interesting scenarios like lack of permission to create the log file.
