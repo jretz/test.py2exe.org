@@ -12,7 +12,7 @@ The simplest way to achieve this would be :
 
 {{{
 import sys
-sys.stderr = open(“my_stdout.log”, “w”)
+sys.stdout = open(“my_stdout.log”, “w”)
 sys.stderr = open(“my_stderr.log”, “w”)
 }}}
 
