@@ -1,6 +1,10 @@
 = Tutorial =
 
-py2exe turns Python programs into packages than can be run on Windows computers without needing to install Python on those computers. There are a few simple steps needed to use py2exe once you've installed it:
+py2exe turns Python programs into packages that can be run on other Windows computers without needing to install Python on those computers. Python is needed on the computer where py2exe itself is run because py2exe is a Python program and it includes parts of Python in the package that is built.
+
+To successfully complete this tutorial you'll need to know the basics of Python (you can get started at python.org's [http://www.python.org/about/gettingstarted/ getting started] page). You'll also need to know [http://www.python.org/doc/faq/windows/#how-do-i-run-a-python-program-under-windows how to run Python programs from the command prompt].
+
+There are a few simple steps needed to use py2exe once you've installed it:
 
    1. [#Step1 Create/test your program]
    2. [#Step2 Create your setup script (setup.py)]
