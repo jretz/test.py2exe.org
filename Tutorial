@@ -42,7 +42,7 @@ Looks good!
 py2exe extends [http://www.python.org/doc/current/dist/ Distutils] with a new "command". If you've installed third party Python modules then there's a good chance you've seen at least one distutils command:
 
 {{{
-C:\>python setup.py install
+C:\Tutorial>python setup.py install
 }}}
 
 "install" is a Distutils command that installs something (typically a Python module or package). The details Distutils needs to do that installation are contained in setup.py (and sometimes other associated files).
