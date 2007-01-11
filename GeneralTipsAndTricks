@@ -22,3 +22,4 @@
  * ["py2exe and windows services"] - some gained knowledge
  * GuiApps - dealing with stdout
  * StderrLog - How does py2exe handle stack track printing and STDERR? How can Ichange that behaviour?
+ * ["Using SOAPpy with py2exe"] - How to get SOAPpy working with py2exe.
