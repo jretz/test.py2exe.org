@@ -38,3 +38,7 @@ Anyone have any ideas whats wrong? options={"py2exe": {"includes": "wxPython.wx}
 
 I'm having a similar problem in WinXP.  Boa Constructor doesn't work with wxPython2.5(it needs 2.4.2.4) but the version of AccessGrid I'm running requires wxPython2.5.  I fould that if I just copy the wx and wxPython directories for wxPython2.5 somewhere for safe keeping, then copy in the wx and wxPython directories for wxPython2.4.2.4 Boa will run once.  Then on successive attempts, I get the "NameError: name 'wxObjectPtr' is not defined" message from fonts.py.  I did have a build directory in the wxPython directory and got rid of that, but even now that the build directory is gone, I'm still getting the same problem.  Perhaps there's more to this story?
 -myk-
+
+= Problem in packaging wx applications with py2exe. =
+
+I have created a minimal wx application, which runs fine. However, when I package it with py2exe and I try to run the .exe file, an error occurs, the program crashes (before even starting) and a pop-up box says to look at the log file for the error trace. It says that wx/_core_.pyd failed to be loaded (this file exists in my filesystem - I have checked). When I skip "--bundle-files 1" in command line arguments, another pop-up box also appears, and says that a DLL failed to be loaded.
