@@ -1,8 +1,8 @@
 Problems in '''py2exe 0.6.6''' that should be fixed:
 
- - When a single file executable is renamed, it does not work any longer.  This is because the filename is hardcoded into the exe (to determine sys.path from it).  You will get a traceback like this, because even the imports in the boot_script fail:
+ - '''When a single file executable is renamed, it does not work any longer.'''  This is because the filename is hardcoded into the exe (to determine sys.path from it).  You will get a traceback like this, because even the imports in the boot_script fail:
 
-   {{{
+ {{{
 C:\sample\dist>sample
 Traceback (most recent call last):
   File "c:\python23\lib\site-packages\py2exe\boot_common.py", line 69, in ?
@@ -16,4 +16,18 @@ Traceback (most recent call last):
 ImportError: No module named os
 
 C:\sample\dist>
-   }}}
+ }}}
+
+
+ - '''Error reporting in MemoryLoadLibrary must be improved.'''  When MemoryLoadLibrary fails because it cannot find a required DLL (for example), it is impossible to diagnose the problem.  This is from a post to the py2exe-users mailing list:
+
+ {{{
+Traceback (most recent call last):
+  File "Wk2000.py", line 3, in ?
+  File "zipextimporter.pyo", line 82, in load_module
+  File "wx\__init__.pyo", line 45, in ?
+  File "zipextimporter.pyo", line 82, in load_module
+  File "wx\_core.pyo", line 4, in ?
+  File "zipextimporter.pyo", line 98, in load_module
+ImportError: MemoryLoadLibrary failed loading wx\_core_.pyd
+ }}}
