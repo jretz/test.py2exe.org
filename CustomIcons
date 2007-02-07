@@ -14,6 +14,7 @@ setup(
 The same practice works as well for {{{console}}} and {{{windows}}} scripts.
 The resource number does not seem to matter. Windows just takes the first existing icon.
 
+
 /!\ if somebody knows how to add small and large icons, speak up...
 
 Hm, doesn't the {{{.ico}}} file contain them?
@@ -53,6 +54,25 @@ This should allow the system to pick an appropriate icon. ( only tested with 2.5
     ib.AddIconFromFile("MyIcon.ico",wx.BITMAP_TYPE_ANY)
     self.SetIcons(ib)
 }}}
+
+'''Simple icon embedding (full)'''
+
+I have found that this works just fine with the latest python/py2exe install...{{{
+from distutils.core import setup
+import py2exe
+
+setup(
+    console = [
+        {
+            "script": "main.py",                    ### Main Python script    
+            "icon_resources": [(0, "icon.ico")]     ### Icon to embed into the PE file.
+        }
+    ],
+) }}}
+
+as far as I can tell this works just fine. small/large icons are detectable in a resource editor like Xn  resource editor. 
+
+-- Morgan Gangwere
 
 '''How to access a Win32 .exe's or .dll's icons from wxPython 2.6.1.0'''
 The following information was discovered by looking at gdiimage.cpp in the wxPython source.
