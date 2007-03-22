@@ -64,7 +64,28 @@ setup(
 )
 }}}
 
-	
+
+= An easier way to get the list of datafiles =
+Even more recent version of MatPlotLib(Version 0.90 at least, maybe earlier versions) have a method named matplotlib.get_py2exe_datafiles() which returns a tuple that is ready for use in the data_files argument to distutils.setup(). A minimal setup.py utilizing this method would look something like this:
+
+{{{
+#!python
+from distutils.core import setup
+import py2exe
+
+import matplotlib
+
+setup(
+    console=['test.py'],
+    options={
+             'py2exe': {
+                        'packages' : ['matplotlib', 'pytz'],
+                       }
+            },
+    data_files=[matplotlib.get_py2exe_datafiles()]
+)
+}}}
+
 = Updating _sort confusion =
 
 If you're using numarray and numpy together, be aware that they both have a _sort, and py2exe gets them confused. After py2exe creates the dist directotry, copy numpy/core/_sort.pyd and numarray/sort.pyd to their respective locations in the dist.
