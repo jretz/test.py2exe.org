@@ -20,7 +20,7 @@ now p contains the directory where your exe resides, no matter from where your e
 
 "jpath" is the famous path module from [http://www.jorendorff.com/articles/python/path/ "Jason Orendorff"]
 
-== Alternate Solution ===
+=== Alternate Solution ===
 The solution above will fail with a UnicodeDecodeError when using a Japanese (or Chinese/Korean, probably) version of Windows (XP + ?), and the path contains double-byte characters. This is because the sys.executable is in the file system encoding ('mbcs' on WinXP Japanese), and python tries to decode it to Unicode using the default Python encoding ('ascii'). The solution is to explicitly convert the path to Unicode using the default file system encoding. Additionally, checking only for a value of "windows_exe" will fail for a console application. I decided to live dangerously, and just test for "frozen" :-).
 
 {{{
