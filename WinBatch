@@ -105,7 +105,7 @@ goto:eof
 	echo from distutils.core import setup
 	echo import py2exe
 	echo.
-	echo setup (console=["%~dpn0.py"],
+	echo setup (console=[r"%~dpn0.py"],
 	echo    options = {"py2exe": {"packages": ["encodings"]}})
 	echo.
 goto:eof
@@ -122,5 +122,3 @@ goto:eof
 	exit
 goto:eof
 }}}
-
-
