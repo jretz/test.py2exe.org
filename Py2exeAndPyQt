@@ -2,13 +2,10 @@
 === Error message ===
 {{{
   File "form1.pyc", line 11, in ?
-
   File "qt.pyc", line 9, in ?
   File "qt.pyc", line 7, in __load
 ImportError: No module named sip
-}}} 
-
-
+}}}
 === Solution ===
 {{{python setup.py py2exe --includes sip}}}
 
@@ -17,11 +14,19 @@ ImportError: No module named sip
 #!python
 from py2exe.build_exe import py2exe
 from distutils.core import setup
-
 setup( console=[{"script": "main.py"}] )
 }}}
-
 === Reference ===
-I found this tips here : [http://nerdierthanthou.nfshost.com/2005/03/image-resizer.html]
+I found this tips here : http://nerdierthanthou.nfshost.com/2005/03/image-resizer.html
 
 There is a full code sample.
+
+=== Another Solution to the same problem: ===
+{{{
+from distutils.core import setup
+import py2exe
+setup(windows=[{"script":"main.py"}], options={"py2exe":{"includes":["sip"]}})
+}}}
+I found that on the web, unfortunately don't know anymore where, but it also works for me!
+
+Obviously is the second part only a way to get the " --includes sip" parameter directly into the script, but the use of "windows" instead of "console" doesn't open a console window, but immediately a Qt window in my case.
