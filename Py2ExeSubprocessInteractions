@@ -1,8 +1,36 @@
 ##language:en
 == Inheriting handles in child process ==
-In subprocess.Popen, if you pass None for any of stdin, stdout or stderr args (the default), then the subprocess is supposed to inherit the corresponding parent process handle.  However, if you used py2exe to create a Windows program as opposed to a console program, and you launched the py2exe program by clicking rather than by running if from a command window, then the parent process has no handle to inherit.  subprocess.Popen will throw an exception (TypeError: an integer is required) because GetStdHandle returns None.  The solution is not to pass None but rather specify a handle for any of stdin, stdout and stderr that you don't want to pipe.  
 
-Note also that when you create a windows program with py2exe, sys.stderr is not a normal file object, so you can't use that, but you can use sys.stderr._file buried inside it. 
+In subprocess.Popen, if you pass None for any of stdin, stdout
+or stderr args (the default), then the subprocess is supposed
+to inherit the corresponding parent process handle.  However,
+if you used py2exe to create a Windows program as opposed to a
+console program, and you launched the py2exe program by
+clicking rather than by running if from a command window, then
+the parent process has no handle to inherit.  subprocess.Popen
+will throw an exception. In some instances it will throw
+"TypeError: an integer is required" because GetStdHandle
+returns None. In other cases it will throw "WindowsError:
+[Errno 6] The handle is invalid" as shown in the traceback
+below:
+
+{{{
+     File "subprocess.pyc", line 533, in __init__
+     File "subprocess.pyc", line 607, in _get_handles
+     File "subprocess.pyc", line 634, in _make_inheritable
+   WindowsError: [Errno 6] The handle is invalid
+}}}
+
+This bug appears to be present up through at least Python 2.5.1
+and can be found at http://sourceforge.net/tracker/index.php?func=detail&aid=1124861&group_id=5470&atid=105470
+
+The solution is not to pass None but rather specify a handle
+for any of stdin, stdout and stderr that you don't want to
+pipe.  
+
+Note also that when you create a windows program with py2exe,
+sys.stderr is not a normal file object, so you can't use that,
+but you can use sys.stderr._file buried inside it. 
 
 === Example ===
 {{{
