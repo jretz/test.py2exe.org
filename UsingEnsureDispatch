@@ -21,6 +21,8 @@ if win32com.client.gencache.is_readonly == True:
     # to allow creation of the cache in %temp%
 
 # Use SAPI speech through IDispatch
+from win32com.client.gencache import EnsureDispatch
+from win32com.client import constants
 voice = EnsureDispatch("Sapi.SpVoice", bForDemand=0)
-voice.Speak( "Hello World." )
+voice.Speak( "Hello World.", constants.SVSFlagsAsync )
 }}}
