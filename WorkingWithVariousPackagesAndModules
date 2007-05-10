@@ -54,6 +54,6 @@ I like to distribute my application with py2exe but I can not make py2exe setup 
 == wxPython ==
  * Py2exeAndwxPython  If you're getting ''wxObjectPtr not found'', read this
 == PIL ==
- * ["PIL and Fontfiles"]  If you're getting ''cannot identify image file'', read this
+ * ["PIL and Fontfiles"]  If you're getting ''Cannot find font file'', read this
 ----
 CategoryCategory
