@@ -53,3 +53,7 @@ I like to distribute my application with py2exe but I can not make py2exe setup 
  * IssuesWithWin32pipe (from pywin32) in a bundle.
 == wxPython ==
  * Py2exeAndwxPython  If you're getting ''wxObjectPtr not found'', read this
+== PIL ==
+ * ["PIL and Fontfiles"]  If you're getting ''cannot identify image file'', read this
+----
+CategoryCategory
