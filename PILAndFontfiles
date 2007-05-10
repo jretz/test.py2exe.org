@@ -1,0 +1,6 @@
+If you've been getting errors like this:
+
+File "PIL\ImageFont.pyc", line ---, in load_path
+IOError: cannot find font file
+
+The fix is to simply copy the files helvetica-10.pil, helvB08.pil, helvetica-10.png and helvB08.png into the "dist" directory.
