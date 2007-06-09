@@ -20,7 +20,6 @@ Top of the application I start with
 
 {{{
 #!python
-
 import sys
 # sys.setdefaultencoding may be deleted by site.py, 
 # so bring it back:
