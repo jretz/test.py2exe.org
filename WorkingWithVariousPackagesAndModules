@@ -19,6 +19,7 @@
  * ["os.popen"] If you're getting failures when the CWD is a UNC path like {{{\\host\dirname\...}}}
 == PIL ==
  * ["PIL and py2exe"]  If you're getting ''cannot identify image file'', read this
+ * ["PIL and Fontfiles"]  If you're getting ''Cannot find font file'', read this
 == PyGTK ==
  * ["Py2exeAndPyGTK"]  A recipe for py2exe and PyGTK
 == PyQt ==
@@ -53,7 +54,5 @@ I like to distribute my application with py2exe but I can not make py2exe setup 
  * IssuesWithWin32pipe (from pywin32) in a bundle.
 == wxPython ==
  * Py2exeAndwxPython  If you're getting ''wxObjectPtr not found'', read this
-== PIL ==
- * ["PIL and Fontfiles"]  If you're getting ''Cannot find font file'', read this
 ----
 CategoryCategory
