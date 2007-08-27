@@ -78,7 +78,7 @@ class myPy2Exe(BuildExe):
             # Tix adjustments
             tcl_version,tk_version,tix_version,tcl_dir = TixInfo()
             
-            tixdll="tix%s.dll"% (tix_version.replace(".",""),
+            tixdll="tix%s%s.dll"% (tix_version.replace(".",""),
                                     tcl_version.replace(".",""))
             tcldll="tcl%s.dll"%tcl_version.replace(".","")
             tkdll="tk%s.dll"%tk_version.replace(".","")
