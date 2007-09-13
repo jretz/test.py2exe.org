@@ -13,8 +13,8 @@
 == MatPlotLib ==
  * MatPlotLib - Fixing and including configuration information for this plotting package.
 == NumPy ==
- * If you're getting ''No scipy-style subpackage 'xxx' found in c:\...\library.zip\numpy. Ignoring'', try --skip-archive option.
- * If you're using numarray and numpy together, be aware that they both have a _sort, and py2exe gets them confused. After py2exe creates the dist directotry, copy numpy/core/_sort.pyd and numarray/sort.pyd to their respective locations in the dist.
+ * If you're getting ''No scipy-style subpackage 'xxx' found in c:\...\library.zip\numpy. Ignoring'', try --skip-archive command line option or pass '''options = {"py2exe": {"skip_archive":1}} '''to setup().
+ * If you're using numarray and numpy together, be aware that they both have a _sort, and py2exe gets them confused. After py2exe creates the dist directotry, copy numpy/core/_sort.pyd and numarray/sort.pyd to their respective locations in the dist. [This problem is due to a bug in py2exe: it used a single, flat namespace for all .pyd files. This has been fixed in CVS as of 7 Sep 2007.]''' '''
 == os.popen ==
  * ["os.popen"] If you're getting failures when the CWD is a UNC path like {{{\\host\dirname\...}}}
 == PIL ==
@@ -31,7 +31,7 @@
 == Python ADODB modules ==
  * ADODB package Modules named adodb_xxx (like adodb_mysql) are not added automatically, must be added explicitly
 == PyXML ==
- * ["Py2exeAndPyXML"]  If you're getting ''File "xml\sax\saxexts.pyc", line 77, in make_parser; xml.sax._exceptions.SAX''''''Reader''''''Not''''''Available: No parsers found'', read this.
+ * ["Py2exeAndPyXML"]  If you're getting ''File "xml\sax\saxexts.pyc", line 77, in make_parser; xml.sax._exceptions.SAX'''Reader''''''Not''''''Available: No parsers found'''''''', read this. '''
 == Quixote ==
 Quixote is a pythonivc toolkit for web pages which allows one to execute ptl files using ihooks. You can distribute your web application with medusa or twisted and hence you can create a web application without IIS or Apache.
 
@@ -55,4 +55,4 @@ I like to distribute my application with py2exe but I can not make py2exe setup 
 == wxPython ==
  * Py2exeAndwxPython  If you're getting ''wxObjectPtr not found'', read this
 ----
-CategoryCategory
+ . CategoryCategory
