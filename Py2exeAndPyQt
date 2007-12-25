@@ -30,3 +30,18 @@ setup(windows=[{"script":"main.py"}], options={"py2exe":{"includes":["sip"]}})
 I found that on the web, unfortunately don't know anymore where, but it also works for me!
 
 Obviously is the second part only a way to get the " --includes sip" parameter directly into the script, but the use of "windows" instead of "console" doesn't open a console window, but immediately a Qt window in my case.
+
+== Fix for PyQt4 ==
+If you get the following error:
+{{{
+ImportError: No module named _qt
+}}}
+
+The solution is to add !PyQt4._qt to the setup function (see bellow)
+
+{{{#!python
+from distutils.core import setup
+import py2exe
+
+setup(windows=[{"script" : "app.pyw"}], options={"py2exe" : {"includes" : ["sip", "PyQt4._qt"]}})
+}}}
