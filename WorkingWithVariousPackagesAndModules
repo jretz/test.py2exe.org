@@ -1,6 +1,8 @@
 = Working with Various Packages and Modules =
 == Biopython ==
  * ConfigImportProblems  Fixing problems with importing Bio.Config files from library.zip
+== cElementTree ==
+ * If you're using {{{import xml.etree.cElementTree}}}, also use {{{import xml.etree.ElementTree}}} before that to get it working
 == ctypes.com ==
  * Py2exeAndCtypesComDllServer  Creating a ctypes.com dll com server
  * Py2exeAndCtypesComExeServer  Creating a ctypes.com exe com server
