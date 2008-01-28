@@ -16,7 +16,7 @@ ImportError: No module named os
 C:\sample\dist>
  }}}
  I'm currently using [http://snaury.googlepages.com/py2exe-0.6.6-libname-fix.patch this patch], works for me.
- - '''Error reporting in MemoryLoadLibrary must be improved.'''  When MemoryLoadLibrary fails because it cannot find a required DLL (for example), it is impossible to diagnose the problem.  This is from a post to the py2exe-users mailing list:
+ . - '''Error reporting in MemoryLoadLibrary must be improved.'''  When MemoryLoadLibrary fails because it cannot find a required DLL (for example), it is impossible to diagnose the problem.  This is from a post to the py2exe-users mailing list:
  {{{
 Traceback (most recent call last):
   File "Wk2000.py", line 3, in ?
@@ -27,4 +27,4 @@ Traceback (most recent call last):
   File "zipextimporter.pyo", line 98, in load_module
 ImportError: MemoryLoadLibrary failed loading wx\_core_.pyd
  }}}
- . ''This error occur when no msvcp71.dll found - add this dll to program or windows/system32 director [Sep]''
+. ''This error occur when no msvcp71.dll found - add this dll to program or windows/system32 director [Sep]''
