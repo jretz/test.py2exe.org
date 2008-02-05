@@ -65,10 +65,10 @@ The following modules appear to be missing
 }}}
 Ignore it ;)
 
-Once that's done, you'll need to copy the etc, lib and share directories from your GTK+ install
-to the dist dir py2exe created. Optionaly, you can clean the share\locale dir to
-include only the locales you need for GTK+. Same thing for share\themes (I left
-both Default and MS-Windows).
+Once that's done, '''you'll need to copy the etc, lib and share directories from your GTK+ install 
+(''not'' the pygtk install) to the dist dir py2exe created.''' Optionaly, 
+you can clean the share\locale dir to include only the locales you need for GTK+. Same thing for
+share\themes (I left both Default and MS-Windows).
 
 Note you'll want to set the working directory (Start in:) for any shortcut you create
 to the application directory containing the executable.
