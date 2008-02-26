@@ -132,3 +132,33 @@ setup(
 }}}
 
 A NSI along these lines works unter Win NT 4 too. 
+
+----
+
+== Using "bundle_files" and "zipfile" ==
+
+An easier (and better) way to create single-file executables is to set {{{bundle_files}}} to {{{1}}} or {{{2}}}, and to set {{{zipfile}}} to {{{None}}}. This approach does not require extracting files to a temporary location, which provides much faster program startup.
+
+Valid values for {{{bundle_files}}} are:
+
+|| 3 (default) || don't bundle ||
+|| 2 || bundle everything but the Python interpreter ||
+|| 1 || bundle everything, including the Python interpreter ||
+
+If {{{zipfile}}} is set to {{{None}}}, the files will be bundle within the executable instead of {{{library.zip}}}.
+
+Here is a sample '''setup.py''':
+
+{{{
+#! python
+from distutils.core import setup
+import py2exe, sys, os
+
+sys.argv.append('py2exe')
+
+setup(
+    options = {'py2exe': {'bundle_files': 1}},
+    windows = [{'script': "single.py"}],
+    zipfile = None,
+)
+}}}
