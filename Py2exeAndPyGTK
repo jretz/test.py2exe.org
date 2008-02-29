@@ -70,8 +70,8 @@ Once that's done, '''you'll need to copy the etc, lib and share directories from
 you can clean the share\locale dir to include only the locales you need for GTK+. Same thing for
 share\themes (I left both Default and MS-Windows). 
 
-If you are using kiwi, you will also have to copy the ''contents'' of the ''path to python''/share/kiwi directory 
-(and ''path to python''/share/gazpacho, if you used gazpacho) to the dist dir. And you will have 
+If you are using kiwi, you will also have to copy the ''contents'' of the (''path to python'')/share/kiwi directory 
+(and (''path to python'')/share/gazpacho, if you used gazpacho) to the dist dir. And you will have 
 to create an empty 'kiwi' directory in the dist/pixmaps directory that you just copied there. 
 (note: I have not tested kiwi with the Innosetup installer, but if you try it and it works edit 
 this page and remove this note :) )
