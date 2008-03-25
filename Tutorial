@@ -47,7 +47,7 @@ C:\Tutorial>python setup.py install
 
 "install" is a Distutils command that installs something (typically a Python module or package). The details Distutils needs to do that installation are contained in setup.py (and sometimes other associated files).
 
-"py2exe" is a new Distutils command that is added when you import py2exe. To use py2exe you need to create a setup.py file to tell Distutils and py2exe what you want to do. Here's a setup.py who's simplicity is appropriate for our sample program...
+"py2exe" is a new Distutils command that is added when you import py2exe. To use py2exe you need to create a setup.py file to tell Distutils and py2exe what you want to do. Here's a setup.py whose simplicity is appropriate for our sample program...
 
 {{{#!python
 from distutils.core import setup
