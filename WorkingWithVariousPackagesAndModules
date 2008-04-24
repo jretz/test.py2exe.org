@@ -3,6 +3,8 @@
  * ConfigImportProblems  Fixing problems with importing Bio.Config files from library.zip
 == cElementTree ==
  * If you're using {{{import xml.etree.cElementTree}}}, also use {{{import xml.etree.ElementTree}}} before that to get it working
+== ConfigObj ==
+ * ConfigObj does not work right if you installed using easy_install. Just download configobj.py and validate.py from http://www.voidspace.org.uk/python/configobj.htm
 == ctypes.com ==
  * Py2exeAndCtypesComDllServer  Creating a ctypes.com dll com server
  * Py2exeAndCtypesComExeServer  Creating a ctypes.com exe com server
