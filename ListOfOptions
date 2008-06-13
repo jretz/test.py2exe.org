@@ -1,8 +1,41 @@
-Currently the py2exe home page doesnt include a complete list of configuration keywords. You can see the list of options and keywords that py2exe supports by doing:
+In addition to the[http://docs.python.org/dist/module-distutils.core.html standard distutils setup keywords], the following py2exe keywords specify what and how to build:
+||<tablewidth="820px" tableheight="86px">console ||list of scripts to convert into console exes ||
+||windows ||list of scripts to convert into GUI exes ||
+||service ||list of module names containing win32 service classes ||
+||com_server ||list of module names containing com server classes ||
+||ctypes_com_server ||list of module names containing com server classes ||
+||zipfile ||name of shared zipfile to generate; may specify a subdirectory; defaults to 'library.zip' ||
+||options ||dictionary { "py2exe": {'' "opt1": val1, "opt2": val2, ... ''} } ||
+
+
+The following options dictionary entries are available:
+||<tablewidth="721px" tableheight="227px">unbuffered ||if true, use unbuffered binary stdout and stderr ||
+||optimize ||string or int of optimization level (0, 1, or 2) ||
+||includes ||list of module names to include ||
+||packages ||list of packages to include with subpackages ||
+||ignores ||list of modules to ignore if they are not found ||
+||excludes ||list of module names to exclude ||
+||dll_excludes ||list of dlls to exclude ||
+||dist_dir ||directory in which to build the final files ||
+||typelibs ||list of gen_py generated typelibs to include ||
+
+
+Example:
 
 {{{
->>> import py2exe
->>> help(py2exe)
+setup(
+        windows=['trypyglet.py'],
+        options={
+                "py2exe":{
+                        "unbuffered": True,
+                        "optimize": 2,
+                        "excludes": ["email"]
+                }
+        }
+)
 }}}
+For more information enter the following at the python command line:
 
-In addition, the [http://docs.python.org/dist/dist.html distutils documentation] explains other useful keywords.
+{{{
+>>> from distutils.core import setup
+>>> help(setup}}}
