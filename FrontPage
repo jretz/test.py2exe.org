@@ -5,7 +5,7 @@
 = py2exe =
 py2exe is a [http://www.python.org/ Python] [http://www.python.org/doc/current/dist/ Distutils] extension which converts Python scripts into executable Windows programs, able to run without requiring a Python installation.
 
-Development is hosted at [http://sourceforge.net/projects/py2exe/ SourceForge]. You can find the [https://lists.sourceforge.net/lists/listinfo/py2exe-users mailing list], [http://sourceforge.net/cvs/?group_id=15583 CVS], and [http://sourceforge.net/project/showfiles.php?group_id=15583 downloads] there.
+Development is hosted at [http://sourceforge.net/projects/py2exe/ SourceForge]. You can find the [https://lists.sourceforge.net/lists/listinfo/py2exe-users mailing list], [http://sourceforge.net/svn/?group_id=15583 svn], and [http://sourceforge.net/project/showfiles.php?group_id=15583 downloads] there.
 
 py2exe was originally developed by ThomasHeller who still makes contributions, JimmyRetzlaff is the current maintainer, and MarkHammond also makes regular contributions. Code contributions are always welcome from the community and many people provide invaluable help on the mailing list and the Wiki.
 
