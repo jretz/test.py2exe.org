@@ -24,3 +24,4 @@
  * StderrLog - How does py2exe handle stack track printing and STDERR? How can Ichange that behaviour?
  * ["Using SOAPpy with py2exe"] - How to get SOAPpy working with py2exe.
  * [http://pybuilder.sf.net PyBuilder] - A Gui interface to compile easier and faster.
+ * OverridingCriteraForIncludingDLLs - how to override the criteria that py2exe uses to determine whether a DLL should be included in the distributed package.
