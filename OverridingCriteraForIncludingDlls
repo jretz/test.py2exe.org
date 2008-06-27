@@ -5,10 +5,10 @@
 ##master-date:Unknown-Date
 #format wiki
 #language en
-== Overriding Critera for Including DLLs ==
+== Overriding Criteria for Including DLLs ==
 
 When py2exe comes across a DLL file that is required by the
-application, it decideds whether or not includes the DLL file
+application, it decides whether or not includes the DLL file
 in the distribution directory using various criteria.
 Generally, it doesn't include DLLs if it thinks they belong to
 the "system" rather than the "application".  There is a
