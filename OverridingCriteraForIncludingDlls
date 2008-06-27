@@ -37,9 +37,10 @@ py2exe.build_exe.isSystemDLL = isSystemDLL
 
 In the example above, we've over-ridden the function
 py2exe.build_exe.isSystemDLL with our own copy that forces
-msvcp71.dll, dwmapi.dll to be considered "application" DLLs
-instead of "system" DLLs.  For any other DLL it returns the
-default status as returned by the original isSystemDLL function.
+msvcp71.dll and dwmapi.dll to be considered "application" DLLs
+instead of "system" DLLs.  This should cause py2exe to include them in
+the application distribution directory.  For any other DLL it returns the
+previous default status as returned by the original isSystemDLL function.
 
 === Disclaimer ===
 If you use the above mechanism to trick py2exe into
