@@ -1,7 +1,7 @@
 Use attribute '''com_server''' of method '''setup''' to create a com exe/dll server.
 By default, both an exe and a dll com server get generated.
 The following two pages show how to do the same thing using ctypes.com:
-["Py2exeAndCtypesComExeServer"] & ["Py2exeAndCtypesComDllServer"]
+[[Py2exeAndCtypesComExeServer]] & [[Py2exeAndCtypesComDllServer]]
 
 You can define and instantiate a '''Target''' class to explicitly state
 whether you want an exe or dll com server (or both) and to add
