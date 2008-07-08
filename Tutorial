@@ -2,17 +2,17 @@
 
 py2exe turns Python programs into packages that can be run on other Windows computers without needing to install Python on those computers. Python is needed on the computer where py2exe itself is run because py2exe is a Python program and it includes parts of Python in the package that is built.
 
-To successfully complete this tutorial you'll need to know the basics of Python (you can get started at python.org's [http://www.python.org/about/gettingstarted/ getting started] page). You'll also need to know [http://www.python.org/doc/faq/windows/#how-do-i-run-a-python-program-under-windows how to run Python programs from the command prompt].
+To successfully complete this tutorial you'll need to know the basics of Python (you can get started at python.org's [[http://www.python.org/about/gettingstarted/|getting started]] page). You'll also need to know [[http://www.python.org/doc/faq/windows/#how-do-i-run-a-python-program-under-windows|how to run Python programs from the command prompt]].
 
 There are a few simple steps needed to use py2exe once you've installed it:
 
-   1. [#Step1 Create/test your program]
-   2. [#Step2 Create your setup script (setup.py)]
-   3. [#Step3 Run your setup script]
-   4. [#Step4 Test your executable]
-   5. [#Step5 Build an installer if applicable]
+   1. [[#Step1|Create/test your program]]
+   2. [[#Step2|Create your setup script (setup.py)]]
+   3. [[#Step3|Run your setup script]]
+   4. [[#Step4|Test your executable]]
+   5. [[#Step5|Build an installer if applicable]]
 
-[[Anchor(Step1)]]
+<<Anchor(Step1)>>
 == Create/test your program ==
 
 The biggest step is almost always the first one. The good news is that py2exe typically has little or no impact on this step. The vast majority of things you can do with Python will work with py2exe. Many modules just work seamlessly with py2exe, but some third party modules will require a little extra work. Luckily there is help available at WorkingWithVariousPackagesAndModules.
@@ -36,10 +36,10 @@ C:\Tutorial>
 
 Looks good!
 
-[[Anchor(Step2)]]
+<<Anchor(Step2)>>
 == Create your setup script (setup.py) ==
 
-py2exe extends [http://www.python.org/doc/current/dist/ Distutils] with a new "command". If you've installed third party Python modules then there's a good chance you've seen at least one distutils command:
+py2exe extends [[http://www.python.org/doc/current/dist/|Distutils]] with a new "command". If you've installed third party Python modules then there's a good chance you've seen at least one distutils command:
 
 {{{
 C:\Tutorial>python setup.py install
@@ -63,7 +63,7 @@ Notice that this is ordinary Python. Let's go through it line by line...
  3. Whitespace is good!
  4. Call setup and tell it that we want a single console application and the main entry point is "hello.py".
 
-[[Anchor(Step3)]]
+<<Anchor(Step3)>>
 == Run your setup script ==
 The next step is to run your setup script. Make sure to give the py2exe command and expect to see lots and lots of output:
 
@@ -107,7 +107,7 @@ C:\Tutorial>
 
 Two directories will be created when you run your setup script... build and dist. The build directory is used as working space while your application is being packaged. It is safe to delete the build directory after your setup script has finished running. The files in the dist directory are the ones needed to run your application. If you are using Python 2.4 or newer then MSVCR71.dll will be included in dist - this is a Microsoft DLL and you need to determine if you have the legal right to distribute it.
 
-[[Anchor(Step4)]]
+<<Anchor(Step4)>>
 == Test your executable ==
 Now that the package has been created it is ready to test:
 
@@ -120,6 +120,6 @@ Hello World
 
 Excellent, it works!!!
 
-[[Anchor(Step5)]]
+<<Anchor(Step5)>>
 == Build an installer if applicable ==
-py2exe is not an installer builder - it merely assembles the files needed to run your Python program. There are plenty of good installer builders out there including some that are open source (e.g., [http://nsis.sourceforge.net/Main_Page NSIS]) and some that are free (e.g., [http://www.jrsoftware.org/isinfo.php Inno Setup]).
+py2exe is not an installer builder - it merely assembles the files needed to run your Python program. There are plenty of good installer builders out there including some that are open source (e.g., [[http://nsis.sourceforge.net/Main_Page|NSIS]]) and some that are free (e.g., [[http://www.jrsoftware.org/isinfo.php|Inno Setup]]).
