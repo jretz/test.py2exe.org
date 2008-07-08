@@ -1,6 +1,6 @@
 = Something great =
 
-Within samples/extending, Thomas Heller gives a Py2Exe setup.py script which automagically calls [http://www.jrsoftware.org/isinfo.php InnoSetup] to create a great looking (and perfectly working) Windows-Installer. Yes, really, ONE setup.exe is created which contains ALL stuff to have a readily installable Software out of your product.
+Within samples/extending, Thomas Heller gives a Py2Exe setup.py script which automagically calls [[http://www.jrsoftware.org/isinfo.php|InnoSetup]] to create a great looking (and perfectly working) Windows-Installer. Yes, really, ONE setup.exe is created which contains ALL stuff to have a readily installable Software out of your product.
 
 = also large =
 
@@ -34,7 +34,7 @@ summing up to 10.5 Megabyte ... not much with DSL, but... shocking, isn't it?
 
 = get it smaller =
 
-In the standard configuration [http://www.jrsoftware.org/isinfo.php InnoSetup] compressed it down to around 6.5 Megabyte.
+In the standard configuration [[http://www.jrsoftware.org/isinfo.php|InnoSetup]] compressed it down to around 6.5 Megabyte.
 
 I changed the setup.py to contain
 
@@ -68,7 +68,7 @@ Quite an OK download ... and I use ZODB and Elementtree and pythoncom and and an
 
 = Remarks =
 
- * I ([http://videocapture.sourceforge.net/ MGr]) get for my application (which uses wxWindows) even smaller files when using 7-zip instead of bzip.  To use 7-zip one has to specify "Compression=none" in the generated installer script (*.iss) and then manually load the script into [http://www.istool.org/ ISTool], which is a front end to Inno Setup.  Clicking at the 'Options' button and selecting '7-zip' in the compression combo box does the trick.{{{
+ * I ([[http://videocapture.sourceforge.net/|MGr]]) get for my application (which uses wxWindows) even smaller files when using 7-zip instead of bzip.  To use 7-zip one has to specify "Compression=none" in the generated installer script (*.iss) and then manually load the script into [[http://www.istool.org/|ISTool]], which is a front end to Inno Setup.  Clicking at the 'Options' button and selecting '7-zip' in the compression combo box does the trick.{{{
 7.208 kB  uncompressed
 2.886 kB  zip
 2.677 kB  bzip
@@ -86,10 +86,10 @@ print >> ofi, r"Compression=lzma/max"
 
 HAM2005-05-20
 = 7ZIP and UPX =
-Repacking the "library.zip" with [http://www.7-zip.org/ 7-ZIP] saving 357KB (577KB original to 220KB 7ZIP compressed).
+Repacking the "library.zip" with [[http://www.7-zip.org/|7-ZIP]] saving 357KB (577KB original to 220KB 7ZIP compressed).
 Note: it requires "import zlib" in your source file to allow unzipping operations.
 
-Using [http://upx.sourceforge.net/ UPX ] the executable packer to compress *.pyd, *.dll and *.exe Files:
+Using [[http://upx.sourceforge.net/|UPX ]] the executable packer to compress *.pyd, *.dll and *.exe Files:
 
 Example: _sre.pyd, _winreg.pyd, python23.dll, unicodedata.pyd, w9xpopen.exe, zlib.pyd 1516,2KB original to 584KB compressed)
 
