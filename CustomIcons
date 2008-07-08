@@ -21,14 +21,14 @@ Hm, doesn't the {{{.ico}}} file contain them?
 
 does the resource number refers to the icon's index in the {{{.ico}}} file (if containing > 1 icons) ?
 
--- [mailto:dswsh@plasa.com dody wijaya]
+-- [[mailto:dswsh@plasa.com|dody wijaya]]
 
 
 '''How to add small and large icons'''
 
 You must create ico file with two icons in one.
 Your icon file must contain small ico (size: 16*16 pixels) and large ico (size: 32*32 pixels). For WindowsXP you probably may create a big ico (48*48) - but it's only for XP.
-Almost all popular icon editors can create complex icon with small and large part in one. For instance, [http://www.x2studios.com/index.php?page=products&id=11 LiquidIcon] is a freeware icon editor that lets you combine multiple ico files of different sizes and bit-depths into a single ico file. Also available is [http://www.winterdrache.de/freeware/png2ico/ png2ico], a GPL'ed command line-only {{{.ico}}} creator capable of generating icons with multiple sizes, bit depths, and transparency settings.
+Almost all popular icon editors can create complex icon with small and large part in one. For instance, [[http://www.x2studios.com/index.php?page=products&id=11|LiquidIcon]] is a freeware icon editor that lets you combine multiple ico files of different sizes and bit-depths into a single ico file. Also available is [[http://www.winterdrache.de/freeware/png2ico/|png2ico]], a GPL'ed command line-only {{{.ico}}} creator capable of generating icons with multiple sizes, bit depths, and transparency settings.
 
 Now I've managed to give an icon to my program, but when the program starts, a standard Windows icon shows up in the window's title bar and in the task bar button (instead of my custom icon). Is there a way I can fix that myself, or is that a current limitation of py2exe?
 
