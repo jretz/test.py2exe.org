@@ -1,6 +1,6 @@
 Use attribute '''windows''' or '''console''' of method '''setup''' to create a com exe server.
 Unlike the case with win32com, with ctypes.com only a exe server will be created.
-Also see: ["Py2exeAndWin32com"] & ["Py2exeAndCtypesComDllServer"]
+Also see: [[Py2exeAndWin32com]] & [[Py2exeAndCtypesComDllServer]]
 
 You can define and instantiate a '''Target''' class to explicitly add
 version info resources that get attached to the file as metadata.
