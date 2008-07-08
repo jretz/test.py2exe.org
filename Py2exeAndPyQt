@@ -38,7 +38,7 @@ ImportError: No module named _qt
 }}}
 
 
-The solution is to add !PyQt4._qt to the setup function (see bellow). I found the solution for the problem [http://www.nabble.com/big-problems-with-py2exe-and-cxfreeze-on-latest-PyQt4-to12048241.html here].
+The solution is to add !PyQt4._qt to the setup function (see bellow). I found the solution for the problem [[http://www.nabble.com/big-problems-with-py2exe-and-cxfreeze-on-latest-PyQt4-to12048241.html|here]].
 
 {{{#!python
 from distutils.core import setup
