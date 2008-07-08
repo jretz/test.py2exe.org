@@ -1,6 +1,6 @@
 = The Problem =
 
-Using [http://www.reportlab.org repotlab] and following the instructions from ["PIL and py2exe"]. 
+Using [[http://www.reportlab.org|repotlab]] and following the instructions from [[py2exeAndPIL]]. 
 
 Still, when 
 {{{
@@ -74,6 +74,6 @@ class MyImageReader(ImageReader):
         self._image = Image.open(fileName)
 }}}
 
-Image has to be imported and "tuned" as described in ["PIL and py2exe"]
+Image has to be imported and "tuned" as described in [[py2exeAndPIL]]
 
 HAM2004-08-09
