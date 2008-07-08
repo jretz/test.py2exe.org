@@ -1,6 +1,6 @@
-The "extending" example that comes with Py2Exe shows a nicely integrated approach for using Inno Setup to create single file executables. This example isn't so nicely integrated, but it uses [http://nsis.sourceforge.net NSIS] instead of Inno Setup in case you prefer that.
+The "extending" example that comes with Py2Exe shows a nicely integrated approach for using Inno Setup to create single file executables. This example isn't so nicely integrated, but it uses [[http://nsis.sourceforge.net|NSIS]] instead of Inno Setup in case you prefer that.
 
-Drop a copy of this script in your source directory alongside setup.py and modify the first two lines. The first points to py2exe's output directory and the second is the name of the executable in that directory as well as the name of the executable that NSIS will create. You can also select compression behavior - NSIS' LZMA compression (based on [http://www.7-zip.com 7-Zip]) is pretty impressive - wxPython applications start at about 3.5 - 4 MB instead of 10 - 12 MB. Compression may slow startup time for your executable somewhat.
+Drop a copy of this script in your source directory alongside setup.py and modify the first two lines. The first points to py2exe's output directory and the second is the name of the executable in that directory as well as the name of the executable that NSIS will create. You can also select compression behavior - NSIS' LZMA compression (based on [[http://www.7-zip.com|7-Zip]]) is pretty impressive - wxPython applications start at about 3.5 - 4 MB instead of 10 - 12 MB. Compression may slow startup time for your executable somewhat.
 
 Once you've built your executable with py2exe, then compile the installer script with NSIS and an executable will be created in the same folder as the script. When run, that single file executable will expand the original executable created by py2exe along with all the dll, pyd, and data files for your application into a temporary directory and run it. When your application exits, the temp folder will be deleted automatically.
 
@@ -8,7 +8,7 @@ Command line parameters for your executable are not supported.
 
 The executables produced have only been tested on Windows XP. Please update this page if you try them on other platforms.
 
-[mailto:jimmy@retzlaff.com&subject=Single%20File%20Python%20Executables Jimmy Retzlaff]
+[[mailto:jimmy@retzlaff.com&subject=Single%20File%20Python%20Executables|Jimmy Retzlaff]]
 ----
 '''setup.nsi:'''
 {{{
