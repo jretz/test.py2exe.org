@@ -1,4 +1,4 @@
-In addition to the[http://docs.python.org/dist/module-distutils.core.html standard distutils setup keywords], the following py2exe keywords specify what and how to build:
+In addition to the[[http://docs.python.org/dist/module-distutils.core.html|standard distutils setup keywords]], the following py2exe keywords specify what and how to build:
 ||<tablewidth="820px" tableheight="86px">console ||list of scripts to convert into console exes ||
 ||windows ||list of scripts to convert into GUI exes ||
 ||service ||list of module names containing win32 service classes ||
