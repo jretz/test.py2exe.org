@@ -112,11 +112,11 @@ Filename: {app}\handytool.exe; Description: {cm:LaunchProgram,handytool}; Flags:
 }}}
 
 This Recipe has been tested with:
-  * [http://www.microsoft.com/ Windows XP SP2]
-  * [http://www.python.org/download/ Python 2.4.3]
-  * [http://gladewin32.sourceforge.net/modules/wfdownloads/ gtk-win32 2.8.14-rc1]
-  * [http://www.mapr.ucl.ac.be/~gustin/win32_ports/pygtk.html pycairo 1.0.2-1]
-  * [http://www.mapr.ucl.ac.be/~gustin/win32_ports/pygtk.html pygtk 2.8.4-1]
-  * [http://www.async.com.br/projects/kiwi/ kiwi 1.9.20] ''optional''
-  * [http://www.py2exe.org/ py2exe 0.6.5]
-  * [http://www.jrsoftware.org/isinfo.php Inno Setup 5.1.6]
+  * [[http://www.microsoft.com/|Windows XP SP2]]
+  * [[http://www.python.org/download/|Python 2.4.3]]
+  * [[http://gladewin32.sourceforge.net/modules/wfdownloads/|gtk-win32 2.8.14-rc1]]
+  * [[http://www.mapr.ucl.ac.be/~gustin/win32_ports/pygtk.html|pycairo 1.0.2-1]]
+  * [[http://www.mapr.ucl.ac.be/~gustin/win32_ports/pygtk.html|pygtk 2.8.4-1]]
+  * [[http://www.async.com.br/projects/kiwi/|kiwi 1.9.20]] ''optional''
+  * [[http://www.py2exe.org/|py2exe 0.6.5]]
+  * [[http://www.jrsoftware.org/isinfo.php|Inno Setup 5.1.6]]
