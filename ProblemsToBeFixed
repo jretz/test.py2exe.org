@@ -15,7 +15,7 @@ Traceback (most recent call last):
 ImportError: No module named os
 C:\sample\dist>
  }}}
- I'm currently using [http://snaury.googlepages.com/py2exe-0.6.6-libname-fix.patch this patch], works for me.
+ I'm currently using [[http://snaury.googlepages.com/py2exe-0.6.6-libname-fix.patch|this patch]], works for me.
 
  ''2008-04-01: The patch is now committed to CVS.  [THeller]''
 
@@ -43,4 +43,4 @@ Traceback (most recent call last):
   File "Example.py", line 1, in ?
 zipimport.ZipImportError: can't decompress data; zlib not available
  }}}
- I wrote [http://sparkyb.net/temp/py2exe-0.6.6-zlib-resource.patch this patch] which seems to fix it.
+ I wrote [[http://sparkyb.net/temp/py2exe-0.6.6-zlib-resource.patch|this patch]] which seems to fix it.
