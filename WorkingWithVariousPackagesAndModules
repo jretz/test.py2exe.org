@@ -10,8 +10,8 @@
  * Py2exeAndCtypesComExeServer  Creating a ctypes.com exe com server
 == Innosetup ==
  * BetterCompression  Getting complete wxPython Programs down to around 4 Megabytes
- * SetupLanguage  How to localize the language with [http://starship.python.net/crew/theller/py2exe/ py2exe] and [http://www.jrsoftware.org/isinfo.php InnoSetup]
- * QuickStartIcons  How to add Startup-Links to the Quickstart-Bar & the Desktop using [http://www.jrsoftware.org/isinfo.php InnoSetup] together with Py2Exe
+ * SetupLanguage  How to localize the language with [[http://starship.python.net/crew/theller/py2exe/|py2exe]] and [[http://www.jrsoftware.org/isinfo.php|InnoSetup]]
+ * QuickStartIcons  How to add Startup-Links to the Quickstart-Bar & the Desktop using [[http://www.jrsoftware.org/isinfo.php|InnoSetup]] together with Py2Exe
 == logging module ==
  * LoggingModule - Getting the %(filename)s format string working in the python logging module.
 == MatPlotLib ==
@@ -20,12 +20,12 @@
  * If you're getting ''No scipy-style subpackage 'xxx' found in c:\...\library.zip\numpy. Ignoring'', try --skip-archive command line option or pass '''options = {"py2exe": {"skip_archive":1}} '''to setup().
  * If you're using numarray and numpy together, be aware that they both have a _sort, and py2exe gets them confused. After py2exe creates the dist directotry, copy numpy/core/_sort.pyd and numarray/sort.pyd to their respective locations in the dist. [This problem is due to a bug in py2exe: it used a single, flat namespace for all .pyd files. This has been fixed in CVS as of 7 Sep 2007.]''' '''
 == os.popen ==
- * ["os.popen"] If you're getting failures when the CWD is a UNC path like {{{\\host\dirname\...}}}
+ * [[os.popen]] If you're getting failures when the CWD is a UNC path like {{{\\host\dirname\...}}}
 == PIL ==
- * ["PIL and py2exe"]  If you're getting ''cannot identify image file'', read this
- * ["PIL and Fontfiles"]  If you're getting ''Cannot find font file'', read this
+ * [[py2exeAndPIL]]  If you're getting ''cannot identify image file'', read this
+ * [[PILAndFontfiles]]  If you're getting ''Cannot find font file'', read this
 == PyGTK (and Kiwi) ==
- * ["Py2exeAndPyGTK"]  A recipe for py2exe and PyGTK
+ * [[Py2exeAndPyGTK]]  A recipe for py2exe and PyGTK
 == PyQt ==
  * Py2exeAndPyQt  If you're getting {{{File "qt.pyc", line 7, in __load Import Error: No module named sip}}}, read this
 == Python Eggs ==
@@ -35,14 +35,14 @@
 == Python ADODB modules ==
  * ADODB package Modules named adodb_xxx (like adodb_mysql) are not added automatically, must be added explicitly
 == PyXML ==
- * ["Py2exeAndPyXML"]  If you're getting ''File "xml\sax\saxexts.pyc", line 77, in make_parser; xml.sax._exceptions.SAX'''Reader''''''Not''''''Available: No parsers found'''''''', read this. '''
+ * [[Py2exeAndPyXML]]  If you're getting ''File "xml\sax\saxexts.pyc", line 77, in make_parser; xml.sax._exceptions.SAX'''Reader''''''Not''''''Available: No parsers found'''''''', read this. '''
 == Quixote ==
 Quixote is a pythonivc toolkit for web pages which allows one to execute ptl files using ihooks. You can distribute your web application with medusa or twisted and hence you can create a web application without IIS or Apache.
 
-I like to distribute my application with py2exe but I can not make py2exe setup script to recognize that x.ptl is a valid  python files. Any idea how to do this? - impossible: ["Quixote & py2exe"]  HAM20040602
+I like to distribute my application with py2exe but I can not make py2exe setup script to recognize that x.ptl is a valid  python files. Any idea how to do this? - impossible: [[py2exeAndQuixote]]  HAM20040602
 
 == reportlab ==
- * ["PIL and reportlab"]  If you've read ["PIL and py2exe"]  and still get ''cannot identify image file'', read this
+ * [[PILAndReportlab]]  If you've read [[py2exeAndPIL]]  and still get ''cannot identify image file'', read this
 == SciPy ==
  * ScipyImportProblems  Using py2exe with scipy ends up with missing {{{cephes}}} and {{{__cvs_version__}}} messages.  Here is a fix.
 == subprocess ==
