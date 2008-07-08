@@ -23,7 +23,7 @@ setup(windows=[{'script': "prog.py",
 
 == More fun with resources ==
 
-'''For all the following, you must download and install the other excellemt module from ThomasHeller: [http://starship.python.net/crew/theller/ctypes/ ctypes]'''
+'''For all the following, you must download and install the other excellemt module from ThomasHeller: [[http://starship.python.net/crew/theller/ctypes/|ctypes]]'''
 
 First you can define the following code in a separate module (winrsc.py for example)
 
