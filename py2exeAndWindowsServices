@@ -21,7 +21,7 @@ yours might be different ... what went wrong????
 
 Everything worked fine as long as I was running that service within debug mode. Then, starting it up as "real service", this error appeared.
 
-[http://groups.google.de/group/comp.lang.python/msg/ac7251f99cd83214?hl=de& a Mail of Gerald Haering] showed me the light:
+[[http://groups.google.de/group/comp.lang.python/msg/ac7251f99cd83214?hl=de&|a Mail of Gerald Haering]] showed me the light:
 when a service is started, all paths are TOTALLY DIFFERENT ANIMALS then in any other running state of python...
 so, the service tried to load version.dll, which is something that comes within windows/system32, and of course has NO Python init-code.
 
