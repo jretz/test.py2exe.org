@@ -16,7 +16,7 @@ Name: Deutsch; MessagesFile: "compiler:German-2-4.0.5.isl"
         print >> ofi, r"[Setup]"
 }}}
 
-The Messagefile for German language I got from [http://www.jrsoftware.org/files/istrans/ InnoSetup Translations]. 
+The Messagefile for German language I got from [[http://www.jrsoftware.org/files/istrans/|InnoSetup Translations]]. 
 It is even possible to provide a multitude of tranlations, say
 
 
