@@ -17,11 +17,11 @@
  * OptimizedBytecode - How to get optimized bytecode for all modules
  * CustomDataInExe - Add custom data in the executable?
  * HowToDetermineIfRunningFromExe - Simple functions to determine if you're in an .exe or .py
- * ["WhereAmI"] - sometimes you need to now where your exe is within the filesystem
+ * [[WhereAmI]] - sometimes you need to now where your exe is within the filesystem
  * Py2exeEnvironment - Information about the environment for the executable
- * ["py2exe and windows services"] - some gained knowledge
+ * [[py2exeAndWindowsServices]] - some gained knowledge
  * GuiApps - dealing with stdout
  * StderrLog - How does py2exe handle stack track printing and STDERR? How can Ichange that behaviour?
- * ["Using SOAPpy with py2exe"] - How to get SOAPpy working with py2exe.
- * [http://pybuilder.sf.net PyBuilder] - A Gui interface to compile easier and faster.
+ * [[py2exeAndSOAPpy]] - How to get SOAPpy working with py2exe.
+ * [[http://pybuilder.sf.net|PyBuilder]] - A Gui interface to compile easier and faster.
  * OverridingCriteraForIncludingDlls - how to override the criteria that py2exe uses to determine whether a DLL should be included in the distributed package.
