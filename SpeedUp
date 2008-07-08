@@ -2,7 +2,7 @@
 py2exe-ing larger projects take some time for byte compilation. 
 
 = Solution =
-[http://psyco.sourceforge.net psyco] can help both the compilation, and the final program.
+[[http://psyco.sourceforge.net|psyco]] can help both the compilation, and the final program.
 as Armin Rigo writes... "Psyco is a Python extension module which can massively speed up the execution of any Python code."
 
 = Example =
