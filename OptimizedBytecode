@@ -1,5 +1,5 @@
 = Problem =
-If you specify the '''optimize''' option in your ''setup.py'', this will only be used for the compiling of the needed modules, not for your main module![[BR]]For example if you have the following ''setup.py'':
+If you specify the '''optimize''' option in your ''setup.py'', this will only be used for the compiling of the needed modules, not for your main module!<<BR>>For example if you have the following ''setup.py'':
 {{{
 #!python
 from distutils.core import setup
