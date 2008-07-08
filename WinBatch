@@ -7,8 +7,8 @@ How it works:
  * Compile the Python Script
  * Move the Py2EXE-Results to a Subdirectory
  * Cleans the File-System (delete ''build'' and ''dist'')
- * Optional Recompress ''library.zip'' with [http://www.7-zip.org/ 7-Zip]
- * Optional Compress ''*.pyd'', ''*.dll'' and ''*.exe'' Files with [http://upx.sourceforge.net/ UPX]
+ * Optional Recompress ''library.zip'' with [[http://www.7-zip.org/|7-Zip]]
+ * Optional Compress ''*.pyd'', ''*.dll'' and ''*.exe'' Files with [[http://upx.sourceforge.net/|UPX]]
 
 (About Compression see BetterCompression under ''7ZIP and UPX'')
 
@@ -18,7 +18,7 @@ I use it under Win XP... It should also run under NT and 2000, but i don't know.
 
 You must '''change the Path''' to the Apps in the Batch-File!!!
 
-The Batch``File is very flexible, it uses its own file name to locate the Python Script![[BR]]
+The Batch``File is very flexible, it uses its own file name to locate the Python Script!<<BR>>
 You must '''rename it''' to exactly the same name like the script to compile.
 Example:
  * Name of the Pythonscript to Compile: My``Script.py
@@ -26,7 +26,7 @@ Example:
 
 To change the content of the Py2EXE-Setup-File, you must change the '':Make``Setup``File'' section in the Batch``File
 
-flexible?[[BR]]
+flexible?<<BR>>
 So you can quick use the Batch File with other Python script, yust copy and rename it!
 
 
