@@ -1,6 +1,6 @@
 Use attribute '''ctypes_com_server''' of method '''setup''' to create a com dll server.
 Unlike the case with win32com, with ctypes.com only a dll server will be created.
-Also see: ["Py2exeAndWin32com"] & ["Py2exeAndCtypesComExeServer"]
+Also see: [[Py2exeAndWin32com]] & [[Py2exeAndCtypesComExeServer]]
 
 You can define and instantiate a '''Target''' class to explicitly add
 version info resources that get attached to the file as metadata.
