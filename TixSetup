@@ -1,5 +1,5 @@
 = Introduction =
-[http://tix.sourceforge.net/ Tix], the Tk Interface eXtension, is a powerful set of user interface components that expands the capabilities of your Tcl/Tk and Python applications. This page describes building a "Hello World" Tix application with py2exe.
+[[http://tix.sourceforge.net/|Tix]], the Tk Interface eXtension, is a powerful set of user interface components that expands the capabilities of your Tcl/Tk and Python applications. This page describes building a "Hello World" Tix application with py2exe.
 
 = Tix Hello World =
 Here is a very simple Tix application. Save it as hello.py:
