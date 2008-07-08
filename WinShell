@@ -1,6 +1,6 @@
 = The Problem =
 
-I used [http://tgolden.sc.sabren.com/python/winshell.html winshell] from Tim Golden - a thin wrapper around Windows Shell-Functions.
+I used [[http://tgolden.sc.sabren.com/python/winshell.html|winshell]] from Tim Golden - a thin wrapper around Windows Shell-Functions.
 
 winshell.py starts with
 {{{
@@ -30,11 +30,11 @@ in the log.file.
 
 = Explanation =
 
-win32com does some magic in order to allow loading of COM extensions during run time. The actual extensions reside in the win32comext directory under site-packages and can't be loaded directly. win32com's [http://docs.python.org/tut/node8.html#SECTION008430000000000000000 __path__] variable has been changed to point to both win32com and win32comext. py2exe's modulefinder can't handle runtime changes in __path__ so we have to tell it about the change beforehand.
+win32com does some magic in order to allow loading of COM extensions during run time. The actual extensions reside in the win32comext directory under site-packages and can't be loaded directly. win32com's [[http://docs.python.org/tut/node8.html#SECTION008430000000000000000|__path__]] variable has been changed to point to both win32com and win32comext. py2exe's modulefinder can't handle runtime changes in __path__ so we have to tell it about the change beforehand.
 
 = Solution =
 
-Without shame I browsed [http://cvs.sourceforge.net/viewcvs.py/spambayes/ Spambayes source code] and found the code to fix it.
+Without shame I browsed [[http://cvs.sourceforge.net/viewcvs.py/spambayes/|Spambayes source code]] and found the code to fix it.
 
 {{{
 #!python
