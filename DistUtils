@@ -3,5 +3,5 @@ The DistUtils are a collection of several different commands to build and instal
 Py2Exe is an additional command to DistUtils, that creates standalone distributions for Win32.
 
 Documentation:
- * [http://www.python.org/doc/current/dist/dist.html Distributing Python Modules]
- * [http://www.python.org/sigs/distutils-sig/ Python Distutils-SIG: Introduction]
+ * [[http://www.python.org/doc/current/dist/dist.html|Distributing Python Modules]]
+ * [[http://www.python.org/sigs/distutils-sig/|Python Distutils-SIG: Introduction]]
