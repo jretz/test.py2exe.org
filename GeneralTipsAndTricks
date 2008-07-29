@@ -25,3 +25,4 @@
  * [[py2exeAndSOAPpy]] - How to get SOAPpy working with py2exe.
  * [[http://pybuilder.sf.net|PyBuilder]] - A Gui interface to compile easier and faster.
  * OverridingCriteraForIncludingDlls - how to override the criteria that py2exe uses to determine whether a DLL should be included in the distributed package.
+ * DealingWithImportError - what to do if confronted with `ImportError: No module named ...`

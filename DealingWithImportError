@@ -1,0 +1,3 @@
+= Dealing With `ImportError` =
+
+If you run the resulting executable and get `ImportError: No module named ...` first everything that ExeWithEggs has to say.
