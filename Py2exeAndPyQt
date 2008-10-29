@@ -46,3 +46,10 @@ import py2exe
 
 setup(windows=[{"script" : "app.pyw"}], options={"py2exe" : {"includes" : ["sip", "PyQt4._qt"]}})
 }}}
+
+
+== Using PyQt4 with SQLite ==
+I had a difficult time trying to deploy my application which uses PyQt4 and SQLite. Here is what I figured out:
+* I needed to add "PyQt4.QtSql' to my setup includes.
+* I needed to copy the contents of PyQt4\plugins\sqldrivers to <appdir>\sqldrivers. It did not work in any subdirectory including my zipfile directory.
+* I did not need a separate copy of sqlite3.dll.
