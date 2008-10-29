@@ -48,8 +48,8 @@ setup(windows=[{"script" : "app.pyw"}], options={"py2exe" : {"includes" : ["sip"
 }}}
 
 
-== Using PyQt4 with SQLite ==
+== Using PyQt4 with Databases ==
 When deploying applications which use PyQt4 and SQLite:
  * Add "PyQt4.QtSql' to the setup includes.
- * Copy the contents of PyQt4\plugins\sqldrivers to <appdir>\sqldrivers. It did not work for me in any subdirectory including the zipfile directory.
+ * Copy the contents of PyQt4\plugins\sqldrivers to <appdir>\sqldrivers. It did not work for me in any subdirectory including the zipfile directory. For SQLite I only needed to copy qsqlite4.dll.
  * A separate copy of sqlite3.dll is not needed.
