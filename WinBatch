@@ -72,6 +72,8 @@ del "%~dpn0_EXESetup.py"
 :: Copy the Py2EXE Results to the SubDirectory and Clean Py2EXE-Results
 rd build /s /q
 xcopy dist\*.* "%~dpn0_EXE\" /d /y
+# I use xcopy dist\*.* "%~dpn0_EXE\" /s /d /y
+# This is necessary when you have subdirectories - like when you use Tkinter
 rd dist /s /q
 
 
