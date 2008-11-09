@@ -31,6 +31,7 @@ The old [[http://www.py2exe.org/old|py2exe]] web site is still available until t
  * SiteNavigation: get an overview over this site and what it contains
  * ProblemsToBeFixed
  * RSS feed http://www.py2exe.org/index.cgi/RecentChanges?action=rss_rc&unique=1
+ * ReleaseProcess
 
 == How to use this site ==
 A Wiki is a collaborative site, anyone can contribute and share:
