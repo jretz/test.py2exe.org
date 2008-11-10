@@ -3,8 +3,8 @@
 This page is for the developers/maintainers. In contains the steps involved in making a new public release of py2exe.
 
    1. Change the {{{__version__}}} string in {{{py2exe\__init__.py}}}
-   2. Update {{{ANNOUNCE}}}
-   3. Update copyright date in {{{license.txt}}}
+   2. Update {{{ANNOUNCE}}} (be sure to change the version number on the first line)
+   3. Update copyright date in {{{docs\license.txt}}} and {{{setup.py}}}
    4. Update {{{docs\py2exe.txt}}}
    5. Run {{{docs\html.cmd}}} to generate html
    6. Commit above files to svn
