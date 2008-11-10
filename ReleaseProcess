@@ -17,3 +17,5 @@ This page is for the developers/maintainers. In contains the steps involved in m
    13. Run {{{setup.py register}}} to update the Python Package Index
    14. Update [[News]]
    15. Send {{{ANNOUNCE}}} to py2exe-users, comp.lang.python, comp.lang.python.announce
+   16. Change the {{{__version__}}} string in {{{py2exe\__init__.py}}} to a development version to distinguish it from released versions
+   17. Commit above file to svn
