@@ -1,4 +1,5 @@
 In addition to the[[http://docs.python.org/dist/module-distutils.core.html|standard distutils setup keywords]], the following py2exe keywords specify what and how to build:
+
 ||<tablewidth="820px" tableheight="86px">console ||list of scripts to convert into console exes ||
 ||windows ||list of scripts to convert into GUI exes ||
 ||service ||list of module names containing win32 service classes ||
@@ -9,16 +10,22 @@ In addition to the[[http://docs.python.org/dist/module-distutils.core.html|stand
 
 
 The following options dictionary entries are available:
-||<tablewidth="721px" tableheight="227px">unbuffered ||if true, use unbuffered binary stdout and stderr ||
-||optimize ||string or int of optimization level (0, 1, or 2) ||
-||includes ||list of module names to include ||
-||packages ||list of packages to include with subpackages ||
-||ignores ||list of modules to ignore if they are not found ||
-||excludes ||list of module names to exclude ||
-||dll_excludes ||list of dlls to exclude ||
-||dist_dir ||directory in which to build the final files ||
-||typelibs ||list of gen_py generated typelibs to include ||
 
+||<tablewidth="820px" tableheight="227px">unbuffered ||if true, use unbuffered binary stdout and stderr ||
+||optimize     || string or int of optimization level (0, 1, or 2) ||
+||includes     || list of module names to include ||
+||packages     || list of packages to include with subpackages ||
+||ignores      || list of modules to ignore if they are not found ||
+||excludes     || list of module names to exclude ||
+||dll_excludes || list of dlls to exclude ||
+||dist_dir     || directory in which to build the final files ||
+||typelibs     || list of gen_py generated typelibs to include ||
+||compressed   ||(boolean) create a compressed zipfile ||
+|| xref        ||(boolean) create and show a module cross reference ||
+||bundle-files || bundle dlls in the zipfile or the exe. Valid levels are 1, 2, or 3 (default) ||
+||skip-archive ||(boolean) do not place Python bytecode files in an archive, put them directly in the file system||
+|| ascii       ||(boolean) do not automatically include encodings and codecs ||
+||custom-boot-script || Python file that will be run when setting up the runtime environment ||
 
 Example:
 
