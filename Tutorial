@@ -120,6 +120,8 @@ Hello World
 
 Excellent, it works!!!
 
+If the program’s not working, you may have to install the Microsoft Visual C++ 2008 redistributable package, which can be found on Microsoft's [[http://http://www.microsoft.com/downloads/details.aspx?FamilyID=9b2da534-3e03-4391-8a4d-074b9f2bc1bf&displaylang=en|website]].
+
 <<Anchor(Step5)>>
 == Build an installer if applicable ==
 py2exe is not an installer builder - it merely assembles the files needed to run your Python program. There are plenty of good installer builders out there including some that are open source (e.g., [[http://nsis.sourceforge.net/Main_Page|NSIS]]) and some that are free (e.g., [[http://www.jrsoftware.org/isinfo.php|Inno Setup]]).
