@@ -23,7 +23,9 @@ The first example we'll use here is our old friend...
 
 {{{#!python
 print "Hello World!"
-}}}attachment:hello.py
+}}}
+
+[[attachment:hello.py]]
 
 We need to make sure it's working...
 
@@ -54,7 +56,9 @@ from distutils.core import setup
 import py2exe
 
 setup(console=['hello.py'])
-}}}attachment:setup.py
+}}}
+
+[[attachment:setup.py]]
 
 Notice that this is ordinary Python. Let's go through it line by line...
 
