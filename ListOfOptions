@@ -1,8 +1,8 @@
 ==== What you need to understand about Distutils: ====
 The Distutils module is part of the standard python distribution.  Distutils is used by python module developers to package and distribute new modules.  The setup syntax py2exe uses is inherited from distutils. (If you choose the default Windows installation for python, distutils can be found at: C:/Program Files/Python##/Lib/distutils/). The setup function of Distutil [[http://docs.python.org/dist/module-distutils.core.html|recognizes specific keywords]], which are also available when running py2exe.  The following is a list of some more useful distutils keywords
 
-||<tablewidth="820px" tableheight="198px">'''keyword'''||'''description'''||
-|| data_files|| list of "data" files that you are going to need to run your executable, .pngs, .jpgs||
+||<tablewidth="820px" tableheight="48px">'''keyword'''||'''description'''||
+|| data_files|| list of "data" files that you are going to need to run your executable such as .pngs, .jpgs||
 
 ==== Py2exe extends Distutils setup keywords ====
 In addition to the standard distutils setup keywords, the following py2exe keywords specify what and how to build.
