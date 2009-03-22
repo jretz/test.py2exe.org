@@ -36,6 +36,7 @@ Each tuple {{{ ("directoy",["list.txt", "of.txt", "files.txt) }}} consists of 2 
 
 So in my example I have some configuration data in {{{ kategorien.xml }}} and want to get this file copied to the program-directory. (Maybe that is bad style and whe should put it within \documents and settings\currentuser\application settings\my bompany\myproduct\mysettings.xml, but for distribution WITHIN one company I want to be able to support filepaths by phone :-)) )
 
+For more information, see: [[data_files]]
 
 = and how do you deal with this .xml-settings =
 Just to be buzzword-compliant every application this days should store at least something in [[http://www.xml.org/|XML]]. There are many, many libraries to do XML-Stuff in Python, I found 2 of them rather pythonic:
