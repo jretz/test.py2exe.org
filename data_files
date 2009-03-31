@@ -6,6 +6,7 @@ The data_files takes a tuple 1) the location to store the data and 2) the locati
 Example:
 
 {{{
+#!python
 from distutils.core import setup
 import py2exe
 
@@ -29,13 +30,14 @@ More often you'll have a directory of image files, and you can use some code to 
 Example:
 
 {{{
+#!python
 import os
 from distutils.core import setup
 import py2exe
 
 Mydata_files = []
-for files in os.listdir('C:\path\to\image\directory\'):
-    f1 = 'C:\path\to\image\directory\' + files
+for files in os.listdir('C:/path/to/image/directory/'):
+    f1 = 'C:/path/to/image/directory/' + files
     if os.path.isfile(f1): # skip directories
         f2 = 'images', [f1]
         Mydata_files.append(f2)
@@ -55,6 +57,7 @@ setup(
 
 A helpful function:
 {{{
+#!python
 import os
 import glob
 
