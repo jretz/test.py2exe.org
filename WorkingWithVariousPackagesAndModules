@@ -16,6 +16,8 @@
  * LoggingModule - Getting the %(filename)s format string working in the python logging module.
 == MatPlotLib ==
  * MatPlotLib - Fixing and including configuration information for this plotting package.
+== multiprocessing ==
+ * See [[http://docs.python.org/library/multiprocessing.html#multiprocessing.freeze_support|multiprocessing.freeze_support]].
 == NumPy ==
  * If you're getting ''No scipy-style subpackage 'xxx' found in c:\...\library.zip\numpy. Ignoring'', try --skip-archive command line option or pass '''options = {"py2exe": {"skip_archive":1}} '''to setup().
  * If you're using numarray and numpy together, be aware that they both have a _sort, and py2exe gets them confused. After py2exe creates the dist directotry, copy numpy/core/_sort.pyd and numarray/sort.pyd to their respective locations in the dist. [This problem is due to a bug in py2exe: it used a single, flat namespace for all .pyd files. This has been fixed in CVS as of 7 Sep 2007.]''' '''
@@ -26,6 +28,8 @@
  * [[PILAndFontfiles]]  If you're getting ''Cannot find font file'', read this
 == PyGTK (and Kiwi) ==
  * [[Py2exeAndPyGTK]]  A recipe for py2exe and PyGTK
+== pyodbc ==
+ * [[PyODBC]] additional configuration required to include {{decimal}} package
 == PyQt ==
  * Py2exeAndPyQt  If you're getting {{{File "qt.pyc", line 7, in __load Import Error: No module named sip}}}, read this
 == Python Eggs ==
