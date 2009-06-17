@@ -29,7 +29,7 @@
 == PyGTK (and Kiwi) ==
  * [[Py2exeAndPyGTK]]  A recipe for py2exe and PyGTK
 == pyodbc ==
- * [[PyODBC]] additional configuration required to include {{decimal}} package
+ * [[PyODBC]] additional configuration required to include {{{decimal}}} package
 == PyQt ==
  * Py2exeAndPyQt  If you're getting {{{File "qt.pyc", line 7, in __load Import Error: No module named sip}}}, read this
 == Python Eggs ==
