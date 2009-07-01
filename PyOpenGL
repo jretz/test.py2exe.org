@@ -24,6 +24,6 @@ sys.path += ['.']
 
 I think that's what did the trick for me, now . If you need funky stuff like TK, WGL, or OpenGLContext, maybe [[http://pyopengl.sourceforge.net/documentation/py2exe.html|the original tutorial by PyOpenGL]] helps.
 
-Tested with Python 2.6, py2exe version 0.6.9 and PyOpenGL version 3.0.0. Only tested the executable on a machine that had PyOpenGL already on it, going to test on a machine without it tomorrow.
+Tested with Python 2.6, py2exe version 0.6.9 and PyOpenGL version 3.0.0.
 
 --- [[mailto:bgeron@gmail.com|Bram Geron]]
