@@ -33,10 +33,10 @@ The option keyword takes the following set of dictionary key: value pairs. The d
 ||dist_dir || directory in which to build the final files ||
 ||typelibs || list of gen_py generated typelibs to include ||
 ||compressed ||(boolean) create a compressed zipfile ||
-|| xref ||(boolean) create and show a module cross reference ||
-||bundle-files || bundle dlls in the zipfile or the exe. Valid levels are 1, 2, or 3 (default) ||
+||xref ||(boolean) create and show a module cross reference ||
+||bundle_files || bundle dlls in the zipfile or the exe. Valid levels are 1, 2, or 3 (default) ||
 ||skip_archive ||(boolean) do not place Python bytecode files in an archive, put them directly in the file system ||
-|| ascii ||(boolean) do not automatically include encodings and codecs ||
+||ascii ||(boolean) do not automatically include encodings and codecs ||
 ||custom-boot-script || Python file that will be run when setting up the runtime environment ||
 
 
