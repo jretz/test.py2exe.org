@@ -69,6 +69,7 @@ Once that's done, '''you'll need to copy the etc, lib and share directories from
 (''not'' the pygtk install) to the dist dir py2exe created.''' Optionaly, 
 you can clean the share\locale dir to include only the locales you need for GTK+. Same thing for
 share\themes (I left both Default and MS-Windows). 
+  * it seems that from lib/ only all the *.dlls in the subtree are needed, and from share/ only themes/ and locale/.  saves lots of space
 
 If you are using kiwi, you will also have to copy the ''contents'' of the (''path to python'')/share/kiwi directory 
 (and (''path to python'')/share/gazpacho, if you used gazpacho) to the dist dir. And you will have 
