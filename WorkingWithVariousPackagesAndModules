@@ -20,6 +20,9 @@
 == logging module ==
  * LoggingModule - Getting the %(filename)s format string working in the python logging module.
 
+== lxml ==
+ * if missing _elementhpath, either pull whole lxml library in packages=..., or put "from lxml import _elementhpath as _dummy" somewhere in code; in both cases also pull gzip in packages=...
+
 == MatPlotLib ==
  * MatPlotLib - Fixing and including configuration information for this plotting package.
 
