@@ -60,5 +60,5 @@ For more information enter the following at the python command line:
 
 {{{
 >>> from distutils.core import setup
->>> help(setup
+>>> help(setup)
 }}}
