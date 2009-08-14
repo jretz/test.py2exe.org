@@ -1,3 +1,5 @@
+See also WhereAmI for another take on this problem.
+
 ThomasHeller posted this tip to the mailing list:
 
 `main_is_frozen()` returns `True` when running the exe, and `False` when

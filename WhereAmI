@@ -2,6 +2,8 @@
 == You want to know WHERE your .exe is ==
 Why? Maybe, you are building a website and have a subdir ./static below the directory in which your .exe resides, from where you server all .css and .js that is static. Or, you put the logs right below the programs dir within ./log
 
+See also HowToDetermineIfRunningFromExe for a shorter recipe
+
 === Problem ===
 You cannot rely on {{{__file__}}}, because {{{__file__}}} is not there in the py2exed main-script.
 You could try to rely on ".", the "Current Directory", but that only works if your application was started there. That may happen, but it is not guaranted.
