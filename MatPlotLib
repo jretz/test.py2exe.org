@@ -141,3 +141,45 @@ import pylab}}}
 If you're using numarray and numpy together, be aware that they both have a _sort, and py2exe gets them confused. After py2exe creates the dist directotry, copy numpy/core/_sort.pyd and numarray/sort.pyd to their respective locations in the dist.
 
 If you get an error that numarray module has no functionDict in numarraycore.py at line 176, then you'll know that py2exe confused the _sort modules that are in both numpy and numarray and need to do this step.
+
+= MPL datafiles etc with Python 2.5 and MPL 0.99 =
+Using matplotlib.get_py2exe_datafiles() helps to make this really easy now.
+
+Following is copy/paste from my larger setup.py, but it should work.
+
+{{{
+#!python
+from distutils.core import setup
+import py2exe
+
+# my setup.py is based on one generated with gui2exe, so data_files is done a bit differently
+data_files = []
+
+import matplotlib as mpl
+data_files += mpl.get_py2exe_datafiles()
+
+setup(
+    console=['test.py'],
+    options={
+             'py2exe': {
+                        'packages' : ['pytz', ],
+                       }
+            },
+    data_files=data_files
+)
+}}}
+
+Note that I did not need to define matplotlib in packages and this works for me using the wxAgg backend.
+
+There is one problem outstanding in 0.99 and that has to do with this kind of code:
+"psd.__doc__ = psd.__doc__ % kwdocd"
+
+It cause a TypeError exception if one uses ""optimize": 2," in ones setup.py.
+
+My work around is to change that type of code to:
+if psd.__doc__ is not None:
+    psd.__doc__ = psd.__doc__ % kwdocd
+else:
+    psd.__doc__ = ""
+
+Reported this to the mpl list, hopefully a better solution is found for this.
