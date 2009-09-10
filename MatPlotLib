@@ -145,7 +145,7 @@ If you get an error that numarray module has no functionDict in numarraycore.py 
 = MPL datafiles etc with Python 2.5 and MPL 0.99 =
 Using matplotlib.get_py2exe_datafiles() helps to make this really easy now.
 
-Following is a setup.py for the MPL example "embedding_in_wx2.py".
+Following is a setup.py for the MPL example "embedding_in_wx2.py" (you should comment the wxversion check in that file or make it conditional on sys.frozen).
 
 {{{
 from distutils.core import setup
