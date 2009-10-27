@@ -60,6 +60,8 @@ Commenting out {{{compressor}}} disables compression.
 
 ''cliechti''
 
+Enhanced to use the correct working directory, pass through command line parameters and the exit code.
+
 '''setup.nsi''' - the Nullsoft installer script
 {{{
 !define py2exeOutputDir 'dist'
@@ -94,11 +96,21 @@ FunctionEnd
 ; - - - - Allow only one installer instance - - - - 
 
 Section
+    
+    ; Get directory from which the exe was called
+    System::Call "kernel32::GetCurrentDirectory(i ${NSIS_MAX_STRLEN}, t .r0)"
+    
+    ; Unzip into pluginsdir
     InitPluginsDir
     SetOutPath '$PLUGINSDIR'
     File /r '${py2exeOutputDir}\*.*'
-    SetOutPath '$EXEDIR'        ; uncomment this line to start the exe in the PLUGINSDIR
-    nsExec::Exec $PLUGINSDIR\${exe}
+    
+    ; Set working dir and execute, passing through commandline params
+    SetOutPath '$0'
+    ${GetParameters} $R0
+    ExecWait '"$PLUGINSDIR\${exe}" $R0' $R2
+    SetErrorLevel $R2
+ 
 SectionEnd
 }}}
 
