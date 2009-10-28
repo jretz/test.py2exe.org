@@ -1,4 +1,5 @@
 ##language:en
+#test
 == Things that can go wrong with py2exe and services ==
 
 within demos/advanced there is an example to create windows services with py2exe. It works quite out of the box.
@@ -28,4 +29,3 @@ so, the service tried to load version.dll, which is something that comes within 
 
 === Solution ===
 Make sure that NONE of your Python module names conflicts with ANY of the windows system dll names
-
