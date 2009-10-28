@@ -1,5 +1,4 @@
 ##language:en
-#test
 == Things that can go wrong with py2exe and services ==
 
 within demos/advanced there is an example to create windows services with py2exe. It works quite out of the box.
