@@ -1,4 +1,47 @@
 ##language:en
+
+== Making services more like regular win32 apps ==
+
+From http://osdir.com/ml/python.py2exe/2007-01/msg00003.html, update
+your setup.py to look something like this:
+
+{{{
+myservice = Target(
+    # used for the versioninfo resource
+    description = "A sample Windows NT service",
+    # what to build. For a service, the module name (not the
+    # filename) must be specified!
+    modules = ["MyService"],
+    cmdline_style='pywin32',
+    )
+
+setup(
+    service = [myservice],
+    )
+}}}
+
+See `samples\advanced\setup.py` for more details.
+
+Without the cmdline_style parameter, you get this output from running your
+service in CMD:
+
+{{{
+Services are supposed to be run by the system after they have been installed.
+These command line options are available for (de)installation:
+        -help
+        -install
+        -remove
+        -auto
+        -disabled
+        -interactive
+        -user: <arg>
+        -password: <arg>
+Connecting to the Service Control Manager
+Traceback (most recent call last):
+  File "boot_service.py", line 173, in ?
+pywintypes.error: (1063, 'StartServiceCtrlDispatcher', 'The service process could not connect to the service controller.')
+}}}
+
 == Things that can go wrong with py2exe and services ==
 
 within demos/advanced there is an example to create windows services with py2exe. It works quite out of the box.
