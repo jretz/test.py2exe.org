@@ -22,7 +22,18 @@ setup(
 
 See `samples\advanced\setup.py` for more details.
 
-Without the cmdline_style parameter, you get this output from running your
+'''Note''': using an object for `setup()` is a py2exe extension of
+distutils
+
+The standard win32 commands for `HandleCommandLine()`:
+
+ * install
+ * start
+ * debug
+ * stop
+ * remove
+
+Without the `cmdline_style` parameter, you get this output from running your
 service in CMD:
 
 {{{
