@@ -203,16 +203,19 @@ setup(
 In 0.99 there is a problem with some of the documentation strings, which shows up if you use "optimize=1or2", the work around is quite easy and according to the MPL list this is fixed in trunk.
 
 This kind of code:
-"psd.__doc__ = psd.__doc__ % kwdocd"
+{{{
+psd.__doc__ = psd.__doc__ % kwdocd
+}}}
 
 Causes a TypeError exception if one uses ""optimize": 1or2," in ones setup.py.
 
 My work around is to change that type of code to:
+{{{
 if psd.__doc__ is not None:
     psd.__doc__ = psd.__doc__ % kwdocd
 else:
     psd.__doc__ = ""
-
+}}}
 I got this problem only with mpl/mlab.py, in which four lines need to be changed.
 
 Another issue I found if you need to use the backend_wx, it does a version check for wxPython 2.8 which always fails in the py2exe version, my work around is to add "if not hasattr(sys, 'frozen'):" at line 113 of backend_wx.py and indent the lines 114 to 131.  I will report this to the mpl list and they will hopefully fix this too.
