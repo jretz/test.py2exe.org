@@ -12,6 +12,9 @@
  * Py2exeAndCtypesComDllServer  Creating a ctypes.com dll com server
  * Py2exeAndCtypesComExeServer  Creating a ctypes.com exe com server
 
+== dpkt ==
+ * [[dpkt]] Fixing problems initializing class attributes
+
 == Innosetup ==
  * BetterCompression  Getting complete wxPython Programs down to around 4 Megabytes
  * SetupLanguage  How to localize the language with [[http://starship.python.net/crew/theller/py2exe/|py2exe]] and [[http://www.jrsoftware.org/isinfo.php|InnoSetup]]
