@@ -43,6 +43,9 @@
  * [[py2exeAndPIL]]  If you're getting ''cannot identify image file'', read this
  * [[PILAndFontfiles]]  If you're getting ''Cannot find font file'', read this
 
+== protobuf ==
+ * [[GoogleProtobuf]] If you're getting ''The following modules appear to be missing''
+
 == PyGTK (and Kiwi) ==
  * [[Py2exeAndPyGTK]]  A recipe for py2exe and PyGTK
 
