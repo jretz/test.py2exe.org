@@ -211,7 +211,7 @@ Note that this method of including the C runtime is used by several Visual C++ a
 ==== 5.2.2. Running the redistributable C runtime installer ====
 If you don't have rights to redistribute MSVCR90.dll, then your users may install it on their machine by running the [[http://www.microsoft.com/downloads/details.aspx?FamilyID=9b2da534-3e03-4391-8a4d-074b9f2bc1bf&displaylang=en|Microsoft Visual C++ 2008 Redistributable Package]]. It is important not to use the SP1 version of this installer, which contains the wrong version of MSVCR90.dll.
 
-Either you can instruct your users to download and run this themselves, or you could create an installer for your application ([[#Step6|see below]]), that includes vcredist_x86.exe (which is itself redistributable by anyone), and which runs it when installing your application.
+Either you can instruct your users to download and run this themselves, or you could create an installer for your application ([[#Step6|see below]]), that includes vcredist_x86.exe (which is itself redistributable by anyone), and then run it as part of your application installation.
 
 <<Anchor(Step6)>>
 == 6. Build an installer if applicable ==
