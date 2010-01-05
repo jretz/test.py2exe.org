@@ -139,9 +139,9 @@ If you are using Python 2.4 or 2.5, then the DLL you need is called MSVCR71.dll.
 
 However, the copyright on this file is owned by Microsoft, and you need to check whether you have the legal right to redistribute it. If you have a copy of Visual Studio, check the file redist.txt provided within the installation to see whether you have redistribution rights for this DLL. Generally you have the right to redistribute it if you own a license for Microsoft Visual C++, but not if you use the Express Editions.
 
-If you do not have the rights to redistribute MSVCR71.dll, then your users must install it for themselves, using the [[http://www.microsoft.com/downloads/details.aspx?familyid=32bc1bee-a3f9-4c13-9c99-220b62a191ee&displaylang=en|Microsoft Visual C++ 2005 Redistributable Package]].
+If you do not have the rights to redistribute MSVCR71.dll, then your users must install it for themselves, using the [[http://www.microsoft.com/downloads/details.aspx?familyid=32bc1bee-a3f9-4c13-9c99-220b62a191ee&displaylang=en|Microsoft Visual C++ 2005 Redistributable Package]] (vcredist_x86.exe).
 
-Either you can instruct your users to download and run this themselves, or you could create an installer for your application ([[#Step6|see Step 6 below]]), that includes vcredist_x86.exe (which is itself redistributable by anyone), and then run it as part of your application installation.
+Either you can instruct your users to download and run this themselves, or you could create an installer for your application ([[#Step6|see Step 6 below]]), that includes vcredist_x86.exe (which is itself redistributable by anyone), and then run that as part of your application installation.
 
 <<Anchor(Step52)>>
 === 5.2. Python 2.6 and newer ===
@@ -211,9 +211,9 @@ Note that this method of including the C runtime is used by several Visual C++ a
 
 <<Anchor(Step522)>>
 ==== 5.2.2. Running the redistributable C runtime installer ====
-If you don't have rights to redistribute MSVCR90.dll, then your users may install it on their machine by running the [[http://www.microsoft.com/downloads/details.aspx?FamilyID=9b2da534-3e03-4391-8a4d-074b9f2bc1bf&displaylang=en|Microsoft Visual C++ 2008 Redistributable Package]]. It is important not to use the SP1 version of this installer, which contains the wrong version of MSVCR90.dll.
+If you don't have rights to redistribute MSVCR90.dll, then your users may install it on their machine by running the [[http://www.microsoft.com/downloads/details.aspx?FamilyID=9b2da534-3e03-4391-8a4d-074b9f2bc1bf&displaylang=en|Microsoft Visual C++ 2008 Redistributable Package]] (vcredist_x86.exe). It is important not to use the SP1 version of this installer, which contains the wrong version of MSVCR90.dll.
 
-Either you can instruct your users to download and run this themselves, or you could create an installer for your application ([[#Step6|see step 6 below]]), that includes vcredist_x86.exe (which is itself redistributable by anyone), and then run it as part of your application installation.
+Either you can instruct your users to download and run this themselves, or you could create an installer for your application ([[#Step6|see step 6 below]]), that includes vcredist_x86.exe (which is itself redistributable by anyone), and then run that as part of your application installation.
 
 <<Anchor(Step6)>>
 == 6. Build an installer if applicable ==
