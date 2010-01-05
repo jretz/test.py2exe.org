@@ -10,10 +10,15 @@ There are a few simple steps needed to use py2exe once you've installed it:
    2. [[#Step2|Create your setup script (setup.py)]]
    3. [[#Step3|Run your setup script]]
    4. [[#Step4|Test your executable]]
-   5. [[#Step5|Build an installer if applicable]]
+   5. [[#Step5|Providing the Microsoft Visual C runtime DLL]]
+     5.1. [[#Step51|Python 2.4 or 2.5]]
+     5.2. [[#Step52|Python 2.6 and newer]]
+       5.2.1. [[#Step521|Bundling the C runtime DLL]]
+       5.2.2. [[#Step522|Running the redistributable C runtime installer]]
+   6. [[#Step6|Build an installer if applicable]]
 
 <<Anchor(Step1)>>
-== Create/test your program ==
+== 1. Create/test your program ==
 
 The biggest step is almost always the first one. The good news is that py2exe typically has little or no impact on this step. The vast majority of things you can do with Python will work with py2exe. Many modules just work seamlessly with py2exe, but some third party modules will require a little extra work. Luckily there is help available at WorkingWithVariousPackagesAndModules.
 
@@ -39,7 +44,7 @@ C:\Tutorial>
 Looks good!
 
 <<Anchor(Step2)>>
-== Create your setup script (setup.py) ==
+== 2. Create your setup script (setup.py) ==
 
 py2exe extends [[http://www.python.org/doc/current/dist/|Distutils]] with a new "command". If you've installed third party Python modules then there's a good chance you've seen at least one distutils command:
 
@@ -68,7 +73,7 @@ Notice that this is ordinary Python. Let's go through it line by line...
  4. Call setup and tell it that we want a single console application and the main entry point is "hello.py".
 
 <<Anchor(Step3)>>
-== Run your setup script ==
+== 3. Run your setup script ==
 The next step is to run your setup script. Make sure to give the py2exe command and expect to see lots and lots of output:
 
 {{{
@@ -109,10 +114,10 @@ make sure you don't distribute files belonging to the operating system.
 C:\Tutorial>
 }}}
 
-Two directories will be created when you run your setup script... build and dist. The build directory is used as working space while your application is being packaged. It is safe to delete the build directory after your setup script has finished running. The files in the dist directory are the ones needed to run your application. If you are using Python 2.4 or newer then MSVCR71.dll will be included in dist - this is a Microsoft DLL and you need to determine if you have the legal right to distribute it.
+Two directories will be created when you run your setup script, build and dist. The build directory is used as working space while your application is being packaged. It is safe to delete the build directory after your setup script has finished running. The files in the dist directory are the ones needed to run your application.
 
 <<Anchor(Step4)>>
-== Test your executable ==
+== 4. Test your executable ==
 Now that the package has been created it is ready to test:
 
 {{{
@@ -124,8 +129,90 @@ Hello World
 
 Excellent, it works!!!
 
-If the program works on your computer, but not on the user's computer, they may have to install the Microsoft Visual C++ 2008 redistributable package, which can be found on Microsoft's [[http://www.microsoft.com/downloads/details.aspx?FamilyID=9b2da534-3e03-4391-8a4d-074b9f2bc1bf&displaylang=en|website]].  This typically occurs when the user does not have python installed.
-
 <<Anchor(Step5)>>
-== Build an installer if applicable ==
+== 5. Providing the Microsoft Visual C runtime DLL ==
+Your new program will only work on computers that already have the Microsoft Visual C runtime DLL installed. If you have installed Python or Visual Studio, you will already have this DLL. If all of your users already have it, then you can skip all of step 5. If some of your users may not already have this DLL, they will not be able to run your program. The methods you may use to solve this depend on the version of Python you are using:
+
+<<Anchor(Step51)>>
+=== 5.1. Python 2.4 or 2.5 ===
+If you are using Python 2.4 or 2.5, then the DLL you need is called MSVCR71.dll. Py2exe has already included this file in your dist directory, and you need do nothing more.
+
+However, the copyright on this file is owned by Microsoft, and you need to check whether you have the legal right to redistribute it. If you have a copy of Visual Studio, check the file redist.txt provided within the installation to see whether you have redistribution rights for this DLL. Generally you have the right to redistribute it if you own a license for Microsoft Visual C++, but not if you use the Express Editions.
+
+If you do not have the rights to redistribute MSVCR71.dll, then see [[#Step522|section 5.2.2 below]] on how your users can obtain it by downloading and running vcredist_x86.exe. ('''TODO:''' is it important which version of vcredist_x86.exe they download? VS2005? 2008? SP1? etc)
+
+<<Anchor(Step52)>>
+=== 5.2. Python 2.6 and newer ===
+For Python 2.6, the DLL you need is called MSVCR90.dll. Py2exe is not able to automatically include this DLL in your dist directory, so you must provide it yourself.
+
+To complicate things, there is more than one version of this DLL in existance, each with the same filename. You need the same version that the Python interpreter was compiled with, which is version 9.0.21022.8. Through the remainder of these instructions, hover your mouse over the dll file (or the vcredist_x86.exe installer executable) to confirm which version you've got.
+
+As for older versions of Python, you need to check redist.txt within your Visual Studio installation to see whether you have the legal right to redistribute this DLL. If you do have these rights, then you have the option to bundle the C runtime DLL with you application. If you don't have the rights, then you must have your users run the redistributable C runtime installer on their machines.
+
+<<Anchor(Step521)>>
+==== 5.2.1. Bundling the C runtime DLL ====
+If you do have the rights to redistribute MSVCR90.dll, there should be a copy of it in your Visual Studio install, under VC\redist\x86\Microsoft.VC90.CRT. Since Visual Studio 2008, you can't just copy this DLL file - you also need the manifest file that you'll find there.
+
+Make a copy of everything in the 'Microsoft.VC90.CRT' directory, for example into your project tree, or in some location that is shared between projects, such as "C:\dev\ms-visualc-runtime".
+
+There are two other DLL files in there (msvcm90.dll and msvcp90.dll) that you don't need. Delete these from your copy, and optionally you may remove the two <file> tags in the manifest file that refer to them. The manifest file should then look like this:
+
+{{{
+
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<!-- Copyright (c) Microsoft Corporation.  All rights reserved. -->
+<assembly xmlns="urn:schemas-microsoft-com:asm.v1" manifestVersion="1.0">
+    <noInheritable/>
+    <assemblyIdentity
+        type="win32"
+        name="Microsoft.VC90.CRT"
+        version="9.0.21022.8"
+        processorArchitecture="x86"
+        publicKeyToken="1fc8b3b9a1e18e3b"
+    />
+    <file name="msvcr90.dll" />
+</assembly>
+
+}}}
+
+Now, we want py2exe to copy MSVCR90.dll and the manifest file into your project's dist directory, in a subdirectory called 'Microsoft.VC90.CRT'. To achieve this, add a data_files option to your project's setup.py:
+
+{{{
+
+  from glob import glob
+  data_files = [("Microsoft.VC90.CRT", glob(r'c:\dev\ms-vc-runtime\*.*')]
+  setup(
+    data_files=data_files,
+    etc
+  )
+
+}}}
+
+With this in place, running py2exe should put the files into your dist directory:
+
+{{{
+
+  dist
+  |
+  +-Microsoft.VC90.CRT
+  | |
+  | +-Microsoft.VC90.CRT.manifest
+  | +-msvcr90.dll
+  |
+  |-etc
+
+}}}
+
+Now, simply copying the whole dist directory to your users machines should now allow your application to run, even on machines that don't have their own copy of the C++ runtime.
+
+Note that this method of including the C runtime is used by several Visual C++ applications - if you search your Program Files folder for msvcr90.dll, you may find several applications that have this DLL and the associated manifest bundled alongside their executable like this.
+
+<<Anchor(Step522)>>
+==== 5.2.2. Running the redistributable C runtime installer ====
+If you don't have rights to redistribute MSVCR90.dll, then your users may install it on their machine by running the [[http://www.microsoft.com/downloads/details.aspx?FamilyID=9b2da534-3e03-4391-8a4d-074b9f2bc1bf&displaylang=en|Microsoft Visual C++ 2008 Redistributable Package]]. It is important not to use the SP1 version of this installer, which contains the wrong version of MSVCR90.dll.
+
+Either you can instruct your users to download and run this themselves, or you could create an installer for your application ([[#Step6|see below]]), that includes vcredist_x86.exe (which is itself redistributable by anyone), and which runs it when installing your application.
+
+<<Anchor(Step6)>>
+== 6. Build an installer if applicable ==
 py2exe is not an installer builder - it merely assembles the files needed to run your Python program. There are plenty of good installer builders out there including some that are open source (e.g., [[http://nsis.sourceforge.net/Main_Page|NSIS]]) and some that are free (e.g., [[http://www.jrsoftware.org/isinfo.php|Inno Setup]]).
