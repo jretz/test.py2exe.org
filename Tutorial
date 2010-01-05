@@ -131,7 +131,7 @@ Excellent, it works!!!
 
 <<Anchor(Step5)>>
 == 5. Providing the Microsoft Visual C runtime DLL ==
-Your new program will only work on computers that already have the Microsoft Visual C runtime DLL installed. If you have installed appropriate versions of Python or Visual Studio, then you will already have this DLL. If all of your users already have it, then you need do nothing here, and can skip to step 6. If some of your users might not already have this DLL, then they will not be able to run your program. The methods you may use to solve this depend on the version of Python you are using:
+The Python interpreter was compiled using Microsoft Visual C, so your new program needs the Microsoft Visual C runtime DLL to run. If you have installed appropriate versions of Python or Visual Studio, then you will already have this DLL on your computer. If some of your users might not already have this DLL, then they will not be able to run your program. The methods you may use to solve this depend on the version of Python you are using:
 
 <<Anchor(Step51)>>
 === 5.1. Python 2.4 or 2.5 ===
