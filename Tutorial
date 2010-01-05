@@ -131,15 +131,15 @@ Excellent, it works!!!
 
 <<Anchor(Step5)>>
 == 5. Providing the Microsoft Visual C runtime DLL ==
-Your new program will only work on computers that already have the Microsoft Visual C runtime DLL installed. If you have installed Python or Visual Studio, you will already have this DLL. If all of your users already have it, then you can skip all of step 5. If some of your users may not already have this DLL, they will not be able to run your program. The methods you may use to solve this depend on the version of Python you are using:
+Your new program will only work on computers that already have the Microsoft Visual C runtime DLL installed. If you have installed appropriate versions of Python or Visual Studio, then you will already have this DLL. If all of your users already have it, then you need do nothing here, and can skip to step 6. If some of your users might not already have this DLL, then they will not be able to run your program. The methods you may use to solve this depend on the version of Python you are using:
 
 <<Anchor(Step51)>>
 === 5.1. Python 2.4 or 2.5 ===
-If you are using Python 2.4 or 2.5, then the DLL you need is called MSVCR71.dll. Py2exe has already included this file in your dist directory, and you need do nothing more.
+If you are using Python 2.4 or 2.5, then the DLL you need is called MSVCR71.dll. This DLL will probably already have been included in your dist directory, in which case you need do nothing more.
 
 However, the copyright on this file is owned by Microsoft, and you need to check whether you have the legal right to redistribute it. If you have a copy of Visual Studio, check the file redist.txt provided within the installation to see whether you have redistribution rights for this DLL. Generally you have the right to redistribute it if you own a license for Microsoft Visual C++, but not if you use the Express Editions.
 
-If you do not have the rights to redistribute MSVCR71.dll, then see [[#Step522|section 5.2.2 below]] on how your users can obtain it by downloading and running vcredist_x86.exe. ('''TODO:''' is it important which version of vcredist_x86.exe they download? VS2005? 2008? SP1? etc)
+If you do not have the rights to redistribute MSVCR71.dll, then see [[#Step522|section 5.2.2 below]] on how your users can obtain it for themselves, except instead of the download link there, use this one instead, for the [[http://www.microsoft.com/downloads/details.aspx?familyid=32bc1bee-a3f9-4c13-9c99-220b62a191ee&displaylang=en|Microsoft Visual C++ 2005 Redistributable Package]], which contains the right version of the DLL.
 
 <<Anchor(Step52)>>
 === 5.2. Python 2.6 and newer ===
