@@ -96,6 +96,9 @@ I like to distribute my application with py2exe but I can not make py2exe setup 
 == win32pipe ==
  * IssuesWithWin32pipe (from pywin32) in a bundle.
 
+== win32ui ==
+ * Py2exeAndWin32comPy2exeAndWin32ui Using win32ui with py2exe 0.6 and python 2.6
+
 == wxPython ==
  * Py2exeAndwxPython  If you're getting ''wxObjectPtr not found'', read this
 
