@@ -206,6 +206,11 @@ Now, simply copying the whole dist directory to your users machines should now a
 
 Note that this method of including the C runtime is used by several Visual C++ applications - if you search your Program Files folder for msvcr90.dll, you may find several applications that have this DLL and the associated manifest bundled alongside their executable like this.
 
+<<Anchor(Step5211)>>
+
+==== 5.2.1.1 win32ui ====
+win32ui needs MFC DLLs to run .exe, see Py2exeAndWin32ui for extra informations
+
 <<Anchor(Step522)>>
 
 ==== 5.2.2. Running the redistributable C runtime installer ====
