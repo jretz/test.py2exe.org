@@ -13,6 +13,7 @@ There are a few simple steps needed to use py2exe once you've installed it:
   . 5.1. [[Tutorial#Step51|Python 2.4 or 2.5]]
   . 5.2. [[Tutorial#Step52|Python 2.6 and newer]]
    . 5.2.1. [[Tutorial#Step521|Bundling the C runtime DLL]]
+    . 5.2.1.1 [[Tutorial#Step5211|win32ui special case]]
    . 5.2.2. [[Tutorial#Step522|Running the redistributable C runtime installer]]
  1. [[Tutorial#Step6|Build an installer if applicable]]
 
@@ -208,7 +209,7 @@ Note that this method of including the C runtime is used by several Visual C++ a
 
 <<Anchor(Step5211)>>
 
-==== 5.2.1.1 win32ui ====
+==== 5.2.1.1 win32ui special case ====
 win32ui needs MFC DLLs to run .exe, see Py2exeAndWin32ui for extra informations
 
 <<Anchor(Step522)>>
