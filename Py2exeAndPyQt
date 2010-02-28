@@ -47,16 +47,22 @@ import py2exe
 setup(windows=[{"script" : "app.pyw"}], options={"py2exe" : {"includes" : ["sip", "PyQt4._qt"]}})
 }}}
 
-
 == Using PyQt4 with Databases ==
 When deploying applications which use PyQt4 and SQLite:
  * Add "PyQt4.QtSql' to the setup includes.
  * Copy the contents of PyQt4\plugins\sqldrivers to <appdir>\sqldrivers. It did not work for me in any subdirectory including the zipfile directory. For SQLite I only needed to copy qsqlite4.dll.
  * A separate copy of sqlite3.dll is not needed.
 
-== PyQt4 and Phonon ==
-In a similar manner as using PyQt4 and SQlite (from pyqt), one need to add an extra step to use Phonon.
-The very first setup.py is needed, with includes for sip. But one have to also copy the phonon_backend directory from PyQt4 installation to your dist directory
-Otherwise you get an error: "phonon backend could not be loaded"
+'''Tips''': use data_files for this. See below
 
-'''I think this could be generalize to any directory in your PyQt4\plugins directory that you might need, depending on what you use in PyQt.'''
+== PyQt4 and Phonon ==
+In a similar manner as using PyQt4 and SQlite (from pyqt), one need to add an extra step to use Phonon and copy PyQt4\plugins\phonon_backend directory into your dist directory. Otherwise you get an error: "phonon backend could not be loaded"
+
+But the correct way to do this is to use [[data_files|data_files]] in your setup.py
+{{{
+data_files = [
+            ('phonon_backend', [
+                'C:\Python26\Lib\site-packages\PyQt4\plugins\phonon_backend\phonon_ds94.dll'
+                ])
+]
+}}}
