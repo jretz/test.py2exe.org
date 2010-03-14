@@ -157,7 +157,7 @@ Valid values for {{{bundle_files}}} are:
 || 2 || bundle everything but the Python interpreter ||
 || 1 || bundle everything, including the Python interpreter ||
 
-If {{{zipfile}}} is set to {{{None}}}, the files will be bundle within the executable instead of {{{library.zip}}}.
+If {{{zipfile}}} is set to {{{None}}}, the files will be bundle within the executable instead of {{{library.zip}}}.  '''Note:''' you will still be required to include the MSVC runtime DLL with your application, which should be located in the dist directory along side the executable (named MSVCRXX.dll, where XX = revision number).
 
 Here is a sample '''setup.py''':
 
