@@ -26,5 +26,6 @@
  * [[http://pybuilder.sf.net|PyBuilder]] - A Gui interface to compile easier and faster.
  * OverridingCriteraForIncludingDlls - how to override the criteria that py2exe uses to determine whether a DLL should be included in the distributed package.
  * DealingWithImportError - what to do if confronted with `ImportError: No module named ...`
+ * DealingWithWarnings - what to do to avoid warnings in windows (no console) mode getting into application errors.
  * OptimizingSize - how to make your distribution as small as possible
  * [[comparison.py]] - a quick script for finding missing files, packages, and modules.
