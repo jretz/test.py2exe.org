@@ -30,11 +30,11 @@ in the log.file.
 
 = Explanation =
 
-win32com does some magic in order to allow loading of COM extensions during run time. The actual extensions reside in the win32comext directory under site-packages and can't be loaded directly. win32com's [[http://docs.python.org/tut/node8.html#SECTION008430000000000000000|__path__]] variable has been changed to point to both win32com and win32comext. py2exe's modulefinder can't handle runtime changes in __path__ so we have to tell it about the change beforehand.
+`win32com` does some magic in order to allow loading of COM extensions during run time. The actual extensions reside in the `win32comext` directory under site-packages and can't be loaded directly. `win32com`'s [[http://docs.python.org/tutorial/modules.html#packages-in-multiple-directories|__path__]] variable has been changed to point to both `win32com` and `win32comext`. `py2exe`'s modulefinder can't handle runtime changes in `__path__` so we have to tell it about the change beforehand.
 
 = Solution =
 
-Without shame I browsed [[http://cvs.sourceforge.net/viewcvs.py/spambayes/|Spambayes source code]] and found the code to fix it.
+Without shame I browsed [[http://spambayes.svn.sourceforge.net/viewvc/spambayes/trunk/spambayes/|Spambayes source code]] and found the code to fix it.
 
 {{{
 #!python
@@ -79,11 +79,11 @@ The following products included workaround:
 
 = Ideal proposal =
 
-py2exe should detect such well-known problems with well-known modules, and when win32com.shell is missing, a workaround should be automatically applied with a corresponding log message:
+`py2exe` should detect such well-known problems with well-known modules, and when `win32com.shell` is missing, a workaround should be automatically applied with a corresponding log message:
 {{{
 The following modules appear to be missing
 ['Interface', 'intSet', 'mxDateTime.__version__', 'win32com.shell']
 Applying automatic workaround for known problem with win32com.shell
 }}}
 
-py2exe should also fail if required modules are missing unless some '--force' key in effect.
+`py2exe` should also fail if required modules are missing unless some `--force` key in effect.
