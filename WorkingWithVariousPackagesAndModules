@@ -89,7 +89,7 @@ I like to distribute my application with py2exe but I can not make py2exe setup 
 
 == win32com ==
  * Py2exeAndWin32com  Creating a win32com exe and/or dll com server
- * WinShell  Using win32com.shell with py2exe 0.5
+ * [[win32com.shell]] Including with py2exe 0.6
  * IncludingTypelibs  Allowing use of makepy generated typelibs
  * UsingEnsureDispatch  Use a prog_id and generate 'typelibs' at runtime
 
