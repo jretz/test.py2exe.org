@@ -1,3 +1,4 @@
+## page was renamed from WinShell
 = The Problem =
 
 I used [[http://tgolden.sc.sabren.com/python/winshell.html|winshell]] from Tim Golden - a thin wrapper around Windows Shell-Functions.
