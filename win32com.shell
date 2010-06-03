@@ -1,23 +1,22 @@
 ## page was renamed from WinShell
 = The Problem =
 
-I used [[http://tgolden.sc.sabren.com/python/winshell.html|winshell]] from Tim Golden - a thin wrapper around Windows Shell-Functions.
+py2exe fails to find imported win32com.shell module.
 
-winshell.py starts with
+For example version 0.2 of [[http://tgolden.sc.sabren.com/python/winshell.html|winshell.py]] from Tim Golden (a thin wrapper around Windows Shell-Functions) starts with:
 {{{
 #!python
 from win32com import storagecon
 from win32com.shell import shell, shellcon
 }}}
 
-py2exe learns, that something is missing:
-
+py2exe reports that something is missing:
 {{{
 The following modules appear to be missing
 ['Interface', 'intSet', 'mxDateTime.__version__', 'win32com.shell']
 }}}
 
-and starting the programm leaves:
+and starting the program leaves:
 {{{
 Traceback (most recent call last):
   File "xxxxxx.py", line 33, in ?
@@ -70,3 +69,21 @@ import py2exe
 }}}
 
 And this worked.
+
+= Impact =
+
+The following products included workaround:
+* Spambayes
+* Mercurial
+* hgsvn
+
+= Ideal proposal =
+
+py2exe should detect such well-known problems with well-known modules, and when win32com.shell is missing, a workaround should be automatically applied with a corresponding log message:
+{{{
+The following modules appear to be missing
+['Interface', 'intSet', 'mxDateTime.__version__', 'win32com.shell']
+Applying automatic workaround for known problem with win32com.shell
+}}}
+
+py2exe should also fail if required modules are missing unless some '--force' key in effect.
