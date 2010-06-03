@@ -1,7 +1,7 @@
 ## page was renamed from WinShell
 = The Problem =
 
-py2exe fails to find imported win32com.shell module.
+`py2exe` doesn't find imported `win32com.shell` module, and creates invalid distribution without this file. As a result, an application that uses this module may crash at random or miss some features.
 
 For example version 0.2 of [[http://tgolden.sc.sabren.com/python/winshell.html|winshell.py]] from Tim Golden (a thin wrapper around Windows Shell-Functions) starts with:
 {{{
