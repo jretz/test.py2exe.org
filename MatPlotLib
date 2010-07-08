@@ -1,15 +1,48 @@
 = Introduction =
-[[http://matplotlib.sf.net|MatPlotLib]] is a module to produce nice-looking plots in Python using a wide variety of back-end packages, at least one of which is likely to be available for your system.  This ability to do things in a generic fashion makes this a simple system to use, but it gets complicated if you wish to distribute an executable instead of scripts.  This page describes what I had to do to make matplotlib work with py2exe.
+[[http://matplotlib.sf.net|MatPlotLib]] is a module to produce nice-looking plots in Python using a wide variety of back-end packages, at least one of which is likely to be available for your system. 
 
-= Special content for setup.py to use matplotlib =
+== Data Files ==
+matplotlib requires some data files:
+
 {{{
 #!python
-# We need to import the glob module to search for all files.
-import glob
+import matplotlib
+...
+setup(
+    ...
+    data_files=matplotlib.get_py2exe_datafiles(),
+)
+}}}
 
-# We need to exclude matplotlib backends not being used by this executable.  You may find
-# that you need different excludes to create a working executable with your chosen backend.
-# We also need to include matplotlib.numerix.random_array
+(This works for recent versions of matplotlib; for older versions, see this page's history for alternative approaches.)
+
+== Backends ==
+
+matplotlib has many backends; if all of them get included, your distribution could get large. You might want to do something like:
+
+{{{
+#!python
+setup(options={'py2exe': { ...
+                'excludes': ['_gtkagg', '_tkagg'],
+}})
+}}}
+
+If you omit a backend, you must make sure it isn't the default - for example if you package the wx backend and not Tcl/Tk. The default backend is configured in mpl-data/matplotlib.conf. You can override the configuration in your program by doing, for example:
+{{{
+#!python
+import matplotlib
+matplotlib.use('wxagg') # overrule configuration
+import pylab
+}}}
+
+
+== Other things you may need ==
+
+Below are snippets that others have, at one time or another, needed to get matplotlib working.
+
+=== Includes and excludes ===
+{{{
+#!python
 opts = {
     'py2exe': { 'includes': 'matplotlib.numerix.random_array',
                 'excludes': ['_gtkagg', '_tkagg'],
@@ -17,24 +50,9 @@ opts = {
                                  'libgobject-2.0-0.dll']
               }
        }
-
-# Additional data files are required by matplotlib.  Note that the glob.glob routine
-# doesn't seem to pick up the .matplotlib resource file, so I copy that separately.
-# Do the same if you need to
-setup(
-    data_files = [(r'matplotlibdata', glob.glob(r'c:\python24\share\matplotlib\*')),
-                  (r'matplotlibdata', [r'c:\python24\share\matplotlib\.matplotlibrc'])],
-    name = 'demo',
-    description = 'MatPlotLib Demo Program',
-    console = ['demo.py']
-    )
 }}}
-= Copying PyTZ folder =
-Now copy pytz folder from C:\Python24\Lib\site-packages to your dist/ folder and you're done!
 
-= Update for newer versions of matplotlib =
-Recent versions of matplotlib (this is tested with 0.87) have changed the location where data files are found. Here is a sample setup.py that works with simple matplotlib samples. It produces massive distributions - more work needs to be done on how to exclude unused backends.
-
+=== Data Files ===
 {{{
 #!python
 from distutils.core import setup
@@ -61,27 +79,8 @@ setup(
     data_files=matplotlibdata_files
 )
 }}}
-= An easier way to get the list of datafiles =
-Even more recent version of MatPlotLib(Version 0.90 at least, maybe earlier versions) have a method named matplotlib.get_py2exe_datafiles() which returns a tuple that is ready for use in the data_files argument to distutils.setup(). A minimal setup.py utilizing this method would look something like this:
 
-{{{
-#!python
-from distutils.core import setup
-import py2exe
-
-import matplotlib
-
-setup(
-    console=['test.py'],
-    options={
-             'py2exe': {
-                        'packages' : ['matplotlib', 'pytz'],
-                       }
-            },
-    data_files=matplotlib.get_py2exe_datafiles()
-)
-}}}
-= Setup.py using py2exe with Python2.5 and matplotlib 0.91.2 =
+=== Setup.py using py2exe with Python2.5 and matplotlib 0.91.2 ===
 --~~~~ In this example, a simple program was created where a matplotlib figure canvas is placed in a PyQt child window.  In order to compile it with py2exe and matplotlib 0.91.2 with Python 2.5, it is necessary to include the necessary modules and then add the data files properly.  On this system, the matplotlib was installed to the folder Python25\Lib\site-packages.  Within the matplotlib folder, the matplotlib-data is saved in mpl-data.
 
 Using the above methods would result in the classic "RuntimeError: Could not find the matplotlib data files" error.  Furthermore, using the method with data_files = matplotlib.get_py2exe_datafiles(), py2exe returns an error saying that 'split' is not a valid method for this object.  Another problem when using glob, the and a * is located in the argument, glob will search for everything, including folders.  Doing this will give you an error when compiling saying that 'fonts' is not a file.  So you need to add the contents from mpl-data\fonts and mpl-data\images individually.
@@ -128,15 +127,6 @@ data_files = [(r'mpl-data', glob.glob(r'C:\Python25\Lib\site-packages\matplotlib
 # for console program use 'console = [{"script" : "scriptname.py"}]
 setup(windows=[{"script" : "scriptname.py"}], options=opts,   data_files=data_files)
 }}}
-= Excluding some backends =
-If you omit some backends you must make sure it isn't the default - for example if you package WX backend and not Tcl/Tk:
-{{{
-}}}
-The default backend is configured in mpl-data/matplotlib.conf. You can override the  configuration in your program by doing for example:
-{{{
-import matplotlib
-matplotlib.use('wxagg') # overrule configuration
-import pylab}}}
 = Updating _sort confusion =
 If you're using numarray and numpy together, be aware that they both have a _sort, and py2exe gets them confused. After py2exe creates the dist directotry, copy numpy/core/_sort.pyd and numarray/sort.pyd to their respective locations in the dist.
 
