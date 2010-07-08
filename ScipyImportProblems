@@ -1,4 +1,11 @@
 ##language:en
+
+= PackageLoader issues =
+
+If you get a message like {{{ImportError: cannot import name factorial}}} (see http://article.gmane.org/gmane.comp.python.py2exe/3324 or http://mail.scipy.org/pipermail/scipy-user/2009-May/021216.html), this is due to a failure in a somewhat-magical mechanism that Scipy uses to import symbols into the top-level scipy module. Rather than, e.g., {{{from scipy.x.y import *}}}, it uses a Numpy mechanism called {{{PackageLoader}}}, which uses info.py files in each submodule to know what symbols to import. Those files do seem to be making it into the py2exe distribution, but they're not getting used correctly. I'm not sure if the bug is scipy or py2exe.
+
+A hackish workaround is to modify (((scipy/__init__.py))) to explicitly import the symbols you need, e.g., {{{from scipy.misc import factorial}}}. 
+
 == Brian K. Boonstra ==
 
 === The problem ===
