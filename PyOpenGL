@@ -1,3 +1,17 @@
+As of PyOpenGL 3.0, add the following to any of your python files to get py2exe to work.
+
+{{{
+from ctypes import util
+try:
+    from OpenGL.platform import win32
+except AttributeError:
+    pass
+}}}
+
+The following was not necessary for me.
+
+
+
 [[http://pyopengl.sourceforge.net/|PyOpenGL]] is a set of Python bindings for the OpenGL graphical rendering library. It has [[http://pyopengl.sourceforge.net/documentation/py2exe.html|a page on how to compile with py2exe]], but it is outdated. Here's how I made it work for me, although it is quite wasteful in space.
 
  * In your `setup.py`, exclude `OpenGL` although you have PyOpenGL installed. I needed to explicitly include `ctypes` and `logging` to make it work, but maybe that depends on what things you use. My `setup.py`:
