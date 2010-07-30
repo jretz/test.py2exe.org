@@ -38,9 +38,9 @@ def GetModuleHandle(filename=None):
 
 def FindResource(typersc,idrsc,c_restype=c_char,filename=None):
     if type(idrsc)is int:
-        idrsc='#%d'%idrsc
+        idrsc=u'#%d'%idrsc
     if type(typersc) is int:
-        typersc='#%d'%typersc
+        typersc=u'#%d'%typersc
     hmod=GetModuleHandle(filename)
     hrsc=windll.kernel32.FindResourceW(hmod,typersc,idrsc)
     if not hrsc:
@@ -60,12 +60,10 @@ from ctypes import *
 class MyPrivateInfo(Structure):
     _fields_ = [ ("ver",c_int),("debug",c_int),("copyright_info",c_char*100) ]
     def get_buffer(self):
-        return cast(self,POINTER(c_char*sizeof(self))[0].raw
+        return cast(pointer(self),POINTER(c_char*sizeof(self)))[0].raw
 
 
 }}}
-
-in your setup file, you 
 
 And in your setup you can do.
 {{{
