@@ -13,7 +13,7 @@ You could try to rely on ".", the "Current Directory", but that only works if yo
 import os
 import jpath
 
-if hasattr(sys,"frozen") and sys.frozen == "windows_exe":
+if hasattr(sys,"frozen") and sys.frozen in ("windows_exe", "console_exe"):
     p=jpath.path(os.path.abspath(sys.executable)).dirname()
 }}}
 
