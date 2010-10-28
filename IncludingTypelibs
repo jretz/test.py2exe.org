@@ -86,3 +86,18 @@ iTunes = win32com.client.Dispatch("iTunes.Application")
 This causes win32com to magically generate the modules it needs, and import them appropriately.  The files go into a temp directory.  This works for me with py2exe 0.6.3.  
 
 -Alec Wysoker
+
+I have found there is a little more to Solution 3 than just setting the gencache value is_readonly to False.  In particular, one needs to make sure that the gen_py directory does not exist in the win32com package deployed, or the {{{win32com.__init__.py}}} will attempt to use that instead of the one in the temp directory.  Secondly, I've also found that if the gen_py directory has not yet been created in the temp directory, that {{{win32com.client.gencache.EnsureDispatch('<your_com_object>')}}} can fail on an initial run, but work when you run your program a second time (since gen_py now exists).
+
+So my steps to a successful use of dynamically created typelib wrappers under py2exe are:
+
+ 1. Make sure that the win32com\gen_py does not exist in your build source, or at least in your packaged app. (Using VirtualEnv can make this easier.)
+ 2. Also run {{{GetGeneratePath()}}}. This ensures that the gen_py directory is already created before use.  So we end up with:
+{{{
+import win32com.client
+win32com.client.gencache.is_readonly=False
+win32com.client.gencache.GetGeneratePath()
+}}}
+ 3. If running as a Windows Service, don't forget to call {{{pythoncom.CoInitialize()}}} or {{{pythoncom.CoInitializeEx(pythoncom.COINIT_MULTITHREADED)}}}.
+
+-Rasjid Wilcox
