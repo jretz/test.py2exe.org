@@ -98,6 +98,6 @@ import win32com.client
 win32com.client.gencache.is_readonly=False
 win32com.client.gencache.GetGeneratePath()
 }}}
- 3. If running as a Windows Service, don't forget to call {{{pythoncom.CoInitialize()}}} or {{{pythoncom.CoInitializeEx(pythoncom.COINIT_MULTITHREADED)}}}.
+ * If running as a Windows Service, don't forget to call {{{pythoncom.CoInitialize()}}} or {{{pythoncom.CoInitializeEx(pythoncom.COINIT_MULTITHREADED)}}}.
 
 -Rasjid Wilcox
