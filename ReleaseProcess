@@ -1,6 +1,6 @@
 = Release Process =
 
-This page is for the developers/maintainers. In contains the steps involved in making a new public release of py2exe.
+This page is for the developers/maintainers. It contains the steps involved in making a new public release of py2exe.
 
    1. Change the {{{__version__}}} string in {{{py2exe\__init__.py}}}
    2. Update {{{ANNOUNCE}}} (be sure to change the version number on the first line)
