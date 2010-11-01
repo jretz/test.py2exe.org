@@ -37,7 +37,7 @@ The old [[http://www.py2exe.org/old|py2exe]] web site is still available until t
 == How to use this site ==
 A Wiki is a collaborative site, anyone can contribute and share:
 
- * Edit any page by pressing '''<<GetText(Edit)>>''' at the top or the bottom of the page. The FrontPage is not editable and you must be logged in to '''<<GetText(Edit)>>''' other pages. This is to avoid Wiki spam.
+ * Edit any page by pressing '''<<GetText(Edit)>>''' at the top or the bottom of the page. You must be logged in to '''<<GetText(Edit)>>''' pages. This is to avoid Wiki spam.
  * Create a link to another page with joined capitalized words (like WikiSandBox) or with {{{["quoted words in brackets"].}}}
  * Search for page titles or text within pages using the search box at the top of any page.
  * See HelpForBeginners to get you going, HelpContents for all help pages.
