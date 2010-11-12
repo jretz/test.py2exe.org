@@ -35,6 +35,7 @@
 == NumPy ==
  * If you're getting ''No scipy-style subpackage 'xxx' found in c:\...\library.zip\numpy. Ignoring'', try --skip-archive command line option or pass '''options = {"py2exe": {"skip_archive":1}} '''to setup().
  * If you're using numarray and numpy together, be aware that they both have a _sort, and py2exe gets them confused. After py2exe creates the dist directotry, copy numpy/core/_sort.pyd and numarray/sort.pyd to their respective locations in the dist. [This problem is due to a bug in py2exe: it used a single, flat namespace for all .pyd files. This has been fixed in CVS as of 7 Sep 2007.]''' '''
+ * Numpy 1.4.0 and Py2exe 0.6.9 may have issues compiling to an executable. The executable may run on your computer, but wont run on other machines. You may get and error that says the module cant be found or a DLL load failure referencing numpy files (.pyc,.pyo). The solution to this is to use numpy 1.3.0.
 
 == os.popen ==
  * [[os.popen]] If you're getting failures when the CWD is a UNC path like {{{\\host\dirname\...}}}
