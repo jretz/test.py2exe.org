@@ -66,6 +66,31 @@ Once that's done, '''you'll need to copy the etc, lib and share directories from
 
  * it seems that from lib/ only all the *.dlls in the subtree are needed, and from share/ only themes/ and locale/.  saves lots of space
 
+If you are using [[http://library.gnome.org/devel/pygtk/stable/class-gtkbuilder.html|GtkBuilder]] and later versions of GTK+ and PyGTK, you may get the following error message:
+
+{{{
+Y:\my_handytool\dist\library.zip\gtk\_gtk.py:10: RuntimeWarning: tp_compare didn't return -1 or -2 for exception
+ImportError: could not import gio
+ImportError: could not import gio
+Traceback (most recent call last):
+  File "my_handytool.py", line 88, in <module>
+  File "my_handytool.py", line 75, in __init__
+AttributeError: 'module' object has no attribute 'Builder'
+}}}
+This issue can be resolved by [[http://permalink.gmane.org/gmane.comp.python.py2exe/3889|adding the 'gio' module]] to the py2exe includes option in the setup.py file:
+
+{{{
+--- setup.py.org        2010-11-13 22:35:20.000000000 +0100
++++ setup.py    2010-11-13 20:26:02.000000000 +0100
+@@ -14,7 +14,7 @@
+     options = {
+         'py2exe': {
+             'dist_dir':'dist',
+-            'includes': 'cairo, pango, pangocairo, atk, gobject',
++            'includes': 'cairo, pango, pangocairo, atk, gobject, gio',
+             }
+         },
+}}}
 If you are using kiwi, you will also have to copy the ''contents'' of the (''path to python'')/share/kiwi directory  (and (''path to python'')/share/gazpacho, if you used gazpacho) to the dist dir. And you will have  to create an empty 'kiwi' directory in the dist/pixmaps directory that you just copied there.  (note: I have not tested kiwi with the Innosetup installer, but if you try it and it works edit  this page and remove this note :) )
 
 Note you'll want to set the working directory (Start in:) for any shortcut you create to the application directory containing the executable.
