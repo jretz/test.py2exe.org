@@ -22,3 +22,6 @@ print _socket.__loader__
 print _socket is reload(_socket)
 # True
 }}}
+
+=== Debugging compiled .exe with PY2EXE_VERBOSE ===
+PY2EXE_VERBOSE is an environment variable that is understood by compiled .exe module. By setting this variable to 1 or 2 you can get verbose (or very verbose) log of actions inside py2exe imported component. 
