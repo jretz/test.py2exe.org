@@ -1,15 +1,17 @@
-= Frequently Asked Questions about py2exe =
+= Frequently Asked Questions =
 
-== How does py2exe work and what are all those files? ==
+== What py2exe is for? ==
 
-Let's start from the needed results going back to how py2exe does its job.
+Python is an interpreted language and as long as Microsoft not ship Python interpreter with standard library with every copy of its operating systems, there is no direct way to execute a Python script on a vanilla Microsoft OS machine. py2exe allows to create an executable (.exe) file that bundles everything necessary to run the script.
 
-Python is an interpreted language and as long as Microsoft will not ship a Python interpreter (and its accompanying class library) with every copy of its flagship operating systems products, there is no direct way to execute a Python script on a vanilla Microsoft OS machine.
-For most casual user of py2exe, that means that you must create an executable (.exe) file that when clicked on will just run the script.
-This is what py2exe does for you.
+== How it works? ==
+
+py2exe can not be executed standalone (unfortunately), so you first install it as usual Python package, then create a section in your setup.py script. then just run distutils with corresponding commands.
+
+== Where is the .exe? ==
 After py2exe has done its magic, you should have a "dist" directory with all the files necessary to run your python script. No install necessary. Click and run. No DLL hell, nothing else to download.
 
-'''But what are all those files?'''
+== What are all those files? ==
 
 || myprog.exe || The actual executable. You can select a custom icon by using some specific target options (see CustomIcons) ||
 || python??.dll || the python interpreter library. This is the brain of your executable ||
@@ -18,7 +20,8 @@ After py2exe has done its magic, you should have a "dist" directory with all the
 || *.dll || some pyd probably have some DLL dependencies, and here they come ||
 || w9xpopen.exe || This is needed on Win9x platform. ||
 
-To run your program needs all those files as a necessary condition. But it might happen that this is not a sufficient condition. For examples, as encodings are imported "by name". If you use a feature that requires encodings, you will need to put an option to include encodings unconditionally or to import it explicitly from one of your script. (see EncodingsAgain and EvenMoreEncodings).
+To run your program needs all these files. But it might happen that these are not enough. For examples, encodings are imported "by name". If you use a feature that requires encodings, you will need to put an option to include encodings unconditionally or to import them explicitly from one of your script. (see EncodingsAgain and EvenMoreEncodings).
+
 Some other modules (eg [[http://pyserial.sourceforge.net/|pyserial-pyparallel]]) also conditionally import modules for each platform. You can avoid the warning by putting the correct "ignores" options in py2exe. Last but not least, modules like [[http://www.pygtk.org/|pygtk]] seem to create a module reference on-the-fly and therefore the corresponding warnings also are harmless (see ExcludingDlls to learn how to correct that).
 
 An important point to note: the main script (the one passed as an option to "windows" or "console" in your setup file) is not put with all the other files in the library.zip. Instead it is byte-compiled (see OptimizedBytecode for some details on optimization) and inserted into a named resource in the executable shell. This technique also allows you to insert binary string in the final executable (very nice if you want to add a custom version tag) through the usage of the "other_resources" options for the target (see CustomDataInExe).
