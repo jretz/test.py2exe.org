@@ -1,0 +1,23 @@
+If your programs alters Python import mechanism somehow (like many applications with plugins and extensions) you may run into problems with py2exe. This page is dedicated to explain the reasons for these problems and how to solve them. If you have an experience to share, please add your story here.
+
+=== Check that zipextimporter works on your system ===
+zipextimporter is the starting component of py2exe that may cause problems. To debug it you will need _memimporter.pyd binary module. These modules can be found in binary py2exe distributions for your Python version (I unpack .exe distribution with 7Zip). zipextimporter contains the following script to help with debugging using standard _socket.pyd module. Wrap _socket.pyd from your Python version into ''lib.zip'' and use the script to see that zipextimporter works ok.
+
+{{{
+import zipextimporter
+zipextimporter.install()
+
+import sys
+sys.path.insert(0, "lib.zip")
+
+import _socket
+print _socket
+# <module '_socket' from 'lib.zip\_socket.pyd'>
+print _socket.__file__
+# 'lib.zip\\_socket.pyd'
+print _socket.__loader__
+# <ZipExtensionImporter object 'lib.zip'>
+# Reloading also works correctly:
+print _socket is reload(_socket)
+# True
+}}}
