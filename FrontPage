@@ -22,23 +22,24 @@ The old [[http://www.py2exe.org/old|py2exe]] web site is still available until t
  * [[FAQ]]: What does py2exe actually do and what are all those files?
  * GeneralTipsAndTricks: general tips for working with special situations
  * WorkingWithVariousPackagesAndModules: many just work, others need more handling
+ * ProblemsToBeFixed
+ * ReleaseProcess
  * NonEnglish: read about py2exe in other languages
  * [[https://lists.sourceforge.net/lists/listinfo/py2exe-users|Get help on the mailing list]]
- * RecentChanges: see where people are currently working
- * WikiSandBox: feel free to change this page and experiment with editing
- * FindPage: search or browse the database in various ways
- * SyntaxReference: quick access to wiki syntax
- * SiteNavigation: get an overview over this site and what it contains
- * ProblemsToBeFixed
- * RSS feed http://www.py2exe.org/index.cgi/RecentChanges?action=rss_rc&unique=1
- * ReleaseProcess
  * [[irc://irc.freenode.net/py2exe|#py2exe]] IRC channel at Freenode.net
 
-== How to use this site ==
+== Wiki Tools ==
+ * RecentChanges: see where people are currently working
+ * FindPage: search or browse the database in various ways
+ * SiteNavigation: get an overview over this site and what it contains
+ * RSS feed http://www.py2exe.org/index.cgi/RecentChanges?action=rss_rc&unique=1
+
+== How to use this Wiki ==
 A Wiki is a collaborative site, anyone can contribute and share:
 
  * Edit any page by pressing '''<<GetText(Edit)>>''' at the top or the bottom of the page. You must be logged in to '''<<GetText(Edit)>>''' pages. This is to avoid Wiki spam.
- * Create a link to another page with joined capitalized words (like WikiSandBox) or with {{{["quoted words in brackets"].}}}
+ * Create a link to another page with joined capitalized words (like WikiSandBox) or with {{{["quoted words in brackets"].}}} (SyntaxReference is a quick access to wiki syntax)
+
  * Search for page titles or text within pages using the search box at the top of any page.
  * See HelpForBeginners to get you going, HelpContents for all help pages.
 
