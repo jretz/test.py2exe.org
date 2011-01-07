@@ -24,4 +24,16 @@ print _socket is reload(_socket)
 }}}
 
 === Debugging compiled .exe with PY2EXE_VERBOSE ===
-PY2EXE_VERBOSE is an environment variable that is understood by compiled .exe module. By setting this variable to 1 or 2 you can get verbose (or very verbose) log of actions inside py2exe imported component. 
+PY2EXE_VERBOSE is an environment variable that is understood by compiled .exe module. By setting this variable to 1 or 2 you can get verbose (or very verbose) log actions done by py2exe importer.
+
+To get this debug log while using zipextimporter.py directly, you will need to insert this monkeypatching hack at the beginning of your test script:
+{{{
+#!python
+import zipextimporter
+zipextimporter.install()
+
+import _memimporter
+_memimporter.get_verbose_flag = lambda: 2
+
+# ...
+}}}
