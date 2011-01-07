@@ -37,3 +37,6 @@ _memimporter.get_verbose_flag = lambda: 2
 
 # ...
 }}}
+
+=== Use debug version of zipextimporter.py with very verbose output ===
+Attached [[attachment:zipextimporter-debug-0.6.9.py]] version understands value 3 of verbose flag of memimporter and can give a lot of useful output. Hope some parts can be committed to py2exe.
