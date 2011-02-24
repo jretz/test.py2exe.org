@@ -150,7 +150,7 @@ Either you can instruct your users to download and run this themselves, or you c
 === 5.2. Python 2.6, 2.7, 3.0, 3.1 ===
 For Python 2.6, the DLL you need is called MSVCR90.dll. Py2exe is not able to automatically include this DLL in your dist directory, so you must provide it yourself.
 
-To complicate things, there is more than one version of this DLL in existance, each with the same filename. You need the same version that the Python interpreter was compiled with, which is version 9.0.21022.8. Through the remainder of these instructions, hover your mouse over the dll file (or the vcredist_x86.exe installer executable) to confirm which version you've got.
+To complicate things, there is more than one version of this DLL in existance, each with the same filename. You need the same version that the Python interpreter was compiled with, which is version 9.0.21022.8. Through the remainder of these instructions, hover your mouse over the dll file (or the vcredist_x86.exe installer executable) to confirm which version you've got. You'll need the vcredist_x86.exe that contains the [[http://www.microsoft.com/downloads/en/details.aspx?FamilyID=9b2da534-3e03-4391-8a4d-074b9f2bc1bf&displaylang=en|Microsoft Visual C++ 2008 Redistributable Package]] published 29-11-2007, so not the VS2008 SP1 one (tested with Python 2.7.1).
 
 As for older versions of Python, you need to check redist.txt within your Visual Studio installation to see whether you have the legal right to redistribute this DLL. If you do have these rights, then you have the option to bundle the C runtime DLL with you application. If you don't have the rights, then you must have your users run the redistributable C runtime installer on their machines.
 
