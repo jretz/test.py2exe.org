@@ -157,33 +157,15 @@ As for older versions of Python, you need to check redist.txt within your Visual
 <<Anchor(Step521)>>
 
 ==== 5.2.1. Bundling the C runtime DLL ====
-If you do have the rights to redistribute MSVCR90.dll, there should be a copy of it in your Visual Studio install, under VC\redist\x86\Microsoft.VC90.CRT. Since Visual Studio 2008, you can't just copy this DLL file - you also need the manifest file that you'll find there.
+If you do have the rights to redistribute MSVCR90.dll, there should be a copy of it in your Visual Studio install, under VC\redist\x86\Microsoft.VC90.CRT. Since Visual Studio 2008, you can't just copy this DLL file - you also need the manifest file that you'll find there.  The redist.txt file states that you must distribute all three dlls and the unmodified manifest file and it is a violation of the license agreement to distribute only one of the dlls without the others (though py2exe only needs MSVCR90.dll.) The pertinent passage from the redist.txt file is as follows:
 
-Make a copy of everything in the 'Microsoft.VC90.CRT' directory, for example into your project tree, or in some location that is shared between projects, such as "C:\dev\ms-visualc-runtime".
+<i>For your convenience, we have provided the following folders for use when redistributing VC++ runtime files. Subject to the license terms for the software, you may redistribute the folder (unmodified) in the application local folder as a sub-folder with no change to the folder name. You may also redistribute all the files (*.dll and *.manifest) within a folder, listed below the folder for your convenience, as an entire set.</i>
 
-There are two other DLL files in there (msvcm90.dll and msvcp90.dll) that you don't need. Delete these from your copy, and optionally you may remove the two <file> tags in the manifest file that refer to them. The manifest file should then look like this:
-
-{{{
-<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<!-- Copyright (c) Microsoft Corporation.  All rights reserved. -->
-<assembly xmlns="urn:schemas-microsoft-com:asm.v1" manifestVersion="1.0">
-    <noInheritable/>
-    <assemblyIdentity
-        type="win32"
-        name="Microsoft.VC90.CRT"
-        version="9.0.21022.8"
-        processorArchitecture="x86"
-        publicKeyToken="1fc8b3b9a1e18e3b"
-    />
-    <file name="msvcr90.dll" />
-</assembly>
-
-}}}
-Now, we want py2exe to copy MSVCR90.dll and the manifest file into your project's dist directory, in a subdirectory called 'Microsoft.VC90.CRT'. To achieve this, add a data_files option to your project's setup.py:
+Our objective is to make py2exe copy the three dlls and the manifest file into your project's dist directory, in a subdirectory called 'Microsoft.VC90.CRT'. To achieve this, add a data_files option to your project's setup.py:
 
 {{{
   from glob import glob
-  data_files = [("Microsoft.VC90.CRT", glob(r'c:\dev\ms-vc-runtime\*.*'))]
+  data_files = [("Microsoft.VC90.CRT", glob(r'C:\Program Files\Microsoft Visual Studio 9.0\VC\redist\x86\Microsoft.VC90.CRT\*.*'))]
   setup(
     data_files=data_files,
     etc
@@ -198,6 +180,8 @@ With this in place, running py2exe should put the files into your dist directory
   +-Microsoft.VC90.CRT
   | |
   | +-Microsoft.VC90.CRT.manifest
+  | +-msvcm90.dll
+  | +-msvcp90.dll
   | +-msvcr90.dll
   |
   |-etc
@@ -206,6 +190,9 @@ With this in place, running py2exe should put the files into your dist directory
 Now, simply copying the whole dist directory to your users machines should now allow your application to run, even on machines that don't have their own copy of the C++ runtime.
 
 Note that this method of including the C runtime is used by several Visual C++ applications - if you search your Program Files folder for msvcr90.dll, you may find several applications that have this DLL and the associated manifest bundled alongside their executable like this.
+
+Also note that despite all the above, py2exe will complain that it cannot find MSVCP90.dll.  You must edit your setup.py to add the path to the dlls to the sys.path, e.g.<br>&nbsp;&nbsp;&nbsp;
+sys.path.append("C:\\Program Files\\Microsoft Visual Studio 9.0\\VC\\redist\\x86\\Microsoft.VC90.CRT"). 
 
 <<Anchor(Step5211)>>
 
