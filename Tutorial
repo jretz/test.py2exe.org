@@ -194,7 +194,8 @@ Note that this method of including the C runtime is used by several Visual C++ a
 Also note that despite all the above, py2exe will complain that it cannot find MSVCP90.dll.  You must edit your setup.py to add the path to the dlls to the sys.path, e.g.
 
 {{{
-        sys.path.append("C:\\Program Files\\Microsoft Visual Studio 9.0\\VC\\redist\\x86\\Microsoft.VC90.CRT"). }}}
+    sys.path.append("C:\\Program Files\\Microsoft Visual Studio 9.0\\VC\\redist\\x86\\Microsoft.VC90.CRT")
+}}}
 <<Anchor(Step5211)>>
 
 ==== 5.2.1.1 win32ui special case ====
