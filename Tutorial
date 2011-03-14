@@ -159,9 +159,7 @@ As for older versions of Python, you need to check redist.txt within your Visual
 ==== 5.2.1. Bundling the C runtime DLL ====
 If you do have the rights to redistribute MSVCR90.dll, there should be a copy of it in your Visual Studio install, under VC\redist\x86\Microsoft.VC90.CRT. Since Visual Studio 2008, you can't just copy this DLL file - you also need the manifest file that you'll find there.  The redist.txt file states that you must distribute all three dlls and the unmodified manifest file and it is a violation of the license agreement to distribute only one of the dlls without the others (though py2exe only needs MSVCR90.dll.) The pertinent passage from the redist.txt file is as follows:
 
-<i>For your convenience, we have provided the following folders for use when redistributing VC++ runtime files. Subject to the license terms for the software, you may redistribute the folder (unmodified) in the application local folder as a sub-folder with no change to the folder name. You may also redistribute all the files (*.dll and *.manifest) within a folder, listed below the folder for your convenience, as an entire set.</i>
-
-Our objective is to make py2exe copy the three dlls and the manifest file into your project's dist directory, in a subdirectory called 'Microsoft.VC90.CRT'. To achieve this, add a data_files option to your project's setup.py:
+You must make py2exe copy the three dlls and the manifest file into your project's dist directory, in a subdirectory called 'Microsoft.VC90.CRT'. To achieve this, add a data_files option to your project's setup.py:
 
 {{{
   from glob import glob
@@ -191,8 +189,7 @@ Now, simply copying the whole dist directory to your users machines should now a
 
 Note that this method of including the C runtime is used by several Visual C++ applications - if you search your Program Files folder for msvcr90.dll, you may find several applications that have this DLL and the associated manifest bundled alongside their executable like this.
 
-Also note that despite all the above, py2exe will complain that it cannot find MSVCP90.dll.  You must edit your setup.py to add the path to the dlls to the sys.path, e.g.<br>&nbsp;&nbsp;&nbsp;
-sys.path.append("C:\\Program Files\\Microsoft Visual Studio 9.0\\VC\\redist\\x86\\Microsoft.VC90.CRT"). 
+Also note that despite all the above, py2exe will complain that it cannot find MSVCP90.dll.  You must edit your setup.py to add the path to the dlls to the sys.path, e.g.<br>    sys.path.append("C:\\Program Files\\Microsoft Visual Studio 9.0\\VC\\redist\\x86\\Microsoft.VC90.CRT").
 
 <<Anchor(Step5211)>>
 
