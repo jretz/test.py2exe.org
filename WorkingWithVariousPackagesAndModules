@@ -47,6 +47,9 @@
 == protobuf ==
  * [[GoogleProtobuf]] If you're getting ''The following modules appear to be missing''
 
+== pubsub ==
+ * Add 'pubsub.*', 'pubsub.core.*', 'pubsub.core.kwargs.*' to include_packages if using the new interface, otherwise add 'pubsub.*', 'pubsub.core.*', 'pubsub.core.arg1.*' when using the old interface.
+
 == PyGTK (and Kiwi) ==
  * [[Py2exeAndPyGTK]]  A recipe for py2exe and PyGTK
 
