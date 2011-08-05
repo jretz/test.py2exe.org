@@ -30,6 +30,11 @@ You must create ico file with two icons in one.
 Your icon file must contain small ico (size: 16*16 pixels) and large ico (size: 32*32 pixels). For WindowsXP you probably may create a big ico (48*48) - but it's only for XP.
 Almost all popular icon editors can create complex icon with small and large part in one. For instance, [[http://www.x2studios.com/index.php?page=products&id=11|LiquidIcon]] is a freeware icon editor that lets you combine multiple ico files of different sizes and bit-depths into a single ico file. Also available is [[http://www.winterdrache.de/freeware/png2ico/|png2ico]], a GPL'ed command line-only {{{.ico}}} creator capable of generating icons with multiple sizes, bit depths, and transparency settings.
 
+'''Important Note For Adding Multiple Icons On Systems Where This Method Is Not Working:''' After much research (blood, sweat, and tears), I have found why icons with multiple sizes sometimes do not work. The truth is, is that the order matters. When making the icon, add the larger icon sizes first, then the smaller ones. (e.g. `png2ico icon.ico icon_128x128.png icon_64x64.png icon_48x48.png icon_32x32.png icon_16x16.png`)
+
+-- SunjayVarma <<DateTime(2011-08-05T21:54:36Z)>>
+
+
 Now I've managed to give an icon to my program, but when the program starts, a standard Windows icon shows up in the window's title bar and in the task bar button (instead of my custom icon). Is there a way I can fix that myself, or is that a current limitation of py2exe?
 
 As far as putting icons on your window itself (above is just for the file in explorer I think) it depends on the gui library you are using.
