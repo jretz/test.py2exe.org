@@ -151,6 +151,11 @@ A NSI along these lines works unter Win NT 4 too.
 
 This is based on the Inno sample code in the py2exe distribution. It has worked successfully for a rather complicated PyGTK/Twisted app requiring extra data at runtime (GTK runtime data, GtkBuilder files, images, text data) that just wouldn't work with `bundle_files`.
 
+The exe file it produces will:
+ * Display a dialog while extracting the data to a temporary directory
+ * Hide itself when the app launches
+ * Automatically clean up and close afterwards
+
 Sanity check: this is meant to be a single-run executable that installs the app to a temporary directory, runs it, and removes the temporary directory. If your app is large and might be used repeatedly, you should probably think about just making a proper installer. This is for those times when you '''know''' someone just needs to "fire and forget"!
 
 '''setup.py'''
