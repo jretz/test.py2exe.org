@@ -300,6 +300,7 @@ setup(
 
 Notes:
  * I couldn't figure out how to use `pywin32` or `ctypes` to invoke the NSIS compiler, so I used `subprocess`
+ * That means that you need to add the NSIS compiler dir to your `PATH`
  * The icon location could probably be deduced from the `py2exe` class
  * This produces the `setup_program_name.nsi` file and the `program_name.exe` in the working directory, not in `dist\`
 
