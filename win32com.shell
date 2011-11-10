@@ -50,7 +50,7 @@ try:
         import py2exe.mf as modulefinder
     except ImportError:
         import modulefinder
-    import win32com
+    import win32com, sys
     for p in win32com.__path__[1:]:
         modulefinder.AddPackagePath("win32com", p)
     for extra in ["win32com.shell"]: #,"win32com.mapi"
