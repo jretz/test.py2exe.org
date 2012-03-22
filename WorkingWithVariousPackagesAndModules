@@ -1,6 +1,6 @@
 = Working with Various Packages and Modules =
 == Biopython ==
- * ConfigImportProblems  Fixing problems with importing Bio.Config files from library.zip
+ * ConfigImportProblems Fixing problems with importing Bio.Config files from library.zip
 
 == cElementTree ==
  * If you're using {{{import xml.etree.cElementTree}}}, also use {{{import xml.etree.ElementTree}}} before that to get it working
@@ -9,16 +9,19 @@
  * ConfigObj does not work right if you installed using easy_install. Just download configobj.py and validate.py from http://www.voidspace.org.uk/python/configobj.htm
 
 == ctypes.com ==
- * Py2exeAndCtypesComDllServer  Creating a ctypes.com dll com server
- * Py2exeAndCtypesComExeServer  Creating a ctypes.com exe com server
+ * Py2exeAndCtypesComDllServer Creating a ctypes.com dll com server
+ * Py2exeAndCtypesComExeServer Creating a ctypes.com exe com server
 
 == dpkt ==
  * [[dpkt]] Fixing problems initializing class attributes
 
+== ftplib ==
+you may need to try including wsock32.dll or winsock.dll.  Sometimes one works, sometimes the other works.  Having both might cause problems.
+
 == Innosetup ==
- * BetterCompression  Getting complete wxPython Programs down to around 4 Megabytes
- * SetupLanguage  How to localize the language with [[http://starship.python.net/crew/theller/py2exe/|py2exe]] and [[http://www.jrsoftware.org/isinfo.php|InnoSetup]]
- * QuickStartIcons  How to add Startup-Links to the Quickstart-Bar & the Desktop using [[http://www.jrsoftware.org/isinfo.php|InnoSetup]] together with Py2Exe
+ * BetterCompression Getting complete wxPython Programs down to around 4 Megabytes
+ * SetupLanguage How to localize the language with [[http://starship.python.net/crew/theller/py2exe/|py2exe]] and [[http://www.jrsoftware.org/isinfo.php|InnoSetup]]
+ * QuickStartIcons How to add Startup-Links to the Quickstart-Bar & the Desktop using [[http://www.jrsoftware.org/isinfo.php|InnoSetup]] together with Py2Exe
 
 == logging module ==
  * LoggingModule - Getting the %(filename)s format string working in the python logging module.
@@ -41,17 +44,17 @@
  * [[os.popen]] If you're getting failures when the CWD is a UNC path like {{{\\host\dirname\...}}}
 
 == PIL ==
- * [[py2exeAndPIL]]  If you're getting ''cannot identify image file'', read this
- * [[PILAndFontfiles]]  If you're getting ''Cannot find font file'', read this
+ * [[py2exeAndPIL]] If you're getting ''cannot identify image file'', read this
+ * [[PILAndFontfiles]] If you're getting ''Cannot find font file'', read this
 
 == protobuf ==
- * [[GoogleProtobuf]] If you're getting ''The following modules appear to be missing''
+ * GoogleProtobuf If you're getting ''The following modules appear to be missing''
 
 == pubsub ==
  * Add {{{'pubsub.*', 'pubsub.core.*', 'pubsub.core.kwargs.*'}}} to {{{include_packages}}} if using the new interface, otherwise add {{{'pubsub.*', 'pubsub.core.*', 'pubsub.core.arg1.*'}}} when using the old interface.
 
 == PyGTK (and Kiwi) ==
- * [[Py2exeAndPyGTK]]  A recipe for py2exe and PyGTK
+ * [[Py2exeAndPyGTK]] A recipe for py2exe and PyGTK
 
 == pyodbc ==
  * [[PyODBC]] additional configuration required to include {{{decimal}}} package
@@ -60,30 +63,30 @@
  * [[PyOpenGL]] A hack to get py2exe and PyOpenGL working
 
 == PyQt ==
- * Py2exeAndPyQt  If you're getting {{{File "qt.pyc", line 7, in __load Import Error: No module named sip}}}, read this
+ * Py2exeAndPyQt If you're getting {{{File "qt.pyc", line 7, in __load Import Error: No module named sip}}}, read this
 
 == Python Eggs ==
  * ExeWithEggs - A recipe for creating an .exe out of eggs
 
 == PythonCard ==
- * PythonCardSetup  Getting pythoncard to work by editing setup.py
+ * PythonCardSetup Getting pythoncard to work by editing setup.py
 
 == Python ADODB modules ==
  * ADODB package Modules named adodb_xxx (like adodb_mysql) are not added automatically, must be added explicitly
 
 == PyXML ==
- * [[Py2exeAndPyXML]]  If you're getting ''File "xml\sax\saxexts.pyc", line 77, in make_parser; xml.sax._exceptions.SAX'''Reader''''''Not''''''Available: No parsers found'''''''', read this. '''
+ * [[Py2exeAndPyXML]] If you're getting ''File "xml\sax\saxexts.pyc", line 77, in make_parser; xml.sax._exceptions.SAX'''Reader''''''Not''''''Available: No parsers found'''''''', read this. '''
 
 == Quixote ==
 Quixote is a pythonivc toolkit for web pages which allows one to execute ptl files using ihooks. You can distribute your web application with medusa or twisted and hence you can create a web application without IIS or Apache.
 
-I like to distribute my application with py2exe but I can not make py2exe setup script to recognize that x.ptl is a valid  python files. Any idea how to do this? - impossible: [[py2exeAndQuixote]]  HAM20040602
+I like to distribute my application with py2exe but I can not make py2exe setup script to recognize that x.ptl is a valid python files. Any idea how to do this? - impossible: [[py2exeAndQuixote]] HAM20040602
 
 == reportlab ==
- * [[PILAndReportlab]]  If you've read [[py2exeAndPIL]]  and still get ''cannot identify image file'', read this
+ * [[PILAndReportlab]] If you've read [[py2exeAndPIL]] and still get ''cannot identify image file'', read this
 
 == SciPy ==
- * ScipyImportProblems  Using py2exe with scipy ends up with missing {{{cephes}}} and {{{__cvs_version__}}} messages.  Here is a fix.
+ * ScipyImportProblems Using py2exe with scipy ends up with missing {{{cephes}}} and {{{__cvs_version__}}} messages. Here is a fix.
 
 == subprocess ==
  * Py2ExeSubprocessInteractions - Getting subprocess module to work with py2exe.
@@ -92,10 +95,10 @@ I like to distribute my application with py2exe but I can not make py2exe setup 
  * TixSetup - Including the Tix DLL and Tcl files to make Tix apps work.
 
 == win32com ==
- * Py2exeAndWin32com  Creating a win32com exe and/or dll com server
+ * Py2exeAndWin32com Creating a win32com exe and/or dll com server
  * [[win32com.shell]] Including with py2exe 0.6
- * IncludingTypelibs  Allowing use of makepy generated typelibs
- * UsingEnsureDispatch  Use a prog_id and generate 'typelibs' at runtime
+ * IncludingTypelibs Allowing use of makepy generated typelibs
+ * UsingEnsureDispatch Use a prog_id and generate 'typelibs' at runtime
 
 == win32pipe ==
  * IssuesWithWin32pipe (from pywin32) in a bundle.
@@ -104,7 +107,7 @@ I like to distribute my application with py2exe but I can not make py2exe setup 
  * Py2exeAndWin32ui Using win32ui with py2exe 0.6 and python 2.6
 
 == wxPython ==
- * Py2exeAndwxPython  If you're getting ''wxObjectPtr not found'', read this
+ * Py2exeAndwxPython If you're getting ''wxObjectPtr not found'', read this
 
 ----
  . CategoryCategory
