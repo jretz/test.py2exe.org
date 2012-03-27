@@ -101,3 +101,18 @@ win32com.client.gencache.GetGeneratePath()
  * If running as a Windows Service, don't forget to call {{{pythoncom.CoInitialize()}}} or {{{pythoncom.CoInitializeEx(pythoncom.COINIT_MULTITHREADED)}}}.
 
 -Rasjid Wilcox
+
+There is a converse solution to the third method. Instead of telling the program at run-time that it is OK to dynamically create files.  Let it by OK by making the area where it would be not "read only."
+While this is not very neat to the distribution directory, it gets the job done. 
+To do this, simply  add skip archive to the set up call like so:
+{{{
+setup(
+   console=['HELLO_MAIN.py'],
+   options={
+       "py2exe":{
+            "skip_archive": True
+                }
+        }
+)
+}}}
+-Thomas MacKay
