@@ -82,6 +82,9 @@ Quixote is a pythonivc toolkit for web pages which allows one to execute ptl fil
 
 I like to distribute my application with py2exe but I can not make py2exe setup script to recognize that x.ptl is a valid python files. Any idea how to do this? - impossible: [[py2exeAndQuixote]] HAM20040602
 
+== Raven ==
+It seems Raven uses its own function to import modules and cache them so py2exe isn't able to figure out which module is needed. You need to manually specify them with '''options={"py2exe": {"includes": ["raven.events", "raven.processors"]}}'''.
+
 == reportlab ==
  * [[PILAndReportlab]] If you've read [[py2exeAndPIL]] and still get ''cannot identify image file'', read this
 
