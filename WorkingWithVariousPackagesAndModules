@@ -112,5 +112,7 @@ It seems Raven uses its own function to import modules and cache them so py2exe 
 == wxPython ==
  * Py2exeAndwxPython If you're getting ''wxObjectPtr not found'', read this
 
+== zmq ==
+ * Py2exeAndzmq If py2exe can''t find libzmq.dll
 ----
  . CategoryCategory
