@@ -28,6 +28,12 @@ create your setup.py file:
 {{{
 from distutils.core import setup
 import py2exe
+import os
+
+# Find GTK+ installation path
+__import__('gtk')
+m = sys.modules['gtk']
+gtk_base_path = m.__path__[0]
 
 setup(
     name = 'handytool',
@@ -44,13 +50,17 @@ setup(
     options = {
                   'py2exe': {
                       'packages':'encodings',
-                      'includes': 'cairo, pango, pangocairo, atk, gobject',
+                      # Optionally omit gio, gtk.keysyms, and/or rsvg if you're not using them
+                      'includes': 'cairo, pango, pangocairo, atk, gobject, gio, gtk.keysyms, rsvg',
                   }
               },
 
     data_files=[
                    'handytool.glade',
-                   'readme.txt'
+                   'readme.txt',
+                   # If using GTK+'s built in SVG support, uncomment these
+                   #os.path.join(gtk_base_path, '..', 'runtime', 'bin', 'gdk-pixbuf-query-loaders.exe'),
+                   #os.path.join(gtk_base_path, '..', 'runtime', 'bin', 'libxml2-2.dll'),
                ]
 )
 }}}
@@ -125,15 +135,17 @@ Source: dist\*; DestDir: {app}; Flags: ignoreversion recursesubdirs createallsub
 Name: {group}\handytool; Filename: {app}\handytool.exe; WorkingDir: {app}
 
 [Run]
+; If you are using GTK's built-in SVG support, uncomment the following line.
+;Filename: {cmd}; WorkingDir: "{app}"; Parameters: "/C gdk-pixbuf-query-loaders.exe > lib/gdk-pixbuf-2.0/2.10.0/loaders.cache"; Description: "GDK Pixbuf Loader Cache Update"; Flags: nowait runhidden
 Filename: {app}\handytool.exe; Description: {cm:LaunchProgram,handytool}; Flags: nowait postinstall skipifsilent
 }}}
 This Recipe has been tested with:
 
- * [[http://www.microsoft.com/|Windows XP SP2]]
- * [[http://www.python.org/download/|Python 2.4.3]]
+ * [[http://www.microsoft.com/|Windows XP SP2 and Windows 7 Ultimate x64]]
+ * [[http://www.python.org/download/|Python 2.4.3 and Python 2.7.2]]
  * [[http://gladewin32.sourceforge.net/modules/wfdownloads/|gtk-win32 2.8.14-rc1]]
  * [[http://www.mapr.ucl.ac.be/~gustin/win32_ports/pygtk.html|pycairo 1.0.2-1]]
- * [[http://www.mapr.ucl.ac.be/~gustin/win32_ports/pygtk.html|pygtk 2.8.4-1]]
+ * [[http://www.mapr.ucl.ac.be/~gustin/win32_ports/pygtk.html|pygtk 2.8.4-1 and 2.24.8]]
  * [[http://www.async.com.br/projects/kiwi/|kiwi 1.9.20]] ''optional''
- * [[http://www.py2exe.org/|py2exe 0.6.5]]
- * [[http://www.jrsoftware.org/isinfo.php|Inno Setup 5.1.6]]
+ * [[http://www.py2exe.org/|py2exe 0.6.5 and 0.6.9]]
+ * [[http://www.jrsoftware.org/isinfo.php|Inno Setup 5.1.6 and 5.4.3]]
