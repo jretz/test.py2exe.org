@@ -5,7 +5,7 @@
 = py2exe =
 py2exe is a [[http://www.python.org/|Python]] [[http://www.python.org/doc/current/distutils/|Distutils]] extension which converts Python scripts into executable Windows programs, able to run without requiring a Python installation.
 
-Development is hosted at [[http://sourceforge.net/projects/py2exe/|SourceForge]]. You can find the [[https://lists.sourceforge.net/lists/listinfo/py2exe-users|mailing list]], [[http://sourceforge.net/svn/?group_id=15583|svn]], and [[http://sourceforge.net/project/showfiles.php?group_id=15583|downloads]] there.
+Development is hosted at [[http://sourceforge.net/projects/py2exe/|SourceForge]]. You can find the [[https://lists.sourceforge.net/lists/listinfo/py2exe-users|mailing list]], [[http://sourceforge.net/svn/?group_id=15583|svn]], and [[http://sourceforge.net/projects/py2exe/files/py2exe/0.6.9/|downloads]] there.
 
 py2exe was originally developed by ThomasHeller who still makes contributions, JimmyRetzlaff is the current maintainer, and MarkHammond also makes regular contributions. Code contributions are always welcome from the community and many people provide invaluable help on the mailing list and the Wiki.
 
@@ -16,7 +16,7 @@ In an effort to limit Wiki spam, this front page is not editable. Feel free to e
 The old [[http://www.py2exe.org/old|py2exe]] web site is still available until that information has found its way into this wiki.
 
 == Starting Points ==
- * [[http://sourceforge.net/project/showfiles.php?group_id=15583|Download py2exe from SourceForge]]
+ * [[http://sourceforge.net/projects/py2exe/files/py2exe/0.6.9/|Download py2exe from SourceForge]]
  * [[News]]: information about the most recent releases
  * [[Tutorial]]: the basics of creating a Windows executable
  * [[FAQ]]: What does py2exe actually do and what are all those files?
