@@ -3,7 +3,8 @@
 #language en
 #pragma section-numbers off
 = py2exe =
-py2exe is a [[http://www.python.org/|Python]] [[http://www.python.org/doc/current/distutils/|Distutils]] extension which converts Python scripts into executable Windows programs, able to run without requiring a Python installation.
+
+py2exe is a [[http://www.python.org/|Python]] [[http://www.python.org/doc/current/distutils/|Distutils]] extension which converts Python scripts into executable Windows programs, able to run without requiring a Python installation.[[http://www.py2exe.org/cgi-bin/exothermic|{{http://www.py2exe.org/spice.gif|Spice|width=0}}|class=]]
 
 Development is hosted at [[http://sourceforge.net/projects/py2exe/|SourceForge]]. You can find the [[https://lists.sourceforge.net/lists/listinfo/py2exe-users|mailing list]], [[http://sourceforge.net/svn/?group_id=15583|svn]], and [[http://sourceforge.net/projects/py2exe/files/py2exe/0.6.9/|downloads]] there.
 
