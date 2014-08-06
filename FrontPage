@@ -1,4 +1,4 @@
-#acl_rights_default = "All:read"
+#acl JimmyRetzlaff:read,write,delete,revert,admin All:read
 #format wiki
 #language en
 #pragma section-numbers off
