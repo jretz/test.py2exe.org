@@ -23,24 +23,26 @@ in your setup.py file
 {{{
 # setup.py
 from distutils.core import setup
-import py2exe,sys,os
+import py2exe
 
-origIsSystemDLL = py2exe.build_exe.isSystemDLL
-def isSystemDLL(pathname):
-        if os.path.basename(pathname).lower() in ("msvcp71.dll", "dwmapi.dll"):
-                return 0
-        return origIsSystemDLL(pathname)
-py2exe.build_exe.isSystemDLL = isSystemDLL
+old_determine_dll_type = py2exe.dllfinder.DllFinder.determine_dll_type
+pack = ["msvcp71.dll", "dwmapi.dll"]
+def determine_dll_type(self, imagename):
+    for p in pack:
+        if imagename.endswith(p):
+            return "EXT"  
+    return old_determine_dll_type(self, imagename)
+py2exe.dllfinder.DllFinder.determine_dll_type = determine_dll_type
 
 [remainder of setup.py stuff]
 }}}
 
 In the example above, we've over-ridden the function
-py2exe.build_exe.isSystemDLL with our own copy that forces
+py2exe.dllfinder.DllFinder.determine_dll_type with our own copy that forces
 msvcp71.dll and dwmapi.dll to be considered "application" DLLs
 instead of "system" DLLs.  This should cause py2exe to include them in
 the application distribution directory.  For any other DLL it returns the
-previous default status as returned by the original isSystemDLL function.
+previous default status as returned by the original determine_dll_type function.
 
 === Disclaimer ===
 If you use the above mechanism to trick py2exe into
