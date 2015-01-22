@@ -24,13 +24,13 @@ in your setup.py file
 # setup.py
 from distutils.core import setup
 import py2exe
+import os
 
 old_determine_dll_type = py2exe.dllfinder.DllFinder.determine_dll_type
-pack = ["msvcp71.dll", "dwmapi.dll"]
+pack = ("msvcp71.dll", "dwmapi.dll")
 def determine_dll_type(self, imagename):
-    for p in pack:
-        if imagename.endswith(p):
-            return "EXT"  
+    if os.path.basename(imagename).lower() in pack:
+        return "EXT"    
     return old_determine_dll_type(self, imagename)
 py2exe.dllfinder.DllFinder.determine_dll_type = determine_dll_type
 
