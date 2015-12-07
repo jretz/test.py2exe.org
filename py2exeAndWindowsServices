@@ -53,6 +53,15 @@ Traceback (most recent call last):
 pywintypes.error: (1063, 'StartServiceCtrlDispatcher', 'The service process could not connect to the service controller.')
 }}}
 
+In 'py2exe 0.9.2.2 for Python 3.3 and later' 'cmdline_style' is not passed to the compile system, while it is defined in the setup-script.
+
+Workaround/Fix:
+{{{
+<Python PATH>\Lib\site-packages\py2exe\runtime.py: line 561
+-                compile("cmdline_style = 'py2exe'; service_module_names = %r" % (target.modules,),
++                compile("cmdline_style = '%s'"%(getattr(target,"cmdline_style","py2exe")) + "; service_module_names = %r" % (target.modules,),
+}}}
+
 == Things that can go wrong with py2exe and services ==
 
 within demos/advanced there is an example to create windows services with py2exe. It works quite out of the box.
@@ -61,15 +70,15 @@ Difficulties arise later on - as soon as you wanna do something REAL with that s
 
 === Error Message ===
 {{{
-Python could not import the service's module 
+Python could not import the service's module
   File "C:\ham\jds\syncservice.py", line 21, in ?
     import transinhalte
   File "C:\ham\jds\transinhalte.py", line 17, in ?
     import unite
   File "C:\ham\jds\unite.py", line 9, in ?
-    import version 
+    import version
 exceptions.ImportError: dynamic module does not define init function (initversion)
-}}} 
+}}}
 
 yours might be different ... what went wrong????
 
