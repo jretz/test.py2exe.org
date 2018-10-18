@@ -34,3 +34,7 @@ To determine which modules should go in the final `.exe` file, py2exe does a rec
 python -m py2exe.mf -d path/to/my_file.py
 }}}
 With several `-d` options you can ask for increasing levels of detail. By reading through the report, you can learn why py2exe is including which dependencies. Remember that some modules — in particular, modules in the standard library — get included automatically whether they appear in the `mf` output or not, and have to be explicitly excluded by your `setup.py` options if you do not want them in your final `.exe` file.
+
+== How do I use py2exe on Mac OS or Linux? ==
+
+Sorry, you can't. py2exe works only on Windows computers, not on any other operating system. 
