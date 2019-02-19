@@ -4,9 +4,9 @@
 #pragma section-numbers off
 = py2exe =
 
-py2exe is a [[http://www.python.org/|Python]] [[http://www.python.org/doc/current/distutils/|Distutils]] extension which converts Python scripts into executable Windows programs, able to run without requiring a Python installation.[[http://www.py2exe.org/cgi-bin/exothermic|{{http://www.py2exe.org/spice.gif|Spice|width=0}}|class=]]
+py2exe is a [[https://www.python.org/|Python]] [[https://docs.python.org/3/library/distutils.html|Distutils]] extension which converts Python scripts into executable Windows programs, able to run without requiring a Python installation.[[http://www.py2exe.org/cgi-bin/exothermic|{{http://www.py2exe.org/spice.gif|Spice|width=0}}|class=]]
 
-Development is hosted at [[http://sourceforge.net/projects/py2exe/|SourceForge]]. You can find the [[https://lists.sourceforge.net/lists/listinfo/py2exe-users|mailing list]], [[http://sourceforge.net/svn/?group_id=15583|svn]], and [[http://sourceforge.net/projects/py2exe/files/py2exe/0.6.9/|downloads]] there.
+Development is hosted at [[https://sourceforge.net/projects/py2exe/|SourceForge]]. You can find the [[https://lists.sourceforge.net/lists/listinfo/py2exe-users|mailing list]], [[https://sourceforge.net/p/py2exe/svn/HEAD/tree/|svn]], and [[https://sourceforge.net/projects/py2exe/files/py2exe/0.6.9/|downloads for Python 2]] there. [[https://pypi.org/project/py2exe/|Downloads for Python 3]] are on PyPI.
 
 py2exe was originally developed by Thomas Heller who still makes contributions. Jimmy Retzlaff and Mark Hammond have also made contributions. Code contributions are always welcome from the community and many people provide invaluable help on the mailing list and the Wiki.
 
@@ -17,7 +17,8 @@ In an effort to limit Wiki spam, this front page is not editable. Feel free to e
 The old [[http://www.py2exe.org/old|py2exe]] web site is still available until that information has found its way into this wiki.
 
 == Starting Points ==
- * [[http://sourceforge.net/projects/py2exe/files/py2exe/0.6.9/|Download py2exe from SourceForge]]
+ * [[https://sourceforge.net/projects/py2exe/files/py2exe/0.6.9/|Download py2exe for Python 2 from SourceForge]]
+ * [[https://pypi.org/project/py2exe/|Download py2exe for Python 3 from PyPI]]
  * [[News]]: information about the most recent releases
  * [[Tutorial]]: the basics of creating a Windows executable
  * [[FAQ]]: What does py2exe actually do and what are all those files?
@@ -27,13 +28,13 @@ The old [[http://www.py2exe.org/old|py2exe]] web site is still available until t
  * TroubleshootingImportErrors
  * ReleaseProcess
  * NonEnglish: read about py2exe in other languages
- * [[https://lists.sourceforge.net/lists/listinfo/py2exe-users|Get help on the mailing list]]
+ * [[https://sourceforge.net/projects/py2exe/lists/py2exe-users|Get help on the mailing list]]
  * [[irc://irc.freenode.net/py2exe|#py2exe]] IRC channel at Freenode.net
 
 == How to use this site ==
 
 A Wiki is a collaborative site, anyone can contribute and share:
- * Edit any page by pressing '''<<GetText(Edit)>>''' at the top or the bottom of the page 
+ * Edit any page by pressing '''<<GetText(Edit)>>''' at the top or the bottom of the page
  * Create a link to another page with joined capitalized words (like WikiSandBox) or with {{{[[words in brackets]]}}}
  * Search for page titles or text within pages using the search box at the top of any page
  * See HelpForBeginners to get you going, HelpContents for all help pages.
