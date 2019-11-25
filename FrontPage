@@ -4,7 +4,7 @@
 #pragma section-numbers off
 = py2exe =
 
-py2exe is a [[https://www.python.org/|Python]] [[https://docs.python.org/3/library/distutils.html|Distutils]] extension which converts Python scripts into executable Windows programs, able to run without requiring a Python installation.[[http://www.py2exe.org/cgi-bin/exothermic|{{http://www.py2exe.org/spice.gif|Spice|width=0}}|class=]]
+py2exe is a [[https://www.python.org/|Python]] [[https://docs.python.org/3/library/distutils.html|Distutils]] extension which converts Python scripts into executable Windows programs, able to run without requiring a Python installation.[[https://www.py2exe.org/cgi-bin/exothermic|{{https://www.py2exe.org/spice.gif|Spice|width=0}}|class=]]
 
 Development is hosted at [[https://sourceforge.net/projects/py2exe/|SourceForge]]. You can find the [[https://lists.sourceforge.net/lists/listinfo/py2exe-users|mailing list]], [[https://sourceforge.net/p/py2exe/svn/HEAD/tree/|svn]], and [[https://sourceforge.net/projects/py2exe/files/py2exe/0.6.9/|downloads for Python 2]] there. [[https://pypi.org/project/py2exe/|Downloads for Python 3]] are on PyPI.
 
@@ -14,7 +14,7 @@ py2exe is used by [[http://www.bittorrent.com|BitTorrent]], [[http://spambayes.s
 
 In an effort to limit Wiki spam, this front page is not editable. Feel free to edit other pages with content relevant to py2exe. You will need an account to edit (but not to read) and your account information will be used only for the purposes of administering this Wiki.
 
-The old [[http://www.py2exe.org/old|py2exe]] web site is still available until that information has found its way into this wiki.
+The old [[https://www.py2exe.org/old|py2exe]] web site is still available until that information has found its way into this wiki.
 
 == Starting Points ==
  * [[https://sourceforge.net/projects/py2exe/files/py2exe/0.6.9/|Download py2exe for Python 2 from SourceForge]]
