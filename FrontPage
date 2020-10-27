@@ -6,9 +6,9 @@
 
 py2exe is a [[https://www.python.org/|Python]] [[https://docs.python.org/3/library/distutils.html|Distutils]] extension which converts Python scripts into executable Windows programs, able to run without requiring a Python installation.[[https://www.py2exe.org/cgi-bin/exothermic|{{https://www.py2exe.org/spice.gif|Spice|width=0}}|class=]]
 
-Development is hosted at [[https://sourceforge.net/projects/py2exe/|SourceForge]]. You can find the [[https://lists.sourceforge.net/lists/listinfo/py2exe-users|mailing list]], [[https://sourceforge.net/p/py2exe/svn/HEAD/tree/|svn]], and [[https://sourceforge.net/projects/py2exe/files/py2exe/0.6.9/|downloads for Python 2]] there. [[https://pypi.org/project/py2exe/|Downloads for Python 3]] are on PyPI.
+Development is hosted on [[https://github.com/py2exe/py2exe|GitHub]]. You can find the [[https://lists.sourceforge.net/lists/listinfo/py2exe-users|mailing list]], [[https://sourceforge.net/p/py2exe/svn/HEAD/tree/|svn]], and [[https://sourceforge.net/projects/py2exe/files/py2exe/0.6.9/|downloads for Python 2]] there. [[https://pypi.org/project/py2exe/|Downloads for Python 3]] are on PyPI.
 
-py2exe was originally developed by Thomas Heller who still makes contributions. Jimmy Retzlaff and Mark Hammond have also made contributions. Code contributions are always welcome from the community and many people provide invaluable help on the mailing list and the Wiki.
+py2exe was originally developed by Thomas Heller who still makes contributions. Jimmy Retzlaff, Mark Hammond, and Alberto Sottile have also made contributions. Code contributions are always welcome from the community and many people provide invaluable help on the mailing list and the Wiki.
 
 py2exe is used by [[http://www.bittorrent.com|BitTorrent]], [[http://spambayes.sourceforge.net/windows.html|SpamBayes]], and thousands more - py2exe averages over 5,000 downloads per month.
 
