@@ -1,4 +1,4 @@
-#acl JimmyRetzlaff:read,write,delete,revert,admin All:read
+#acl JimmyRetzlaff:read,write,delete,revert,admin albertosottile:read,write,delete,revert All:read
 #format wiki
 #language en
 #pragma section-numbers off
