@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+
+{% block content %}
+  {{ super() }}
+  {% if page and page.edit_url and config.edit_uri and not (page.meta.generated_recent_changes | default(false)) %}
+    {% set source_path = page.edit_url | replace(config.edit_uri ~ '/', '') %}
+    <footer class="py2exe-page-history">
+      <a href="{{ config.edit_uri | e }}/{{ source_path | urlencode | replace('%2F', '/') | e }}">Page history</a>
+    </footer>
+  {% endif %}
+{% endblock %}
+
+{% block scripts %}
+  {{ super() }}
+  <!-- Cloudflare Web Analytics --><script type='module' src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "2a55eddf97ec49ca91b949924579e855"}'></script><!-- End Cloudflare Web Analytics -->
+{% endblock %}
+
+{% block tabs %}
+  <nav class="py2exe-external-links" aria-label="Project resources">
+    <div class="md-grid">
+      <ul class="py2exe-external-links__list">
+        {% for link in config.extra.resource_links %}
+          {% if not (link.require_page | default(false)) or (nav.pages | selectattr("url", "equalto", link.url) | list) %}
+            <li>
+              <a href="{{ link.url | url | e }}">
+                <span>{{ link.label | e }}</span>
+                {% if not link.internal %}
+                  <span class="py2exe-external-links__icon" aria-hidden="true">↗</span>
+                {% endif %}
+              </a>
+            </li>
+          {% endif %}
+        {% endfor %}
+      </ul>
+    </div>
+  </nav>
+{% endblock %}

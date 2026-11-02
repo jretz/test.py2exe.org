@@ -1,40 +1,82 @@
-= Frequently Asked Questions =
+# Frequently Asked Questions
 
-== What py2exe is for? ==
+## What py2exe is for?
 
-Python is an interpreted language and as long as Microsoft not ship Python interpreter with standard library with every copy of its operating systems, there is no direct way to execute a Python script on a vanilla Microsoft OS machine. py2exe allows to create an executable (.exe) file that bundles everything necessary to run the script.
+Python is an interpreted language and as long as Microsoft not ship Python
+interpreter with standard library with every copy of its operating systems,
+there is no direct way to execute a Python script on a vanilla Microsoft OS
+machine. py2exe allows to create an executable (.exe) file that bundles
+everything necessary to run the script.
 
-== How does it work? ==
+## How does it work?
 
-py2exe can not be executed standalone (unfortunately), so you first install it as usual Python package, then create a section in your setup.py script. then just run distutils with corresponding commands.
+py2exe can not be executed standalone (unfortunately), so you first install it
+as usual Python package, then create a section in your setup.py script. then
+just run distutils with corresponding commands.
 
-== Where is the .exe? ==
+## Where is the .exe?
 
-After py2exe has done its magic, you should have a "dist" directory with all the files necessary to run your python script. No install necessary. Click and run. No DLL hell, nothing else to download.
+After py2exe has done its magic, you should have a "dist" directory with all the
+files necessary to run your python script. No install necessary. Click and run.
+No DLL hell, nothing else to download.
 
-== What are all those files? ==
+## What are all those files?
 
-|| myprog.exe || The actual executable. You can select a custom icon by using some specific target options (see CustomIcons) ||
-|| python??.dll || the python interpreter library. This is the brain of your executable ||
-|| library.zip || This is a standard zip file where all the pure source modules will be inserted (using the "zipfile" option, you can also select to put that file in a sub-directory and with a different name) ||
-|| *.pyd || The pyd files are actually standard Windows DLL (I used the useful depends.exe to check things around). They are also standard modules for Python. A Python program can import those pyd. Some applications build pyd to provide accelerated features. Also they are necessary to provide support to native functions of the operating system (see also CTypes to never have to use SWIG again!). Those files also follow into the subdirectory where library.zip will be installed ||
-|| *.dll || some pyd probably have some DLL dependencies, and here they come ||
-|| w9xpopen.exe || This is needed on Win9x platform. ||
+|  |  |
+| --- | --- |
+| myprog.exe | The actual executable. You can select a custom icon by using some specific target options (see [Icons](guides/build/icons.md)) |
+| python??.dll | the python interpreter library. This is the brain of your executable |
+| library.zip | This is a standard zip file where all the pure source modules will be inserted (using the "zipfile" option, you can also select to put that file in a sub-directory and with a different name) |
+| \*.pyd | The pyd files are actually standard Windows DLL (I used the useful depends.exe to check things around). They are also standard modules for Python. A Python program can import those pyd. Some applications build pyd to provide accelerated features. Also they are necessary to provide support to native functions of the operating system (see also CTypes to never have to use SWIG again!). Those files also follow into the subdirectory where library.zip will be installed |
+| \*.dll | some pyd probably have some DLL dependencies, and here they come |
+| w9xpopen.exe | This is needed on Win9x platform. |
 
-To run your program needs all these files. But it might happen that these are not enough. For examples, encodings are imported "by name". If you use a feature that requires encodings, you will need to put an option to include encodings unconditionally or to import them explicitly from one of your script. (see EncodingsAgain and EvenMoreEncodings).
+To run your program needs all these files. But it might happen that these are
+not enough. For examples, encodings are imported "by name". If you use a feature
+that requires encodings, you will need to put an option to include encodings
+unconditionally or to import them explicitly from one of your script. (see
+[Missing encodings](troubleshooting/missing-encodings.md) and
+[Default encoding](troubleshooting/default-encoding.md)).
 
-Some other modules (eg [[http://pyserial.sourceforge.net/|pyserial-pyparallel]]) also conditionally import modules for each platform. You can avoid the warning by putting the correct "ignores" options in py2exe. Last but not least, modules like [[http://www.pygtk.org/|pygtk]] seem to create a module reference on-the-fly and therefore the corresponding warnings also are harmless (see ExcludingDlls to learn how to correct that).
+Some other modules (eg [pyserial-pyparallel](http://pyserial.sourceforge.net/))
+also conditionally import modules for each platform. You can avoid the warning
+by putting the correct "ignores" options in py2exe. Last but not least, modules
+like [pygtk](http://www.pygtk.org/) seem to create a module reference on-the-fly
+and therefore the corresponding warnings also are harmless (see
+[Excluding DLLs](guides/build/excluding-dlls.md) to learn how to correct that).
 
-An important point to note: the main script (the one passed as an option to "windows" or "console" in your setup file) is not put with all the other files in the library.zip. Instead it is byte-compiled (see OptimizedBytecode for some details on optimization) and inserted into a named resource in the executable shell. This technique also allows you to insert binary string in the final executable (very nice if you want to add a custom version tag) through the usage of the "other_resources" options for the target (see CustomDataInExe).
+An important point to note: the main script (the one passed as an option to
+"windows" or "console" in your setup file) is not put with all the other files
+in the library.zip. Instead it is byte-compiled (see
+[Optimized bytecode](guides/optimization/optimized-bytecode.md) for some details
+on optimization) and inserted into a named resource in the executable shell.
+This technique also allows you to insert binary string in the final executable
+(very nice if you want to add a custom version tag) through the usage of the
+"other\_resources" options for the target (see
+[Embedded resources](guides/build/embedded-resources.md)).
 
-== How does py2exe decide which modules you need? ==
+## How does py2exe decide which modules you need?
 
-To determine which modules should go in the final `.exe` file, py2exe does a recursive search of the script that you are packaging to find its dependencies and, in turn, all of their dependencies. This process is written so that it can output extensive debugging information, showing you which modules convinced py2exe to include which other modules. To display this debugging trace, run the py2exe "module finder" code standalone with at least one `-d` option to turn on "debugging":
-{{{
+To determine which modules should go in the final `.exe` file, py2exe does a
+recursive search of the script that you are packaging to find its dependencies
+and, in turn, all of their dependencies. This process is written so that it can
+output extensive debugging information, showing you which modules convinced
+py2exe to include which other modules. To display this debugging trace, run the
+py2exe "module finder" code standalone with at least one `-d` option to turn on
+"debugging":
+
+```doscon
 python -m py2exe.mf -d path/to/my_file.py
-}}}
-With several `-d` options you can ask for increasing levels of detail. By reading through the report, you can learn why py2exe is including which dependencies. Remember that some modules — in particular, modules in the standard library — get included automatically whether they appear in the `mf` output or not, and have to be explicitly excluded by your `setup.py` options if you do not want them in your final `.exe` file.
+```
 
-== How do I use py2exe on Mac OS or Linux? ==
+With several `-d` options you can ask for increasing levels of detail. By
+reading through the report, you can learn why py2exe is including which
+dependencies. Remember that some modules — in particular, modules in the
+standard library — get included automatically whether they appear in the `mf`
+output or not, and have to be explicitly excluded by your `setup.py` options if
+you do not want them in your final `.exe` file.
 
-Sorry, you can't. py2exe works only on Windows computers, not on any other operating system. 
+## How do I use py2exe on Mac OS or Linux?
+
+Sorry, you can't. py2exe works only on Windows computers, not on any other
+operating system.

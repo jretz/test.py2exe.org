@@ -1,0 +1,25 @@
+name: Build Documentation
+
+on:
+  pull_request:
+    types: [opened, synchronize, reopened]
+
+permissions:
+  contents: read
+
+jobs:
+  build:
+    name: Build Documentation
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+        with:
+          persist-credentials: false
+      - uses: jdx/mise-action@v5
+        with:
+          minimum_release_age: 3d
+          cache: false
+          # The site's uvx_args require version-only PyPI locking.
+          install: false
+      - run: mise install
+      - run: mise run build

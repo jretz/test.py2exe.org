@@ -1,10 +1,12 @@
-= Where to correct =
+# Extending example
+
+## Where to correct
 
 Within site-packages/py2exe/samples/extending/setup.py
 
 (line 54 ff..)
-{{{
-#!python
+
+```python
 ################################################################
 # arguments for the setup() call
 
@@ -19,37 +21,36 @@ options = {"py2exe": {"compressed": 1,
                       "optimize": 2}}
 
 ################################################################
-}}}
-= what to do =
+```
 
-The Error is within 
+## what to do
 
-{{{
-#!python
+The Error is within
+
+```python
 zipfile = r"lib\shardlib"
-}}}
+```
 
 it has to be
 
-{{{
-#!python
+```python
 zipfile = r"lib\shardlib.zip"
-}}}
+```
 
+## additional information
 
-= additional information =
-
-I stumbled upon while trying to include win32com.client  - that module was not able to find {{{gen_py/__init__.py}}}
+I stumbled upon while trying to include win32com.client - that module was not
+able to find `gen_py/__init__.py`
 
 20040112 HAM
 
-
-
-= the cause =
+## the cause
 
 This problem is a limitation of the current win32all (build 163, currently).
 
-Py2Exe itself does not require that the zipfile has a {{{.zip}}} extension (and this can be useful to obscure the contents of this file).
+[py2exe](../getting-started/overview.md) itself does not require that the
+zipfile has a `.zip` extension (and this can be useful to obscure the contents
+of this file).
 
 I've sent Mark Hammond a patch ;-)
 

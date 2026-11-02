@@ -1,0 +1,42 @@
+name: Publish Documentation
+
+on:
+  push:
+    branches: [main]
+
+permissions:
+  contents: read
+
+jobs:
+  publish:
+    name: Publish Documentation
+    runs-on: ubuntu-latest
+    environment: pages-publishing
+    concurrency:
+      group: publish-documentation
+      queue: max
+    steps:
+      - uses: actions/checkout@v7
+        with:
+          # Publish the current main even when an older run is queued or retried.
+          ref: main
+          fetch-depth: 0
+          persist-credentials: false
+      - uses: jdx/mise-action@v5
+        with:
+          minimum_release_age: 3d
+          cache: false
+          install: false
+      - run: mise install
+      - name: Publish to GitHub Pages
+        env:
+          GH_TOKEN: ${{ secrets.PAGES_PUBLISH_TOKEN }}
+          GIT_COMMITTER_NAME: github-actions[bot]
+          GIT_COMMITTER_EMAIL: 41898282+github-actions[bot]@users.noreply.github.com
+          GIT_TERMINAL_PROMPT: '0'
+        run: |
+          : "${GH_TOKEN:?Set PAGES_PUBLISH_TOKEN in the pages-publishing environment}"
+          # The publisher pushes from a temporary Git repository.
+          export GIT_CONFIG_GLOBAL="$RUNNER_TEMP/py2exe-publish.gitconfig"
+          gh auth setup-git --hostname github.com --force
+          mise run publish

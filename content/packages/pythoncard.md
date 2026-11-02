@@ -1,13 +1,14 @@
-Pythoncard has 2 problems. 
+# PythonCard
 
+Pythoncard has 2 problems.
 
- 1. the resources (gui screens) dont get copied
- 2. the components dont get copied
+1. the resources (gui screens) dont get copied
+2. the components dont get copied
 
 Heres a fix that only touches your setup.py file. Its not perfect
 but it is not bad for starters.
 
-{{{
+```python2
 from distutils.core import setup
 
 # py2exe stuff
@@ -43,4 +44,4 @@ setup(name='blarg',
 
 
 
-}}}
+```

@@ -1,48 +1,57 @@
-= Introduction =
-[[http://matplotlib.sf.net|MatPlotLib]] is a module to produce nice-looking plots in Python using a wide variety of back-end packages, at least one of which is likely to be available for your system. 
+# Matplotlib
 
-== Data Files ==
+## Introduction
+
+[MatPlotLib](http://matplotlib.sf.net) is a module to produce nice-looking plots
+in Python using a wide variety of back-end packages, at least one of which is
+likely to be available for your system.
+
+### Data Files
+
 matplotlib requires some data files:
 
-{{{
-#!python
+```python
 import matplotlib
 ...
 setup(
     ...
     data_files=matplotlib.get_py2exe_datafiles(),
 )
-}}}
+```
 
-(This works for recent versions of matplotlib; for older versions, see this page's history for alternative approaches.)
+(This works for recent versions of matplotlib; for older versions, see this
+page's history for alternative approaches.)
 
-== Backends ==
+### Backends
 
-matplotlib has many backends; if all of them get included, your distribution could get large. You might want to do something like:
+matplotlib has many backends; if all of them get included, your distribution
+could get large. You might want to do something like:
 
-{{{
-#!python
+```python
 setup(options={'py2exe': { ...
                 'excludes': ['_gtkagg', '_tkagg'],
 }})
-}}}
+```
 
-If you omit a backend, you must make sure it isn't the default - for example if you package the wx backend and not Tcl/Tk. The default backend is configured in mpl-data/matplotlib.conf. You can override the configuration in your program by doing, for example:
-{{{
-#!python
+If you omit a backend, you must make sure it isn't the default - for example if
+you package the wx backend and not Tcl/Tk. The default backend is configured in
+mpl-data/matplotlib.conf. You can override the configuration in your program by
+doing, for example:
+
+```python
 import matplotlib
 matplotlib.use('wxagg') # overrule configuration
 import pylab
-}}}
+```
 
+### Other things you may need
 
-== Other things you may need ==
+Below are snippets that others have, at one time or another, needed to get
+matplotlib working.
 
-Below are snippets that others have, at one time or another, needed to get matplotlib working.
+#### Includes and excludes
 
-=== Includes and excludes ===
-{{{
-#!python
+```python
 opts = {
     'py2exe': { 'includes': 'matplotlib.numerix.random_array',
                 'excludes': ['_gtkagg', '_tkagg'],
@@ -50,11 +59,11 @@ opts = {
                                  'libgobject-2.0-0.dll']
               }
        }
-}}}
+```
 
-=== Data Files ===
-{{{
-#!python
+#### Data Files
+
+```python
 from distutils.core import setup
 import py2exe
 
@@ -78,19 +87,35 @@ setup(
             },
     data_files=matplotlibdata_files
 )
-}}}
+```
 
-=== Setup.py using py2exe with Python2.5 and matplotlib 0.91.2 ===
---~~~~ In this example, a simple program was created where a matplotlib figure canvas is placed in a PyQt child window.  In order to compile it with py2exe and matplotlib 0.91.2 with Python 2.5, it is necessary to include the necessary modules and then add the data files properly.  On this system, the matplotlib was installed to the folder Python25\Lib\site-packages.  Within the matplotlib folder, the matplotlib-data is saved in mpl-data.
+#### Setup.py using py2exe with Python2.5 and matplotlib 0.91.2
 
-Using the above methods would result in the classic "RuntimeError: Could not find the matplotlib data files" error.  Furthermore, using the method with data_files = matplotlib.get_py2exe_datafiles(), py2exe returns an error saying that 'split' is not a valid method for this object.  Another problem when using glob, the and a * is located in the argument, glob will search for everything, including folders.  Doing this will give you an error when compiling saying that 'fonts' is not a file.  So you need to add the contents from mpl-data\fonts and mpl-data\images individually.
+--~~~~ In this example, a simple program was created where a matplotlib figure
+canvas is placed in a PyQt child window. In order to compile it with py2exe and
+matplotlib 0.91.2 with Python 2.5, it is necessary to include the necessary
+modules and then add the data files properly. On this system, the matplotlib was
+installed to the folder Python25\\Lib\\site-packages. Within the matplotlib
+folder, the matplotlib-data is saved in mpl-data.
 
-Ensure that the first entry in the tuple in the list 'data_files' is matches the actual matplotlib data folder; in this case 'mpl-data' (and then later mpl-data\fonts and mpl-data\images).  Also, the file matplotlibrc file is not returned by 'glob' so it is also added manually.
+Using the above methods would result in the classic "RuntimeError: Could not
+find the matplotlib data files" error. Furthermore, using the method with
+data\_files = matplotlib.get\_py2exe\_datafiles(), py2exe returns an error
+saying that 'split' is not a valid method for this object. Another problem when
+using glob, the and a \* is located in the argument, glob will search for
+everything, including folders. Doing this will give you an error when compiling
+saying that 'fonts' is not a file. So you need to add the contents from
+mpl-data\\fonts and mpl-data\\images individually.
 
-This is modified from the above setup.py under ''Special content for setup.py to use matplotlib''
+Ensure that the first entry in the tuple in the list 'data\_files' is matches
+the actual matplotlib data folder; in this case 'mpl-data' (and then later
+mpl-data\\fonts and mpl-data\\images). Also, the file matplotlibrc file is not
+returned by 'glob' so it is also added manually.
 
-{{{
-#!python
+This is modified from the above setup.py under *Special content for setup.py to
+use matplotlib*
+
+```python
 # Used successfully in Python2.5 with matplotlib 0.91.2 and PyQt4 (and Qt 4.3.3)
 from distutils.core import setup
 import py2exe
@@ -126,18 +151,27 @@ data_files = [(r'mpl-data', glob.glob(r'C:\Python25\Lib\site-packages\matplotlib
 
 # for console program use 'console = [{"script" : "scriptname.py"}]
 setup(windows=[{"script" : "scriptname.py"}], options=opts,   data_files=data_files)
-}}}
-= Updating _sort confusion =
-If you're using numarray and numpy together, be aware that they both have a _sort, and py2exe gets them confused. After py2exe creates the dist directotry, copy numpy/core/_sort.pyd and numarray/sort.pyd to their respective locations in the dist.
+```
 
-If you get an error that numarray module has no functionDict in numarraycore.py at line 176, then you'll know that py2exe confused the _sort modules that are in both numpy and numarray and need to do this step.
+## Updating \_sort confusion
 
-= MPL datafiles etc with Python 2.5 and MPL 0.99 =
-Using matplotlib.get_py2exe_datafiles() helps to make this really easy now.
+If you're using numarray and numpy together, be aware that they both have a
+\_sort, and py2exe gets them confused. After py2exe creates the dist directotry,
+copy numpy/core/\_sort.pyd and numarray/sort.pyd to their respective locations
+in the dist.
 
-Following is a setup.py for the MPL example "embedding_in_wx2.py" (you should comment the wxversion check in that file or make it conditional on sys.frozen).
+If you get an error that numarray module has no functionDict in numarraycore.py
+at line 176, then you'll know that py2exe confused the \_sort modules that are
+in both numpy and numarray and need to do this step.
 
-{{{
+## MPL datafiles etc with Python 2.5 and MPL 0.99
+
+Using matplotlib.get\_py2exe\_datafiles() helps to make this really easy now.
+
+Following is a setup.py for the MPL example "embedding\_in\_wx2.py" (you should
+comment the wxversion check in that file or make it conditional on sys.frozen).
+
+```python2
 from distutils.core import setup
 import py2exe
 
@@ -188,24 +222,34 @@ setup(
 
     data_files=data_files
 )
-}}}
+```
 
-In 0.99 there is a problem with some of the documentation strings, which shows up if you use "optimize=1or2", the work around is quite easy and according to the MPL list this is fixed in trunk.
+In 0.99 there is a problem with some of the documentation strings, which shows
+up if you use "optimize=1or2", the work around is quite easy and according to
+the MPL list this is fixed in trunk.
 
 This kind of code:
-{{{
+
+```python2
 psd.__doc__ = psd.__doc__ % kwdocd
-}}}
+```
 
 Causes a TypeError exception if one uses ""optimize": 1or2," in ones setup.py.
 
 My work around is to change that type of code to:
-{{{
+
+```python2
 if psd.__doc__ is not None:
     psd.__doc__ = psd.__doc__ % kwdocd
 else:
     psd.__doc__ = ""
-}}}
-I got this problem only with mpl/mlab.py, in which four lines need to be changed.
+```
 
-Another issue I found if you need to use the backend_wx, it does a version check for wxPython 2.8 which always fails in the py2exe version, my work around is to add "if not hasattr(sys, 'frozen'):" at line 113 of backend_wx.py and indent the lines 114 to 131.  I will report this to the mpl list and they will hopefully fix this too.
+I got this problem only with mpl/mlab.py, in which four lines need to be
+changed.
+
+Another issue I found if you need to use the backend\_wx, it does a version
+check for wxPython 2.8 which always fails in the py2exe version, my work around
+is to add "if not hasattr(sys, 'frozen'):" at line 113 of backend\_wx.py and
+indent the lines 114 to 131. I will report this to the mpl list and they will
+hopefully fix this too.

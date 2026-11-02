@@ -1,10 +1,14 @@
-= SOAPpy and py2exe =
-When working with SOAPpy 0.12.0 (and Python 2.4.x), py2exe achieves to retrieve all the modules
-(pyXML, fpconst, SOAPpy) except for the drivers. This results in having an exception during execution with the message "No Parsers Found".
+# SOAPpy and py2exe
 
-A way to solve this is to add explicitly the path to the drivers ('''_xmlplus.sax.drivers2.*''') into the py2exe options. For exemple :
+When working with SOAPpy 0.12.0 (and Python 2.4.x), py2exe achieves to retrieve
+all the modules
+(pyXML, fpconst, SOAPpy) except for the drivers. This results in having an
+exception during execution with the message "No Parsers Found".
 
-{{{
+A way to solve this is to add explicitly the path to the drivers
+(**\_xmlplus.sax.drivers2.\***) into the py2exe options. For exemple :
+
+```python2
 setup(
     options = {"py2exe": { "compressed": 1,
                            "optimize": 2,
@@ -14,4 +18,4 @@ setup(
     zipfile = None,
     windows = [MyAppWithSOAP]
     )
-}}}
+```

@@ -1,23 +1,31 @@
-= Introduction =
-[[http://tix.sourceforge.net/|Tix]], the Tk Interface eXtension, is a powerful set of user interface components that expands the capabilities of your Tcl/Tk and Python applications. This page describes building a "Hello World" Tix application with py2exe.
+# Tix
 
-= Tix Hello World =
+## Introduction
+
+[Tix](http://tix.sourceforge.net/), the Tk Interface eXtension, is a powerful
+set of user interface components that expands the capabilities of your Tcl/Tk
+and Python applications. This page describes building a "Hello World" Tix
+application with py2exe.
+
+## Tix Hello World
+
 Here is a very simple Tix application. Save it as hello.py:
 
-{{{
-#!python
+```python
 import Tix
 
 window = Tix.Tk()
 Tix.Label(window, text='Hello World').grid()
 window.mainloop()
-}}}
+```
 
-= setup.py for hello.py =
-py2exe doesn't discover the use of the Tix DLL and Tcl files, so you must include them explicitly. The following setup.py builds a working EXE for the hello.py above:
+## setup.py for hello.py
 
-{{{
-#!python
+py2exe doesn't discover the use of the Tix DLL and Tcl files, so you must
+include them explicitly. The following setup.py builds a working EXE for the
+hello.py above:
+
+```python
 import glob
 import os
 import sys
@@ -41,13 +49,15 @@ setup(
       windows=['hello.py'],
       data_files=data_files,
      )
-}}}
+```
 
-= Alternative setup.py for hello.py =
-Another more ellaborated '''setup.py''', without hard-coded versions of libraries and working with the ''bundle_files'' option (dlls for tcl, tk and tix must stand in the exec dir):
+## Alternative setup.py for hello.py
 
-{{{
-#!python
+Another more ellaborated **setup.py**, without hard-coded versions of libraries
+and working with the *bundle\_files* option (dlls for tcl, tk and tix must stand
+in the exec dir):
+
+```python
 from distutils.core import setup
 import py2exe
 from py2exe.build_exe import py2exe as BuildExe
@@ -105,4 +115,4 @@ setup(
     windows=['hello.py'],
     options=opts,
 )
-}}}
+```

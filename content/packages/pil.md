@@ -1,10 +1,13 @@
-= The Problem =
+# PIL
 
-I use [[http://www.pythonware.com/products/pil/|PIL]] from pythonware. It has some very dynamic initialising routines.
+## The Problem
+
+I use [PIL](http://www.pythonware.com/products/pil/) from pythonware. It has
+some very dynamic initialising routines.
 
 excerpt out of Image.py
-{{{
-#!python
+
+```python
 def init():
     "Load all file format drivers."
 
@@ -44,32 +47,35 @@ def init():
     if OPEN or SAVE:
         _initialized = 2
 
-}}}
+```
 
-main problem with all this stuff: all this directory-voodoo is out of access when using py2exe. Maybe it is fixable by doing very strange things I do not know about.
+main problem with all this stuff: all this directory-voodoo is out of access
+when using py2exe. Maybe it is fixable by doing very strange things I do not
+know about.
 
-= Explanation =
+## Explanation
 
-PIL tries to automagically learn which Image-Plugins are available. "available" is well defined as long it is a Python standard installation.
+PIL tries to automagically learn which Image-Plugins are available. "available"
+is well defined as long it is a Python standard installation.
 "available" gets very vague when using py2exe.
 
-= Solution =
+## Solution
 
 Make it dumb.
 
-{{{
-#!python
+```python
 # PIL schafft das nicht alleine, wenn gepy2exed
 import Image
 import PngImagePlugin
 [...]
 Image._initialized=2
-}}}
+```
 
-before using PIL, I manually import Image and also the needed *ImagePlugins
-{{{
-#!python
+before using PIL, I manually import Image and also the needed \*ImagePlugins
+
+```python
 [...] could be JpegImagePlugin, BmpImagePlugin etc.
-}}}
-Finally I force Image to believe it is fully initialized, so nobody tries directory scanning.
+```
 
+Finally I force Image to believe it is fully initialized, so nobody tries
+directory scanning.

@@ -1,13 +1,18 @@
-Use attribute '''windows''' or '''console''' of method '''setup''' to create a com exe server.
-Unlike the case with win32com, with ctypes.com only a exe server will be created.
-Also see: [[Py2exeAndWin32com]] & [[Py2exeAndCtypesComDllServer]]
+# ctypes EXE servers
 
-You can define and instantiate a '''Target''' class to explicitly add
+Use attribute **windows** or **console** of method **setup** to create a com exe
+server.
+Unlike the case with win32com, with ctypes.com only a exe server will be
+created.
+Also see: [win32com servers](win32com-servers.md) &amp;
+[ctypes DLL servers](ctypes-dll-servers.md)
+
+You can define and instantiate a **Target** class to explicitly add
 version info resources that get attached to the file as metadata.
 
-file '''setup.py''' would look something like this:
-{{{
-#!python
+file **setup.py** would look something like this:
+
+```python
 # This is the distutils script for creating a Python-based com exe
 # server using ctypes.com.  This script should be run like this:
 #
@@ -55,4 +60,4 @@ setup(
     packages=["dir"],
     windows=[my_com_server_target]
     )
-}}}
+```

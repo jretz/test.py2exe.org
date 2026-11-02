@@ -1,23 +1,26 @@
-= The Problem =
+# PIL and ReportLab
 
-Using [[http://www.reportlab.org|repotlab]] and following the instructions from [[py2exeAndPIL]]. 
+## The Problem
 
-Still, when 
-{{{
-#!python
+Using [repotlab](http://www.reportlab.org) and following the instructions from
+[PIL](pil.md).
+
+Still, when
+
+```python
 from reportlab.lib.utils import ImageReader
 im=ImageReader(someCstringIOStream())
-}}}
+```
 
 raises "cannot identify image file"
 
-= Explanation =
+## Explanation
 
 Reportlab does some different things when importing Image from PIL
 
-excerpt from reportlab.lib.utils 
-{{{
-#!python
+excerpt from reportlab.lib.utils
+
+```python
 class ImageReader:
     "Wraps up either PIL or Java to get data from bitmaps"
     def __init__(self, fileName):
@@ -44,16 +47,14 @@ class ImageReader:
         else:
             import PIL.Image
             self._image = PIL.Image.open(fileName)
-}}}
+```
 
+## Solution
 
-= Solution =
+Make it dumb. We know: This is not Java, this is Windows. We have PIL, because
+we use py2exe and ARE responsible to put it into the package. So...
 
-Make it dumb. We know: This is not Java, this is Windows. We have PIL, because we use py2exe and ARE responsible to put it into the package. So...
-
-
-{{{
-#!python
+```python
 
 class MyImageReader(ImageReader):
     """ Kopie des Report-Lab Image Readers, kommt besser mit
@@ -72,8 +73,8 @@ class MyImageReader(ImageReader):
         # PIL IST VORHANDEN
             
         self._image = Image.open(fileName)
-}}}
+```
 
-Image has to be imported and "tuned" as described in [[py2exeAndPIL]]
+Image has to be imported and "tuned" as described in [PIL](pil.md)
 
 HAM2004-08-09
