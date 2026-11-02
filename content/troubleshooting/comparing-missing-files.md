@@ -1,6 +1,14 @@
-For what ever reason py2exe wasn't automatically importing in some miscellaneous stuff. As the project was very large it was hard to tell quickly what might be missing. Folder comparison tools didn't really help since there was just enough difference between the files to make them catch just about everything. So I broke down and pieced this together. Since I'm new to Python I'm sure there are better ways to do this but this does work. Feel free to hack away at it. -- Aaron R. Short
+# Comparing missing files
 
-{{{
+For what ever reason py2exe wasn't automatically importing in some miscellaneous
+stuff. As the project was very large it was hard to tell quickly what might be
+missing. Folder comparison tools didn't really help since there was just enough
+difference between the files to make them catch just about everything. So I
+broke down and pieced this together. Since I'm new to Python I'm sure there are
+better ways to do this but this does work. Feel free to hack away at it. --
+Aaron R. Short
+
+```python2
 # Author: Aaron R. Short
 # Date: April 10, 2009
 # File: comparison.py
@@ -52,4 +60,4 @@ missing = sourceset - distset
 
 for (files) in sorted(missing):
     print files
-}}}
+```

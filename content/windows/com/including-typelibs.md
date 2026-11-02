@@ -1,57 +1,63 @@
-= Description =
-Typically when dealing with 3rd party COM libraries (eg. Office), you make use 
-of the constants defined in that library.  Once makepy creates the typelib for
-you, using these constants is normally easy in python. You only need to 
+# Including type libraries
+
+## Description
+
+Typically when dealing with 3rd party COM libraries (eg. Office), you make use
+of the constants defined in that library. Once makepy creates the typelib for
+you, using these constants is normally easy in python. You only need to
 import win32com.client.constants to access them.
 
 However, since these typelibs aren't really imported, py2exe needs to be told
 to include them in your setup-script.
 
-= Solution 1 =
+## Solution 1
+
 Here's how I'm importing the typelib for Excel XP:
 
 setup.py:
-{{{
-#!python
+
+```python
  ...
  setup(
         ...,
         options = {"py2exe": {"typelibs": [('{00020813-0000-0000-C000-000000000046}',0,1,4)]}},
         ...
       )
-}}}   
-So, as you can see, it's an option in the options dictionary, containing a 
-list of the typelibs you need. Each typelib being represtented as a 
+```
+
+So, as you can see, it's an option in the options dictionary, containing a
+list of the typelibs you need. Each typelib being represtented as a
 tuple of (CLSID, LCID, MajorVersion, MinorVersion) - all of which numbers you
 can find in the typelib file itself.
 
-You can print out these magic numbers by running the {{{makepy}}} script with the {{{-i}}} command line option.
+You can print out these magic numbers by running the `makepy` script with the
+`-i` command line option.
 
-= Solution 2 =
+## Solution 2
 
 That solution was the easier one for py2exe 0.4, but it still works:
 
-{{{
+```bat
 cd \python23\Lib\site-packages\win32com\client
 python makepy.py -o {MyProjectDirectory}\OLE_Excel10.py
-}}}
+```
 
 within the software change:
 
-{{{
-#!python
+```python
 import win32com.client
 o = win32com.client.Dispatch("Excel.Application")
 o.Method()
 o.property = "New Value"
 print o.property
-}}}
-(taken from M. Hammonds documentation "Quick Start to Client side COM and Python")
+```
+
+(taken from M. Hammonds documentation "Quick Start to Client side COM and
+Python")
 
 to
 
-{{{
-#!python
+```python
 import OLE_Excel10 as Excel
 _ec=Excel.constants
 
@@ -59,53 +65,83 @@ o = Excel.Application()
 o.Method()
 o.property = "New Value"
 print o.property
-}}}
+```
 
-
-
-I believe that Solution 2 is not correct.  It will work if you happen to be on a machine that has python installed, but if your goal is to use py2exe to distribute an application to machines that don't have python (and win32com) installed, then I don't think it will work.  What the py3exe stuff in Solution 1 does is incorporate the generated win32com wrappers into the py2exe stuff.  
+I believe that Solution 2 is not correct. It will work if you happen to be on a
+machine that has python installed, but if your goal is to use py2exe to
+distribute an application to machines that don't have python (and win32com)
+installed, then I don't think it will work. What the py3exe stuff in Solution 1
+does is incorporate the generated win32com wrappers into the py2exe stuff.
 -Alec Wysoker
 
-= Solution 3 =
+## Solution 3
 
-The downside of Solution 1 is that the machine on which the py2exe app runs must have the same version of the typelib as the one specified in setup.py.  I am finding that for the app I want to communicate with (iTunes) there are multiple versions out there.  Ideally, one should let win32com generate the typelib wrapper dynamically, so that one can be generated for whatever version is on the machine on which the py2exe app is running.  The problem is that win32com figures out that it is being run from a zipfile (a read-only module store) so it decides that it shouldn't try to dynamically generate the typelib wrapper.
+The downside of Solution 1 is that the machine on which the py2exe app runs must
+have the same version of the typelib as the one specified in setup.py. I am
+finding that for the app I want to communicate with (iTunes) there are multiple
+versions out there. Ideally, one should let win32com generate the typelib
+wrapper dynamically, so that one can be generated for whatever version is on the
+machine on which the py2exe app is running. The problem is that win32com figures
+out that it is being run from a zipfile (a read-only module store) so it decides
+that it shouldn't try to dynamically generate the typelib wrapper.
 
-The solution, amazingly, is to simply tell win32com that is is OK to dynamically generate code, like this:
+The solution, amazingly, is to simply tell win32com that is is OK to dynamically
+generate code, like this:
 
-{{{
+```python2
 import win32com.client
 win32com.client.gencache.is_readonly=False
-}}}
+```
 
 Then, you can get a reference to a COM object in the normal win32com fashion:
 
-{{{
+```python2
 iTunes = win32com.client.Dispatch("iTunes.Application")
-}}}
+```
 
-This causes win32com to magically generate the modules it needs, and import them appropriately.  The files go into a temp directory.  This works for me with py2exe 0.6.3.  
+This causes win32com to magically generate the modules it needs, and import them
+appropriately. The files go into a temp directory. This works for me with py2exe
+0.6.3.
 
 -Alec Wysoker
 
-I have found there is a little more to Solution 3 than just setting the gencache value is_readonly to False.  In particular, one needs to make sure that the gen_py directory does not exist in the win32com package deployed, or the {{{win32com.__init__.py}}} will attempt to use that instead of the one in the temp directory.  Secondly, I've also found that if the gen_py directory has not yet been created in the temp directory, that {{{win32com.client.gencache.EnsureDispatch('<your_com_object>')}}} can fail on an initial run, but work when you run your program a second time (since gen_py now exists).
+I have found there is a little more to Solution 3 than just setting the gencache
+value is\_readonly to False. In particular, one needs to make sure that the
+gen\_py directory does not exist in the win32com package deployed, or the
+`win32com.__init__.py` will attempt to use that instead of the one in the temp
+directory. Secondly, I've also found that if the gen\_py directory has not yet
+been created in the temp directory, that
+`win32com.client.gencache.EnsureDispatch('<your_com_object>')` can fail on an
+initial run, but work when you run your program a second time (since gen\_py now
+exists).
 
-So my steps to a successful use of dynamically created typelib wrappers under py2exe are:
+So my steps to a successful use of dynamically created typelib wrappers under
+py2exe are:
 
- 1. Make sure that the win32com\gen_py does not exist in your build source, or at least in your packaged app. (Using VirtualEnv can make this easier.)
- 2. Also run {{{GetGeneratePath()}}}. This ensures that the gen_py directory is already created before use.  So we end up with:
-{{{
+1. Make sure that the win32com\\gen\_py does not exist in your build source, or
+   at least in your packaged app. (Using VirtualEnv can make this easier.)
+2. Also run `GetGeneratePath()`. This ensures that the gen\_py directory is
+   already created before use. So we end up with:
+
+```python2
 import win32com.client
 win32com.client.gencache.is_readonly=False
 win32com.client.gencache.GetGeneratePath()
-}}}
- * If running as a Windows Service, don't forget to call {{{pythoncom.CoInitialize()}}} or {{{pythoncom.CoInitializeEx(pythoncom.COINIT_MULTITHREADED)}}}.
+```
+
+- If running as a Windows Service, don't forget to call
+  `pythoncom.CoInitialize()` or
+  `pythoncom.CoInitializeEx(pythoncom.COINIT_MULTITHREADED)`.
 
 -Rasjid Wilcox
 
-There is a converse solution to the third method. Instead of telling the program at run-time that it is OK to dynamically create files.  Let it by OK by making the area where it would be not "read only."
-While this is not very neat to the distribution directory, it gets the job done. 
-To do this, simply  add skip archive to the set up call like so:
-{{{
+There is a converse solution to the third method. Instead of telling the program
+at run-time that it is OK to dynamically create files. Let it by OK by making
+the area where it would be not "read only."
+While this is not very neat to the distribution directory, it gets the job done.
+To do this, simply add skip archive to the set up call like so:
+
+```python2
 setup(
    console=['HELLO_MAIN.py'],
    options={
@@ -114,5 +150,6 @@ setup(
                 }
         }
 )
-}}}
+```
+
 -Thomas MacKay

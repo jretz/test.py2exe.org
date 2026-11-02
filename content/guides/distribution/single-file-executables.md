@@ -1,17 +1,40 @@
-The "extending" example that comes with Py2Exe shows a nicely integrated approach for using Inno Setup to create single file executables. This example isn't so nicely integrated, but it uses [[http://nsis.sourceforge.net|NSIS]] instead of Inno Setup in case you prefer that.
+# Single file executables
 
-Drop a copy of this script in your source directory alongside setup.py and modify the first and 18th line(i.e. File /r "C:\Data\PythonApps\Calculator\dist\*"). The first line is the name of the executable in the py2exe's output folder as well as the name of the executable that NSIS will create and the 18th line points to py2exe's output directory. You can also select compression behavior - NSIS' LZMA compression (based on [[http://www.7-zip.com|7-Zip]]) is pretty impressive - wxPython applications start at about 3.5 - 4 MB instead of 10 - 12 MB. Compression may slow startup time for your executable somewhat.
+The "extending" example that comes with
+[py2exe](../../getting-started/overview.md) shows a nicely integrated approach
+for using Inno Setup to create single file executables. This example isn't so
+nicely integrated, but it uses [NSIS](http://nsis.sourceforge.net) instead of
+Inno Setup in case you prefer that.
 
-Once you've built your executable with py2exe, then compile the installer script with NSIS and an executable will be created in the same folder as the script. When run, that single file executable will expand the original executable created by py2exe along with all the dll, pyd, and data files for your application into a temporary directory and run it. When your application exits, the temp folder will be deleted automatically.
+Drop a copy of this script in your source directory alongside setup.py and
+modify the first and 18th line(i.e. File /r
+"C:\\Data\\PythonApps\\Calculator\\dist\\\*"). The first line is the name of the
+executable in the py2exe's output folder as well as the name of the executable
+that NSIS will create and the 18th line points to py2exe's output directory. You
+can also select compression behavior - NSIS' LZMA compression (based on
+[7-Zip](http://www.7-zip.com)) is pretty impressive - wxPython applications
+start at about 3.5 - 4 MB instead of 10 - 12 MB. Compression may slow startup
+time for your executable somewhat.
+
+Once you've built your executable with py2exe, then compile the installer script
+with NSIS and an executable will be created in the same folder as the script.
+When run, that single file executable will expand the original executable
+created by py2exe along with all the dll, pyd, and data files for your
+application into a temporary directory and run it. When your application exits,
+the temp folder will be deleted automatically.
 
 Command line parameters for your executable are not supported.
 
-The executables produced have only been tested on Windows XP. Please update this page if you try them on other platforms.
+The executables produced have only been tested on Windows XP. Please update this
+page if you try them on other platforms.
 
-[[mailto:jimmy@retzlaff.com&subject=Single%20File%20Python%20Executables|Jimmy Retzlaff]]
-----
-'''setup.nsi:'''
-{{{
+[Jimmy Retzlaff][link-1]
+
+---
+
+setup.nsi:
+
+```nsis
 !define exe 'calculator.exe'
 
 ; Comment out the "SetCompress Off" line and uncomment
@@ -45,24 +68,37 @@ Section
     nsExec::Exec $0
     Delete $0
 SectionEnd
-}}}
+```
 
-The version above seems to work fine on Win9x. Even with the batch file that is lauched (and DOS boxes do not close automaticaly, by default, on those OS). The startup time of a wxPython app with lzma compression becomes very long (1+ minute) on a machinne with 64MB RAM and a Pentium 200MHz, but it's usable on faster machines that are common today ;-)
-It also works without a temp batchfile. The current directory is also in the temp dir.
+The version above seems to work fine on Win9x. Even with the batch file that is
+lauched (and DOS boxes do not close automaticaly, by default, on those OS). The
+startup time of a wxPython app with lzma compression becomes very long (1+
+minute) on a machinne with 64MB RAM and a Pentium 200MHz, but it's usable on
+faster machines that are common today ;-)
+It also works without a temp batchfile. The current directory is also in the
+temp dir.
 
-There is a streamlined version below. The sample python script 'simple.py' pops up an dialog box with the paths to important directories.
-uncompressed size is around 1.5MB, "lzma" compression leads to approx. 500kB. Just save the three files below in a directory then run {{{setup.py}}} and then {{{makensis setup.nsi}}}. Compare the outputs of the exe to directly running {{{single.py}}}. (ctypes has to be installed to create the exe)
+There is a streamlined version below. The sample python script 'simple.py' pops
+up an dialog box with the paths to important directories.
+uncompressed size is around 1.5MB, "lzma" compression leads to approx. 500kB.
+Just save the three files below in a directory then run `setup.py` and then
+`makensis setup.nsi`. Compare the outputs of the exe to directly running
+`single.py`. (ctypes has to be installed to create the exe)
 
-I also added a "/r" so that subdirectories are also packed into the installer as i tend to keep images and other data as external files in a subdir, even with py2exe.
+I also added a "/r" so that subdirectories are also packed into the installer as
+i tend to keep images and other data as external files in a subdir, even with
+py2exe.
 
-Commenting out {{{compressor}}} disables compression.
+Commenting out `compressor` disables compression.
 
-''cliechti''
+cliechti
 
-Enhanced to use the correct working directory, pass through command line parameters and the exit code.
+Enhanced to use the correct working directory, pass through command line
+parameters and the exit code.
 
-'''setup.nsi''' - the Nullsoft installer script
-{{{
+**setup.nsi** - the Nullsoft installer script
+
+```nsis
 !define py2exeOutputDir 'dist'
 !define exe             'single.exe'
 !define icon            'C:\python23\py.ico'
@@ -113,11 +149,11 @@ Section
     SetErrorLevel $R2
  
 SectionEnd
-}}}
+```
 
-'''single.py''' - the example script
-{{{
-#! python
+**single.py** - the example script
+
+```python
 import os, sys, ctypes
 
 ctypes.windll.user32.MessageBoxA(0,
@@ -127,11 +163,11 @@ ctypes.windll.user32.MessageBoxA(0,
         sys.winver,
     ), "%s - Message" % os.path.basename(sys.executable), 0x30
 )
-}}}
+```
 
-'''setup.py''' - just run it to make the sample
-{{{
-#! python
+**setup.py** - just run it to make the sample
+
+```python
 from distutils.core import setup
 import py2exe, sys, os
 
@@ -142,25 +178,32 @@ setup(
     windows = [{'script': "single.py"}],
     zipfile = "shared.lib",
 )
-}}}
+```
 
-A NSI along these lines works unter Win NT 4 too. 
+A NSI along these lines works unter Win NT 4 too.
 
-----
+---
 
-== More comprehensive example ==
+## More comprehensive example
 
-This is based on the Inno sample code in the py2exe distribution. It has worked successfully for a rather complicated PyGTK/Twisted app requiring extra data at runtime (GTK runtime data, GtkBuilder files, images, text data) that just wouldn't work with `bundle_files`.
+This is based on the Inno sample code in the py2exe distribution. It has worked
+successfully for a rather complicated PyGTK/Twisted app requiring extra data at
+runtime (GTK runtime data, GtkBuilder files, images, text data) that just
+wouldn't work with `bundle_files`.
 
 The exe file it produces will:
- * Display a dialog while extracting the data to a temporary directory
- * Hide itself when the app launches
- * Automatically clean up and close afterwards
 
-Sanity check: If your app is large and might be used repeatedly, you should probably think about just making a proper installer. This is for those times when you '''know''' someone just needs to "fire and forget"!
+- Display a dialog while extracting the data to a temporary directory
+- Hide itself when the app launches
+- Automatically clean up and close afterwards
 
-'''setup.py'''
-{{{
+Sanity check: If your app is large and might be used repeatedly, you should
+probably think about just making a proper installer. This is for those times
+when you **know** someone just needs to "fire and forget"!
+
+setup.py
+
+```python2
 import os, os.path
 import subprocess
 
@@ -297,30 +340,41 @@ setup(
     cmdclass = {"py2exe": build_installer},
            
 )
-}}}
+```
 
 Notes:
- * I couldn't figure out how to use `pywin32` or `ctypes` to invoke the NSIS compiler, so I used `subprocess`
- * That means that you need to add the NSIS compiler dir to your `PATH`
- * The icon location could probably be deduced from the `py2exe` class
- * This produces the `setup_program_name.nsi` file and the `program_name.exe` in the working directory, not in `dist\`
 
-== Using "bundle_files" and "zipfile" ==
+- I couldn't figure out how to use `pywin32` or `ctypes` to invoke the NSIS
+  compiler, so I used `subprocess`
+- That means that you need to add the NSIS compiler dir to your `PATH`
+- The icon location could probably be deduced from the `py2exe` class
+- This produces the `setup_program_name.nsi` file and the `program_name.exe` in
+  the working directory, not in `dist\`
 
-An easier (and better) way to create single-file executables is to set {{{bundle_files}}} to {{{1}}} or {{{2}}}, and to set {{{zipfile}}} to {{{None}}}. This approach does not require extracting files to a temporary location, which provides much faster program startup.
+## Using "bundle\_files" and "zipfile"
 
-Valid values for {{{bundle_files}}} are:
+An easier (and better) way to create single-file executables is to set
+`bundle_files` to `1` or `2`, and to set `zipfile` to `None`. This approach does
+not require extracting files to a temporary location, which provides much faster
+program startup.
 
-|| 3 (default) || don't bundle ||
-|| 2 || bundle everything but the Python interpreter ||
-|| 1 || bundle everything, including the Python interpreter ||
+Valid values for `bundle_files` are:
 
-If {{{zipfile}}} is set to {{{None}}}, the files will be bundle within the executable instead of {{{library.zip}}}.  '''Note:''' you will still be required to include the MSVC runtime DLL with your application, which should be located in the dist directory along side the executable (named MSVCRXX.dll, where XX = revision number).
+|  |  |
+| --- | --- |
+| 3 (default) | don't bundle |
+| 2 | bundle everything but the Python interpreter |
+| 1 | bundle everything, including the Python interpreter |
 
-Here is a sample '''setup.py''':
+If `zipfile` is set to `None`, the files will be bundle within the executable
+instead of `library.zip`. **Note:** you will still be required to include the
+MSVC runtime DLL with your application, which should be located in the dist
+directory along side the executable (named MSVCRXX.dll, where XX = revision
+number).
 
-{{{
-#! python
+Here is a sample **setup.py**:
+
+```python
 from distutils.core import setup
 import py2exe, sys, os
 
@@ -331,4 +385,6 @@ setup(
     windows = [{'script': "single.py"}],
     zipfile = None,
 )
-}}}
+```
+
+[link-1]: mailto:jimmy@retzlaff.com?subject=Single%20File%20Python%20Executables

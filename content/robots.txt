@@ -1,0 +1,4 @@
+User-agent: *
+Disallow:
+
+Sitemap: https://test.py2exe.org/sitemap.xml

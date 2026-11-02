@@ -1,12 +1,29 @@
-The function {{{EnsureDispatch()}}} in win32.client.gencache allows you specify a prog_id and the gen_py cache wrapper objects are created at runtime if they don't already exist. This is useful if you don't care what version of COM server you use, allowing users to have various versions and still work with your code.
+# EnsureDispatch
 
-First the gencache code must be allowed to create the cache by setting {{{win32com.gencache.is_readonly = False}}}. Then as the target machine may not have Python installed it is necessary to get the gencache code to use a suitable directory other than the default in {{{lib\site-packages\win32com\client\gen_py}}}. This is achieved by simply removing (or renaming) {{{win32com\client\gen_py}}} and the gen_py cache is then created in {{{%temp%}}} (user's temp). This must be done on the development machine and py2exe will then create code that uses it on the target machine.
+The function `EnsureDispatch()` in win32.client.gencache allows you specify a
+prog\_id and the gen\_py cache wrapper objects are created at runtime if they
+don't already exist. This is useful if you don't care what version of COM server
+you use, allowing users to have various versions and still work with your code.
 
-A final wrinkle is that the first time you run it the cache is created but an import exception is generated. It appears that py2exe never calls the {{{win32com.client.__init__()}}} in the 'import win32com.client'. This code creates the cache {{{__init__.py}}} file that sets the package module path. A call to {{{gencache.Rebuild()}}} fixes that as calling {{{__init__()}}} doesn't seem to work either.
+First the gencache code must be allowed to create the cache by setting
+`win32com.gencache.is_readonly = False`. Then as the target machine may not have
+Python installed it is necessary to get the gencache code to use a suitable
+directory other than the default in `lib\site-packages\win32com\client\gen_py`.
+This is achieved by simply removing (or renaming) `win32com\client\gen_py` and
+the gen\_py cache is then created in `%temp%` (user's temp). This must be done
+on the development machine and py2exe will then create code that uses it on the
+target machine.
+
+A final wrinkle is that the first time you run it the cache is created but an
+import exception is generated. It appears that py2exe never calls the
+`win32com.client.__init__()` in the 'import win32com.client'. This code creates
+the cache `__init__.py` file that sets the package module path. A call to
+`gencache.Rebuild()` fixes that as calling `__init__()` doesn't seem to work
+either.
 
 For example:
 
-{{{#!python
+```python
 import win32com.client
 if win32com.client.gencache.is_readonly == True:
 
@@ -25,4 +42,4 @@ from win32com.client.gencache import EnsureDispatch
 from win32com.client import constants
 voice = EnsureDispatch("Sapi.SpVoice", bForDemand=0)
 voice.Speak( "Hello World.", constants.SVSFlagsAsync )
-}}}
+```

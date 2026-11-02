@@ -1,45 +1,53 @@
-= Something great =
+# Compression
 
-Within samples/extending, Thomas Heller gives a Py2Exe setup.py script which automagically calls [[http://www.jrsoftware.org/isinfo.php|InnoSetup]] to create a great looking (and perfectly working) Windows-Installer. Yes, really, ONE setup.exe is created which contains ALL stuff to have a readily installable Software out of your product.
+## Something great
 
-= also large =
+Within samples/extending, Thomas Heller gives a
+[py2exe](../../getting-started/overview.md) setup.py script which automagically
+calls [InnoSetup](http://www.jrsoftware.org/isinfo.php) to create a great
+looking (and perfectly working) Windows-Installer. Yes, really, ONE setup.exe is
+created which contains ALL stuff to have a readily installable Software out of
+your product.
 
-I program using wxPython. A great library, a large library. 
+## also large
 
-{{{
+I program using wxPython. A great library, a large library.
+
+```output
 2.240.512 wxc.pyd 
 3.416.064 wxmsw24uh.dll
-}}}
+```
 
 Two modules you cannnot skip. In addition there is as allways
-  
-{{{
+
+```output
 974.915 python23.dll
-}}}
+```
 
 giving more than 6 Megabytes with no line of code written
 
 In total:
 
-{{{
+```output
 28 Datei(en)      9.549.525 Bytes  (in lib)
-}}}
-and
-{{{
-2 Datei(en)      1.011.779 Bytes   (in prog)
-}}}
+```
 
+and
+
+```output
+2 Datei(en)      1.011.779 Bytes   (in prog)
+```
 
 summing up to 10.5 Megabyte ... not much with DSL, but... shocking, isn't it?
 
-= get it smaller =
+## get it smaller
 
-In the standard configuration [[http://www.jrsoftware.org/isinfo.php|InnoSetup]] compressed it down to around 6.5 Megabyte.
+In the standard configuration [InnoSetup](http://www.jrsoftware.org/isinfo.php)
+compressed it down to around 6.5 Megabyte.
 
 I changed the setup.py to contain
 
-{{{
-#!python
+```python
 print >> ofi, r"[Setup]"
 print >> ofi, r"AppName=%s" % self.name
 print >> ofi, r"AppVerName=%s %s" % (self.name, self.version)
@@ -47,56 +55,78 @@ print >> ofi, r"DefaultDirName={pf}\%s" % self.name
 print >> ofi, r"DefaultGroupName=%s" % self.name
 print >> ofi, r"Compression=bzip" 
 print >> ofi
-}}}
+```
 
-... the special line is 
+... the special line is
 
-{{{
-#!python
+```python
 print >> ofi, r"Compression=bzip" 
-}}}
+```
 
+## the result
 
-= the result =
-
-{{{
+```output
 4.335.283 setup.exe 
-}}}
+```
 
-Quite an OK download ... and I use ZODB and Elementtree and pythoncom and and and....
+Quite an OK download ... and I use ZODB and Elementtree and pythoncom and and
+and....
 
+## Remarks
 
-= Remarks =
+- I ([MGr](http://videocapture.sourceforge.net/)) get for my application (which
+  uses wxWindows) even smaller files when using 7-zip instead of bzip. To use
+  7-zip one has to specify "Compression=none" in the generated installer script
+  (\*.iss) and then manually load the script into
+  [ISTool](http://www.istool.org/), which is a front end to Inno Setup. Clicking
+  at the 'Options' button and selecting '7-zip' in the compression combo box
+  does the trick.
 
- * I ([[http://videocapture.sourceforge.net/|MGr]]) get for my application (which uses wxWindows) even smaller files when using 7-zip instead of bzip.  To use 7-zip one has to specify "Compression=none" in the generated installer script (*.iss) and then manually load the script into [[http://www.istool.org/|ISTool]], which is a front end to Inno Setup.  Clicking at the 'Options' button and selecting '7-zip' in the compression combo box does the trick.{{{
+```output
 7.208 kB  uncompressed
 2.886 kB  zip
 2.677 kB  bzip
 2.160 kB  7-zip
-}}}The previous comparison shows, that 7-zip results by far in the smallest installer size.  An additional benefit of using 7-zip is the fast installation.  When using bzip, the files are decompressed in the last step of the installation process, right then when the files are written to the program folder.  Since bzip is computationally quite intensive, the progress bar fills not extremely fast.  When using 7-zip, there is a short decompression when starting the installer, but the installation process afterwards it fast as lightning, because of "Compression=none" :) .
+```
+
+The previous comparison shows, that 7-zip results by far in the smallest
+installer size. An additional benefit of using 7-zip is the fast installation.
+When using bzip, the files are decompressed in the last step of the installation
+process, right then when the files are written to the program folder. Since bzip
+is computationally quite intensive, the progress bar fills not extremely fast.
+When using 7-zip, there is a short decompression when starting the installer,
+but the installation process afterwards it fast as lightning, because of
+"Compression=none" :) .
 
 Addition:
 
 Innosetup 4.2 has 7z "LZMA" compression included. Just use
 
-{{{
-#!python
+```python
 print >> ofi, r"Compression=lzma/max" 
-}}}
+```
 
 HAM2005-05-20
-= 7ZIP and UPX =
-Repacking the "library.zip" with [[http://www.7-zip.org/|7-ZIP]] saving 357KB (577KB original to 220KB 7ZIP compressed).
-Note: it requires "import zlib" in your source file to allow unzipping operations.
 
-Using [[http://upx.sourceforge.net/|UPX ]] the executable packer to compress *.pyd, *.dll and *.exe Files:
+## 7ZIP and UPX
 
-Example: _sre.pyd, _winreg.pyd, python23.dll, unicodedata.pyd, w9xpopen.exe, zlib.pyd 1516,2KB original to 584KB compressed)
+Repacking the "library.zip" with [7-ZIP](http://www.7-zip.org/) saving 357KB
+(577KB original to 220KB 7ZIP compressed).
+Note: it requires "import zlib" in your source file to allow unzipping
+operations.
+
+Using [UPX](http://upx.sourceforge.net/) the executable packer to compress
+\*.pyd, \*.dll and \*.exe Files:
+
+Example: \_sre.pyd, \_winreg.pyd, python23.dll, unicodedata.pyd, w9xpopen.exe,
+zlib.pyd 1516,2KB original to 584KB compressed)
 
 Everything together: Original Size: 2093,2 compressed: 804KB !!!
 
-A short Windows Batch-File to automate (see WinBatch):
-{{{
+A short Windows Batch-File to automate (see
+[Batch builds](../build/batch-builds.md)):
+
+```bat
 7z.exe -aoa x library.zip -olibrary\
 del library.zip
 
@@ -106,22 +136,37 @@ cd..
 rd library /s /q
 
 upx.exe --best *.*
-}}}
+```
 
-= Automatically UPXing extension modules/dlls =
+## Automatically UPXing extension modules/dlls
 
-While converting over from prior use of the Installer package, I missed its ability to automatically UPX binary modules as they were included in the distribution.  So this example creates a custom command class based on py2exe that performs the UPX as part of the file copy process into the distribution directory.  The one difference compared to Installer is that it doesn't currently keep a cache of UPXed files, although it could easily enough be extended to do that.
+While converting over from prior use of the Installer package, I missed its
+ability to automatically UPX binary modules as they were included in the
+distribution. So this example creates a custom command class based on py2exe
+that performs the UPX as part of the file copy process into the distribution
+directory. The one difference compared to Installer is that it doesn't currently
+keep a cache of UPXed files, although it could easily enough be extended to do
+that.
 
-Note that as designed I believe it will UPX any dll/pyd file copied over, even if they are part of the data files for the application.  But since anything packaged up with py2exe is going to be running independently and unlikely to need to share any DLLs with other applications, there's little harm in UPXing anything in sight.
+Note that as designed I believe it will UPX any dll/pyd file copied over, even
+if they are part of the data files for the application. But since anything
+packaged up with py2exe is going to be running independently and unlikely to
+need to share any DLLs with other applications, there's little harm in UPXing
+anything in sight.
 
-The class below is a portion of a py2exe-subclass command class that I use that does the following, based on a new "upx" configuration value:
+The class below is a portion of a py2exe-subclass command class that I use that
+does the following, based on a new "upx" configuration value:
 
- * Compress (using upx) any dll or pyd file that is copied into the distribution directory.  Since it does this at copy time, you only take the hit of upx whenever the file is updated (or you clean out the dist directory).
- * Deals with the fact that you have to postpone UPXing the main python##.dll file until py2exe has a chance to fix it's version identification, and that you shouldn't re-patch the file once it's been UPXed.
+- Compress (using upx) any dll or pyd file that is copied into the distribution
+  directory. Since it does this at copy time, you only take the hit of upx
+  whenever the file is updated (or you clean out the dist directory).
+- Deals with the fact that you have to postpone UPXing the main python##.dll
+  file until py2exe has a chance to fix it's version identification, and that
+  you shouldn't re-patch the file once it's been UPXed.
 
 This command class was written with py2exe 0.5.4.
 
-{{{
+```python2
 from distutils.core import setup
 from py2exe.build_exe import py2exe
 
@@ -163,20 +208,24 @@ class Py2exe(py2exe):
                 # the version adjustment can be successful
                 if self.upx:
                     os.system('upx --best "%s"' % os.path.normpath(dll_name))
-}}}
+```
 
 This class would then be used in your main setup() call as:
 
-{{{
+```python2
 setup(...
       cmdclass = {'py2exe': Py2exe}
       ...
       )
-}}}
+```
 
-For a simple project of mine that is built as a Windows service, this made the binaries in the installation take about a third of the size they would otherwise have needed, which was about half the size of the overall project.  When built with UPX it was just under a MB, with the UPXing saving me about a MB on the binaries:
+For a simple project of mine that is built as a Windows service, this made the
+binaries in the installation take about a third of the size they would otherwise
+have needed, which was about half the size of the overall project. When built
+with UPX it was just under a MB, with the UPXing saving me about a MB on the
+binaries:
 
-{{{
+```output
         File size         Ratio      Format      Name
    --------------------   ------   -----------   -----------
     979005 ->    370176   37.81%    win32/pe     python23.dll
@@ -195,11 +244,13 @@ For a simple project of mine that is built as a Windows service, this made the b
      94208 ->     40448   42.93%    win32/pe     support/pywintypes23.dll
    --------------------   ------   -----------   -----------
    1618275 ->    580096   35.84%                 [ 14 files ]
-}}}
+```
 
-For a much larger project (involving wxPython, Twisted, etc..), the binaries were again about a third of the size, but in this case ended up saving me over 7.5MB of space.  The overall project distribution (UPXed) is about 15MB:
+For a much larger project (involving wxPython, Twisted, etc..), the binaries
+were again about a third of the size, but in this case ended up saving me over
+7.5MB of space. The overall project distribution (UPXed) is about 15MB:
 
-{{{
+```output
         File size         Ratio      Format      Name
    --------------------   ------   -----------   -----------
     979005 ->    370176   37.81%    win32/pe     python23.dll
@@ -237,6 +288,6 @@ For a much larger project (involving wxPython, Twisted, etc..), the binaries wer
    3416064 ->   1494016   43.73%    win32/pe     support/wxmsw24uh.dll
    --------------------   ------   -----------   -----------
   11940767 ->   4093440   34.28%                 [ 33 files ]
-}}}
+```
 
 -- David Bolen

@@ -1,37 +1,47 @@
-= What is it =
+# Batch builds
+
+## What is it
 
 I use a short Windows Batch File to "automate" Py2EXE
 
 How it works:
- * Create the Py2EXE Setup``File
- * Compile the Python Script
- * Move the Py2EXE-Results to a Subdirectory
- * Cleans the File-System (delete ''build'' and ''dist'')
- * Optional Recompress ''library.zip'' with [[http://www.7-zip.org/|7-Zip]]
- * Optional Compress ''*.pyd'', ''*.dll'' and ''*.exe'' Files with [[http://upx.sourceforge.net/|UPX]]
 
-(About Compression see BetterCompression under ''7ZIP and UPX'')
+- Create the Py2EXE SetupFile
+- Compile the Python Script
+- Move the Py2EXE-Results to a Subdirectory
+- Cleans the File-System (delete *build* and *dist*)
+- Optional Recompress *library.zip* with [7-Zip](http://www.7-zip.org/)
+- Optional Compress *\*.pyd*, *\*.dll* and *\*.exe* Files with
+  [UPX](http://upx.sourceforge.net/)
 
-= Instruction =
+(About Compression see [Compression](../optimization/compression.md) under *7ZIP
+and UPX*)
 
-I use it under Win XP... It should also run under NT and 2000, but i don't know...
+## Instruction
 
-You must '''change the Path''' to the Apps in the Batch-File!!!
+I use it under Win XP... It should also run under NT and 2000, but i don't
+know...
 
-The Batch``File is very flexible, it uses its own file name to locate the Python Script!<<BR>>
-You must '''rename it''' to exactly the same name like the script to compile.
+You must **change the Path** to the Apps in the Batch-File!!!
+
+The BatchFile is very flexible, it uses its own file name to locate the Python
+Script!  
+You must **rename it** to exactly the same name like the script to compile.
 Example:
- * Name of the Pythonscript to Compile: My``Script.py
- * You must rename the Batch``File to: My``Script.cmd
 
-To change the content of the Py2EXE-Setup-File, you must change the '':Make``Setup``File'' section in the Batch``File
+- Name of the Pythonscript to Compile: MyScript.py
+- You must rename the BatchFile to: MyScript.cmd
 
-flexible?<<BR>>
-So you can quick use the Batch File with other Python script, yust copy and rename it!
+To change the content of the Py2EXE-Setup-File, you must change the
+*:MakeSetupFile* section in the BatchFile
 
+flexible?  
+So you can quick use the Batch File with other Python script, yust copy and
+rename it!
 
-= The Batch``File =
-{{{
+## The BatchFile
+
+```bat
 @echo off
 
 
@@ -123,4 +133,4 @@ goto:eof
 	pause
 	exit
 goto:eof
-}}}
+```

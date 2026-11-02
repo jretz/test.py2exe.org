@@ -1,15 +1,26 @@
-= Question =
-I got inspired by an article in [[http://www.xmldatabases.org/WK/blog/1094?t=item|Inspirational Technology]] and added some configuration-option to the software as an XML-File.
+# Configuration files
 
-In times before I just did a {{{copy \develeopment\somefile.ini \distribuiton\somefile.ini }}} after runing Py2Exe. 
+## Question
 
-But after combining Py2Exe with Innosetup, it was really crucial to get these files copied to the Py2Exe dist-Directory during the Py2Exe Buildrun.
+I got inspired by an article in
+[Inspirational Technology](http://www.xmldatabases.org/WK/blog/1094?t=item) and
+added some configuration-option to the software as an XML-File.
 
-= Solution =
-It was present all times in Py2Exe. But I did not really understand how to use it :)))
+In times before I just did a
+`copy \develeopment\somefile.ini \distribuiton\somefile.ini` after runing
+[py2exe](../../getting-started/overview.md).
 
-{{{
-#!python
+But after combining [py2exe](../../getting-started/overview.md) with Innosetup,
+it was really crucial to get these files copied to the
+[py2exe](../../getting-started/overview.md) dist-Directory during the
+[py2exe](../../getting-started/overview.md) Buildrun.
+
+## Solution
+
+It was present all times in [py2exe](../../getting-started/overview.md). But I
+did not really understand how to use it :)))
+
+```python
 setup(
     options = options,
     # The lib directory contains everything except the executables and the python dll.
@@ -20,55 +31,73 @@ setup(
     packages = ["encodings"],
     data_files=[("prog",["kategorien.xml",])]
     )
-}}}
+```
 
 The crucial line is
-{{{
-#!python
+
+```python
     data_files=[ ("prog",["kategorien.xml",])]
-}}}
-here you are supposed to supply a list of tuples.  [ (,), (,), ...]
+```
 
-Each tuple {{{ ("directoy",["list.txt", "of.txt", "files.txt) }}} consists of 2 Elements:
+here you are supposed to supply a list of tuples. \[ (,), (,), ...\]
 
- 1. the subdirctory of the dist-base directory, where the files are copied to
- 1. a list of files, which are supposed to be copied there
+Each tuple `("directoy",["list.txt", "of.txt", "files.txt)` consists of 2
+Elements:
 
-So in my example I have some configuration data in {{{ kategorien.xml }}} and want to get this file copied to the program-directory. (Maybe that is bad style and whe should put it within \documents and settings\currentuser\application settings\my bompany\myproduct\mysettings.xml, but for distribution WITHIN one company I want to be able to support filepaths by phone :-)) )
+1. the subdirctory of the dist-base directory, where the files are copied to
+1. a list of files, which are supposed to be copied there
 
-For more information, see: [[data_files]]
+So in my example I have some configuration data in `kategorien.xml` and want to
+get this file copied to the program-directory. (Maybe that is bad style and whe
+should put it within \\documents and settings\\currentuser\\application
+settings\\my bompany\\myproduct\\mysettings.xml, but for distribution WITHIN one
+company I want to be able to support filepaths by phone :-)) )
 
-= and how do you deal with this .xml-settings =
-Just to be buzzword-compliant every application this days should store at least something in [[http://www.xml.org/|XML]]. There are many, many libraries to do XML-Stuff in Python, I found 2 of them rather pythonic:
+For more information, see: [Data files](data-files.md)
 
- * effbots [[http://effbot.org/zone/element-index.htm|ElementTree]] 
- * and gnosis.xml of David Mertz
+## and how do you deal with this .xml-settings
 
-Elementtree Documentation is easier to find (it's on the same website) and not totally up to date ("Element" is now a sub to "Elementtree" and no longer on module-level and such); gnosis-Tools are rather hidden [[http://gnosis.cx/download/Gnosis_Utils-current.tar.gz|GnosisDownload]] within a textual link which is only available from the end of an article in IBMs developer World. Also there is no website "getting started" for Gnosis, you have to dig for the /doc directory.
+Just to be buzzword-compliant every application this days should store at least
+something in [XML](http://www.xml.org/). There are many, many libraries to do
+XML-Stuff in Python, I found 2 of them rather pythonic:
+
+- effbots [ElementTree](http://effbot.org/zone/element-index.htm)
+- and gnosis.xml of David Mertz
+
+Elementtree Documentation is easier to find (it's on the same website) and not
+totally up to date ("Element" is now a sub to "Elementtree" and no longer on
+module-level and such); gnosis-Tools are rather hidden
+[GnosisDownload](http://gnosis.cx/download/Gnosis_Utils-current.tar.gz) within a
+textual link which is only available from the end of an article in IBMs
+developer World. Also there is no website "getting started" for Gnosis, you have
+to dig for the /doc directory.
 
 The configuration file is:
-{{{
+
+```xml
 <?xml version="1.0" encoding="iso-8859-1"?>
 <Kategorien>
     <Kategorie>Kundentermin</Kategorie>
     <Kategorie>Kundentelefonate </Kategorie>
     <Kategorie>Auslandsbesuche </Kategorie>
 </Kategorien>
-}}}
+```
 
 and I read it with
-{{{
-#!python
+
+```python
 p=jpath.path(sys.argv[0])
 p=p.splitpath()[0]
 p=p.joinpath("kategorien.xml")
 from elementtree import ElementTree
 t=ElementTree.fromstring(p.bytes())
 kategorien=[k.text for k in t.getiterator(tag="Kategorie")]
-}}}
+```
 
-after that {{{kategorien}}} contains a standard Python list of the categories defined in kategorien.xml
+after that `kategorien` contains a standard Python list of the categories
+defined in kategorien.xml
 
-jpath is a renamed PathModul written by Jason Jarondorff
+jpath is a renamed [Path module](../../packages/path-module.md) written by Jason
+Jarondorff
 
 20040113HAM

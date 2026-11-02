@@ -1,6 +1,8 @@
-Icons are added as {{{icon_resources}}}	
+# Icons
 
-{{{
+Icons are added as `icon_resources`
+
+```python2
 setup(
     windows = [
         {
@@ -9,60 +11,88 @@ setup(
         }
     ],
 )
-}}}
+```
 
-The same practice works as well for {{{console}}} and {{{windows}}} scripts.
-The resource number does not seem to matter. Windows just takes the first existing icon.
+The same practice works as well for `console` and `windows` scripts.
+The resource number does not seem to matter. Windows just takes the first
+existing icon.
 
+/!\\ if somebody knows how to add small and large icons, speak up...
 
-/!\ if somebody knows how to add small and large icons, speak up...
+Hm, doesn't the `.ico` file contain them?
 
-Hm, doesn't the {{{.ico}}} file contain them?
+does the resource number refers to the icon's index in the `.ico` file (if
+containing &gt; 1 icons) ?
 
-does the resource number refers to the icon's index in the {{{.ico}}} file (if containing > 1 icons) ?
+-- [dody wijaya](mailto:dswsh@plasa.com)
 
--- [[mailto:dswsh@plasa.com|dody wijaya]]
-
-
-'''How to add small and large icons'''
+How to add small and large icons
 
 You must create ico file with two icons in one.
-Your icon file must contain small ico (size: 16*16 pixels) and large ico (size: 32*32 pixels). For WindowsXP you probably may create a big ico (48*48) - but it's only for XP.
-Almost all popular icon editors can create complex icon with small and large part in one. For instance, [[http://www.x2studios.com/index.php?page=products&id=11|LiquidIcon]] is a freeware icon editor that lets you combine multiple ico files of different sizes and bit-depths into a single ico file. Also available is [[http://www.winterdrache.de/freeware/png2ico/|png2ico]], a GPL'ed command line-only {{{.ico}}} creator capable of generating icons with multiple sizes, bit depths, and transparency settings.
+Your icon file must contain small ico (size: 16\*16 pixels) and large ico (size:
+32\*32 pixels). For WindowsXP you probably may create a big ico (48\*48) - but
+it's only for XP.
+Almost all popular icon editors can create complex icon with small and large
+part in one. For instance,
+[LiquidIcon](http://www.x2studios.com/index.php?page=products&id=11) is a
+freeware icon editor that lets you combine multiple ico files of different sizes
+and bit-depths into a single ico file. Also available is
+[png2ico](http://www.winterdrache.de/freeware/png2ico/), a GPL'ed command
+line-only `.ico` creator capable of generating icons with multiple sizes, bit
+depths, and transparency settings.
 
-'''Important Note For Adding Multiple Icons On Systems Where This Method Is Not Working:''' After much research (blood, sweat, and tears), I have found [[http://stackoverflow.com/questions/525329/embedding-icon-in-exe-with-py2exe-visible-in-vista/6198910#6198910|why icons with multiple sizes sometimes do not work]]. The truth is, is that the order matters. When making the icon, add the larger icon sizes first, then the smaller ones. (e.g. `png2ico icon.ico icon_128x128.png icon_64x64.png icon_48x48.png icon_32x32.png icon_16x16.png`)
+**Important Note For Adding Multiple Icons On Systems Where This Method Is Not
+Working:** After much research (blood, sweat, and tears), I have found
+[why icons with multiple sizes sometimes do not work][link-1]. The truth is, is
+that the order matters. When making the icon, add the larger icon sizes first,
+then the smaller ones. (e.g.
 
--- SunjayVarma <<DateTime(2011-08-05T21:54:36Z)>>
+```doscon
+png2ico icon.ico icon_128x128.png icon_64x64.png icon_48x48.png icon_32x32.png icon_16x16.png
+```
 
+)
 
-Now I've managed to give an icon to my program, but when the program starts, a standard Windows icon shows up in the window's title bar and in the task bar button (instead of my custom icon). Is there a way I can fix that myself, or is that a current limitation of py2exe?
+-- SunjayVarma 2011-08-05T21:54:36Z
 
-As far as putting icons on your window itself (above is just for the file in explorer I think) it depends on the gui library you are using.
-For wxWindows 2.4 it would be something like this where self is a wx.Frame derived class instance
-Example: {{{
-#!python
+Now I've managed to give an icon to my program, but when the program starts, a
+standard Windows icon shows up in the window's title bar and in the task bar
+button (instead of my custom icon). Is there a way I can fix that myself, or is
+that a current limitation of py2exe?
+
+As far as putting icons on your window itself (above is just for the file in
+explorer I think) it depends on the gui library you are using.
+For wxWindows 2.4 it would be something like this where self is a wx.Frame
+derived class instance
+Example:
+
+```python
     _icon = wx.EmptyIcon()
     _icon.CopyFromBitmap(wx.Bitmap("MyIcon.ico", wx.BITMAP_TYPE_ANY))
     self.SetIcon(_icon)
-}}}
+```
 
-The following also works, at least in wxPython 2.5.2.8 and other recent ones. {{{
-#!python
+The following also works, at least in wxPython 2.5.2.8 and other recent ones.
+
+```python
     _icon = wx.Icon('MyIcon.ico', wx.BITMAP_TYPE_ICO)
     self.SetIcon(_icon)
-}}}
+```
 
+This should allow the system to pick an appropriate icon. ( only tested with
+2.5.3 )
 
-This should allow the system to pick an appropriate icon. ( only tested with 2.5.3 ) {{{
-#!python  
+```python
     ib=wx.IconBundle()
     ib.AddIconFromFile("MyIcon.ico",wx.BITMAP_TYPE_ANY)
     self.SetIcons(ib)
-}}}
+```
 
-'''Simple icon embedding (full)'''
+Simple icon embedding (full)
 
-I have found that this works just fine with the latest python/py2exe install...{{{
+I have found that this works just fine with the latest python/py2exe install...
+
+```python2
 from distutils.core import setup
 import py2exe
 
@@ -73,64 +103,69 @@ setup(
             "icon_resources": [(0, "icon.ico")]     ### Icon to embed into the PE file.
         }
     ],
-) }}}
+) 
+```
 
-as far as I can tell this works just fine. small/large icons are detectable in a resource editor like Xn  resource editor. 
+as far as I can tell this works just fine. small/large icons are detectable in a
+resource editor like Xn resource editor.
 
 -- Morgan Gangwere
 
-'''How to access a Win32 .exe's or .dll's icons from wxPython 2.6.1.0'''
-The following information was discovered by looking at gdiimage.cpp in the wxPython source.
+How to access a Win32 .exe's or .dll's icons from wxPython 2.6.1.0
+The following information was discovered by looking at gdiimage.cpp in the
+wxPython source.
 
 Supposing your py2exe setup.py file had the following icons:
 
-{{{
+```python2
 "icon_resources": [(1, "myicon1.ico"), (42, "myicon2.ico")]
-}}}
+```
 
 To programmatically determine the path of the currently running .exe, use:
 
-{{{
+```python2
 import win32api
 exeName = win32api.GetModuleFileName(win32api.GetModuleHandle(None))
-}}}
+```
 
 You can get the first icon (myicon1.ico) in the .exe with the following:
 
-{{{
+```python2
 icon = wx.Icon(exeName, wx.BITMAP_TYPE_ICO)
-}}}
+```
 
 You can also get the first icon (myicon1.ico) with a zero based index:
 
-{{{
+```python2
 icon = wx.Icon(exeName + ";0", wx.BITMAP_TYPE_ICO)
-}}}
+```
 
 Likewise, you can get the second icon (myicon2.ico) with:
 
-{{{
+```python2
 icon = wx.Icon(exeName + ";1", wx.BITMAP_TYPE_ICO)
-}}}
+```
 
-You can get an icon based on it's icon id, just specify the negated id number (myicon2.ico):
+You can get an icon based on it's icon id, just specify the negated id number
+(myicon2.ico):
 
-{{{
+```python2
 icon = wx.Icon(exeName + ";-42", wx.BITMAP_TYPE_ICO)
-}}}
+```
 
-Because of the way it's implemented, you cannot specify ";-1", you will get incorrect operation or a crash.
+Because of the way it's implemented, you cannot specify ";-1", you will get
+incorrect operation or a crash.
 
-If you wanted to set your window's title bar and task switch icons you would do the following in your wx.Frame _ _init_ _:
+If you wanted to set your window's title bar and task switch icons you would do
+the following in your wx.Frame \_ \_init\_ \_:
 
-{{{
+```python2
 self.SetIcon(icon)
-}}}
+```
 
 Here's an example program:
 
-{{{
-#!python
+```python
 import wx, win32api
 
 class MyFrame(wx.Frame):
@@ -147,4 +182,6 @@ if __name__ == '__main__':
     frame = MyFrame()
     frame.Show(True)
     app.MainLoop()
-}}}
+```
+
+[link-1]: http://stackoverflow.com/questions/525329/embedding-icon-in-exe-with-py2exe-visible-in-vista/6198910#6198910

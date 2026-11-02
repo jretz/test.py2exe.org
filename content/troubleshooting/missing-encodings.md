@@ -1,54 +1,62 @@
-= Encoding =
+# Encoding
 
-== Solution 1 ==
+## Solution 1
 
-In py2exe 0.5, if the encodings are not found in the built exe (indicated by {{{LookupError: no codec search functions registered}}} error message), add these two to the ''includes'':
-{{{
-#!python
+In py2exe 0.5, if the encodings are not found in the built exe (indicated by
+`LookupError: no codec search functions registered` error message), add these
+two to the *includes*:
+
+```python
 'encodings', 'encodings.*'
-}}}
+```
 
 You can do this by adding a line
-{{{
-#!python
+
+```python
 options = {"py2exe": {"packages": ["encodings"]}},
-}}}
+```
+
 to your setup.py file.
 
-That replaces the {{{'--force-imports encodings'}}} command line option from the [[http://starship.python.net/crew/theller/py2exe/|0.4py2exe]]
+That replaces the `'--force-imports encodings'` command line option from the
+[0.4py2exe](http://starship.python.net/crew/theller/py2exe/)
 
+## Solution 2
 
-== Solution 2 ==
+Adding `'encodings', 'encodings.*'` to includes includes ALL encodings. I'm
+perfectly happy with only having latin-1 present (at least for some application,
+which will only be used in western europe)
 
-Adding {{{'encodings', 'encodings.*'}}} to includes includes ALL encodings. I'm perfectly happy with only having latin-1 present (at least for some application, which will only be used in western europe)
+so recommended adding
 
-so recommended adding {{{
-#!python
+```python
 'encodings', 'encodings.latin_1'
-}}}
+```
 
 20041201HAM
 
-== Sample ==
+## Sample
+
 To avoid misunderstandings here is a sample setup.py
-{{{
-#!python
+
+```python
 from distutils.core import setup
 import py2exe
       
 setup(console=["MyScript.py"],
       options = {"py2exe": {"packages": ["encodings"]}},
 )
-}}}
-(which by the way is roughly the same as {{{setup.py py2exe --packages encodings}}}.)
+```
 
+(which by the way is roughly the same as
+`setup.py py2exe --packages encodings`.)
 
-== changed behaviour ==
+## changed behaviour
 
-just "to be sure" I included "encodings" within options and again within the setup-command:
+just "to be sure" I included "encodings" within options and again within the
+setup-command:
 
-{{{
-#!python
+```python
 includes = ["encodings",
             "encodings.latin_1",]
 [...]
@@ -72,20 +80,20 @@ setup(
     data_files=[("",["kategorien.xml","skm.cmd"]),
     ]
     )
-}}}
+```
 
 py2exe 0.5.0 silently ignored the line
-{{{
-#!python
+
+```python
     packages = ["encodings"], #this line is rather wrong, at least not helpfull
-}}}
+```
 
 py2exe 0.5.2 now uses this line for something and fails with:
 
-{{{
+```output
 running py2exe
 running build_py
 error: package directory 'encodings' does not exist
-}}}
+```
 
 so: just trash that line and everything is sunny again. HAM20040713

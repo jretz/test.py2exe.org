@@ -1,0 +1,46 @@
+{% extends "main.html" %}
+
+{% block htmltitle %}
+  <title>404 - Page not found - {{ config.site_name | e }}</title>
+{% endblock %}
+
+{% block extrahead %}
+  {{ super() }}
+  <meta name="robots" content="noindex">
+  <script type="module">
+    const { pathname, hash } = window.location;
+    try {
+      const response = await fetch({{ 'assets/legacy-redirects.json' | url | tojson }});
+      if (response.ok) {
+        const redirects = await response.json();
+        if (Object.hasOwn(redirects, pathname)) {
+          window.location.replace(redirects[pathname] + hash);
+        }
+      }
+    } catch {
+      // Keep the 404 page usable if the redirect map cannot be loaded.
+    }
+  </script>
+{% endblock %}
+
+{% block site_nav %}
+  <div class="py2exe-not-found-navigation">
+    {{ super() }}
+  </div>
+{% endblock %}
+
+{% block content %}
+  <section class="py2exe-not-found" aria-labelledby="not-found-title">
+    <p class="py2exe-not-found__code" aria-hidden="true">404</p>
+    <h1 class="py2exe-not-found__title" id="not-found-title">Page not found</h1>
+    <p>We couldn't find the page you're looking for.<br>
+      Try the search above, or start again from the homepage.</p>
+    <p class="py2exe-not-found__actions">
+      <a class="md-button md-button--primary" href="{{ '' | url }}">Back to homepage</a>
+    </p>
+    <p class="py2exe-not-found__help">
+      Followed a broken link?
+      <a href="https://github.com/jretz/test.py2exe.org/issues/new">Let us know</a>.
+    </p>
+  </section>
+{% endblock %}

@@ -1,17 +1,20 @@
-== Running the setup script ==
+# Running setup
 
-''Editors note: this recipe has been posted by Mike C. Fletcher to comp.lang.python''
+## Running the setup script
+
+Editors note: this recipe has been posted by Mike C. Fletcher to
+comp.lang.python
 
 Open a command-prompt window. (You'll find the command-prompt's icon
 in "Start|Programs" or "Start|Programs|Accessories", it may be called
 "MSDOS Prompt".)
 
 Switch to the directory where your setup.py file is
-(use the shell's {{{cd}}} command to move between directories, you can use
+(use the shell's `cd` command to move between directories, you can use
 the "dir" command to see what files are in the current directory to
 confirm that the setup.py file is present),
 
-{{{
+```doscon
 P:\>cd OpenGLContext
 
 P:\OpenGLContext>dir setup.py
@@ -23,32 +26,33 @@ P:\OpenGLContext>dir setup.py
 27/01/2004  06:01p               3,853 setup.py
                1 File(s)          3,853 bytes
                0 Dir(s)  11,575,771,136 bytes free
-}}}
+```
 
-*then* run:
+\*then\* run:
 
-{{{
+```doscon
 python setup.py py2exe --help
-}}}
+```
 
-from that command prompt.  You may need to specify the full path to
+from that command prompt. You may need to specify the full path to
 python if you haven't added your python installation directory to the
 path, something like:
 
-{{{
+```doscon
 P:\OpenGLContext>c:\bin\lang\py23\python.exe setup.py py2exe
-}}}
+```
+
 depending on where you installed python.
 
 HTH, and good luck,
 Mike
 
+## Trick
 
-== Trick ==
+Create a batch file that you can run from Windows Explorer. Here is a copy of my
+make\_exe.bat file (under WinXP):
 
-Create a batch file that you can run from Windows Explorer. Here is a copy of my make_exe.bat file (under WinXP):
-
-{{{
+```bat
 rem *** Used to create a Python exe 
 
 rem ***** get rid of all the old files in the build folder
@@ -59,10 +63,11 @@ c:\Python23\python setup.py py2exe
 
 rem **** pause so we can see the exit codes
 pause "done...hit a key to exit"
-}}}
+```
 
-I keep a copy of this file in each folder where I have a Python app that I want to make into an exe. To create the exe, open up the folder in
-Windows Explorer and double click on the "make_exe.bat" file. I find this to be much easier than working in the DOS command line environment.
+I keep a copy of this file in each folder where I have a Python app that I want
+to make into an exe. To create the exe, open up the folder in
+Windows Explorer and double click on the "make\_exe.bat" file. I find this to be
+much easier than working in the DOS command line environment.
 
-''trick submitted by Frank Wilder''
-  
+trick submitted by Frank Wilder

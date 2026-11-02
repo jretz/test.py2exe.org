@@ -1,31 +1,50 @@
-##language:en
-== You want to know WHERE your .exe is ==
-Why? Maybe, you are building a website and have a subdir ./static below the directory in which your .exe resides, from where you server all .css and .js that is static. Or, you put the logs right below the programs dir within ./log
+# Locating the executable
 
-See also HowToDetermineIfRunningFromExe for a shorter recipe
+## You want to know WHERE your .exe is
 
-=== Problem ===
-You cannot rely on {{{__file__}}}, because {{{__file__}}} is not there in the py2exed main-script.
-You could try to rely on ".", the "Current Directory", but that only works if your application was started there. That may happen, but it is not guaranteed.
+Why? Maybe, you are building a website and have a subdir ./static below the
+directory in which your .exe resides, from where you server all .css and .js
+that is static. Or, you put the logs right below the programs dir within ./log
 
-=== Solution ===
-{{{
+See also [Detecting frozen programs](detecting-frozen-programs.md) for a shorter
+recipe
+
+### Problem
+
+You cannot rely on `__file__`, because `__file__` is not there in the py2exed
+main-script.
+You could try to rely on ".", the "Current Directory", but that only works if
+your application was started there. That may happen, but it is not guaranteed.
+
+### Solution
+
+```python2
 import os
 import jpath
 
 if hasattr(sys,"frozen") and sys.frozen in ("windows_exe", "console_exe"):
     p=jpath.path(os.path.abspath(sys.executable)).dirname()
-}}}
+```
 
+now p contains the directory where your exe resides, no matter from where your
+exe has been called (maybe it is in the path)
 
-now p contains the directory where your exe resides, no matter from where your exe has been called (maybe it is in the path)
+"jpath" is the famous path module from
+["Jason Orendorff"](http://www.jorendorff.com/articles/python/path/)
 
-"jpath" is the famous path module from [[http://www.jorendorff.com/articles/python/path/|"Jason Orendorff"]]
+### Alternate Solution
 
-=== Alternate Solution ===
-The solution above will fail with a {{{UnicodeDecodeError}}} when using a Japanese (or Chinese/Korean, probably) version of Windows (XP + others?), and the path contains double-byte characters. This is because the {{{sys.executable}}} is in the file system encoding ('mbcs' on WinXP Japanese), and python tries to decode it to Unicode using the default Python encoding ('ascii'). The solution is to explicitly convert the path to Unicode using the default file system encoding. Additionally, checking only for a value of "windows_exe" will fail for a console application. I decided to live dangerously, and just test for "frozen" :-).
+The solution above will fail with a `UnicodeDecodeError` when using a Japanese
+(or Chinese/Korean, probably) version of Windows (XP + others?), and the path
+contains double-byte characters. This is because the `sys.executable` is in the
+file system encoding ('mbcs' on WinXP Japanese), and python tries to decode it
+to Unicode using the default Python encoding ('ascii'). The solution is to
+explicitly convert the path to Unicode using the default file system encoding.
+Additionally, checking only for a value of "windows\_exe" will fail for a
+console application. I decided to live dangerously, and just test for "frozen"
+:-).
 
-{{{
+```python2
 import os
 import sys
 
@@ -45,4 +64,4 @@ def module_path():
 
     return os.path.dirname(unicode(__file__, sys.getfilesystemencoding( )))
 
-}}}
+```

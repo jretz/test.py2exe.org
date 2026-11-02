@@ -1,4 +1,7 @@
-See also WhereAmI for another take on this problem.
+# Detecting frozen programs
+
+See also [Locating the executable](locating-the-executable.md) for another take
+on this problem.
 
 ThomasHeller posted this tip to the mailing list:
 
@@ -8,8 +11,7 @@ running from a script.
 `get_main_dir()` returns the directory name of the script or the directory
 name of the exe - this is also sometimes useful.
 
-{{{
-#!python
+```python
 
 import imp, os, sys
 
@@ -22,4 +24,4 @@ def get_main_dir():
    if main_is_frozen():
        return os.path.dirname(sys.executable)
    return os.path.dirname(sys.argv[0])
-}}}
+```

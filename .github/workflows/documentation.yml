@@ -1,0 +1,62 @@
+name: Documentation
+
+on:
+  pull_request:
+    types: [opened, synchronize, reopened]
+  push:
+    branches: [main]
+
+permissions:
+  contents: read
+
+jobs:
+  build:
+    name: Build documentation
+    if: github.event_name == 'pull_request'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+      - uses: jdx/mise-action@f5be966e4a917d54244728e6a5fdcd1d93a35e6c # v5.2.6
+        with:
+          minimum_release_age: 3d
+          cache: false
+          # The site's uvx_args require version-only PyPI locking.
+          install: false
+      - run: mise install
+      - run: mise run build
+
+  publish:
+    name: Publish documentation
+    if: github.event_name == 'push'
+    runs-on: ubuntu-latest
+    environment: pages-publishing
+    concurrency:
+      group: publish-documentation
+      queue: max
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          # Publish the current main even when an older run is queued or retried.
+          ref: main
+          fetch-depth: 0
+          persist-credentials: false
+      - uses: jdx/mise-action@f5be966e4a917d54244728e6a5fdcd1d93a35e6c # v5.2.6
+        with:
+          minimum_release_age: 3d
+          cache: false
+          install: false
+      - run: mise install
+      - name: Publish to GitHub Pages
+        env:
+          GH_TOKEN: ${{ secrets.PAGES_PUBLISH_TOKEN }}
+          GIT_COMMITTER_NAME: github-actions[bot]
+          GIT_COMMITTER_EMAIL: 41898282+github-actions[bot]@users.noreply.github.com
+          GIT_TERMINAL_PROMPT: '0'
+        run: |
+          : "${GH_TOKEN:?Set PAGES_PUBLISH_TOKEN in the pages-publishing environment}"
+          # The publisher pushes from a temporary Git repository.
+          export GIT_CONFIG_GLOBAL="$RUNNER_TEMP/py2exe-publish.gitconfig"
+          gh auth setup-git --hostname github.com --force
+          mise run publish

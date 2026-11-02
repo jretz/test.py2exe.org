@@ -1,7 +1,12 @@
-= Problem =
-If you specify the '''optimize''' option in your ''setup.py'', this will only be used for the compiling of the needed modules, not for your main module!<<BR>>For example if you have the following ''setup.py'':
-{{{
-#!python
+# Optimized bytecode
+
+## Problem
+
+If you specify the **optimize** option in your *setup.py*, this will only be
+used for the compiling of the needed modules, not for your main module!  
+For example if you have the following *setup.py*:
+
+```python
 from distutils.core import setup
 import py2exe
 
@@ -9,11 +14,14 @@ setup(
 	options={"py2exe":{"optimize":2}},
 	console=["beep.py"]
 )
-}}}
+```
+
 The bytecode embedded in the resulting .exe will not be optimised.
 
-= Solution =
-To get optimized bytecode, you need to call the ''setup.py'' like so:
-{{{
+## Solution
+
+To get optimized bytecode, you need to call the *setup.py* like so:
+
+```doscon
 python -OO setup.py py2exe
-}}}
+```

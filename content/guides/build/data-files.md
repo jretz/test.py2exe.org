@@ -1,10 +1,16 @@
-The data_files allows you to include one (or more) series of files that you are going to need to run your executable.   For example, to run a GUI executable, I use data_files to create a folder in my dist directory called "images" and copy my list of image files over.
+# Data files
 
-The data_files takes a tuple 1) the location to store the data and 2) the location to copy the data from
+The data\_files allows you to include one (or more) series of files that you are
+going to need to run your executable. For example, to run a GUI executable, I
+use data\_files to create a folder in my dist directory called "images" and copy
+my list of image files over.
+
+The data\_files takes a tuple 1) the location to store the data and 2) the
+location to copy the data from
 
 Example:
 
-{{{#!python
+```python
 from distutils.core import setup
 import py2exe
 
@@ -21,12 +27,14 @@ setup(
                 }
         }
 )
-}}}
-More often you'll have a directory of image files, and you can use some code to push the directory into a list:
+```
+
+More often you'll have a directory of image files, and you can use some code to
+push the directory into a list:
 
 Example:
 
-{{{#!python
+```python
 import os
 from distutils.core import setup
 import py2exe
@@ -49,10 +57,11 @@ setup(
                 }
         }
 )
-}}}
+```
+
 A helpful function:
 
-{{{#!python
+```python
 import os
 import glob
 
@@ -94,4 +103,4 @@ setup(
 
 # Will copy data/README to dist/README, and all files in data/images/ to dist/images/
 # (not checking any subdirectories of data/images/)
-}}}
+```

@@ -1,38 +1,33 @@
-## Please edit system and help pages ONLY in the moinmaster wiki! For more
-## information, please see MoinMaster:MoinPagesEditorGroup.
-##acl MoinPagesEditorGroup:read,write,delete,revert All:read
-##master-page:HelpTemplate
-##master-date:Unknown-Date
-#format wiki
-#language en
-== os.popen ==
+# os.popen
+
+## os.popen
 
 os.popen() doesn't work when the CWD is a UNC path like
-{{{\\hostname\dirname\...}}}.
+`\\hostname\dirname\...`.
 
 The call to os.popen() will
 appear to succeed, but subsequent calls to read/write the
-returned pipe will result in an {{{IOError: invalid parameter}}}
+returned pipe will result in an `IOError: invalid parameter`
 exception.
 
 This failure is not specific to py2exe as it will happen
 anytime os.popen() is used with a current working directory
-(CWD) that is a UNC path such as {{{\\hostname\dirname\...}}}
-rather than a DOS style path such as {{{G:dirname}}}.  While
+(CWD) that is a UNC path such as `\\hostname\dirname\...`
+rather than a DOS style path such as `G:dirname`. While
 this isn't specific to py2exe, the problem is rarely
 encountered unless a program has been distributed using
 something like py2exe and is being executed by clicking on a
 file or shortcut to which the user has browsed on the network.
 
 The underlying problem is due to a "feature" in cmd.exe
-documented at http://support.microsoft.com/kb/156276/EN-US/
+documented at <http://support.microsoft.com/kb/156276/EN-US/>
 
 The solution is to use subprocess.Popen() with shell=False
 (which won't use cmd.exe) instead of os.popen() (which does use
-cmd.exe).  However, subprocess.Popen() has its own 
+cmd.exe). However, subprocess.Popen() has its own
 Windows-related bug which requires working around. See the
 subprocess documentation at
-http://docs.python.org/dev/lib/module-subprocess.html for
-general usage and Py2ExeSubprocessInteractions page for
+<http://docs.python.org/dev/lib/module-subprocess.html> for
+general usage and [Subprocess](subprocess.md) page for
 examples on working around subprocess.Popen bugs that show up
-when using py2exe. 
+when using py2exe.

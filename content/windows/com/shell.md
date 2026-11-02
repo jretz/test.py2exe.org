@@ -1,43 +1,54 @@
-## page was renamed from WinShell
-= The Problem =
+# win32com.shell
 
-`py2exe` doesn't find imported `win32com.shell` module, and creates invalid distribution without this file. As a result, an application that uses this module may crash at random or miss some features.
+## The Problem
 
-For example version 0.2 of [[http://tgolden.sc.sabren.com/python/winshell.html|winshell.py]] from Tim Golden (a thin wrapper around Windows Shell-Functions) starts with:
-{{{
-#!python
+`py2exe` doesn't find imported `win32com.shell` module, and creates invalid
+distribution without this file. As a result, an application that uses this
+module may crash at random or miss some features.
+
+For example version 0.2 of
+[winshell.py](http://tgolden.sc.sabren.com/python/winshell.html) from Tim Golden
+(a thin wrapper around Windows Shell-Functions) starts with:
+
+```python
 from win32com import storagecon
 from win32com.shell import shell, shellcon
-}}}
+```
 
 py2exe reports that something is missing:
-{{{
+
+```output
 The following modules appear to be missing
 ['Interface', 'intSet', 'mxDateTime.__version__', 'win32com.shell']
-}}}
+```
 
 and starting the program leaves:
-{{{
+
+```py2tb
 Traceback (most recent call last):
   File "xxxxxx.py", line 33, in ?
   File "xxxxxxx.pyo", line 9, in ?
   File "winshell.pyo", line 27, in ?
 ImportError: No module named shell
-}}}
+```
 
 in the log.file.
 
+## Explanation
 
-= Explanation =
+`win32com` does some magic in order to allow loading of COM extensions during
+run time. The actual extensions reside in the `win32comext` directory under
+site-packages and can't be loaded directly. `win32com`'s [\_\_path\_\_][link-1]
+variable has been changed to point to both `win32com` and `win32comext`.
+`py2exe`'s modulefinder can't handle runtime changes in `__path__` so we have to
+tell it about the change beforehand.
 
-`win32com` does some magic in order to allow loading of COM extensions during run time. The actual extensions reside in the `win32comext` directory under site-packages and can't be loaded directly. `win32com`'s [[http://docs.python.org/tutorial/modules.html#packages-in-multiple-directories|__path__]] variable has been changed to point to both `win32com` and `win32comext`. `py2exe`'s modulefinder can't handle runtime changes in `__path__` so we have to tell it about the change beforehand.
+## Solution
 
-= Solution =
+Without shame I browsed [Spambayes source code][link-2] and found the code to
+fix it.
 
-Without shame I browsed [[http://spambayes.svn.sourceforge.net/viewvc/spambayes/trunk/spambayes/|Spambayes source code]] and found the code to fix it.
-
-{{{
-#!python
+```python
 # ...
 # ModuleFinder can't handle runtime changes to __path__, but win32com uses them
 try:
@@ -68,24 +79,32 @@ import py2exe
 # ...
 # The rest of the setup file.
 # ...
-}}}
+```
 
 And this worked.
 
-= Impact =
+## Impact
 
 The following products included workaround:
- * Spambayes
- * Mercurial
- * hgsvn
 
-= Ideal proposal =
+- Spambayes
+- Mercurial
+- hgsvn
 
-`py2exe` should detect such well-known problems with well-known modules, and when `win32com.shell` is missing, a workaround should be automatically applied with a corresponding log message:
-{{{
+## Ideal proposal
+
+`py2exe` should detect such well-known problems with well-known modules, and
+when `win32com.shell` is missing, a workaround should be automatically applied
+with a corresponding log message:
+
+```output
 The following modules appear to be missing
 ['Interface', 'intSet', 'mxDateTime.__version__', 'win32com.shell']
 Applying automatic workaround for known problem with win32com.shell
-}}}
+```
 
-`py2exe` should also fail if required modules are missing unless some `--force` key in effect.
+`py2exe` should also fail if required modules are missing unless some `--force`
+key in effect.
+
+[link-1]: http://docs.python.org/tutorial/modules.html#packages-in-multiple-directories
+[link-2]: http://spambayes.svn.sourceforge.net/viewvc/spambayes/trunk/spambayes/
