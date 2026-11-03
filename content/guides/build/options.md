@@ -74,4 +74,19 @@ For more information enter the following at the python command line:
 >>> help(setup)
 ```
 
+## The bundle option
+
+The `--bundle <level>` or `-b <level>` command line switch will create fewer
+files because binary extensions, runtime dlls, and even the Python-dll itself
+are bundled into the executable itself, or inside the library-archive if you
+prefer that. See [Single file executables][bundling] for details.
+
+## The ascii option
+
+To prevent unicode encoding errors, py2exe by default includes the `codecs`
+module and the `encodings` package. If you are sure your program never
+implicitly or explicitly has to convert between unicode and ascii strings this
+can be prevented by the `--ascii` or `-a` command line switch.
+
+[bundling]: ../distribution/single-file-executables.md#using-bundle_files-and-zipfile
 [link-1]: https://docs.python.org/2.7/distutils/apiref.html#module-distutils.core

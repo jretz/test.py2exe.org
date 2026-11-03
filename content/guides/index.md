@@ -27,7 +27,8 @@
   unwanted DLLs
 - [Embedded Python](distribution/embedded-python.md) - How to use py2exe to ship
   embedded Python modules
-- [Single file executables](distribution/single-file-executables.md) - with NSIS
+- [Single file executables](distribution/single-file-executables.md) - Native
+  bundling and installers with NSIS
 - [Optimized bytecode](optimization/optimized-bytecode.md) - How to get
   optimized bytecode for all modules
 - [Embedded resources](build/embedded-resources.md) - Add custom data in the

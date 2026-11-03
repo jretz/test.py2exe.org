@@ -367,6 +367,18 @@ Valid values for `bundle_files` are:
 | 2 | bundle everything but the Python interpreter |
 | 1 | bundle everything, including the Python interpreter |
 
+The advantage of a level of `2` is that the application can still load extension
+modules from the file system if you extend `sys.path` at runtime.
+
+With a level of `1`, inproc COM servers will run completely isolated from other
+Python interpreters in the same exe. The disadvantage of this scheme is that it
+is impossible to load other extensions from the file system; the application
+will crash with a fatal Python error if you try this.
+
+The bundle-option has been tested with some popular extensions, but of course
+there's no guarantee that any extension will work in bundled form - be sure to
+test the executable (which you should do anyway).
+
 If `zipfile` is set to `None`, the files will be bundle within the executable
 instead of `library.zip`. **Note:** you will still be required to include the
 MSVC runtime DLL with your application, which should be located in the dist
