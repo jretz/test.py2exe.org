@@ -13,7 +13,8 @@ class my_py2exe(build_exe):
 ```
 
 Then in the setup() call we need to tell
-[Distutils](../../getting-started/distutils.md) that it should use our class:
+[Distutils](https://docs.python.org/2.7/library/distutils.html) that it
+should use our class:
 
 ```python2
 setup(...
@@ -23,4 +24,4 @@ setup(...
 ```
 
 In fact, that mechanism allows to install any
-[Distutils](../../getting-started/distutils.md) command.
+[Distutils](https://docs.python.org/2.7/library/distutils.html) command.
