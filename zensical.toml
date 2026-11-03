@@ -191,3 +191,4 @@ resource_links = [
 "py2exeAndSOAPpy.md" = "packages/soappy.md"
 "py2exeAndWindowsServices.md" = "windows/services.md"
 "win32com.shell.md" = "windows/com/shell.md"
+"windows/com/winshell.md" = "windows/com/shell.md"

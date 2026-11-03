@@ -48,8 +48,6 @@
 - [DLL inclusion rules](build/dll-inclusion-rules.md) - how to override the
   criteria that py2exe uses to determine whether a DLL should be included in the
   distributed package.
-- [Import errors](../troubleshooting/import-errors.md) - what to do if
-  confronted with `ImportError: No module named ...`
 - [Warnings](../troubleshooting/warnings.md) - what to do to avoid warnings in
   windows (no console) mode getting into application errors.
 - [Distribution size](optimization/distribution-size.md) - how to make your

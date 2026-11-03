@@ -1,6 +1,7 @@
 # py2exe
 
-Py2Exe is an additional command to [Distutils](distutils.md), that creates
+Py2Exe is an additional command to
+[Distutils](https://docs.python.org/2.7/library/distutils.html), that creates
 standalone distributions for Win32.
 Latest version as of 2006-March-20 is 0.6.5
 
@@ -156,7 +157,7 @@ I had to "upgrade" also my knowledge about workarounds from py2exe 0.4
 
 - [win32com servers](../windows/com/win32com-servers.md) Creating a win32com exe
   and/or dll com server
-- [WinShell](../windows/com/winshell.md) Using win32com.shell with py2exe 0.5
+- [win32com.shell](../windows/com/shell.md) Using the shell module with py2exe
 - [Including type libraries](../windows/com/including-typelibs.md) Allowing use
   of makepy generated typelibs
 
