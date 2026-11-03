@@ -11,5 +11,5 @@ Of particular interest to packaging tools on other platforms is
 [find\_modules.py][link-3].
 
 [link-1]: http://groups.google.com/groups?selm=ptji8wgr.fsf%40python.net
-[link-2]: http://svn.red-bean.com/bob/py2app/trunk/src/py2app/modulegraph.py
-[link-3]: http://svn.red-bean.com/bob/py2app/trunk/src/py2app/find_modules.py
+[link-2]: https://github.com/ronaldoussoren/modulegraph/blob/master/modulegraph/modulegraph.py
+[link-3]: https://github.com/ronaldoussoren/modulegraph/blob/master/modulegraph/find_modules.py

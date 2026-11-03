@@ -17,4 +17,4 @@ warnings.simplefilter('ignore')
 
 See [the warnings module in the stdlib][link-1] for more options.
 
-[link-1]: http://docs.python.org/library/warnings.html
+[link-1]: https://docs.python.org/2.7/library/warnings.html

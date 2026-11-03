@@ -34,7 +34,7 @@ Your icon file must contain small ico (size: 16\*16 pixels) and large ico (size:
 it's only for XP.
 Almost all popular icon editors can create complex icon with small and large
 part in one. For instance,
-[LiquidIcon](http://www.x2studios.com/index.php?page=products&id=11) is a
+[LiquidIcon](https://www.x2studios.com/desktop.html) is a
 freeware icon editor that lets you combine multiple ico files of different sizes
 and bit-depths into a single ico file. Also available is
 [png2ico](http://www.winterdrache.de/freeware/png2ico/), a GPL'ed command
@@ -184,4 +184,4 @@ if __name__ == '__main__':
     app.MainLoop()
 ```
 
-[link-1]: http://stackoverflow.com/questions/525329/embedding-icon-in-exe-with-py2exe-visible-in-vista/6198910#6198910
+[link-1]: https://stackoverflow.com/a/6198910

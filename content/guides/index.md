@@ -43,7 +43,8 @@
 - [Error logging](runtime/error-logging.md) - How does py2exe handle stack track
   printing and STDERR? How can Ichange that behaviour?
 - [SOAPpy](../packages/soappy.md) - How to get SOAPpy working with py2exe.
-- [PyBuilder](http://pybuilder.sf.net) - A Gui interface to compile easier and
+- [PyBuilder](https://sourceforge.net/projects/pybuilder/) - A Gui interface to
+  compile easier and
   faster.
 - [DLL inclusion rules](build/dll-inclusion-rules.md) - how to override the
   criteria that py2exe uses to determine whether a DLL should be included in the

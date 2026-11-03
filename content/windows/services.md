@@ -2,7 +2,7 @@
 
 ## Making services more like regular win32 apps
 
-From <http://osdir.com/ml/python.py2exe/2007-01/msg00003.html>, update
+From <https://sourceforge.net/p/py2exe/mailman/message/6938994/>, update
 your setup.py to look something like this:
 
 ```python2
@@ -101,4 +101,4 @@ windows/system32, and of course has NO Python init-code.
 Make sure that NONE of your Python module names conflicts with ANY of the
 windows system dll names
 
-[link-1]: http://groups.google.de/group/comp.lang.python/msg/ac7251f99cd83214?hl=de&
+[link-1]: https://groups.google.com/g/comp.lang.python/c/VbJrJ1_OfqQ/m/FDLYnPlRcqwJ

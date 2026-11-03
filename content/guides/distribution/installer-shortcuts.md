@@ -56,7 +56,7 @@ is responsible for creating the appropriate Icons in Quickstart and on the
 desktop. Statements "Tasks: desktopicon" gives only an Icon if the appropriate
 option was checked during installation.
 
-(that's more about [Innosetup](http://www.jrsoftware.org/isinfo.php) than
+(that's more about [Innosetup](https://jrsoftware.org/isinfo.php) than
 [py2exe](../../getting-started/overview.md), but ... both are free, both are
 great and both are only one click away :)
 

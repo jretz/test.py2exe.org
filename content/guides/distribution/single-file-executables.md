@@ -3,7 +3,8 @@
 The "extending" example that comes with
 [py2exe](../../getting-started/overview.md) shows a nicely integrated approach
 for using Inno Setup to create single file executables. This example isn't so
-nicely integrated, but it uses [NSIS](http://nsis.sourceforge.net) instead of
+nicely integrated, but it uses [NSIS](https://nsis.sourceforge.io/Main_Page)
+instead of
 Inno Setup in case you prefer that.
 
 Drop a copy of this script in your source directory alongside setup.py and

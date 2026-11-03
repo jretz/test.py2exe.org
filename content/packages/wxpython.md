@@ -66,4 +66,6 @@ We hope that this bug will be fixed at the next py2exe release.
 Note that if you are using the wxversion module in your program to select which
 version of wx to use, you may need to make modifications to your code for
 bundling the application with py2exe. See the wxversion documentation for more
-details: <http://www.wxpython.org/docs/api/wxversion-module.html> ~JMH
+details:
+<https://github.com/wxWidgets/wxPython-Classic/blob/master/wxversion/wxversion.py>
+~JMH

@@ -20,14 +20,14 @@ something like py2exe and is being executed by clicking on a
 file or shortcut to which the user has browsed on the network.
 
 The underlying problem is due to a "feature" in cmd.exe
-documented at <http://support.microsoft.com/kb/156276/EN-US/>
+documented at <https://jeffpar.github.io/kbarchive/kb/156/Q156276/>
 
 The solution is to use subprocess.Popen() with shell=False
 (which won't use cmd.exe) instead of os.popen() (which does use
 cmd.exe). However, subprocess.Popen() has its own
 Windows-related bug which requires working around. See the
 subprocess documentation at
-<http://docs.python.org/dev/lib/module-subprocess.html> for
+<https://docs.python.org/2.7/library/subprocess.html> for
 general usage and [Subprocess](subprocess.md) page for
 examples on working around subprocess.Popen bugs that show up
 when using py2exe.

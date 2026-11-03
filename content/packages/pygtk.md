@@ -87,7 +87,7 @@ MS-Windows).
   from share/ only themes/ and locale/. saves lots of space
 
 If you are using
-[GtkBuilder](http://library.gnome.org/devel/pygtk/stable/class-gtkbuilder.html)
+[GtkBuilder][link-3]
 and later versions of GTK+ and PyGTK, you may get the following error message:
 
 ```py2tb
@@ -165,12 +165,16 @@ This Recipe has been tested with:
 
 - [Windows XP SP2 and Windows 7 Ultimate x64](http://www.microsoft.com/)
 - [Python 2.4.3 and Python 2.7.2](http://www.python.org/download/)
-- [gtk-win32 2.8.14-rc1](http://gladewin32.sourceforge.net/modules/wfdownloads/)
-- [pycairo 1.0.2-1](http://www.mapr.ucl.ac.be/~gustin/win32_ports/pygtk.html)
+- [gtk-win32 2.8.14-rc1][link-4]
+- [pycairo 1.0.2-1][link-5]
 - [pygtk 2.8.4-1 and 2.24.8][link-2]
-- [kiwi 1.9.20](http://www.async.com.br/projects/kiwi/) *optional*
+- [kiwi 1.9.20](https://github.com/stoq/kiwi) *optional*
 - [py2exe 0.6.5 and 0.6.9](../index.md)
-- [Inno Setup 5.1.6 and 5.4.3](http://www.jrsoftware.org/isinfo.php)
+- [Inno Setup 5.1.6 and 5.4.3](https://jrsoftware.org/isinfo.php)
 
-[link-1]: http://permalink.gmane.org/gmane.comp.python.py2exe/3889
-[link-2]: http://www.mapr.ucl.ac.be/~gustin/win32_ports/pygtk.html
+[link-1]: https://web.archive.org/web/20100918184438/http://permalink.gmane.org:80/gmane.comp.python.py2exe/3889
+[link-2]: https://web.archive.org/web/20070209112832/http://www.mapr.ucl.ac.be:80/%7Egustin/win32_ports/pygtk.html
+
+[link-3]: https://web.archive.org/web/20100816021243/http://library.gnome.org:80/devel/pygtk/stable/class-gtkbuilder.html
+[link-4]: https://sourceforge.net/projects/gladewin32/files/gtk%2B-win32-runtime/2.8.14/
+[link-5]: https://web.archive.org/web/20070209112832/http://www.mapr.ucl.ac.be:80/%7Egustin/win32_ports/pygtk.html

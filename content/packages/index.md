@@ -14,7 +14,7 @@
 
 - ConfigObj does not work right if you installed using easy\_install. Just
   download configobj.py and validate.py from
-  <http://www.voidspace.org.uk/python/configobj.htm>
+  <https://configobj.readthedocs.io/en/latest/>
 
 ## ctypes.com
 
@@ -38,11 +38,11 @@ sometimes the other works. Having both might cause problems.
   Programs down to around 4 Megabytes
 - [Installer languages](../guides/distribution/installer-languages.md) How to
   localize the language with
-  [py2exe](http://starship.python.net/crew/theller/py2exe/) and
-  [InnoSetup](http://www.jrsoftware.org/isinfo.php)
+  [py2exe](https://sourceforge.net/projects/py2exe/files/) and
+  [InnoSetup](https://jrsoftware.org/isinfo.php)
 - [Installer shortcuts](../guides/distribution/installer-shortcuts.md) How to
   add Startup-Links to the Quickstart-Bar &amp; the Desktop using
-  [InnoSetup](http://www.jrsoftware.org/isinfo.php) together with
+  [InnoSetup](https://jrsoftware.org/isinfo.php) together with
   [py2exe](../getting-started/overview.md)
 
 ## logging module
@@ -210,4 +210,4 @@ them with **options={"py2exe": {"includes": \["raven.events",
 
 > CategoryCategory
 
-[link-1]: http://docs.python.org/library/multiprocessing.html#multiprocessing.freeze_support
+[link-1]: https://docs.python.org/2.7/library/multiprocessing.html#multiprocessing.freeze_support

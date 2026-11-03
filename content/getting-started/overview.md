@@ -6,9 +6,9 @@ standalone distributions for Win32.
 Latest version as of 2006-March-20 is 0.6.5
 
 Its home is here [Home](../index.md) and on Sourceforge
-<http://sourceforge.net/projects/py2exe/>
+<https://sourceforge.net/projects/py2exe/>
 
-Releases can be downloaded from <http://prdownloads.sourceforge.net/py2exe/>
+Releases can be downloaded from <https://sourceforge.net/projects/py2exe/files/>
 
 ## How does py2exe work and what are all those files?
 
@@ -46,7 +46,8 @@ from one of your script. (see
 Some other modules (eg [pyserial-pyparallel](http://pyserial.sourceforge.net/))
 also conditionally import modules for each platform. You can avoid the warning
 by putting the correct "ignores" options in py2exe. Last but not least, modules
-like [pygtk](http://www.pygtk.org/) seem to create a module reference on-the-fly
+like [pygtk](https://wiki.gnome.org/Projects%282f%29PyGTK.html) seem to create a
+module reference on-the-fly
 and therefore the corresponding warnings also are harmless (see
 [Excluding DLLs](../guides/build/excluding-dlls.md) to learn how to correct
 that).
@@ -174,11 +175,11 @@ I had to "upgrade" also my knowledge about workarounds from py2exe 0.4
   Programs down to around 4 Megabytes
 - [Installer languages](../guides/distribution/installer-languages.md) How to
   localize the language with
-  [py2exe](http://starship.python.net/crew/theller/py2exe/) and
-  [InnoSetup](http://www.jrsoftware.org/isinfo.php)
+  [py2exe](https://sourceforge.net/projects/py2exe/files/) and
+  [InnoSetup](https://jrsoftware.org/isinfo.php)
 - [Installer shortcuts](../guides/distribution/installer-shortcuts.md) How to
   add Startup-Links to the Quickstart-Bar &amp; the Desktop using
-  [InnoSetup](http://www.jrsoftware.org/isinfo.php) together with Py2Exe
+  [InnoSetup](https://jrsoftware.org/isinfo.php) together with Py2Exe
 
 ### py2exe and Biopython
 
@@ -262,5 +263,5 @@ script to recognize that x.ptl is a valid python files. Any idea how to do this?
 
 CategoryHomepage
 
-[link-1]: http://prdownloads.sourceforge.net/py2exe/py2exe-0.5.0.win32-py2.3.exe
-[link-2]: http://groups.google.de/groups?dq=&hl=de&lr=&ie=UTF-8&oe=UTF-8&threadm=1ebr001fkuq85al2i8c26ejceu8qvedmdb%404ax.com&prev=/groups%3Fhl%3Dde%26lr%3D%26ie%3DUTF-8%26oe%3DUTF-8%26group%3Dcomp.lang.python
+[link-1]: https://sourceforge.net/projects/py2exe/files/py2exe/0.5.0/
+[link-2]: https://mail.python.org/pipermail/python-list/2004-January/283051.html

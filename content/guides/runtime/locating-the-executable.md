@@ -30,7 +30,7 @@ now p contains the directory where your exe resides, no matter from where your
 exe has been called (maybe it is in the path)
 
 "jpath" is the famous path module from
-["Jason Orendorff"](http://www.jorendorff.com/articles/python/path/)
+["Jason Orendorff"](https://wiki.python.org/python/archive/PathModule.html)
 
 ### Alternate Solution
 

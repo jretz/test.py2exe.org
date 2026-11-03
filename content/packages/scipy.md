@@ -1,8 +1,10 @@
 # PackageLoader issues
 
 If you get a message like `ImportError: cannot import name factorial` (see
-<http://article.gmane.org/gmane.comp.python.py2exe/3324> or
-<http://mail.scipy.org/pipermail/scipy-user/2009-May/021216.html>), this is due
+<https://web.archive.org/web/20180805121229/http://article.gmane.org:80/gmane.comp.python.py2exe/3324>
+or
+<https://mail.python.org/pipermail/scipy-user/2009-May/021215.html>), this is
+due
 to a failure in a somewhat-magical mechanism that Scipy uses to import symbols
 into the top-level scipy module. Rather than, e.g., `from scipy.x.y import *`,
 it uses a Numpy mechanism called `PackageLoader`, which uses info.py files in

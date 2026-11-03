@@ -19,7 +19,7 @@ options = {"py2exe": {"packages": ["encodings"]}},
 to your setup.py file.
 
 That replaces the `'--force-imports encodings'` command line option from the
-[0.4py2exe](http://starship.python.net/crew/theller/py2exe/)
+[0.4py2exe](https://sourceforge.net/projects/py2exe/files/py2exe/0.4.1/)
 
 ## Solution 2
 
