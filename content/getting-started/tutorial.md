@@ -61,7 +61,7 @@ Looks good!
 
 ## 2. Create your setup script (setup.py) { #Step2 }
 
-py2exe extends [Distutils](http://www.python.org/doc/current/dist/) with a new
+py2exe extends [Distutils](https://docs.python.org/2.7/distutils/) with a new
 "command". If you've installed third party Python modules then there's a good
 chance you've seen at least one distutils command:
 
@@ -309,10 +309,10 @@ described in 5.2.1.
 py2exe is not an installer builder - it merely assembles the files needed to run
 your Python program. There are plenty of good installer builders out there
 including some that are open source (e.g.,
-[NSIS](http://nsis.sourceforge.net/Main_Page)) and some that are free (e.g.,
-[Inno Setup](http://www.jrsoftware.org/isinfo.php)).
+[NSIS](https://nsis.sourceforge.io/Main_Page)) and some that are free (e.g.,
+[Inno Setup](https://jrsoftware.org/isinfo.php)).
 
-[link-1]: http://www.python.org/doc/faq/windows/#how-do-i-run-a-python-program-under-windows
+[link-1]: https://docs.python.org/2.7/faq/windows.html#how-do-i-run-a-python-program-under-windows
 [link-2]: http://www.microsoft.com/downloads/details.aspx?familyid=32bc1bee-a3f9-4c13-9c99-220b62a191ee&displaylang=en
 [link-3]: http://www.microsoft.com/downloads/en/details.aspx?FamilyID=9b2da534-3e03-4391-8a4d-074b9f2bc1bf&displaylang=en
 [link-4]: http://www.microsoft.com/downloads/details.aspx?FamilyID=9b2da534-3e03-4391-8a4d-074b9f2bc1bf&displaylang=en

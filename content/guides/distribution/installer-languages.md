@@ -21,7 +21,7 @@ Name: Deutsch; MessagesFile: "compiler:German-2-4.0.5.isl"
 ```
 
 The Messagefile for German language I got from
-[InnoSetup Translations](http://www.jrsoftware.org/files/istrans/).
+[InnoSetup Translations](https://jrsoftware.org/files/istrans/).
 It is even possible to provide a multitude of tranlations, say
 
 ```python

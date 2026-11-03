@@ -19,5 +19,5 @@ py2exe app. Be sure not to call the quixote.enable\_ptl() function anywhere in
 your app, or you'll cause problems with py2exe's import mechanism!
 
 See
-<http://mail.mems-exchange.org/pipermail/quixote-users/2005-January/004096.html>
+<http://mail.mems-exchange.org/quixote-users/4096/>
 for more information.

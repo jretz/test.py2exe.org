@@ -3,7 +3,7 @@
 ## Question
 
 I got inspired by an article in
-[Inspirational Technology](http://www.xmldatabases.org/WK/blog/1094?t=item) and
+[Inspirational Technology][link-1] and
 added some configuration-option to the software as an XML-File.
 
 In times before I just did a
@@ -58,10 +58,12 @@ For more information, see: [Data files](data-files.md)
 ## and how do you deal with this .xml-settings
 
 Just to be buzzword-compliant every application this days should store at least
-something in [XML](http://www.xml.org/). There are many, many libraries to do
+something in [XML](https://www.w3.org/XML/). There are many, many libraries to
+do
 XML-Stuff in Python, I found 2 of them rather pythonic:
 
-- effbots [ElementTree](http://effbot.org/zone/element-index.htm)
+- effbots
+  [ElementTree](https://docs.python.org/2.7/library/xml.etree.elementtree.html)
 - and gnosis.xml of David Mertz
 
 Elementtree Documentation is easier to find (it's on the same website) and not
@@ -101,3 +103,5 @@ jpath is a renamed [Path module](../../packages/path-module.md) written by Jason
 Jarondorff
 
 20040113HAM
+
+[link-1]: https://web.archive.org/web/20100706012950/http://www.xmldatabases.org/WK/blog/1094?t=item

@@ -72,4 +72,4 @@ child = subprocess.Popen(...other args...
 
 -- [Alec Wysoker](mailto:alecw@pobox.com)
 
-[link-1]: http://sourceforge.net/tracker/index.php?func=detail&aid=1124861&group_id=5470&atid=105470
+[link-1]: https://github.com/python/cpython/issues/41592

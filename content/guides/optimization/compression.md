@@ -4,7 +4,7 @@
 
 Within samples/extending, Thomas Heller gives a
 [py2exe](../../getting-started/overview.md) setup.py script which automagically
-calls [InnoSetup](http://www.jrsoftware.org/isinfo.php) to create a great
+calls [InnoSetup](https://jrsoftware.org/isinfo.php) to create a great
 looking (and perfectly working) Windows-Installer. Yes, really, ONE setup.exe is
 created which contains ALL stuff to have a readily installable Software out of
 your product.
@@ -42,7 +42,7 @@ summing up to 10.5 Megabyte ... not much with DSL, but... shocking, isn't it?
 
 ## get it smaller
 
-In the standard configuration [InnoSetup](http://www.jrsoftware.org/isinfo.php)
+In the standard configuration [InnoSetup](https://jrsoftware.org/isinfo.php)
 compressed it down to around 6.5 Megabyte.
 
 I changed the setup.py to contain
@@ -78,7 +78,8 @@ and....
   uses wxWindows) even smaller files when using 7-zip instead of bzip. To use
   7-zip one has to specify "Compression=none" in the generated installer script
   (\*.iss) and then manually load the script into
-  [ISTool](http://www.istool.org/), which is a front end to Inno Setup. Clicking
+[ISTool](https://sourceforge.net/projects/istool/), which is a front end to Inno
+Setup. Clicking
   at the 'Options' button and selecting '7-zip' in the compression combo box
   does the trick.
 
@@ -110,12 +111,12 @@ HAM2005-05-20
 
 ## 7ZIP and UPX
 
-Repacking the "library.zip" with [7-ZIP](http://www.7-zip.org/) saving 357KB
+Repacking the "library.zip" with [7-ZIP](https://www.7-zip.org/) saving 357KB
 (577KB original to 220KB 7ZIP compressed).
 Note: it requires "import zlib" in your source file to allow unzipping
 operations.
 
-Using [UPX](http://upx.sourceforge.net/) the executable packer to compress
+Using [UPX](https://upx.github.io/) the executable packer to compress
 \*.pyd, \*.dll and \*.exe Files:
 
 Example: \_sre.pyd, \_winreg.pyd, python23.dll, unicodedata.pyd, w9xpopen.exe,

@@ -1,6 +1,7 @@
 # dpkt
 
-dpkt, available at <http://code.google.com/p/dpkt/> does not compile with
+dpkt, available at <https://dpkt.readthedocs.io/en/latest/> does not compile
+with
 py2exe.
 
 After compiling and running a program that uses dpkt you will see an error like

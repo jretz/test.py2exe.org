@@ -1,7 +1,7 @@
 # py2exe
 
 py2exe is a [Python](https://www.python.org/)
-[Distutils](https://docs.python.org/3/library/distutils.html) extension which
+[Distutils](https://docs.python.org/2.7/library/distutils.html) extension which
 converts Python scripts into executable Windows programs, able to run without
 requiring a Python installation.
 
@@ -17,8 +17,8 @@ Jimmy Retzlaff, Mark Hammond, and Alberto Sottile have also made contributions.
 Code contributions are always welcome from the community and many people provide
 invaluable help on the mailing list and this site.
 
-py2exe is used by [BitTorrent](http://www.bittorrent.com),
-[SpamBayes](http://spambayes.sourceforge.net/windows.html), and thousands more -
+py2exe is used by [BitTorrent](https://www.bittorrent.com/),
+[SpamBayes](https://spambayes.sourceforge.io/windows.html), and thousands more -
 py2exe averages over 5,000 downloads per month.
 
 The old [py2exe](https://www.py2exe.org/old) web site is still available until
@@ -38,7 +38,6 @@ that information has found its way into this wiki.
 - [Debugging imports](troubleshooting/debugging-imports.md)
 - [Release process](development/release-process.md)
 - [Get help on the mailing list][link-3]
-- [#py2exe](irc://irc.freenode.net/py2exe) IRC channel at Freenode.net
 
 ## Contributing
 

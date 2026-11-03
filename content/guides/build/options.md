@@ -37,7 +37,7 @@ dictionary "key" names and the "value" types are listed in the table below.
 | **key** | **value** |
 | --- | --- |
 | unbuffered | if true, use unbuffered binary stdout and stderr |
-| optimize | string or int of optimization level (0, 1, or 2) 0 = don’t optimize (generate .pyc) 1 = normal optimization (like python -O) 2 = extra optimization (like python -OO) See <http://docs.python.org/distutils/apiref.html#module-distutils.util> for more info. |
+| optimize | string or int of optimization level (0, 1, or 2) 0 = don’t optimize (generate .pyc) 1 = normal optimization (like python -O) 2 = extra optimization (like python -OO) See <https://docs.python.org/2.7/distutils/apiref.html#module-distutils.util> for more info. |
 | includes | list of module names to include |
 | packages | list of packages to include with subpackages |
 | ignores | list of modules to ignore if they are not found |
@@ -74,4 +74,4 @@ For more information enter the following at the python command line:
 >>> help(setup)
 ```
 
-[link-1]: http://docs.python.org/dist/module-distutils.core.html
+[link-1]: https://docs.python.org/2.7/distutils/apiref.html#module-distutils.core

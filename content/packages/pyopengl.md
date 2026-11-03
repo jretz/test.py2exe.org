@@ -56,5 +56,5 @@ Tested with Python 2.6, py2exe version 0.6.9 and PyOpenGL version 3.0.0.
 
 --- [Bram Geron](mailto:bgeron@gmail.com)
 
-[link-1]: http://pyopengl.sourceforge.net/documentation/py2exe.html
-[link-2]: http://pyopengl.sourceforge.net/documentation/py2exe.html
+[link-1]: https://pyopengl.sourceforge.net/documentation/py2exe.html
+[link-2]: https://pyopengl.sourceforge.net/documentation/py2exe.html

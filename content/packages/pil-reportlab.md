@@ -2,7 +2,7 @@
 
 ## The Problem
 
-Using [repotlab](http://www.reportlab.org) and following the instructions from
+Using [repotlab](https://www.reportlab.com/) and following the instructions from
 [PIL](pil.md).
 
 Still, when

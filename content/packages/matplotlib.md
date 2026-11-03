@@ -2,7 +2,7 @@
 
 ## Introduction
 
-[MatPlotLib](http://matplotlib.sf.net) is a module to produce nice-looking plots
+[MatPlotLib](https://matplotlib.org/) is a module to produce nice-looking plots
 in Python using a wide variety of back-end packages, at least one of which is
 likely to be available for your system.
 

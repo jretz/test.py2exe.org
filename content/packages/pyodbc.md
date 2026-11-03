@@ -22,4 +22,4 @@ setup(
 Original solution was found in
 ["Compiled Python App Problem" thread on Dev Shed™ Forums][link-1].
 
-[link-1]: http://forums.devshed.com/python-programming-11/compiled-python-app-problem-502516.html
+[link-1]: https://web.archive.org/web/20091229180532/http://forums.devshed.com:80/python-programming-11/compiled-python-app-problem-502516.html

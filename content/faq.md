@@ -41,7 +41,8 @@ unconditionally or to import them explicitly from one of your script. (see
 Some other modules (eg [pyserial-pyparallel](http://pyserial.sourceforge.net/))
 also conditionally import modules for each platform. You can avoid the warning
 by putting the correct "ignores" options in py2exe. Last but not least, modules
-like [pygtk](http://www.pygtk.org/) seem to create a module reference on-the-fly
+like [pygtk](https://wiki.gnome.org/Projects%282f%29PyGTK.html) seem to create a
+module reference on-the-fly
 and therefore the corresponding warnings also are harmless (see
 [Excluding DLLs](guides/build/excluding-dlls.md) to learn how to correct that).
 

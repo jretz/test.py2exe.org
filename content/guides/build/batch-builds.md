@@ -10,9 +10,9 @@ How it works:
 - Compile the Python Script
 - Move the Py2EXE-Results to a Subdirectory
 - Cleans the File-System (delete *build* and *dist*)
-- Optional Recompress *library.zip* with [7-Zip](http://www.7-zip.org/)
+- Optional Recompress *library.zip* with [7-Zip](https://www.7-zip.org/)
 - Optional Compress *\*.pyd*, *\*.dll* and *\*.exe* Files with
-  [UPX](http://upx.sourceforge.net/)
+  [UPX](https://upx.github.io/)
 
 (About Compression see [Compression](../optimization/compression.md) under *7ZIP
 and UPX*)

@@ -7,7 +7,7 @@ distribution without this file. As a result, an application that uses this
 module may crash at random or miss some features.
 
 For example version 0.2 of
-[winshell.py](http://tgolden.sc.sabren.com/python/winshell.html) from Tim Golden
+[winshell.py](https://winshell.readthedocs.io/en/latest/) from Tim Golden
 (a thin wrapper around Windows Shell-Functions) starts with:
 
 ```python
@@ -106,5 +106,5 @@ Applying automatic workaround for known problem with win32com.shell
 `py2exe` should also fail if required modules are missing unless some `--force`
 key in effect.
 
-[link-1]: http://docs.python.org/tutorial/modules.html#packages-in-multiple-directories
-[link-2]: http://spambayes.svn.sourceforge.net/viewvc/spambayes/trunk/spambayes/
+[link-1]: https://docs.python.org/2.7/tutorial/modules.html#packages-in-multiple-directories
+[link-2]: https://sourceforge.net/p/spambayes/code/HEAD/tree/trunk/spambayes/

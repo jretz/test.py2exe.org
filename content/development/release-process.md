@@ -24,4 +24,4 @@ making a new public release of py2exe.
     version to distinguish it from released versions
 17. Commit above file to svn
 
-[link-1]: https://sourceforge.net/project/admin/newrelease.php?package_id=35995&group_id=15583
+[link-1]: https://sourceforge.net/projects/py2exe/files/

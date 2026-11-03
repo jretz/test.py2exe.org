@@ -2,7 +2,8 @@
 
 ## Problem
 
-Using the [PathModule](http://www.jorendorff.com/articles/python/path/) from
+Using the [PathModule](https://wiki.python.org/python/archive/PathModule.html)
+from
 Jason Jorendorff, modulefinder.py, which is called by
 [py2exe](../getting-started/overview.md), gets into an endless recursion.
 
