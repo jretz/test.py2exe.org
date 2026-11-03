@@ -1,8 +1,20 @@
 # win32com servers
 
-Use attribute **com\_server** of method **setup** to create a com exe/dll
-server.
+COM servers are built by passing a `com_server` keyword argument to
+the setup function, the value must be a list of Python module
+names containing one or more COM server classes (identified by their
+`_reg_progid_` attribute):
+
+```python2
+# setup.py
+from distutils.core import setup
+import py2exe
+
+setup(com_server=["win32com.server.interp"])
+```
+
 By default, both an exe and a dll com server get generated.
+
 The following two pages show how to do the same thing using ctypes.com:
 [ctypes EXE servers](ctypes-exe-servers.md) &amp;
 [ctypes DLL servers](ctypes-dll-servers.md)

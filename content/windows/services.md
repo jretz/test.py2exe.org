@@ -1,5 +1,30 @@
 # Windows services
 
+You can build Windows NT services by passing a `service` keyword
+argument to the `setup` function, the value must be a list of Python
+module names containing a service class (identified by the `_svc_name_`
+attribute):
+
+```python2
+# setup.py
+from distutils.core import setup
+import py2exe
+
+setup(service=["MyService"])
+```
+
+Optionally, you can specify a `cmdline_style` attribute to py2exe, with
+valid values being `py2exe` (the default), `pywin32` or `custom`. `py2exe`
+specifies the traditional command-line always supported by py2exe. `pywin32`
+supports the exact same command-line arguments as pywin32 supports (ie, the
+same arguments supported when running the service from the .py file.)
+`custom` means that your module is expected to provide a `HandleCommandLine`
+function which is responsible for all command-line handling.
+
+The built service executables are able to install and remove
+themselves by calling them with certain command line flags, run the
+exe with the `-help` argument to find out more.
+
 ## Making services more like regular win32 apps
 
 From <https://sourceforge.net/p/py2exe/mailman/message/6938994/>, update

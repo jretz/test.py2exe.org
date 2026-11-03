@@ -98,6 +98,10 @@ Notice that this is ordinary Python. Let's go through it line by line...
 1. Call setup and tell it that we want a single console application and the main
    entry point is "hello.py".
 
+py2exe can create more than one exe file in one run, this is useful if you have
+a couple of related scripts. Pass a list of all scripts in the `console` and/or
+`windows` keyword argument.
+
 ## 3. Run your setup script { #Step3 }
 
 The next step is to run your setup script. Make sure to give the py2exe command

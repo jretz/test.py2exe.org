@@ -21,9 +21,6 @@ py2exe is used by [BitTorrent](https://www.bittorrent.com/),
 [SpamBayes](https://spambayes.sourceforge.io/windows.html), and thousands more -
 py2exe averages over 5,000 downloads per month.
 
-The old [py2exe](https://www.py2exe.org/old) web site is still available until
-that information has found its way into this wiki.
-
 ## Starting Points
 
 - [Download py2exe for Python 2 from SourceForge][link-2]
