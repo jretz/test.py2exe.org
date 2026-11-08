@@ -1,6 +1,6 @@
 # py2exe
 
-py2exe is a [Python](https://www.python.org/)
+test py2exe is a [Python](https://www.python.org/)
 [Distutils](https://docs.python.org/2.7/library/distutils.html) extension which
 converts Python scripts into executable Windows programs, able to run without
 requiring a Python installation.
