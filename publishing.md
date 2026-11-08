@@ -19,7 +19,7 @@ runs and retries deploy the latest source. Both jobs use
 3. Verify `test.py2exe.org` in the `jretz` account's Pages settings using
    GitHub's DNS TXT record. See the [domain verification guide][verify].
 4. Push the generated source history to `main`. Wait for the
-   **Publish documentation** job to create `gh-pages` with the built site.
+   **Publish Documentation** job to create `gh-pages` with the built site.
 5. Under **Settings → Pages**, select **Deploy from a branch**, choose
    `gh-pages` and `/(root)`, and save. Set the custom domain to
    `test.py2exe.org`.
@@ -37,10 +37,10 @@ runs and retries deploy the latest source. Both jobs use
 
 ## Require the build before merging
 
-After **Build documentation** passes on a pull request, create an active branch
+After **Build Documentation** passes on a pull request, create an active branch
 ruleset under **Settings → Rules → Rulesets** that targets `main`. Enable
 **Require a pull request before merging** and **Require status checks to pass**.
-Add **Build documentation** from GitHub Actions, require branches to be up to
+Add **Build Documentation** from GitHub Actions, require branches to be up to
 date before merging, and leave the bypass list empty. See [Rulesets][rulesets].
 
 ## Publish manually
